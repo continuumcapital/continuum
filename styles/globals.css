@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Serif+4:ital,opsz@0,8..60;1,8..60&display=swap');
+
+@font-face {
+  font-family: 'Satoshi-Bold';
+  src: url('../public/fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('../public/fonts/Satoshi-Bold.woff') format('woff'),
+       url('../public/fonts/Satoshi-Bold.ttf') format('truetype');
+       font-weight: 700;
+       font-display: swap;
+       font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi-Regular';
+  src: url('../public/fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('../public/fonts/Satoshi-Regular.woff') format('woff'),
+       url('../public/fonts/Satoshi-Regular.ttf') format('truetype');
+       font-weight: 400;
+       font-display: swap;
+       font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi-Italic';
+  src: url('../public/fonts/Satoshi-Italic.woff2') format('woff2'),
+       url('../public/fonts/Satoshi-Italic.woff') format('woff'),
+       url('../public/fonts/Satoshi-Italic.ttf') format('truetype');
+       font-weight: 400;
+       font-display: swap;
+       font-style: italic;
+}
+
+@font-face {
+  font-family: 'Satoshi-Black';
+  src: url('../public/fonts/Satoshi-Black.woff2') format('woff2'),
+       url('../public/fonts/Satoshi-Black.woff') format('woff'),
+       url('../public/fonts/Satoshi-Black.ttf') format('truetype');
+       font-weight: 900;
+       font-display: swap;
+       font-style: normal;
+}
+
+* {
+  color: inherit;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Source Serif 4', serif;
+  line-height: 1;
+  letter-spacing: 1;
+  font-size: 1rem;
+  background: white;
+  color: #161417;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+fieldset, ul, figure, button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  background: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input { 
+  appearance: none;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+p {
+  margin: 0
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  border-radius: 24px;
+}
