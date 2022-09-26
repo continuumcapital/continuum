@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
-import { styled } from '../../../stitches.config'
-import { Canvas, useFrame } from 'react-three-fiber'
+import React, { useRef } from 'react'
+import { styled } from '@theme'
 import { vertexShader, fragmentShader } from './Parts/shaders'
+import { Canvas, useFrame } from '@react-three/fiber'
+
 
 const BlobWrap = styled('div', {
   position: 'relative',
@@ -12,16 +13,6 @@ const BlobWrap = styled('div', {
 
 // Default settings
 
-const settings = {
-  speed: 0.2,
-  density: 1.5,
-  strength: 0.2,
-  frequency: 3.0,
-  amplitude: 6.0,
-  intensity: 7.0,
-  wireframe: false,
-}
-
 interface BlobProps {
   zoom: number
   position?: any
@@ -30,6 +21,16 @@ interface BlobProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Blob = ({ zoom, position }:BlobProps) => {
+
+  const settings = {
+    speed: 0.2,
+    density: 1.5,
+    strength: 0.2,
+    frequency: 3.0,
+    amplitude: 6.0,
+    intensity: 7.0,
+    wireframe: false,
+  }
   
   const Icosahedron = ( props:any ) => {
     const mesh = useRef()
@@ -56,7 +57,7 @@ export const Blob = ({ zoom, position }:BlobProps) => {
     })
 
     return (
-      <mesh ref={mesh} {...props}>
+      <mesh ref={ mesh } {...props}>
         <icosahedronBufferGeometry attach='geometry' args={[1, 64]} />
         <shaderMaterial attach='material' {...{ vertexShader, fragmentShader, uniforms }} />
       </mesh>

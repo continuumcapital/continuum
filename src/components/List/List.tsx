@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 
 // For the master container of the list component
 // This container supports the list for custom, bullets, numbers, and alphabetical list layouts 

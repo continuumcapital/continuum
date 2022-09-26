@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 import { Input, Heading, Text, Textarea, InputCheck, Select, Button } from '@components'
 
 // For the master container of the form component

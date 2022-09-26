@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
+import { ButtonTheme } from '@components'
 
 const story = {
   title: 'atoms/Button',
@@ -28,7 +29,7 @@ export const Default = () => (
 
 export const DefaultWithIcon = () => (
   <Button 
-    icon="give"
+    icon="discord-logo"
     title="Action"
   />
 )
@@ -43,7 +44,7 @@ export const Primary = () => (
 export const PrimaryWithIcon = () => (
   <Button 
     variant="primary"
-    icon="give--white"
+    icon="discord-logo"
     title="Action"
   />
 )
@@ -55,10 +56,6 @@ export const Secondary = () => (
   />
 )
 
-export const SecondaryWithIcon = () => (
-  <Button 
-    variant="outline"
-    icon="give"
-    title="Action"
-  />
+export const Theme = () => (
+  <ButtonTheme />
 )

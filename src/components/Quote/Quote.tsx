@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 
 // For the master container of the quote
 // This is visually represented by the vertical line on the left of the container and the text to the left

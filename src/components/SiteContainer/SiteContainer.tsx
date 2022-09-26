@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 
 // For the master container of the foundational SiteContainer component
 // This component is used to automate spacing, sizes, widths, ect for components wrapped within this components

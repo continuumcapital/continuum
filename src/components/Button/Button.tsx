@@ -43,6 +43,7 @@ interface ButtonProps {
   children?: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   notBold?: boolean
+  type?: any
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -58,7 +59,8 @@ export const Button = ({
     iconPlacement, // Supporting the icon placement to be on the left or right side of the container
     size, // Supporting the small version of the button
     children, // For customization of a button as fallabck for compnents needed to be witin a button (ie a whole card is a button)
-    notBold
+    notBold,
+    type
   }: ButtonProps ) => {
   
   return(
@@ -80,7 +82,7 @@ export const Button = ({
         // This should be used for anyting that adds to the user experience, without leaving the page
         // An example of this would be clicking on a button that opens up a dialog window with futher actions
 
-        <button onClick={ onClick }>
+        <button {...{ type, onClick }}>
           <ButtonBase {...{ variant, size, title, icon, iconPlacement, children, notBold }} />
         </button>
 

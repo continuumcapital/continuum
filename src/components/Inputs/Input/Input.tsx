@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { styled } from '../../../../stitches.config'
 import { InputBase } from './_base'
 
 // -------------- Typescript declarations -------------- //

@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 
 // For the master container of the leaderboard chip
 // This contains the rank of the person on the left, with their name and image to the right,

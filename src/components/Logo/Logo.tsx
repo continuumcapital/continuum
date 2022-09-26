@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 import { Heading } from '@components'
 
 // For the global treatment of the logo

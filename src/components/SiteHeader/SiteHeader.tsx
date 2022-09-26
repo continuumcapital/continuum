@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { styled } from '../../../stitches.config'
-import { Logo, Button, List } from '@components'
+import { styled } from '@theme'
+import { Logo, Button, List, ButtonTheme } from '@components'
 
 // For the master container of the header
 // This holds a relative position 
@@ -67,8 +67,7 @@ export const SiteHeader = () => {
         </Middle>
         <Side>
           <Button size="l0" variant="tint" title="Client Portal" />
-          <Button size="l0Icon" variant="iconOutline" icon="sun" />
-          <Button size="l0Icon" variant="iconOutline" icon="moon" />
+          <ButtonTheme />
         </Side>
       </Nav>
     </Header>

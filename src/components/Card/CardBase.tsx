@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 import { Image, Heading } from '@components'
 
 // For the master container of the card

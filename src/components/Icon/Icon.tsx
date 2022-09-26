@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 
 // For the master container of the icons
 // Icons are used in various parts of the size, such as buttons, steps, static, ect

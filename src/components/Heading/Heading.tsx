@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '../../../stitches.config'
+import { styled } from '@theme'
 
 // For the master container of the headings used throughout the size
 // This displays the heading as a block element, and allows for bolding and htags within it

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { styled } from '../../../../stitches.config'
+import { styled } from '@theme'
 
 // For the master container of the textarea
 // This holds the long for messages that lives within the form component

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { styled } from '../../../../stitches.config'
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { List, Icon } from '@components'
+import { styled } from '@theme'
 
 const CheckboxWrap = styled('div', {
   display: 'flex',

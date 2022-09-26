@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { styled } from '../../../../stitches.config'
 import { Button } from '@components'
+import { styled } from '@theme'
 
 // For the container of the main input section
 // This always holds the input but can have an icon, tooltip helper to the right of the field
