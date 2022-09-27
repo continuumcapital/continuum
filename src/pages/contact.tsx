@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { SiteContainer, Block, Form, Blob } from '@components'
-import { styled } from '../../stitches.config'
+import { styled } from '@theme'
 
 const BlobAccent = styled('div', {
   position: 'absolute',

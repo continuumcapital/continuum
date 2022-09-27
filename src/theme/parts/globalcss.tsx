@@ -1,18 +1,6 @@
-import { createStitches } from '@stitches/react'
-import { globalStyle, breakpoints, colors, fonts, fontSizes, radius, transitions } from './parts'
 
-export const { styled, globalCss, keyframes, theme, createTheme, config } = createStitches({
-  theme: {
-    fonts: { ...fonts },
-    fontSizes: { ...fontSizes },
-    colors: { ...colors },
-    radii: { ...radius },
-    transitions: { ...transitions },
-  },
-  media: { ...breakpoints },
-})
-
-export const globalStyles = globalCss({ '*': {
+export const globalStyle = {
+    '*': {
       boxSizing: 'border-box',
       fontFamily: 'inherit',
       color: 'inherit',
@@ -41,4 +29,5 @@ export const globalStyles = globalCss({ '*': {
       margin: 0,
       appearance: 'none',
       background: 'none'
-    } })
+    }
+  }

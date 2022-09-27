@@ -24,6 +24,7 @@
     "choo": "^7.1.0",
     "glsl-noise": "^0.0.0",
     "glslify": "^7.1.1",
+    "leva": "^0.9.31",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-countdown": "^2.3.2",

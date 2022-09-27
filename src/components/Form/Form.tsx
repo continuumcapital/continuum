@@ -9,7 +9,19 @@ import { Input, Heading, Text, Textarea, InputCheck, Select, Button } from '@com
 const FormContain = styled('div', {
   position: 'relative',
   maxWidth: 640,
-  width: '100%'
+  width: '100%',
+
+  input: {
+    appearance: 'none',
+    border: 'none',
+    background: 'none',
+    outline: 'none'
+  },
+
+  'input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus': {
+    boxShadow: "0 0 0px 1000px #ffffff inset !important",
+    borderRadius: 24
+  }
 })
 
 // For the header container within the form

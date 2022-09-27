@@ -25,6 +25,6 @@
     },
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.graphql"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.graphql", "src/theme/color.js"],
   "exclude": ["node_modules"]
 }
