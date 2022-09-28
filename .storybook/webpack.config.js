@@ -14,6 +14,5 @@ module.exports = ({ config }) => {
   // We're using several that don't play nicely with Webpack5.
   // https://github.com/crypto-browserify/cipher-base/issues/10
   config.resolve.fallback = { http: false, os: false, https: false, crypto: false, stream: false }
-
   return config
 }

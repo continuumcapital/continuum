@@ -1,4 +1,3 @@
-// import '../styles/reset.css'
 import '../src/theme/fonts/fonts.css'
 
 export const parameters = {

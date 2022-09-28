@@ -1,9 +1,8 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Form } from '@components'
+import { SiteContainer, Block, Form } from '@components'
 
 const story = {
-  title: 'atoms/Form',
+  title: 'forms/Form',
   component: Form,
   layout: 'fullscreen',
   argTypes: {
@@ -23,7 +22,11 @@ const story = {
 export default story
 
 export const Primary = () => (
-
-  <Form />
+  
+  <SiteContainer>
+    <Block width="small">
+      <Form />
+    </Block>
+  </SiteContainer>
   
 )

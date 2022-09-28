@@ -12,33 +12,18 @@ export const { styled, globalCss, keyframes, theme, createTheme, config } = crea
   media: { ...breakpoints },
 })
 
-export const globalStyles = globalCss({ '*': {
-      boxSizing: 'border-box',
-      fontFamily: 'inherit',
-      color: 'inherit',
-      fontSmoothing: 'antialiased',
-    },
-    
-    body: {
-      padding: 0,
-      margin: 0,
-      fontFamily: 'Source Serif 4',
-      lineHeight: 1,
-      fontSize: '1rem',
-      background: 'white',
-      color: '#161417'
-    },
+export const globalStyles = globalCss({ ...globalStyle })
 
-    a: { textDecoration: 'none' },
+export const lightTheme = createTheme({
+  colors: {
+    siteBg: '$white',
+    contentColor: '$black'
+  },
+})
 
-    button: { cursor: 'pointer' },
-
-    p: { margin: 0 },
-  
-    'fieldset, ul, figure, button': {
-      border: 'none',
-      padding: 0,
-      margin: 0,
-      appearance: 'none',
-      background: 'none'
-    } })
+export const darkTheme = createTheme({
+  colors: {
+    siteBg: '$black',
+    contentColor: '$white'
+  },
+})

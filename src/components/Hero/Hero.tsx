@@ -86,7 +86,7 @@ export const Hero = ({
   return(
 
     <HeroContainer>
-      <HeroBg><Blob zoom={ 2.15 } /></HeroBg>
+      <HeroBg><Blob zoom={ 2.5 } /></HeroBg>
       
       <HeroText>
         <div>

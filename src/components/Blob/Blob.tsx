@@ -3,12 +3,10 @@ import { styled } from '@theme'
 import { vertexShader, fragmentShader } from './Parts/shaders'
 import { Canvas, useFrame } from '@react-three/fiber'
 
-
 const BlobWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  height: '100%',
-  background: '$white'
+  height: '100%'
 })
 
 // Default settings
