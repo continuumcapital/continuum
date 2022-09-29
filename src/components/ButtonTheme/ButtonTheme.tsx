@@ -14,7 +14,7 @@ export const ButtonTheme = () => {
 
     <Button 
       variant="icon"
-      icon={ active ? 'moon' : 'sun' }
+      icon={ active ? 'moon' : 'sun'  }
       onClick={ changeTheme }
     />
 

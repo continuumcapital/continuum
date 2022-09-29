@@ -16,14 +16,16 @@ export const globalStyles = globalCss({ ...globalStyle })
 
 export const lightTheme = createTheme({
   colors: {
-    siteBg: '$white',
-    contentColor: '$black'
+    siteBg: '$twilight',
+    contentColor: '$black',
+    buttonDefault: '$gray200'
   },
 })
 
 export const darkTheme = createTheme({
   colors: {
     siteBg: '$black',
-    contentColor: '$white'
+    contentColor: '$white',
+    buttonDefault: '#000'
   },
 })

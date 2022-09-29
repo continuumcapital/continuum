@@ -1,9 +1,15 @@
 export const colors = {
+  black: "#1a1b1c",
+  twilight: '#f3ffff',
+  blue: '#4f4ce3',
+  turquoise: '#30d5c8',
+
+
+  // old colors
   lavender: '#e7e6ff',
   majorelleBlue: '#4f4ce3',
   moon: '#bfbfbf',
   gunMetal: '#222328',
-  black: '#19181e',
   pureBlack: 'rgb( 0, 0, 0 )',
   gray100: 'rgb( 20, 21, 24)',
   gray200: 'rgb( 242, 242, 242 )',

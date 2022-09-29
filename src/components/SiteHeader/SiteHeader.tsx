@@ -66,7 +66,7 @@ export const SiteHeader = () => {
           </List>
         </Middle>
         <Side>
-          <Button size="l0" variant="tint" title="Client Portal" />
+          <Button size="l0" variant="secondary" title="Client Portal" />
           <ButtonTheme />
         </Side>
       </Nav>

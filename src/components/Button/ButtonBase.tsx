@@ -46,7 +46,7 @@ const Button = styled('div', {
   // Meaning it doesn't look link a tradtional button
 
   '&:hover': { 
-    background: '$gray200'
+    background: '$buttonDefault'
   },
 
   // Here we auto mate the spacing for the contents within the button base
@@ -70,7 +70,7 @@ const Button = styled('div', {
         height: 56,
         minWidth: 120,
         padding: '0 32px',
-        background: '$iris',
+        background: '$turquoise',
         color: '$white',
         borderRadius: '$pill',
       
@@ -83,13 +83,13 @@ const Button = styled('div', {
         }
       },
 
-      tint: {
+      secondary: {
         height: 56,
         minWidth: 120,
         padding: '0 32px',
-        background: '$lavender',
-        color: '$majorelleBlue',
-        borderRadius: '$pill',
+        background: '#a9f7f1',
+        color: '$black',
+        borderRadius: '$pill'
       },
 
       // For the secondary button used throughout the site
@@ -111,11 +111,6 @@ const Button = styled('div', {
         }
       },
 
-      success: {
-        background: '#20281c',
-        color: '$green'
-      },
-
       // For the icon only button, where no text is present
       // This holds the icon in the center of the container, which is a outlined circle
 
@@ -125,19 +120,6 @@ const Button = styled('div', {
         width: 36,
         height: 36,
         borderRadius: '50%',
-      },
-
-      iconOutline: {
-        minWidth: 56,
-        padding: 0,
-        width: 56,
-        height: 56,
-        borderRadius: '50%',
-        border: '1px solid $iris',
-      },
-
-      noStyle: {
-        padding: 0
       },
 
       disabled: {
@@ -187,7 +169,7 @@ const Button = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface ButtonProps {
-  variant?: 'disabled' | 'primary' | 'tint' | 'success' | 'outline' | 'icon' | 'iconOutline' | 'noStyle'
+  variant?: 'disabled' | 'primary' | 'secondary' | 'outline' | 'icon'
   size?: 'l0Icon' | 'l0'
   title?: any
   icon?: any

@@ -44,6 +44,7 @@ export const Blob = ({ zoom, position }:BlobProps) => {
     }
 
     useFrame(({ clock }) => {
+      // @ts-ignore: Unreachable code error
       const current = mesh.current.material.uniforms
       current.uTime.value = clock.getElapsedTime()
       current.uSpeed.value = settings.speed
