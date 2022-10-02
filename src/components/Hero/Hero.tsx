@@ -8,15 +8,16 @@ const HeroContainer = styled('div', {
   alignItems: 'center',
   position: 'relative',
   width: '100vw',
-  height: 'calc( 100vh - 150px )'
+  height: '100vh',
+  maxHeight: 800
 })
 
 const HeroBg = styled('div', {
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   left: 0,
-  width: '100%',
-  height: '100%',
+  width: '100vw',
+  height: '100vh',
   opacity: 0.6,
   pointerEvents: 'none'
 })
@@ -86,7 +87,7 @@ export const Hero = ({
   return(
 
     <HeroContainer>
-      <HeroBg><Blob zoom={ 2.2 } /></HeroBg>
+      <HeroBg><Blob zoom={ 2.6 } /></HeroBg>
       
       <HeroText>
         <div>
@@ -95,7 +96,7 @@ export const Hero = ({
               font="code" 
               size="l3" 
               bold="heavy"
-              color="purple" 
+              color="blue" 
               title="Continuum Digital" 
             />
           </CompanyName>

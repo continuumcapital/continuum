@@ -9,7 +9,7 @@ import { Logo, Text, List } from '@components'
 const FooterWrap = styled('footer', {
   position: 'relative',
   fontFamily: '$sansSerif',
-  background: '$lavender',
+  
 })
 
 // For the container of all of the content within the footer

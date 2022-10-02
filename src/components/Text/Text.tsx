@@ -38,7 +38,7 @@ const TextWrap = styled('div', {
 
     fontSize: {
       l0: {},
-      l1: { fontSize: '$s1', lineHeight: 1.5 }
+      l1: { fontSize: '$s4', lineHeight: 1.5 }
     },
 
     // For the alignment od the text within the container

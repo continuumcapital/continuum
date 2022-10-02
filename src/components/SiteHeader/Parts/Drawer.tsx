@@ -1,6 +1,7 @@
 import React from 'react'
-import { styled } from '../../../../stitches.config'
-import { Image, Heading, Button, Icon } from '@components'
+import { styled } from '@theme'
+import { Image, Heading, Icon, Blob } from '@components'
+import { BlobTwo } from '../../BlobTwo/BlobTwo'
 
 // For the master container of the drawer
 // This holds the menu trigger, and the links in the drawer that shows up on hover
@@ -9,6 +10,7 @@ const Drawer = styled('div', {
   '&:hover': {
 
     '> div:first-child': {
+      background: '$buttonDefault',
 
       // Here we rotate the chevron arrow to point up to give affordance that the dropdown menu is opened
 
@@ -33,10 +35,13 @@ const MenuTrigger = styled('div', {
   display: 'flex',
   alignItems: 'center',
   position: 'relative',
-  padding: '28px 0',
+  padding: '0 24px',
+  height: 44,
+  borderRadius: '$r1',
   zIndex: 9999,
   cursor: 'pointer',
   fontFamily: '$sansSerifBold',
+  fontSize: '$s0',
 
   // Automate the spacing between the text and the chevron dropdown on the right of the container
   // This adds spacing to the right of the text, if there is a chevron present
@@ -52,16 +57,33 @@ const MenuTrigger = styled('div', {
 
 const MenuWrap = styled('div', {
   position: 'absolute',
-  left: 0,
-  width: '100%',
+  left: -9999,
+  right: -9999,
+  margin: 'auto',
+  width: 900,
   background: '$white',
   color: '$black',
   transform: 'translateY( 0px )',
   zIndex: 0,
-  visibility: 'hidden',
-  opacity: 0,
+  // visibility: 'hidden',
+  // opacity: 0,
+  borderRadius: '$r3',
   transition: '$s1',
   boxShadow: '2px 10px 10px rgba( 0,0,0,0.1 )',
+})
+
+const MenuItemImage = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  width: 100,
+  height: 100,
+  marginRight: 24,
+
+  '> *': {
+    position: 'absolute'
+  }
 })
 
 // For the container of all of the content within the menu container
@@ -71,19 +93,24 @@ const MenuContent = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  alignItems: 'center',
   position: 'relative',
   maxWidth: 1000,
-  width: '90%',
-  padding: '64px 0',
+  width: '95%',
+  padding: '24px 0',
   margin: '0 auto',
 
   // For the size of each link within the container
 
-  '> a': { width: '30%' },
+  '> a': {
+    display: 'flex',
+    alignItems: 'center', 
+    width: '49%',
+  },
 
   // For orientation and sizing changes on mobile breakpoints
 
-  '@media( max-width: 767px )': {
+  '@tablet': {
     display: 'flex',
     flexDirection: 'column',
     padding: '32px 0',
@@ -95,18 +122,21 @@ const MenuContent = styled('div', {
 // This holds the image on the top, title and subtitle below, and the button on the bottom
 
 const MenuItem = styled('div', {
+  display: 'flex',
   width: '100%',
-  '> *:first-child': { height: 150 },
+  padding: '20px 12px',
+  borderRadius: '$r2',
+  backgroundColor: '#e4f1ff',
   '> *:not(:last-child)': { marginBottom: 16 },
 
   // For orientation and sizing changes on mobile breakpoints
 
-  '@media( max-width: 767px )': {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    '> *:first-child': { height: 100, width: 300 },
-  }
+  // '@tablet': {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   width: '100%',
+  //   '> *:first-child': { height: 100, width: 300 },
+  // }
 })
 
 // For the container of all of the text within a link section - below the image
@@ -118,7 +148,7 @@ const MenuItemText = styled('div', {
     marginBottom: 12
   },
 
-  '@media( max-width: 767px )': {
+  '@tablet': {
     marginLeft: 20,
     '> *:last-child': { display: 'none' }
   }
@@ -137,7 +167,7 @@ const SubTitle = styled('div', {
 interface DrawerProps {
   trigger: string
   links: {
-    image: string
+    image?: string
     title: string
     subTitle: string
     href: string
@@ -161,11 +191,10 @@ export const MenuDrawer = ({ trigger, links }:DrawerProps) => {
             
             <a key={`link-${ i }`} href={ link.href }>
               <MenuItem>
-                <Image borderRadius="r2" image={ link.image } />
+                { link.image ? ( <MenuItemImage><Image borderRadius="r2" image={ link.image } /></MenuItemImage> ) : <MenuItemImage><BlobTwo /></MenuItemImage> }
                 <MenuItemText>
-                  <Heading size="l1" bold="heavy" title={ link.title } />
+                  <Heading color="blue" size="l1" bold="heavy" title={ link.title } />
                   <SubTitle>{ link.subTitle }</SubTitle>
-                  <Button variant="outline" size="l0" title="Read more" />
                 </MenuItemText>
               </MenuItem>
             </a>

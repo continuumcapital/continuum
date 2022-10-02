@@ -42,6 +42,10 @@ const BlockContent = styled('div', {
       large: { maxWidth: 1300, width: '90%' }
     },
 
+    height: {
+      large: { height: '100vh', maxHeight: 500 }
+    },
+
     outline: {
       true: {
         padding: 20,
@@ -117,6 +121,7 @@ interface BlockProps {
   children: React.ReactNode
   outline?: boolean
   blockItemSpacing?: 'l0' | 'l1' | 'l2' | 'l3'
+  height?: 'large'
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -129,13 +134,14 @@ export const Block = ({
     mobileContent, // Optional - Reformats the content on mobile breakpoints
     children, // Required - Holds all of the content within the block component
     outline,
-    blockItemSpacing
+    blockItemSpacing,
+    height
   }: BlockProps ) => {
   
   return(
 
     <BlockWrap>
-      <BlockContent {...{ width, alignment, verticalAlignment, columns, mobileContent, outline, blockItemSpacing }}>
+      <BlockContent {...{ width, height, alignment, verticalAlignment, columns, mobileContent, outline, blockItemSpacing }}>
         { children }
       </BlockContent>
     </BlockWrap>

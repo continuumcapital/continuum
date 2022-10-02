@@ -26,7 +26,7 @@ const HeadingWrap = styled('div', {
 
     color: {
       white: { color: '$white' },
-      purple: { color: '$majorelleBlue' }
+      blue: { color: '$blue' }
     },
 
     font: {
@@ -39,7 +39,7 @@ const HeadingWrap = styled('div', {
 
 interface HeadingProps {
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5' | 'l6' | 'l7'
-  color?: 'white' | 'purple'
+  color?: 'white' | 'blue'
   title: any
   bold?: 'bold' | 'heavy'
   font?: 'code'

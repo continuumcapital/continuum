@@ -70,7 +70,7 @@ const Button = styled('div', {
         height: 56,
         minWidth: 120,
         padding: '0 32px',
-        background: '$turquoise',
+        background: '$primaryButton',
         color: '$white',
         borderRadius: '$pill',
       
@@ -78,7 +78,7 @@ const Button = styled('div', {
         // This makes the button pure black and places a dropshadow
 
         '&:hover': {
-          background: '$pureBlack',
+          background: '$primaryButtonHover',
           boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
         }
       },
@@ -89,7 +89,12 @@ const Button = styled('div', {
         padding: '0 32px',
         background: '#a9f7f1',
         color: '$black',
-        borderRadius: '$pill'
+        borderRadius: '$pill',
+
+        '&:hover': {
+          background: '$secondaryButtonHover',
+          boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
+        }
       },
 
       // For the secondary button used throughout the site

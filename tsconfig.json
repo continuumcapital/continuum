@@ -20,24 +20,12 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@components": [
-        "src/components"
-      ],
-      "@forms/*": [
-        "src/forms/*"
-      ],
-      "@lib": [
-        "src/lib"
-      ],
-      "@pages": [
-        "src/pages"
-      ],
-      "@public/*": [
-        "public/*"
-      ],
-      "@theme": [
-        "src/theme/stitches.config.ts"
-      ]
+      "@components": [ "src/components" ],
+      "@forms/*": [ "src/forms/*" ],
+      "@lib": [ "src/lib" ],
+      "@pages": [ "src/pages" ],
+      "@public/*": [ "public/*" ],
+      "@theme": [ "src/theme/stitches.config.ts" ]
     },
     "typeRoots": [
       "./node_modules/@types",

@@ -18,6 +18,8 @@ export const lightTheme = createTheme({
   colors: {
     siteBg: '$twilight',
     contentColor: '$black',
+    blue: '$majorelleBlue',
+    primaryButton: 'turquiose',
     buttonDefault: '$gray200'
   },
 })
@@ -26,6 +28,12 @@ export const darkTheme = createTheme({
   colors: {
     siteBg: '$black',
     contentColor: '$white',
-    buttonDefault: '#000'
+    blue: '$pictonBlue',
+
+    // Button colors
+
+    buttonDefault: '#000',
+    primaryButton: 'turquiose',
+    secondaryButtonHover: '$electric'
   },
 })

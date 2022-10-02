@@ -21,6 +21,7 @@
     "@react-three/drei": "^9.32.3",
     "@react-three/fiber": "^8.8.6",
     "@stitches/react": "^1.2.8",
+    "@types/babel-plugin-macros": "^2.8.5",
     "@types/react-relay": "^14.1.2",
     "@types/three": "^0.144.0",
     "babel-plugin-glsl": "^1.0.0",
@@ -29,6 +30,7 @@
     "choo": "^7.1.0",
     "glsl-curl-noise2": "^0.0.4",
     "glsl-noise": "^0.0.0",
+    "glsl-rotate": "^2.0.0",
     "glslify": "^7.1.1",
     "leva": "^0.9.31",
     "next": "12.2.5",
@@ -42,7 +44,8 @@
     "react-three-fiber": "^6.0.13",
     "storybook-addon-css-user-preferences": "^0.0.3",
     "storybook-addon-swc": "^1.1.8",
-    "three": "^0.144.0"
+    "three": "^0.144.0",
+    "three-custom-shader-material": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",

@@ -16,7 +16,7 @@ interface BlobProps {
   position?: any
 }
 
-// ---------- This is the end of declarations ---------- //
+// ---------- This is the end of declaxrations ---------- //
 
 export const Blob = ({ zoom, position }:BlobProps) => {
 
@@ -57,7 +57,7 @@ export const Blob = ({ zoom, position }:BlobProps) => {
 
     return (
       <mesh ref={ mesh } {...props}>
-        <icosahedronBufferGeometry attach='geometry' args={[1, 64]} />
+        <icosahedronGeometry attach='geometry' args={[1, 64]} />
         <shaderMaterial attach='material' {...{ vertexShader, fragmentShader, uniforms }} />
       </mesh>
     )
