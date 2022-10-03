@@ -11,6 +11,7 @@ const StageWrap = styled('section', {
   position: 'realtive',
   width: '100%',
   padding: '132px 0',
+  marginBottom: 100,
   backgroundBlendMode: 'multiply',
 
   variants: {

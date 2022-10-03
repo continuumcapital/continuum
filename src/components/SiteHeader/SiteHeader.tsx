@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { styled } from '@theme'
-import { useScrollPosition } from '@lib'
+import { useScrollPosition, useScrollDirection } from '@lib'
 import { Logo, Button, List, ButtonTheme } from '@components'
 import { MenuDrawer } from './Parts/Drawer'
+
+const scrollDown = {
+  transform: 'translateY( -100% )',
+  padding: '12px 0'
+}
 
 // For the master container of the header
 // This holds a relative position 
@@ -12,6 +17,7 @@ const Header = styled('header', {
   top: 0,
   left: 0,
   width: '100vw',
+  transition: '$s1',
   zIndex: 9010,
 
    // For the frosted glass behind the header
@@ -86,10 +92,11 @@ const Nav = styled('nav', {
 
 export const SiteHeader = () => {
   const scrollPos = useScrollPosition()
+  const scrollDirection = useScrollDirection()
 
   return(
     
-    <Header>
+    <Header style={{ transform: `translateY( ${ scrollDirection == 'down' ? '-100%' : '0' })` }}>
       <Nav style={{ padding: scrollPos <= 100 ? '24px 0' : '12px 0' }}>
         <Side><Logo linkToHome /></Side>
 

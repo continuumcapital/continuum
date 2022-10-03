@@ -9,7 +9,7 @@ const HeroContainer = styled('div', {
   position: 'relative',
   width: '100vw',
   height: '100vh',
-  maxHeight: 800,
+  maxHeight: 750,
 
   svg: {
     color: '$white'

@@ -4,7 +4,7 @@ import { SiteContainer, Block, Hero, Stage, StageBg, ReadingBar } from '@compone
 const Home: NextPage = () => {
   return (
     
-    <SiteContainer blockSpacing="l2">
+    <SiteContainer>
       <ReadingBar />
       <Block><Hero /></Block>
 

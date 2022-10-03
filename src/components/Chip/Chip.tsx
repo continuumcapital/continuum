@@ -10,11 +10,11 @@ const ChipWrap = styled('div', {
   position: 'relative',
   width: '100%',
   padding: '12px 24px 12px 20px',
-  border: '1px solid #334858',
+  background: '#334858',
   borderRadius: '$r2',
   fontFamily: '$sansSerif',
   fontSize: '$s0',
-  marginTop: 32
+  marginTop: 24
 })
 
 // For the content to be centered within the master container
@@ -50,7 +50,7 @@ export const Chip = ({
     <>
       { chips ? (
 
-        <List direction="horizontal" spacing="l1r">
+        <List direction="horizontal" spacing="l1r" alignment="center">
           { chips.map(( chip, i ) => (
             <li key={`chip-${ i }`}>
               <ChipWrap><ChipContent><Heading bold="heavy" size="l0" title={ chip.title } /></ChipContent></ChipWrap>

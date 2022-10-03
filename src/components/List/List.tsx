@@ -32,6 +32,10 @@ const ListWrap = styled('div', {
       }
     },
 
+    alignment: {
+      center: { '> ul': { justifyContent: 'center' }}
+    },
+
     // Supporting the horizontal layout of lists
     // This lays out the li in a horizontal orientation, instead of vertical by default
 
@@ -69,6 +73,7 @@ export interface ListProps {
     id: number
     title: string
   }[]
+  alignment?: 'center'
   decoration?: 'dividers'
   direction?: 'vertical' | 'horizontal'
   listStyle?: 'numbered' | 'bulleted' | 'alphabetical'
@@ -79,6 +84,7 @@ export interface ListProps {
 // ---------- This is the end of declarations ---------- //
 
 export const List = ({
+    alignment,
     listItems, // Automated the list within a json format
     direction, // Supporting the horizontal layout of a list 
     decoration,
@@ -89,7 +95,7 @@ export const List = ({
   
   return(
 
-    <ListWrap {...{ direction, listStyle, spacing, decoration }}>
+    <ListWrap {...{ direction, listStyle, spacing, decoration, alignment }}>
       { listItems ? (
 
         <>

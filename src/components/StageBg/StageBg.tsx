@@ -17,8 +17,11 @@ const StageContainer = styled('section', {
   paddingTop: 32,
   zIndex: 10,
   mixBlendMode: 'screen',
-  pointerEvents: 'none',
-  userSelect: 'none'
+
+  '&, *': {
+    pointerEvents: 'none !important',
+    userSelect: 'none !important',
+  }
 })
 
 // For the container of the blob to sit in the center of the master container
