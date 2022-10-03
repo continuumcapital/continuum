@@ -32,7 +32,7 @@ import { ButtonBase } from './ButtonBase'
 // -------------- Typescript declarations -------------- //
 
 interface ButtonProps {
-  variant?: 'disabled' | 'primary' | 'secondary' | 'outline' | 'icon'
+  variant?: 'disabled' | 'primary' | 'secondary' | 'white' | 'outline' | 'icon'
   size?: 'l0Icon' | 'l0'
   href?: string
   target?: '_blank'

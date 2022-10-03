@@ -1,5 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
+import { List, Heading } from '@components'
 
 // For the master container of the leaderboard chip
 // This contains the rank of the person on the left, with their name and image to the right,
@@ -9,10 +10,11 @@ const ChipWrap = styled('div', {
   position: 'relative',
   width: '100%',
   padding: '12px 24px 12px 20px',
-  background: '$orange100',
+  border: '1px solid #334858',
   borderRadius: '$r2',
   fontFamily: '$sansSerif',
-  fontSize: '$s0'
+  fontSize: '$s0',
+  marginTop: 32
 })
 
 // For the content to be centered within the master container
@@ -30,20 +32,40 @@ const ChipContent = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface ChipProps {
-  children: React.ReactNode
+  title?: string
+  chips?: {
+    title: string
+  }[]
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const Chip = ({
-    children
+    title,
+    chips
   }: ChipProps ) => {
   
   return(
 
-    <ChipWrap>
-      <ChipContent>{ children }</ChipContent>
-    </ChipWrap>
+    <>
+      { chips ? (
+
+        <List direction="horizontal" spacing="l1r">
+          { chips.map(( chip, i ) => (
+            <li key={`chip-${ i }`}>
+              <ChipWrap><ChipContent><Heading bold="heavy" size="l0" title={ chip.title } /></ChipContent></ChipWrap>
+            </li>
+          ))}
+        </List>
+
+      ) : (
+
+        <ChipWrap>
+          <ChipContent><strong>{ title }</strong></ChipContent>
+        </ChipWrap>
+
+      )}
+    </>
     
   )
 }

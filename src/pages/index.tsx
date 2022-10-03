@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
-import { SiteContainer, Block, Hero, Stage } from '@components'
-
+import { SiteContainer, Block, Hero, Stage, StageBg, ReadingBar } from '@components'
 
 const Home: NextPage = () => {
   return (
     
-    <SiteContainer>
+    <SiteContainer blockSpacing="l2">
+      <ReadingBar />
       <Block><Hero /></Block>
 
       <Block alignment="center">
@@ -39,6 +39,8 @@ const Home: NextPage = () => {
           </p>
         </Stage>
       </Block>
+
+      <StageBg />
     </SiteContainer>
 
   )

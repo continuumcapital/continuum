@@ -14,17 +14,18 @@ const TextArea = styled('textarea', {
   position: 'relative',
   width: '100%',
   padding: '22px 24px',
-  border: '1px solid $moon',
+  border: '1px solid $blueBorder',
   borderRadius: '$r2',
   resize: 'none',
   fontFamily: '$sansSerif',
   fontSize: '1rem',
   minHeight: 215,
+  background: 'none',
   transition: '$s1',
   outline: 'none',
 
   '&:focus': {
-    borderColor: '$majorelleBlue'
+    borderColor: '$white'
   }
 })
 

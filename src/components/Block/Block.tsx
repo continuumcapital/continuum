@@ -4,10 +4,11 @@ import { styled } from '@theme'
 // For the master container of the foundational Block component
 // This component is used to automate spacing, sizes, widths, ect for components wrapped within this components
 
-const BlockWrap = styled('div', {
+const BlockWrap = styled('section', {
   display: 'flex',
   position: 'relative',
-  width: '100%'
+  width: '100%',
+  zIndex: 1
 })
 
 // For all of the content within the site
@@ -39,7 +40,7 @@ const BlockContent = styled('div', {
       tiny: { maxWidth: 600, width: '90%' },
       small: { maxWidth: 800, width: '90%' },
       medium: { maxWidth: 1024, width: '90%' },
-      large: { maxWidth: 1300, width: '90%' }
+      large: { maxWidth: 1400, width: '90%' }
     },
 
     height: {

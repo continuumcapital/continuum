@@ -15,16 +15,20 @@ const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   alignItems: 'center',
   justifyContent: 'space-between',
   position: 'relative',
-  width: '50%',
+  width: 'calc( 50% - 48px )',
   height: 64,
-  border: '1px solid $moon',
+  border: '1px solid $blueBorder',
   borderRadius: '$r2',
   padding: '0 24px',
-  color: '$black',
   fontFamily: '$sansSerif',
+  zIndex: 9001,
   // '&:hover': { backgroundColor: mauve.mauve3 },
   // '&:focus': { boxShadow: `0 0 0 2px black` },
   // '&[data-placeholder]': { color: violet.violet9 },
+
+  '@tablet': {
+    width: 'calc( 100% - 48px )'
+  }
 });
 
 const StyledIcon = styled(SelectPrimitive.SelectIcon, {

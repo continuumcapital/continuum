@@ -5,6 +5,7 @@ export const colors = {
   pictonBlue: '#4AB2FF',
   turquoise: '#30d5c8',
   electric: '#56fff2',
+  royalBlue: '#8399c2',
 
 
   // old colors

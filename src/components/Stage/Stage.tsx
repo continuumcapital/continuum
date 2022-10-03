@@ -15,7 +15,7 @@ const StageWrap = styled('section', {
 
   variants: {
     background: {
-      blue: { backgroundColor: '$blue', color: '$white', }
+      blue: { backgroundColor: '$majorelleBlue', color: '$white', }
     }
   }
 })

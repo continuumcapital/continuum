@@ -21,6 +21,6 @@ const story = {
 export default story
 
 export const Primary = () => (
-  <Chip><div style={{ width: 300, height: 44 }}></div></Chip>
+  <Chip></Chip>
 )
 

@@ -16,18 +16,14 @@ const InputContent = styled('div', {
 
   variants: {
     state: {
-      active: {
-        label: {
-          color: '$moss',
-          transform: 'translateY( -12px ) scale( 0.8 )',
-        },
-      },
+      active: { label: { transform: 'translateY( -12px ) scale( 0.8 )' } },
       inactive: {}
     },
 
     inputSize: {
       small: {
-        width: '50%'
+        width: '50%',
+        '@tablet': { width: '100%' }
       }
     }
   },
@@ -43,7 +39,7 @@ const InputContain = styled('div', {
   width: '100%',
   height: 64,
   padding: '0 24px',
-  border: '1px solid $moon',
+  border: '1px solid $blueBorder',
   borderRadius: '$r2',
   transition: '$s1',
   fontFamily: '$sansSerif',
@@ -74,7 +70,7 @@ const InputContain = styled('div', {
   // We need to change the border color as an active indicator, as well as move and shrink the label to the top left
 
   '&:focus-within': {
-    borderColor: '$majorelleBlue',
+    borderColor: '$white',
 
     // Animate the label to the top left, shrink it, and change the color
 

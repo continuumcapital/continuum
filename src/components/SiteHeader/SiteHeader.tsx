@@ -12,7 +12,7 @@ const Header = styled('header', {
   top: 0,
   left: 0,
   width: '100vw',
-  zIndex: 9000,
+  zIndex: 9010,
 
    // For the frosted glass behind the header
    // By default no one will notice the effect, but will see whne the user starts to hover
@@ -34,7 +34,8 @@ const Header = styled('header', {
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'rgba( 255, 255, 255, 0.7 )',
+    background: '$siteBg',
+    opacity: 0.7,
     zIndex: 1
   }
 })
@@ -45,7 +46,9 @@ const Header = styled('header', {
 const Side = styled('div', {
   display: 'inline-flex',
   position: 'relative',
-  width: '20%'
+  width: '20%',
+
+  '*:not(:last-child)': { marginRight: 12 }
 })
 
 const Middle = styled('div', {

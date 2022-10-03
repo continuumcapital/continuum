@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { styled } from '@theme'
-import { Input, Heading, Text, Textarea, InputCheck, Select, Button } from '@components'
+import { Input, Heading, Text, Textarea, InputCheckbox, Select, Button } from '@components'
 
 // For the master container of the form component
 // This holds the option title and intro on the top and the form fields below
@@ -96,13 +96,13 @@ export const Form = ({
           ]}
         />
         <Textarea />
-        <InputCheck 
+        <InputCheckbox 
           listItems={[
             { id: 'newsletter', label: "Sign me up for Continuum Digital's newletter" },
             { id: 'terms', label: <>I consent to the <a href="http://tylerstober.com">Terms &amp; Conditions</a> and <a href="http://tylerstober.com">Privacy Policy</a></> }
           ]}
         />
-        <Button variant="primary" title="Submit" type="submit" />
+        <Button variant="white" title="Submit" type="submit" />
       </FormContent>
     </FormContain>
     

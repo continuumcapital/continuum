@@ -65,11 +65,11 @@ const MenuWrap = styled('div', {
   color: '$black',
   transform: 'translateY( 0px )',
   zIndex: 0,
-  // visibility: 'hidden',
-  // opacity: 0,
+  visibility: 'hidden',
+  opacity: 0,
   borderRadius: '$r3',
   transition: '$s1',
-  boxShadow: '2px 10px 10px rgba( 0,0,0,0.1 )',
+  boxShadow: '0 5px 10px rgba( 0,0,0,0.1 )',
 })
 
 const MenuItemImage = styled('div', {
@@ -125,8 +125,6 @@ const MenuItem = styled('div', {
   display: 'flex',
   width: '100%',
   padding: '20px 12px',
-  borderRadius: '$r2',
-  backgroundColor: '#e4f1ff',
   '> *:not(:last-child)': { marginBottom: 16 },
 
   // For orientation and sizing changes on mobile breakpoints
@@ -143,9 +141,12 @@ const MenuItem = styled('div', {
 // This holds the title, subtitle, and the button - but for this container we use it to automate the spacing
 
 const MenuItemText = styled('div', {
+  position: 'relative',
+  width: '60%',
+  fontSize: '$s0',
 
   '> div:not(:last-child)': {
-    marginBottom: 12
+    marginBottom: 4
   },
 
   '@tablet': {

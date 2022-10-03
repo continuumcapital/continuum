@@ -22,13 +22,14 @@ const CheckboxWrap = styled('div', {
   },
 
   a: {
-    color: '$majorelleBlue',
+    color: '$white',
     textDecoration: 'underline',
     textUnderlineOffset: 2,
     textDecorationThickness: 0.5,
+    transition: '$s1',
 
     '&:hover': {
-      color: '$purple700'
+      color: '$electric'
     }
   }
 })
@@ -41,8 +42,9 @@ const Checkbox = styled(CheckboxPrimitive.Root, {
   position: 'relative',
   width: 24,
   height: 24,
-  border: '1px solid $black',
+  border: '1px solid $blueBorder',
   borderRadius: 8,
+  transition: '$s1',
 
   '&:before': {
     content: '',
@@ -64,21 +66,21 @@ const Checkbox = styled(CheckboxPrimitive.Root, {
     }
   },
 
-  '&:focus': { borderColor: '$majorelleBlue' },
+  '&:focus': { borderColor: '$white' },
 
   '&[aria-checked = true]': {
-    borderColor: '$majorelleBlue !important',
+    borderColor: '$white !important',
 
     '&:before': {
       transform: 'scale( 1 ) !important',
-      background: '$majorelleBlue',
+      background: '$white',
       opacity: 1
     }
   },
 })
 
 const CheckboxIndicator = styled(CheckboxPrimitive.Indicator, {
-  color: '$white'
+  color: '$secondaryBlue'
 });
 
 
@@ -98,7 +100,7 @@ interface CheckProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const InputCheck = ({
+export const InputCheckbox = ({
     defaultChecked,
     id,
     label,

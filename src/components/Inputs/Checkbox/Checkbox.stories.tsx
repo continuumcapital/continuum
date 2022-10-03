@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { InputCheck } from '@components'
+import { InputCheckbox } from '@components'
 
 const story = {
-  title: 'forms/Check',
-  component: InputCheck,
+  title: 'forms/Checkbox',
+  component: InputCheckbox,
   layout: 'fullscreen',
   argTypes: {
     
@@ -24,6 +24,6 @@ export default story
 
 export const Primary = () => (
 
-  <InputCheck />
+  <InputCheckbox />
   
 )

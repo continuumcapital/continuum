@@ -19,8 +19,12 @@ export const lightTheme = createTheme({
     siteBg: '$twilight',
     contentColor: '$black',
     blue: '$majorelleBlue',
-    primaryButton: 'turquiose',
-    buttonDefault: '$gray200'
+    primaryButton: '$turquiose',
+    buttonDefault: '$gray200',
+
+    // Border colors
+
+    blueBorder: '#fff'
   },
 })
 
@@ -29,11 +33,16 @@ export const darkTheme = createTheme({
     siteBg: '$black',
     contentColor: '$white',
     blue: '$pictonBlue',
+    secondaryBlue: '$majorelleBlue',
 
     // Button colors
 
     buttonDefault: '#000',
     primaryButton: 'turquiose',
-    secondaryButtonHover: '$electric'
+    secondaryButtonHover: '$electric',
+
+    // Border colors
+
+    blueBorder: '$royalBlue'
   },
 })

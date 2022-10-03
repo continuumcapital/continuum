@@ -97,6 +97,20 @@ const Button = styled('div', {
         }
       },
 
+      white: {
+        height: 56,
+        minWidth: 120,
+        padding: '0 32px',
+        background: '$white',
+        color: '$majorelleBlue',
+        borderRadius: '$pill',
+
+        '&:hover': {
+          background: '$secondaryButtonHover',
+          boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
+        }
+      },
+
       // For the secondary button used throughout the site
       // This is the button that has the outline on the outside
 
@@ -120,10 +134,10 @@ const Button = styled('div', {
       // This holds the icon in the center of the container, which is a outlined circle
 
       icon: {
-        minWidth: 36,
+        minWidth: 44,
         padding: 0,
-        width: 36,
-        height: 36,
+        width: 44,
+        height: 44,
         borderRadius: '50%',
       },
 
@@ -174,7 +188,7 @@ const Button = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface ButtonProps {
-  variant?: 'disabled' | 'primary' | 'secondary' | 'outline' | 'icon'
+  variant?: 'disabled' | 'primary' | 'secondary' | 'white' | 'outline' | 'icon'
   size?: 'l0Icon' | 'l0'
   title?: any
   icon?: any
