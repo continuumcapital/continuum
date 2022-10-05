@@ -1,7 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Image, Heading, Icon, Blob } from '@components'
-import { BlobTwo } from '../../BlobTwo/BlobTwo'
+import { Image, Heading, Icon } from '@components'
 
 // For the master container of the drawer
 // This holds the menu trigger, and the links in the drawer that shows up on hover
@@ -192,7 +191,7 @@ export const MenuDrawer = ({ trigger, links }:DrawerProps) => {
             
             <a key={`link-${ i }`} href={ link.href }>
               <MenuItem>
-                { link.image ? ( <MenuItemImage><Image borderRadius="r2" image={ link.image } /></MenuItemImage> ) : <MenuItemImage><BlobTwo /></MenuItemImage> }
+                { link.image ? ( <MenuItemImage><Image borderRadius="r2" image={ link.image } /></MenuItemImage> ) : <MenuItemImage></MenuItemImage> }
                 <MenuItemText>
                   <Heading color="blue" size="l1" bold="heavy" title={ link.title } />
                   <SubTitle>{ link.subTitle }</SubTitle>
