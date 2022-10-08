@@ -20,26 +20,23 @@ const Header = styled('header', {
   transition: '$s1',
   zIndex: 9010,
 
-   // For the frosted glass behind the header
-   // By default no one will notice the effect, but will see whne the user starts to hover
+  // For the frosted glass behind the header
+  // By default no one will notice the effect, but will see whne the user starts to hover
 
-  '&:before': {
+  '&:before, &:after': {
     content: '',
     position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
-    height: '100%',
+    height: '100%'
+  },
+
+  '&:before': {
     backdropFilter: 'blur( 6px )'
   },
 
   '&:after': {
-    content: '',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
     background: '$siteBg',
     opacity: 0.7,
     zIndex: 1
@@ -103,29 +100,13 @@ export const SiteHeader = () => {
         <Middle>
           <List direction="horizontal">
             <li><Button notBold size="l0" title="Research" /></li>
-            <li>
-              <MenuDrawer 
-                trigger="Invstment Solutions"
-                links={[
-                  { 
-                    href: '/', 
-                    title: 'Digital Assets', 
-                    subTitle: 'Leveraging the security of blue chip base layer protocols to achieve an institutional grade delta neutral passive income.' 
-                  },
-                  { 
-                    href: '/', 
-                    title: 'Real Estate', 
-                    subTitle: 'Growing set of opportunities as real world assets (RWAs) begin to move on-chain.' 
-                  }
-                ]}
-              />
-            </li>
-            <li><Button notBold size="l0" title="Contact" /></li>
+            <li><Button notBold size="l0" title="Digital Assets" /></li>
+            <li><Button notBold size="l0" title="Real Estate" /></li>
           </List>
         </Middle>
 
         <Side>
-          <Button size="l0" variant="secondary" title="Client Portal" />
+          <Button size="l0" variant="secondary" title="Contact" />
           <ButtonTheme />
         </Side>
       </Nav>

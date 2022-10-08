@@ -1,6 +1,8 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Blob } from '@components'
+import { useScrollPosition } from '@lib'
+import { AnimatedBlob } from '@components'
+import GSAP from 'gsap'
 
 // For the master container of the stage backgrond
 // This contains the blog that remains in a fixed position as the user scrolls down the page
@@ -35,16 +37,26 @@ const StageContent = styled('div', {
   width: '100%',
   height: '100%',
   maxHeight: 800,
-  opacity: 0.3,
+  opacity: 1,
 })
 
 // ---------- This is the end of declarations ---------- //
 
 export const StageBg = () => {
+  const scrollPos = useScrollPosition()
+  
   return(
     
     <StageContainer>
-      <StageContent><Blob zoom={ 2.5 } /></StageContent>
+      <StageContent>
+        <AnimatedBlob 
+          frequency={ 0 }
+          amplitude={ 4 }
+          density={ 1 }
+          strength={ 0 }
+          opacity={ .1 }
+        />
+      </StageContent>
     </StageContainer>
 
   )

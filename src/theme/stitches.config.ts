@@ -13,7 +13,6 @@ export const { styled, globalCss, keyframes, theme, createTheme, config } = crea
 })
 
 export const globalStyles = globalCss({ ...globalStyle })
-
 export const lightTheme = createTheme({
   colors: {
     siteBg: '$twilight',
