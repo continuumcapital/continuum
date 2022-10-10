@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import Link from 'next/link'
 import { styled } from '@theme'
 import { useScrollPosition, useScrollDirection } from '@lib'
 import { Logo, Button, List, ButtonTheme } from '@components'
-import { MenuDrawer } from './Parts/Drawer'
 
 const scrollDown = {
   transform: 'translateY( -100% )',
@@ -99,7 +99,7 @@ export const SiteHeader = () => {
 
         <Middle>
           <List direction="horizontal">
-            <li><Button notBold size="l0" title="Research" /></li>
+            <li><a href="https://medium.com/" target="_blank"><Button notBold size="l0" title="Research" /></a></li>
             <li><Button notBold size="l0" title="Digital Assets" /></li>
             <li><Button notBold size="l0" title="Real Estate" /></li>
           </List>

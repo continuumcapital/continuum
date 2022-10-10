@@ -1,8 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { useScrollPosition } from '@lib'
 import { AnimatedBlob } from '@components'
-import GSAP from 'gsap'
 
 // For the master container of the stage backgrond
 // This contains the blog that remains in a fixed position as the user scrolls down the page
@@ -19,6 +17,9 @@ const StageContainer = styled('section', {
   paddingTop: 32,
   zIndex: 10,
   mixBlendMode: 'screen',
+
+  // Here we remove all the interaction to the webGl background
+  // This is so the user can not rotate or interact with the background
 
   '&, *': {
     pointerEvents: 'none !important',
@@ -43,19 +44,11 @@ const StageContent = styled('div', {
 // ---------- This is the end of declarations ---------- //
 
 export const StageBg = () => {
-  const scrollPos = useScrollPosition()
-  
   return(
     
     <StageContainer>
       <StageContent>
-        <AnimatedBlob 
-          frequency={ 0 }
-          amplitude={ 4 }
-          density={ 1 }
-          strength={ 0 }
-          opacity={ .1 }
-        />
+        <AnimatedBlob />
       </StageContent>
     </StageContainer>
 

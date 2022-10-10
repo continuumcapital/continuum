@@ -57,7 +57,7 @@ export const Hero = ({
         </CompanyName>
 
         <Heading 
-          size="l7" 
+          size="l6" 
           bold="heavy" 
           title="Alternative Investment Solutions powered by Web3 " 
         />

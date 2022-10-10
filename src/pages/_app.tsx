@@ -1,9 +1,10 @@
-import { ThemeProvider } from 'next-themes'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import type { AppProps } from 'next/app'
+import { ThemeProvider } from 'next-themes'
 import { globalStyles, lightTheme, darkTheme } from '@theme'
-import '../theme/fonts/fonts.css'
 import { SiteHeader, Footer } from '@components'
+// import { SmoothScroll } from '@lib'
+import '../theme/fonts/fonts.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => { globalStyles() }, [])
@@ -14,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       attribute="class"
       value={{ light: lightTheme, dark: darkTheme }}
       defaultTheme={ lightTheme }
-    >
+    > 
       <SiteHeader />
       <Component {...pageProps} />
       <Footer />
