@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled } from '@theme'
 import { AnimatedBlob } from '@components'
+import { useTheme } from 'next-themes'
+import { useScrollPosition } from '@lib'
 
 // For the master container of the stage backgrond
 // This contains the blog that remains in a fixed position as the user scrolls down the page
@@ -14,7 +16,6 @@ const StageContainer = styled('section', {
   left: 0,
   width: '100vw',
   height: '100vh',
-  maxHeight: 750,
   paddingTop: 32,
   zIndex: 10,
 
@@ -44,20 +45,20 @@ const StageContent = styled('div', {
   position: 'relative',
   width: '100%',
   height: '100%',
-  maxHeight: 800,
+  maxHeight: 750,
   opacity: 1,
+  transition: '1000ms'
 })
-
-interface StageBgProps {
-  isDarkMode?: boolean
-}
 
 // ---------- This is the end of declarations ---------- //
 
-export const StageBg = ({ isDarkMode }:StageBgProps) => {
+export const StageBg = () => {
+  const { theme, setTheme } = useTheme()
+  const scrollPos = useScrollPosition()
+
   return(
     
-    <StageContainer variant={ isDarkMode ? 'darkMode': 'lightMode' }>
+    <StageContainer variant={ theme == 'dark' ? 'darkMode' : theme == 'light' ? 'lightMode' : undefined }>
       <StageContent><AnimatedBlob /></StageContent>
     </StageContainer>
 

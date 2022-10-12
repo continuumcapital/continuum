@@ -76,7 +76,7 @@ const Sphere = () => {
           uAmplitude: { value: settings.amplitude.start },
           uDensity: { value: settings.density.start },
           uStrength: { value: settings.strength.start },
-          uDeepBlue: { value: 0 },
+          uDeepBlue: { value: 1 },
           uOpacity: { value: settings.opacity.start }
         }}
       />

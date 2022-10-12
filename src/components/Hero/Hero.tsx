@@ -9,7 +9,6 @@ const HeroContainer = styled('div', {
   position: 'relative',
   width: '100vw',
   height: '100vh',
-  maxHeight: 750,
 
   svg: {
     color: '$white'
@@ -57,15 +56,15 @@ export const Hero = ({
         </CompanyName>
 
         <Heading 
-          size="l6" 
+          size="l7" 
           bold="heavy" 
           title="Alternative Investment Solutions powered by Web3 " 
         />
 
         <Chip 
           chips={[
-            { title: 'Digital Assets' },
-            { title: 'Real Estate' }
+            { href: '#digital-assets', title: 'Digital Assets' },
+            { href: '#real-estate', title: 'Real Estate' }
           ]}
         />
       </HeroText>

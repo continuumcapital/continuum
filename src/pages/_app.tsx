@@ -14,7 +14,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       disableTransitionOnChange
       attribute="class"
       value={{ light: lightTheme, dark: darkTheme }}
-      defaultTheme={ lightTheme }
+      enableSystem={ true }
+      defaultTheme="system"
     > 
       <SiteHeader />
       <Component {...pageProps} />

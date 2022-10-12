@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { ButtonBase } from './ButtonBase'
 
 /* 
@@ -34,9 +33,7 @@ import { ButtonBase } from './ButtonBase'
 interface ButtonProps {
   variant?: 'disabled' | 'primary' | 'secondary' | 'white' | 'outline' | 'icon'
   size?: 'l0Icon' | 'l0'
-  href?: string
-  target?: '_blank'
-  pageLink?: string
+  linkUrl?: string
   title?: any
   icon?: any
   iconPlacement?: 'left' | 'right'
@@ -50,9 +47,7 @@ interface ButtonProps {
 
 export const Button = ({
     variant, // Supporting the different visual treatments of the button
-    href, // Supporting links that take users to an external website - wraps in <a> tag
-    target, // Supporting the href link to be opened in a new tab/window
-    pageLink, // Supprting Next/Link to tak the user to another page within the site - wraps in <Link> tag
+    linkUrl, // Supporting links that take users to an external website - wraps in <a> tag
     onClick, // Supporting standalone button clicks that provide an interaction on the current page - wraps in <button> tag
     title, // Support for the title of a button, only not used if icon only
     icon, // Support for the icon to be within the button - can be standalone or left/right of text
@@ -66,13 +61,13 @@ export const Button = ({
   return(
 
     <>
-      { href ? (
+      { linkUrl ? (
 
         // Here we are adding support that should only be used as a link to an external site
         // This is because below, we follow Next JS page links that will take users to an internal link
         // An example of using the href tag is to take the user to a twitter profile that was called out in a blog post
         
-        <a href={ href } target={ target }>
+        <a href={ linkUrl } target="_blank">
           <ButtonBase {...{ variant, size, title, icon, iconPlacement, children, notBold }} />
         </a>
 

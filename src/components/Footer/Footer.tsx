@@ -1,6 +1,7 @@
 import React from 'react'
+import Link from 'next/link'
 import { styled } from '@theme'
-import { Block, Form, Logo, Text, List } from '@components'
+import { Form, Logo, Text, List } from '@components'
 
 // For the master container of the global footer
 // This holds all of the universal links that a user can click through to the page
@@ -27,6 +28,7 @@ const FooterContain = styled('div', {
   margin: '0 auto 50px',
   padding: '125px 0 75px',
   background: '$majorelleBlue',
+  borderRadius: '$r2',
 
   // Change the alignment for all of the items within the footer on the mobile breakpoint
   // Here we align all of the content on the left of the container
@@ -129,8 +131,8 @@ export const Footer = () => {
             <FooterLinkWrap>
               <FooterLinks>
                 <List spacing="l1">
-                  <li><a href="/" target="_blank"><strong>Digital Assets</strong></a></li>
-                  <li><a href="/" target="_blank"><strong>Real Estate</strong></a></li>
+                  <li><Link href="#digital-assets"><a><strong>Digital Assets</strong></a></Link></li>
+                  <li><Link href="#real-estate"><a><strong>Real Estate</strong></a></Link></li>
                   <li><a href="https://www.medium.com" target="_blank"><strong>Blog</strong></a></li>
                   <li><a href="https://www.facebook.com" target="_blank"><strong>Facebook</strong></a></li>
                   <li><a href="https://twitter.com" target="_blank"><strong>Twitter</strong></a></li>

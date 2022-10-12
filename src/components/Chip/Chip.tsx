@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { styled } from '@theme'
 import { List, Heading } from '@components'
 
@@ -35,6 +36,7 @@ interface ChipProps {
   title?: string
   chips?: {
     title: string
+    href?: string
   }[]
 }
 
@@ -53,7 +55,19 @@ export const Chip = ({
         <List direction="horizontal" spacing="l1r" alignment="center">
           { chips.map(( chip, i ) => (
             <li key={`chip-${ i }`}>
-              <ChipWrap><ChipContent><Heading bold="heavy" size="l0" title={ chip.title } /></ChipContent></ChipWrap>
+              { chip.href ? (
+
+                <Link href={ chip.href }>
+                  <a>
+                    <ChipWrap>
+                      <ChipContent><Heading bold="heavy" size="l0" title={ chip.title } /></ChipContent>
+                    </ChipWrap>
+                  </a>
+                </Link>
+
+              ) : (
+                <ChipWrap><ChipContent><Heading bold="heavy" size="l0" title={ chip.title } /></ChipContent></ChipWrap>
+              )}
             </li>
           ))}
         </List>

@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import { styled } from '@theme'
 import { Input, Heading, Text, Textarea, InputCheckbox, Select, Button } from '@components'
+import { InputBase } from '../Inputs/Input/_base'
 
 // For the master container of the form component
 // This holds the option title and intro on the top and the form fields below
@@ -74,7 +75,7 @@ export const Form = ({
   }: FormProps ) => {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = ( data:any ) => console.log(data);
+  const onSubmit = ( data:any ) => alert(JSON.stringify(data));
   
   return(
 
@@ -89,6 +90,7 @@ export const Form = ({
         <Input inputSize="small" id="emamil" type="text" label="Email" />
         <Input id="website" type="text" label="Website" />
         <Select 
+          {...register("select")}
           category="Contact reason"
           placeholder="I want to ..."
           options={[
@@ -99,14 +101,16 @@ export const Form = ({
             { title: 'Other' }
           ]}
         />
-        <Textarea />
+        <Textarea {...register("textarea")} />
         <InputCheckbox 
           listItems={[
             { id: 'newsletter', label: "Sign me up for Continuum Digital's newletter" },
             { id: 'terms', label: <>I consent to the <a href="http://tylerstober.com">Terms &amp; Conditions</a> and <a href="http://tylerstober.com">Privacy Policy</a></> }
           ]}
         />
-        <Button variant="white" title="Submit" type="submit" />
+
+        <input type="submit" value="submit" />
+        {/* <Button variant="white" title="Submit" type="submit" /> */}
       </FormContent>
     </FormContain>
     

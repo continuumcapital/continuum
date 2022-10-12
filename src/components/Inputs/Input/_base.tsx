@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { Button } from '@components'
 import { styled } from '@theme'
 
@@ -142,10 +143,8 @@ export const InputBase = ({
   initialValue
 }:InputProps ) => {
 
-  const [ active, setActive ] = useState( false )
+  const { register } = useForm()
   const [ value, setValue ] = useState('' || initialValue)
-
-  // console.log(value)
 
   // ------------- This is the end of declarations ------------ //
 
@@ -159,18 +158,33 @@ export const InputBase = ({
         <label htmlFor={ id }>{ label }</label>
 
         <input
-          id={ id }
-          name={ id }
-          size={ size }
-          min={ min }
-          maxLength={ max }
-          type={ type }
-          value={ value || initialValue }
-          placeholder={ placeholder }
-          pattern={ pattern }
-          autoComplete={ autoComplete }
-          onBlur={( event ) => event.preventDefault()}
-          onChange={( event ) => { setValue( event.target.value ) }}
+          {...register('first-name', {
+            required: true
+            // id: id,
+            // ref: { id },
+            // name: id,
+            // size: size,
+            // min: min,
+            // maxLength: max,
+            // type: type,
+            // value: value || initialValue,
+            // placeholder: placeholder,
+            // autoComplete: autoComplete,
+            // // onBlur: ( event ) => event.preventDefault(),
+            // // onChange: ( event ) => setValue( event.target.value )
+          })}
+          // id={ id }
+          // name={ id }
+          // size={ size }
+          // min={ min }
+          // maxLength={ max }
+          // type={ type }
+          // value={ value || initialValue }
+          // placeholder={ placeholder }
+          // pattern={ pattern }
+          // autoComplete={ autoComplete }
+          // onBlur={( event ) => event.preventDefault()}
+          // onChange={( event ) => { setValue( event.target.value ) }}
         />
 
         { buttonTitle ? (

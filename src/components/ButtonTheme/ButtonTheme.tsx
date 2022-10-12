@@ -3,7 +3,7 @@ import { Button, Icon } from '@components'
 import { useTheme } from 'next-themes'
 
 export const ButtonTheme = () => {
-  const [ active, setActive ] = useState( false )
+  const [ active, setActive ] = useState( true )
   const { theme, setTheme } = useTheme()
   const changeTheme = () => { 
     setActive( !active )
@@ -14,7 +14,7 @@ export const ButtonTheme = () => {
 
     <Button 
       variant="icon"
-      icon={ active ? 'moon' : 'sun'  }
+      icon={ active ? 'sun' : 'moon'  }
       onClick={ changeTheme }
     />
 
