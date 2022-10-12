@@ -14,9 +14,9 @@ const StageContainer = styled('section', {
   left: 0,
   width: '100vw',
   height: '100vh',
+  maxHeight: 750,
   paddingTop: 32,
   zIndex: 10,
-  mixBlendMode: 'screen',
 
   // Here we remove all the interaction to the webGl background
   // This is so the user can not rotate or interact with the background
@@ -24,6 +24,13 @@ const StageContainer = styled('section', {
   '&, *': {
     pointerEvents: 'none !important',
     userSelect: 'none !important',
+  },
+
+  variants: {
+    variant: {
+      lightMode: { mixBlendMode: 'screen' },
+      darkMode: { mixBlendMode: 'screen' }
+    }
   }
 })
 
@@ -41,15 +48,17 @@ const StageContent = styled('div', {
   opacity: 1,
 })
 
+interface StageBgProps {
+  isDarkMode?: boolean
+}
+
 // ---------- This is the end of declarations ---------- //
 
-export const StageBg = () => {
+export const StageBg = ({ isDarkMode }:StageBgProps) => {
   return(
     
-    <StageContainer>
-      <StageContent>
-        <AnimatedBlob />
-      </StageContent>
+    <StageContainer variant={ isDarkMode ? 'darkMode': 'lightMode' }>
+      <StageContent><AnimatedBlob /></StageContent>
     </StageContainer>
 
   )

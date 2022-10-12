@@ -114,6 +114,7 @@ const BlockContent = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface BlockProps {
+  id?: string
   width?: 'tiny' | 'small' | 'medium' | 'large'
   alignment?: 'left' | 'center' | 'right'
   verticalAlignment?: 'center'
@@ -136,12 +137,13 @@ export const Block = ({
     children, // Required - Holds all of the content within the block component
     outline,
     blockItemSpacing,
-    height
+    height,
+    id
   }: BlockProps ) => {
   
   return(
 
-    <BlockWrap>
+    <BlockWrap id={ id }>
       <BlockContent {...{ width, height, alignment, verticalAlignment, columns, mobileContent, outline, blockItemSpacing }}>
         { children }
       </BlockContent>

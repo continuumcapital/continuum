@@ -8,7 +8,7 @@ const Home: NextPage = () => {
       <ReadingBar />
       <Block><Hero /></Block>
 
-      <Block alignment="center">
+      <Block alignment="center" id="digital-assets">
         <Stage background="blue" title="Digital Assets">
           <p>
             Since the inception of smart contracts, on-chain applications have never been more than a whitepaper. However, 
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         </Stage>
       </Block>
 
-      <Block alignment="center">
+      <Block alignment="center" id="real-estate">
         <Stage title="Real Estate">
           <p>
             With vast experience in luxury multifamily development and a long track record in crypto native investment 
@@ -39,8 +39,6 @@ const Home: NextPage = () => {
           </p>
         </Stage>
       </Block>
-
-      <StageBg />
     </SiteContainer>
 
   )

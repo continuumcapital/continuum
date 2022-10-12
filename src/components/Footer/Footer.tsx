@@ -115,7 +115,7 @@ export const Footer = () => {
   
   return(
 
-    <FooterWrap>
+    <FooterWrap id="contact">
       <FooterContain>
         <MainContent>
           <Form 
