@@ -54,8 +54,10 @@ const Sphere = () => {
       },
     })
     
-    tl.to( sphereShaderRef.current.uniforms.uStrength, { value: settings.strength.end });
-    op.to( sphereShaderRef.current.uniforms.uOpacity, { value: settings.opacity.end });
+    //@ts-ignore
+    tl.to( sphereShaderRef.current.uniforms.uStrength, { value: settings.strength.end })
+    //@ts-ignore
+    op.to( sphereShaderRef.current.uniforms.uOpacity, { value: settings.opacity.end })
   }, [])
     
   return(

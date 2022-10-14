@@ -47,7 +47,11 @@ const StageContent = styled('div', {
   height: '100%',
   maxHeight: 750,
   opacity: 1,
-  transition: '1000ms'
+  transition: '1000ms',
+
+  '@tablet': {
+    opacity: 0.4
+  }
 })
 
 // ---------- This is the end of declarations ---------- //

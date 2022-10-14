@@ -6,5 +6,5 @@ export const fontSizes = {
   s4: '1.75rem', // 28px
   s5: '2rem', // 32px
   s6: '2.5rem', // 40px
-  s7: '4.625rem' // 52px
+  s7: '3rem' // 48px
 }

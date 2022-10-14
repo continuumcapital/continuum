@@ -19,7 +19,7 @@ const HeadingWrap = styled('div', {
       l4: { fontSize: '$s4' },
       l5: { fontSize: '$s5', lineHeight: 1.3 },
       l6: { fontSize: '$s6' },
-      l7: { fontSize: '$s7', lineHeight: 1.1 }
+      l7: { fontSize: '$s7', lineHeight: 1.2, '@tablet': { fontSize: '$s6', lineHeight: 1.2 }}
     },
 
     // For the support of different colors that the heading can be

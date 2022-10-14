@@ -10,11 +10,10 @@ import { List, Heading } from '@components'
 const ChipWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  padding: '12px 24px 12px 20px',
+  padding: '20px 32px',
   background: '#334858',
-  borderRadius: '$r2',
+  borderRadius: '$pill',
   fontFamily: '$sansSerif',
-  fontSize: '$s0',
   marginTop: 24
 })
 
@@ -60,13 +59,13 @@ export const Chip = ({
                 <Link href={ chip.href }>
                   <a>
                     <ChipWrap>
-                      <ChipContent><Heading bold="heavy" size="l0" title={ chip.title } /></ChipContent>
+                      <ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent>
                     </ChipWrap>
                   </a>
                 </Link>
 
               ) : (
-                <ChipWrap><ChipContent><Heading bold="heavy" size="l0" title={ chip.title } /></ChipContent></ChipWrap>
+                <ChipWrap><ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent></ChipWrap>
               )}
             </li>
           ))}

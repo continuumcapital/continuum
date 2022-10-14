@@ -124,6 +124,7 @@ interface BlockProps {
   outline?: boolean
   blockItemSpacing?: 'l0' | 'l1' | 'l2' | 'l3'
   height?: 'large'
+  ref?: any
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -138,12 +139,13 @@ export const Block = ({
     outline,
     blockItemSpacing,
     height,
-    id
+    id,
+    ref
   }: BlockProps ) => {
   
   return(
 
-    <BlockWrap id={ id }>
+    <BlockWrap ref={ ref } id={ id }>
       <BlockContent {...{ width, height, alignment, verticalAlignment, columns, mobileContent, outline, blockItemSpacing }}>
         { children }
       </BlockContent>

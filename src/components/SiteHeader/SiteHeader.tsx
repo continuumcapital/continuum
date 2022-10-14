@@ -56,7 +56,11 @@ const Side = styled('div', {
 
 const Middle = styled('div', {
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
+
+  '@tablet': {
+    display: 'none'
+  }
 })
 
 // For the container for all of the content within the nav container

@@ -2,7 +2,6 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import { styled } from '@theme'
 import { Input, Heading, Text, Textarea, InputCheckbox, Select, Button } from '@components'
-import { InputBase } from '../Inputs/Input/_base'
 
 // For the master container of the form component
 // This holds the option title and intro on the top and the form fields below
@@ -76,6 +75,14 @@ export const Form = ({
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = ( data:any ) => alert(JSON.stringify(data));
+
+  // interface InputTest {
+    
+  //   name: any
+  // }
+  // const InputTest = ({ name, ...rest }:InputTest) => {
+  //   return <input {...register(name)} {...rest} />;
+  // }
   
   return(
 
@@ -86,11 +93,21 @@ export const Form = ({
       </FormHeader>
 
       <FormContent onSubmit={ handleSubmit(onSubmit) }>
-        <Input id="name" type="text" label="Full name" />
-        <Input inputSize="small" id="emamil" type="text" label="Email" />
-        <Input id="website" type="text" label="Website" />
+        <input
+          {...register('name')}
+          name="name"
+        />
+
+        <Input 
+          // {...register('name')}
+          name="name" 
+          type="text" 
+          label="Full name" 
+        />
+
+        {/* <Input register inputSize="small" name="emamil" type="text" label="Email" />
+        <Input register name="website" type="text" label="Website" /> */}
         <Select 
-          {...register("select")}
           category="Contact reason"
           placeholder="I want to ..."
           options={[

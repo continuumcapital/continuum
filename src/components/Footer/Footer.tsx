@@ -36,7 +36,8 @@ const FooterContain = styled('div', {
   '@tablet': {
     width: '100%',
     marginBottom: 0,
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    borderRadius: '$r2 $r2 0 0'
   }
 })
 

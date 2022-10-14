@@ -16,8 +16,19 @@ const StageWrap = styled('section', {
 
   variants: {
     background: {
-      blue: { backgroundColor: '$majorelleBlue', color: '$white', }
+      blue: { 
+        backgroundColor: '$majorelleBlue', 
+        color: '$white', 
+        
+        '@tablet': {
+          padding: '120px 0'
+        }
+      }
     }
+  },
+
+  '@tablet': {
+    padding: '50px 0'
   }
 })
 
@@ -31,6 +42,14 @@ const StageContent = styled('div', {
       small: {},
       medium: { maxWidth: 1080, width: '90%' },
       large: {}
+    }
+  },
+
+  '@tablet': {
+    flexDirection: 'column',
+
+    '> *:not(:last-child)': {
+      marginBottom: 20
     }
   }
 })
@@ -55,7 +74,9 @@ const StageTitle = styled('div', {
     right: 0,
     width: 50,
     height: 3,
-    background: "$white"
+    background: '$white',
+
+    '@tablet': { display: 'none' }
   }
 })
 
