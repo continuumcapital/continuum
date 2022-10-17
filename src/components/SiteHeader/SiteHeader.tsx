@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { styled } from '@theme'
-import { useScrollPosition, useScrollDirection } from '@lib'
+import { useScrollPosition, useScrollDirection     } from '@lib'
 import { Logo, Button, List, ButtonTheme } from '@components'
 
 const scrollDown = {
@@ -101,13 +101,13 @@ export const SiteHeader = () => {
       <Nav style={{ padding: scrollPos <= 100 ? '24px 0' : '12px 0' }}>
         <Side><Logo linkToHome /></Side>
 
-        <Middle>
+        {/* <Middle>
           <List direction="horizontal">
             <li><a href="https://medium.com/" target="_blank"><Button notBold size="l0" title="Research" /></a></li>
             <li><Link href="#digital-assets"><Button notBold size="l0" title="Digital Assets" /></Link></li>
             <li><Link href="#real-estate"><Button notBold size="l0" title="Real Estate" /></Link></li>
           </List>
-        </Middle>
+        </Middle> */}
 
         <Side>
           <Link href="#contact"><Button size="l0" variant="secondary" title="Contact" /></Link>

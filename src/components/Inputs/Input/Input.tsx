@@ -1,6 +1,4 @@
 import React, { useState, FC, forwardRef, DetailedHTMLProps, InputHTMLAttributes } from 'react'
-
-
 import { Button } from '@components'
 import { styled } from '@theme'
 import { UseFormRegisterReturn } from 'react-hook-form';

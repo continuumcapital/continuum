@@ -16,6 +16,7 @@ export const globalStyles = globalCss({ ...globalStyle })
 export const lightTheme = createTheme({
   colors: {
     siteBg: '$twilight',
+    grayBg: '$moon',
     contentColor: '$black',
     blue: '$majorelleBlue',
     primaryButton: '$turquiose',
@@ -32,6 +33,7 @@ export const darkTheme = createTheme({
     siteBg: '$black',
     contentColor: '$white',
     blue: '$pictonBlue',
+    grayBg: '$moon',
     secondaryBlue: '$majorelleBlue',
 
     // Button colors

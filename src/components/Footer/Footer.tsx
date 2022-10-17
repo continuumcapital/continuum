@@ -27,7 +27,7 @@ const FooterContain = styled('div', {
   width: '90%',
   margin: '0 auto 50px',
   padding: '125px 0 75px',
-  background: '$majorelleBlue',
+  background: '$siteBg',
   borderRadius: '$r2',
 
   // Change the alignment for all of the items within the footer on the mobile breakpoint

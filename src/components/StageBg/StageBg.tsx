@@ -29,7 +29,7 @@ const StageContainer = styled('section', {
 
   variants: {
     variant: {
-      lightMode: { mixBlendMode: 'screen' },
+      lightMode: { mixBlendMode: 'none' },
       darkMode: { mixBlendMode: 'screen' }
     }
   }

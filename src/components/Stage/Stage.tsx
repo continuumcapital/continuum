@@ -16,8 +16,8 @@ const StageWrap = styled('section', {
 
   variants: {
     background: {
-      blue: { 
-        backgroundColor: '$majorelleBlue', 
+      gray: { 
+        backgroundColor: '$grayBg', 
         color: '$white', 
         
         '@tablet': {
@@ -87,7 +87,7 @@ const StageText = styled('div', {
 // ---------- Typescript declarations ---------- //
 
 interface StageProps {
-  background?: 'blue'
+  background?: 'gray'
   title: string
   children: React.ReactNode
 }

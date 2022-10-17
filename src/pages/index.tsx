@@ -9,7 +9,7 @@ const Home: NextPage = () => {
       <Block><Hero /></Block>
 
       <Block alignment="center" id="digital-assets">
-        <Stage background="blue" title="Digital Assets">
+        <Stage background="gray" title="Digital Assets">
           <p>
             Since the inception of smart contracts, on-chain applications have never been more than a whitepaper. However, 
             in recent years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing 

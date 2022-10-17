@@ -119,15 +119,15 @@ export const Form = ({
           ]}
         />
         <Textarea {...register("textarea")} />
-        <InputCheckbox 
+        {/* <InputCheckbox 
           listItems={[
             { id: 'newsletter', label: "Sign me up for Continuum Digital's newletter" },
             { id: 'terms', label: <>I consent to the <a href="http://tylerstober.com">Terms &amp; Conditions</a> and <a href="http://tylerstober.com">Privacy Policy</a></> }
           ]}
-        />
+        /> */}
 
-        <input type="submit" value="submit" />
-        {/* <Button variant="white" title="Submit" type="submit" /> */}
+        {/* <input type="submit" value="submit" /> */}
+        <Button variant="primary" title="Submit" type="submit" />
       </FormContent>
     </FormContain>
     
