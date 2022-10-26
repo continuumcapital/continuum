@@ -142,7 +142,7 @@ interface SelectProps {
   }[]
 }
 
-export const Select = ({ 
+export const InputSelect = ({ 
     category,
     placeholder, 
     options 

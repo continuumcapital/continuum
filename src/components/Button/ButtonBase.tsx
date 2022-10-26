@@ -71,7 +71,7 @@ const Button = styled('div', {
         minWidth: 120,
         padding: '0 32px',
         background: '$primaryButton',
-        color: '$white',
+        color: '$black',
         borderRadius: '$pill',
       
         // For the hover effect of the primary button

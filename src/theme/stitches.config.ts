@@ -21,7 +21,8 @@ export const lightTheme = createTheme({
     blue: '$majorelleBlue',
     primaryButton: '$turquiose',
     buttonDefault: '$gray200',
-
+    border: '#5e5e5e',
+    
     // Border colors
 
     blueBorder: '#fff'
@@ -39,11 +40,12 @@ export const darkTheme = createTheme({
     // Button colors
 
     buttonDefault: '#000',
-    primaryButton: 'turquiose',
+    primaryButton: '$turquoise',
     secondaryButtonHover: '$electric',
 
     // Border colors
 
+    border: '#5e5e5e',
     blueBorder: '$royalBlue'
   },
 })

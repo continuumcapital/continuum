@@ -25,8 +25,7 @@ export default story
 export const Primary = () => (
 
   <Input 
-    
-    name="name"
+    id="name"
     type="text"
     label="Full name"
   />

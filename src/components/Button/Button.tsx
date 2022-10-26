@@ -71,17 +71,25 @@ export const Button = ({
           <ButtonBase {...{ variant, size, title, icon, iconPlacement, children, notBold }} />
         </a>
 
-      ) : onClick ? (
+        ) : onClick ? (
 
-        // Here we add support for an onClick event, where the action stays on the current page
-        // This should be used for anyting that adds to the user experience, without leaving the page
-        // An example of this would be clicking on a button that opens up a dialog window with futher actions
+          // Here we add support for an onClick event, where the action stays on the current page
+          // This should be used for anyting that adds to the user experience, without leaving the page
+          // An example of this would be clicking on a button that opens up a dialog window with futher actions
 
-        <button {...{ type, onClick }}>
-          <ButtonBase {...{ variant, size, title, icon, iconPlacement, children, notBold }} />
-        </button>
+          <button onClick={ onClick }>
+            <ButtonBase {...{ variant, size, title, icon, type, iconPlacement, children, notBold }} />
+          </button>
 
-      ) : (
+          // Here we add support for Form submit buttons
+
+        ) : type == "submit" ? (
+          
+          <button type="submit">
+            <ButtonBase {...{ variant, size, title, icon, type, iconPlacement, children, notBold }} />
+          </button>
+
+        ) : (
 
         // Here we support the fallback of a button, if no click event is needed for said button
         // This will provide a static button, where the hover and active states will be respected, as the other intances
