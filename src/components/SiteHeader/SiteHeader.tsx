@@ -7,7 +7,7 @@ import { Logo, Button, ButtonTheme } from '@components'
 // For the scroll position of a page
 // Here we do this to change styling, animations, ect on different scroll positions
 
-export const useScrollPosition = () => {
+const useScrollPosition = () => {
   if (typeof window === "undefined") return 500;
 
   // Store the state
@@ -29,7 +29,7 @@ export const useScrollPosition = () => {
   return scrollPos;
 }
 
-export const useScrollDirection = () => {
+const useScrollDirection = () => {
   const [ scrollDirection, setScrollDirection ] = useState(null);
 
   useEffect(() => {
