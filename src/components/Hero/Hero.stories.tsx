@@ -28,10 +28,7 @@ export const Primary = () => (
 
   <SiteContainer>
     <Block width="small">
-      <Hero
-        datePosted="05.29.2022" 
-        title='This is the title' 
-      />
+      <Hero />
     </Block>
   </SiteContainer>
   
