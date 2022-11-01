@@ -54,9 +54,9 @@ export const InputStatus = ({
     
     <StatusWrap {...{ status }}>
       { 
-          status == "negative" ? ( <><Icon size="l1" bgColor="negative" icon="close" /><span>{ title }</span></> )
-        : status == 'positive' ? ( <><Icon size="l1" bgColor="positive" icon="check" /><span>{ title }</span></> )
-        : status == 'warning'  ? ( <><Icon size="l1" bgColor="warning" icon="info-circled" /><span>{ title }</span></> )
+          status == "negative" ? ( <><Icon size="l1" icon="close" /><span>{ title }</span></> )
+        : status == 'positive' ? ( <><Icon size="l1" icon="check" /><span>{ title }</span></> )
+        : status == 'warning'  ? ( <><Icon size="l1" icon="info-circled" /><span>{ title }</span></> )
         : null
       }
     </StatusWrap>
