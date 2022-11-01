@@ -49,6 +49,6 @@ export const l6 = () => (
 )
 
 export const l7 = () => (
-  <Heading size="l7" bold="heavy" title="This is the title" hTag={1} />
+  <Heading size="l7" bold="heavy" title="This is the title"  />
 )
 
