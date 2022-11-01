@@ -51,14 +51,14 @@ export const Hero = ({
             size="l3" 
             bold="heavy"
             color="blue" 
-            title="Continuum Digital" 
+            title="Continuum Capital" 
           />
         </CompanyName>
 
         <Heading 
           size="l7" 
           bold="heavy" 
-          title="Alternative Investment Solutions powered by Web3 " 
+          title="Alternative Investment Solutions at the intersection of Real Estate and Digital Assets" 
         />
 
         <Chip 

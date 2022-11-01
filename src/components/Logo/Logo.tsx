@@ -29,8 +29,7 @@ const LogoWrap = styled('figure', {
 
 const LogoMark = styled('img', {
   position: 'relative',
-  width: 40,
-  height: 40,
+  width: 50,
 })
 
 // For the container of the word mark - FreeRossDAO
@@ -68,8 +67,14 @@ export const Logo = ({
         <Link href="/">
           <a>
             <LogoWrap {...{ size }}>
-              <LogoMark src="/global/cd-logo.svg" alt="Continuum Digital logo" />
-              { noWordMark ? null : ( <LogoWordMark><Heading title="ContinuumDigital" bold="bold" /></LogoWordMark> ) }
+              <LogoMark src="/global/cd-logo.svg" alt="Continuum Capital logo" />
+              
+              { noWordMark ? null : ( 
+                <LogoWordMark>
+                  <Heading title="Continuum" bold="bold" />
+                  <Heading title="Capital" />
+                </LogoWordMark> 
+              )}
             </LogoWrap>
           </a>
         </Link>
@@ -78,7 +83,13 @@ export const Logo = ({
 
         <LogoWrap {...{ size }}>
           <LogoMark src="/global/cd-logo.svg" alt="Continuum Digital logo" />
-          { noWordMark ? null : ( <LogoWordMark><Heading title="ContinuumDigital" bold="bold" /></LogoWordMark> ) }
+
+          { noWordMark ? null : ( 
+            <LogoWordMark>
+              <Heading title="Continuum" bold="bold" />
+              <Heading title="Capital" />
+            </LogoWordMark> 
+          )}
         </LogoWrap>
 
       )}

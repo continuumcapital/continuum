@@ -110,8 +110,8 @@ export const SiteHeader = () => {
         </Middle> */}
 
         <Side>
-          <Link href="#contact"><Button size="l0" variant="secondary" title="Contact" /></Link>
-          <ButtonTheme />
+          <Link href="#contact"><Button size="l0" variant="secondary" title="Contact Us" /></Link>
+          {/* <ButtonTheme /> */}
         </Side>
       </Nav>
     </Header>

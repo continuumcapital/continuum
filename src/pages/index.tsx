@@ -13,13 +13,13 @@ const Home: NextPage = () => {
           <p>
             Since the inception of smart contracts, on-chain applications have never been more than a whitepaper. However, 
             in recent years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing 
-            suite of working on chain products.
+            suite of working on chain applications setting the primitive foundation for a parallel financial system. 
           </p>
 
           <p>
-            Leveraging the security of blue chip base layer protocols, we believe the opportunity set to utilize this growing 
-            suite of applications to achieve an institutional grade delta neutral passive income solution exists using both 
-            open and permissioned environments.
+            Leveraging the security of blue chip base layer protocols, we believe the opportunity set exists to utilize this 
+            growing suite of applications to achieve delta neutral passive income solutions using both open and permissioned 
+            environments.
           </p>
         </Stage>
       </Block>
@@ -33,9 +33,9 @@ const Home: NextPage = () => {
           </p>
 
           <p>
-            Whether it be traditional development investment solutions, venture, or the next gen real estate development 
-            opportunities within virtual worlds, Continuum Digital sits at the forefront of the intersection between Real 
-            Estate and Digital Assets.
+            Whether it be traditional ground up development, proptech venture, or opportunities within virtual 
+            worlds (metaverse), Continuum has a variety of solutions that sit at the intersection between Real Estate 
+            and Digital Assets.
           </p>
         </Stage>
       </Block>
