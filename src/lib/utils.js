@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react'
-
 // For the scroll position of a page
 // Here we do this to change styling, animations, ect on different scroll positions
 
