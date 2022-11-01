@@ -158,8 +158,8 @@ export const Footer = () => {
 
           <Legal>
             <List direction="horizontal" spacing="l1r">
-              <li><a href="/" target="_blank"><strong>Privacy policy</strong></a></li>
-              <li><a href="/" target="_blank"><strong>Terms &amp; conditions</strong></a></li>
+              <li><a href="/" target="_blank" rel="noreferrer"><strong>Privacy policy</strong></a></li>
+              <li><a href="/" target="_blank" rel="noreferrer"><strong>Terms &amp; conditions</strong></a></li>
             </List>
           </Legal>
         </MainContent>

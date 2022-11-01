@@ -71,7 +71,7 @@ export const Quote = ({
 
         { source ? (
           <Source>
-            { sourceLink ? ( <a href={ sourceLink } target="_blank">{ source }</a> ) 
+            { sourceLink ? ( <a href={ sourceLink } target="_blank" rel="noreferrer">{ source }</a> ) 
             : ( <strong>{ source }</strong> )
             }
           </Source>
