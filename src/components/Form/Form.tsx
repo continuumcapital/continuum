@@ -36,6 +36,7 @@ export const Form = ({
   })
   
   const onSubmit = ( data:FormValues ) => {
+    //@ts-ignore
     emailjs.sendForm('contact_form', 'template_continuum', form.current, 'JIo1rNfaUflvW0z-3')
     .then((result) => {
         console.log(result.text);
@@ -51,9 +52,27 @@ export const Form = ({
       {...{ title, descp }}
       onSubmit={ handleSubmit(onSubmit) }
     >
-      <Input label="Full name" control={ control } name="name" rules={{ required: true }} />
-      <Input label="Email" type="email" control={ control } name="email" rules={{ required: true }} />
-      <Textarea name="message" control={ control } rules={{ required: true }} />
+      <Input 
+        label="Full name" 
+        //@ts-ignore
+        control={ control } 
+        name="name" 
+        rules={{ required: true }} 
+      />
+      <Input 
+        label="Email" 
+        type="email" 
+        //@ts-ignore
+        control={ control } 
+        name="email" 
+        rules={{ required: true }} 
+      />
+      <Textarea 
+        name="message" 
+        //@ts-ignore
+        control={ control } 
+        rules={{ required: true }} 
+      />
     </FormWrap> 
 
   )
