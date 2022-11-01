@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       attribute="class"
       value={{ light: lightTheme, dark: darkTheme }}
       enableSystem={ true }
-      defaultTheme="system"
+      defaultTheme="dark"
     > 
       <SiteHeader />
       <Component {...pageProps} />
