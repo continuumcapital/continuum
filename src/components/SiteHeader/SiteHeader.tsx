@@ -11,15 +11,14 @@ const useScrollPosition = () => {
   const [scrollPos, setScrollPos] = useState(window.pageYOffset);
   const onScroll = () => { setScrollPos(window.pageYOffset) };
 
-  if (typeof window === "undefined") return 500;
-
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
   });
-  
+
+  if (typeof window === "undefined") return 500;
   return scrollPos;
 }
 
