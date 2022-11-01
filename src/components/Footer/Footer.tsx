@@ -134,10 +134,10 @@ export const Footer = () => {
                 <List spacing="l1">
                   <li><Link href="#digital-assets"><a><strong>Digital Assets</strong></a></Link></li>
                   <li><Link href="#real-estate"><a><strong>Real Estate</strong></a></Link></li>
-                  <li><a href="https://www.medium.com" target="_blank"><strong>Blog</strong></a></li>
-                  <li><a href="https://www.facebook.com" target="_blank"><strong>Facebook</strong></a></li>
-                  <li><a href="https://twitter.com" target="_blank"><strong>Twitter</strong></a></li>
-                  <li><a href="https://www.instagram.com" target="_blank"><strong>Instagram</strong></a></li>
+                  <li><a href="https://www.medium.com" target="_blank" rel="noreferrer"><strong>Blog</strong></a></li>
+                  <li><a href="https://www.facebook.com" target="_blank" rel="noreferrer"><strong>Facebook</strong></a></li>
+                  <li><a href="https://twitter.com" target="_blank" rel="noreferrer"><strong>Twitter</strong></a></li>
+                  <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer"><strong>Instagram</strong></a></li>
                 </List>
               </FooterLinks>
 
