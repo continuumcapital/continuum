@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { styled } from '@theme'
 import { AnimatedBlob } from '@components'
 import { useTheme } from 'next-themes'
-import { useScrollPosition } from '@lib'
 
 // For the master container of the stage backgrond
 // This contains the blog that remains in a fixed position as the user scrolls down the page
@@ -58,7 +57,6 @@ const StageContent = styled('div', {
 
 export const StageBg = () => {
   const { theme, setTheme } = useTheme()
-  const scrollPos = useScrollPosition()
 
   return(
     

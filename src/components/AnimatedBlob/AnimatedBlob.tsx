@@ -16,7 +16,6 @@ interface BlobProps {
 }
 
 const Sphere = () => {
-  // useScrollPosition()
   const ref = useRef()
   const sphereShaderRef = useRef()
 
