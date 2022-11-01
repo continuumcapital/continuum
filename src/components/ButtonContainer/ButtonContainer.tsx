@@ -78,7 +78,7 @@ interface ButtonContainerProps {
     title?: string
     icon?: string
     iconPlacement?: 'left' | 'right'
-    href?: string
+    linkUrl?: string
     pageLink?: string
     onClick?: React.MouseEventHandler<HTMLButtonElement>
   }[]
@@ -107,8 +107,8 @@ export const ButtonContainer = ({
             title={ button.title }
             icon={ button.icon }
             iconPlacement={ button.iconPlacement }
-            href={ button.href }
-            pageLink={ button.pageLink }
+            linkUrl={ button.href }
+            // pageLink={ button.pageLink }
             onClick={ button.onClick }
           />
 

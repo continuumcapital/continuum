@@ -1,6 +1,5 @@
 export { AnimatedBlob } from './AnimatedBlob/AnimatedBlob'
 export { Blob } from './Blob/Blob'
-export { BlobTwo } from './BlobTwo/BlobTwo'
 export { Block } from './Block/Block'
 export { BlockItem } from './BlockItem/BlockItem'
 export { Button } from './Button/Button'
