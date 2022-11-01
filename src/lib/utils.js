@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 // Here we do this to change styling, animations, ect on different scroll positions
 
 export const useScrollPosition = () => {
-  const [scrollPos, setScrollPos] = useState(window.pageYOffset);
+  const [scrollPos, setScrollPos] = useState(typeof window !== "undefined".pageYOffset);
   const onScroll = () => { setScrollPos(window.pageYOffset) };
 
   useEffect(() => {
