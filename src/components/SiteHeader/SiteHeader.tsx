@@ -8,17 +8,11 @@ import { Logo, Button, ButtonTheme } from '@components'
 // Here we do this to change styling, animations, ect on different scroll positions
 
 const useScrollPosition = () => {
+  const [scrollPos, setScrollPos] = useState(window.pageYOffset);
+  const onScroll = () => { setScrollPos(window.pageYOffset) };
+
   if (typeof window === "undefined") return 500;
 
-  // Store the state
-  const [scrollPos, setScrollPos] = useState(window.pageYOffset);
-
-  // On Scroll
-  const onScroll = () => {
-    setScrollPos(window.pageYOffset);
-  };
-
-  // Add and remove the window listener
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
     return () => {
