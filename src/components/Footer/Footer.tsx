@@ -127,8 +127,9 @@ export const Footer = () => {
 
           <FooterContent>
             <Logo />
+            <div style={{ marginTop: 32 }}>&copy; 2022 Continuum Capital</div>
 
-            <FooterLinkWrap>
+            {/* <FooterLinkWrap>
               <FooterLinks>
                 <List spacing="l1">
                   <li><Link href="#digital-assets"><a><strong>Digital Assets</strong></a></Link></li>
@@ -152,15 +153,15 @@ export const Footer = () => {
                   lacinia est sapien a dolor. Fusce eget urna nec justo egestas tincidunt vitae et odio.
                 </p>
               </Text>
-            </FooterLinkWrap>
+            </FooterLinkWrap> */}
           </FooterContent>
 
-          <Legal>
+          {/* <Legal>
             <List direction="horizontal" spacing="l1r">
               <li><a href="/" target="_blank" rel="noreferrer"><strong>Privacy policy</strong></a></li>
               <li><Link href="/legal/terms-and-conditions"><a><strong>Terms &amp; conditions</strong></a></Link></li>
             </List>
-          </Legal>
+          </Legal> */}
         </MainContent>
       </FooterContain>
     </FooterWrap>

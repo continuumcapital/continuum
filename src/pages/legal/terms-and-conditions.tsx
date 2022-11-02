@@ -155,7 +155,7 @@ const Page: NextPage = () => {
 
           <p>
             To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, 
-            incidental, indirect, or consequential damages whatsoever &#41;including, but not limited to, damages for loss of profits, loss of 
+            incidental, indirect, or consequential damages whatsoever &#40;including, but not limited to, damages for loss of profits, loss of 
             data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related 
             to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise 
             in connection with any provision of this Terms&#41;, even if the Company or any supplier has been advised of the possibility of such 
