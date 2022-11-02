@@ -12,6 +12,7 @@ const ButtonWrap = styled('div', {
   position: 'relative',
   cursor: 'pointer',
   transition: '$s1',
+  fontSize: '1rem',
   fontFamily: '$sansSerifBold',
   whiteSpace: 'nowrap',
 

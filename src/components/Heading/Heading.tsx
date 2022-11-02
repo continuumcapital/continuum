@@ -35,6 +35,10 @@ const HeadingWrap = styled('div', {
   }
 })
 
+const Heavy = styled('strong', {
+  fontFamily: '$sansSerifBlack'
+})
+
 // -------------- Typescript declarations -------------- //
 
 interface HeadingProps {
@@ -62,8 +66,8 @@ export const Heading = ({
         { font == 'code' ? ( <span style={{ fontFamily: 'Source Code Pro' }}>{ title }</span> ) 
         : (
           <>
-            { bold == 'heavy' ? ( <strong style={{ fontFamily: 'Satoshi-Black' }}>{ title }</strong> ) 
-            : bold == 'bold' ? ( <strong style={{ fontFamily: 'Satoshi-Bold' }}>{ title }</strong> ) 
+            { bold == 'heavy' ? ( <Heavy>{ title }</Heavy> ) 
+            : bold == 'bold' ? ( <strong>{ title }</strong> ) 
             : ( <>{ title }</> )
             }
           </>

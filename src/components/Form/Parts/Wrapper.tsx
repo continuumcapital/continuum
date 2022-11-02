@@ -88,7 +88,7 @@ export const FormWrap = ({
 
       <FormContent ref={ formRef } {...{ onSubmit }}>
         { children }
-        <Button variant="primary" type="submit" title="Submit" />
+        <Button variant="secondary" type="submit" title="Submit" />
       </FormContent>
     </FormContain>
     

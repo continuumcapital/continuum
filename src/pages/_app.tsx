@@ -3,8 +3,6 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { globalStyles, lightTheme, darkTheme } from '@theme'
 import { SiteHeader, Footer, StageBg } from '@components'
-// import { SmoothScroll } from '@lib'
-import '../theme/fonts/fonts.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => { globalStyles() }, [])

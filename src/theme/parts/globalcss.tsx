@@ -1,29 +1,22 @@
+import { Typeface } from './fonts'
 
 export const globalStyle = {
-  // '@font-face': [
-  //   {
-  //     fontFamily: 'Satoshi-Bold',
-  //     src: 'local("Satoshi-Bold"), url("../../../public/fonts/Satoshi-Bold.woff2")'
-  //   },
-  //   {
-  //     fontFamily: 'Satoshi-Regular',
-  //     src: 'local("Satoshi-Regular"), url("../../../public/fonts/Satoshi-Regular.woff2")'    
-  //   },   
-  //   {
-  //     fontFamily: 'Satoshi-Italic',
-  //     src: 'local("Satoshi-Italic"), url("../../../public/fonts/Satoshi-Italic.woff2"), format("woff2")'
-  //   }, 
-  //   {
-  //     fontFamily: 'Satoshi-Black',
-  //     src: 'local("Satoshi-Black"), url("../../../public/fonts/Satoshi-Black.woff2"), format("woff2")'
-  //   }
-  // ],
+  '@import': [
+    "url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Serif+4:ital,opsz@0,8..60;1,8..60&display=swap')",
+  ],
+
+  '@font-face': Typeface,
 
   '*': {
     boxSizing: 'border-box',
     fontFamily: 'inherit',
     color: 'inherit',
-    fontSmoothing: 'antialiased',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale'
+  },
+
+  img: {
+    width: '100%'
   },
 
   body: {
