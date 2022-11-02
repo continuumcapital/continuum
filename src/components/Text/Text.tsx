@@ -8,6 +8,7 @@ const TextWrap = styled('div', {
   position: 'relative',
   maxWidth: 800,
   width: '100%',
+  fontSize: '$s1',
 
   // For the spacing automation of text that lives within the container
 

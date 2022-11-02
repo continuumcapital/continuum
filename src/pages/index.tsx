@@ -39,6 +39,8 @@ const Home: NextPage = () => {
           </p>
         </Stage>
       </Block>
+
+      <StageBg />
     </SiteContainer>
 
   )

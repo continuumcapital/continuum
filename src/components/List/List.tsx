@@ -18,6 +18,10 @@ const ListWrap = styled('div', {
     listStyle: 'none'
   },
 
+  li: {
+    lineHeight: 1.3
+  },
+
   // The variants supported for the component
   // These contains support for direction, list style, and spacing
 

@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <SiteHeader />
       <Component {...pageProps} />
       <Footer />
-      <StageBg />
+      
     </ThemeProvider>
   )
 }
