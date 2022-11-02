@@ -14,7 +14,14 @@ const ChipWrap = styled('div', {
   background: '#334858',
   borderRadius: '$pill',
   fontFamily: '$sansSerif',
-  marginTop: 24
+  marginTop: 24,
+  letterSpacing: '1',
+
+  '@mobile': {
+    padding: '16px 20px',
+
+    '*': { fontSize: '1rem' }
+  }
 })
 
 // For the content to be centered within the master container
@@ -59,13 +66,13 @@ export const Chip = ({
                 <Link href={ chip.href }>
                   <a>
                     <ChipWrap>
-                      <ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent>
+                      <ChipContent><Heading bold="bold" title={ chip.title } /></ChipContent>
                     </ChipWrap>
                   </a>
                 </Link>
 
               ) : (
-                <ChipWrap><ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent></ChipWrap>
+                <ChipWrap><ChipContent><Heading bold="bold" title={ chip.title } /></ChipContent></ChipWrap>
               )}
             </li>
           ))}

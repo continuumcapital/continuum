@@ -1,7 +1,7 @@
 export const Typeface = [
   {
     fontFamily: 'Satoshi-Bold',
-    src: 'local("Satoshi-Bold"), url("/fonts/Satoshi-Boldm.woff2")',
+    src: 'local("Satoshi-Bold"), url("/fonts/Satoshi-Bold.woff2")',
   },
   {
     fontFamily: 'Satoshi-Regular',

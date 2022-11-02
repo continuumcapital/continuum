@@ -95,8 +95,8 @@ const FooterContent = styled('div', {
   width: '100%',
   padding: '50px 0',
   marginTop: 100,
-  borderTop: '1px solid rgba( 255, 255, 255, 0.2 )',
-  borderBottom: '1px solid rgba( 255, 255, 255, 0.2 )',
+  borderTop: '1px solid rgba( 79, 79, 79, 0.2 )',
+  borderBottom: '1px solid rgba( 79, 79, 79, 0.2 )',
 
   // Change the default color of the paragraph to be a bit darker
 
@@ -123,7 +123,6 @@ export const Footer = () => {
         <MainContent>
           <Form 
             title="Contact Us"
-            descp="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac placerat tincidunt, risus metus congue orci, quis accumsan neque nibh vel purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi aliquam diam vitae nisl suscipit, non aliquet nulla cursus."
           />
 
           <FooterContent>
