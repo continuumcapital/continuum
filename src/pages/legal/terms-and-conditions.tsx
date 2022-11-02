@@ -21,8 +21,8 @@ const Page: NextPage = () => {
           <h3><Heading size="l3" bold="bold" title="Interpretation" /></h3>
 
           <p>
-            The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in 
-            plural.
+            The words of which the initial letter is capitalized have meanings defined under the following conditions. The following 
+            definitions shall have the same meaning regardless of whether they appear in singular or in plural.
           </p>
           
           <h2><Heading size="l2" bold="heavy" title="Definitions" /></h2>
@@ -40,8 +40,8 @@ const Page: NextPage = () => {
             <li><strong>Country</strong> refers to: Illinois, United States</li>
 
             <li>
-              <strong>Company</strong> (referred to as either "the Company", "We", "Us" 
-              or "Our" in this Agreement) refers to Continuum Capital, Chicago, Il. 
+              <strong>Company</strong> &#40;referred to as either &apos;the Company&apos;, &apos;We&apos;, &apos;Us&apos; 
+              or &apos;Our&apos; in this Agreement&#41; refers to Continuum Capital, Chicago, Il. 
             </li>
 
             <li>
@@ -53,7 +53,7 @@ const Page: NextPage = () => {
             </li>
 
             <li>
-              <strong>Terms and Conditions</strong> (also referred as "Terms") mean these Terms and Conditions that form the entire 
+              <strong>Terms and Conditions</strong> &#40;also referred as &apos;Terms&apos;&#41; mean these Terms and Conditions that form the entire 
               agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been 
               created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank" rel="noreferrer">
               TermsFeed Terms and Conditions Generator</a>
@@ -80,6 +80,7 @@ const Page: NextPage = () => {
       <Block width="small">
         <Text>
           <h2><Heading size="l4" bold="heavy" title="Acknowledgment" /></h2>
+          
           <p>
             These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. 
             These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.
@@ -154,10 +155,10 @@ const Page: NextPage = () => {
 
           <p>
             To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, 
-            incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of 
+            incidental, indirect, or consequential damages whatsoever &#41;including, but not limited to, damages for loss of profits, loss of 
             data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related 
             to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise 
-            in connection with any provision of this Terms), even if the Company or any supplier has been advised of the possibility of such 
+            in connection with any provision of this Terms&#41;, even if the Company or any supplier has been advised of the possibility of such 
             damages and even if the remedy fails of its essential purpose.
           </p>
 
@@ -187,9 +188,9 @@ const Page: NextPage = () => {
 
           <p>
             Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of 
-            any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials 
-            or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, 
-            or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or 
+            any kind, express or implied: &#40;i&#41; as to the operation or availability of the Service, or the information, content, and materials 
+            or products included thereon; &#40;ii&#41; that the Service will be uninterrupted or error-free; &#40;iii&#41; as to the accuracy, reliability, 
+            or currency of any information or content provided through the Service; or &#40;iv&#41; that the Service, its servers, the content, or 
             e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other 
             harmful components.
           </p>
@@ -238,8 +239,8 @@ const Page: NextPage = () => {
           <h2><Heading size="l4" bold="heavy" title="United States Legal Compliance" /></h2>
 
           <p>
-            You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been 
-            designated by the United States government as a "terrorist supporting" country, and (ii) You are not listed on any United States 
+            You represent and warrant that 	&#40;i&#41; You are not located in a country that is subject to the United States government embargo, or that has been 
+            designated by the United States government as a "terrorist supporting" country, and &#40;ii&#41; You are not listed on any United States 
             government list of prohibited or restricted parties.
           </p>
         </Text>
