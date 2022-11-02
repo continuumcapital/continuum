@@ -66,7 +66,7 @@ const Page: NextPage = () => {
 
             <li>
               <strong>Website</strong> refers to Continuum Capital, accessible from 
-              <a href="www.continuum.io" rel="external nofollow noopener" target="_blank">www.continuum.io</a>
+              <a href="www.continuum.io" rel="noreferrer" target="_blank">www.continuum.io</a>
             </li>
 
             <li>
