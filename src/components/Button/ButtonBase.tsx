@@ -194,8 +194,8 @@ export const ButtonBase = ({
     iconPlacement, // Optional - for the placement of the icon to be on the right or left side of the button
     size, // Optional - to support the smaller version of the button
     children, // Optional - if a custom button is needed
-    notBold,
-    type
+    notBold, // Optional - by default, the button is bolded and this will allow it to observe regular font
+    type // Optional - allows the button to be more specific for it's function, such as submit, emial, text, number, ect
   }: ButtonProps ) => {
 
   return(

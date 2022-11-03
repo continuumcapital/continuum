@@ -26,6 +26,9 @@ const BlockContent = styled('div', {
 
   variants: {
 
+    // For the spacing of the children elements within the container 
+    // This keeps the spacing consistant within extra work and adding spacing on a component itself
+
     blockItemSpacing: {
       l0: { '> *': { marginBottom: 32 }},
       l1: { '> *': { marginBottom: 50 }},
@@ -41,18 +44,6 @@ const BlockContent = styled('div', {
       small: { maxWidth: 800, width: '90%' },
       medium: { maxWidth: 1024, width: '90%' },
       large: { maxWidth: 1400, width: '90%' }
-    },
-
-    height: {
-      large: { height: '100vh', maxHeight: 500 }
-    },
-
-    outline: {
-      true: {
-        padding: 20,
-        borderRadius: '$r3',
-        border: '1px solid $border'
-      }
     },
     
     // For the alignment of the content within the container
@@ -79,34 +70,9 @@ const BlockContent = styled('div', {
       reverse: { 
         '@media(max-width: 767px)': { 
           flexDirection: 'column-reverse !important',
-
-          '> *:not(:last-child)': {
-            marginTop: 32
-          }
+          '> *:not(:last-child)': { marginTop: 32 }
         }
       }
-    },
-
-    // For the columns supported within a block component
-    // This is needed if content within the block needs to be side-by-side 
-
-    columns: {
-      2: { 
-        flexDirection: 'row',
-
-        '> *': {
-          width: '50%',
-          '&:not(:last-child)': { marginRight: '5%' }
-        },
-
-        '@media( max-width: 767px )': {
-          flexDirection: 'column',
-          '> *': { width: '100%', marginRight: '0px !important' },
-        }
-      },
-      3: {},
-      4: {},
-      5: {}
     }
   }
 })
@@ -119,34 +85,28 @@ interface BlockProps {
   alignment?: 'left' | 'center' | 'right'
   verticalAlignment?: 'center'
   mobileContent?: 'reverse'
-  columns?: 2 | 3 | 4 | 5
   children: React.ReactNode
-  outline?: boolean
   blockItemSpacing?: 'l0' | 'l1' | 'l2' | 'l3'
-  height?: 'large'
   ref?: any
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const Block = ({
+    ref, // Optional - this is needed to add the anchor links for header links
+    id, // Optional - this is needed to add the anchor links for header links
     width, // Optional - For the supported widths of the block component
+    blockItemSpacing, // Optional - will automate the spacing of children items within the block container
     alignment, // Optional - For the ability to align the content left, center, or right
     verticalAlignment, // Optional - For the ability to align the content centered within the container 
-    columns, // Optional - Supporting side-by-side content to sit inline 
     mobileContent, // Optional - Reformats the content on mobile breakpoints
-    children, // Required - Holds all of the content within the block component
-    outline,
-    blockItemSpacing,
-    height,
-    id,
-    ref
+    children // Required - Holds all of the content within the block component
   }: BlockProps ) => {
   
   return(
 
     <BlockWrap ref={ ref } id={ id }>
-      <BlockContent {...{ width, height, alignment, verticalAlignment, columns, mobileContent, outline, blockItemSpacing }}>
+      <BlockContent {...{ width, alignment, verticalAlignment, mobileContent, blockItemSpacing }}>
         { children }
       </BlockContent>
     </BlockWrap>

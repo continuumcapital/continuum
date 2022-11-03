@@ -5,18 +5,7 @@ import { SiteContainer, Block } from '@components';
 const story = {
   title: 'foundation/Block',
   component: Block,
-  argTypes: {
-    // outline: { control: 'boolean' },
-    // disabled: { control: 'boolean' },
-    // level: {
-    //   options: [0, 1, 2],
-    //   control: { type: 'select' },
-    // },
-    // glyph: {
-    //   options: { '— none —': undefined, ...glyphKey },
-    //   control: { type: 'select' },
-    // },
-  },
+  argTypes: {},
 }
 export default story
 
