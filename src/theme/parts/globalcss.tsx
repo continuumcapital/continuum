@@ -1,10 +1,7 @@
 import { Typeface } from './fonts'
 
 export const globalStyle = {
-  '@import': [
-    "url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Serif+4:ital,opsz@0,8..60;1,8..60&display=swap')",
-  ],
-
+  '@import': [ "url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Serif+4:ital,opsz@0,8..60;1,8..60&display=swap')" ],
   '@font-face': Typeface,
 
   '*': {

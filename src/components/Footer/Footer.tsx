@@ -25,8 +25,8 @@ const FooterContain = styled('div', {
   position: 'relative',
   maxWidth: 1300,
   width: '90%',
-  margin: '0 auto 50px',
-  padding: '125px 0 75px',
+  margin: '0 auto 12px',
+  padding: '125px 0 50px',
   background: '$siteBg',
   borderRadius: '$r2',
 
@@ -93,10 +93,10 @@ const FooterContent = styled('div', {
   alignItems: 'center',
   position: 'relative',
   width: '100%',
-  padding: '50px 0',
+  padding: '50px 0 0',
   marginTop: 100,
   borderTop: '1px solid rgba( 79, 79, 79, 0.2 )',
-  borderBottom: '1px solid rgba( 79, 79, 79, 0.2 )',
+  // borderBottom: '1px solid rgba( 79, 79, 79, 0.2 )',
 
   // Change the default color of the paragraph to be a bit darker
 
@@ -126,8 +126,7 @@ export const Footer = () => {
           />
 
           <FooterContent>
-            <Logo />
-            <div style={{ marginTop: 32 }}>&copy; 2022 Continuum Capital</div>
+            <div>&copy; 2022 Continuum Capital</div>
 
             {/* <FooterLinkWrap>
               <FooterLinks>

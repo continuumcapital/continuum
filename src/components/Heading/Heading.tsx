@@ -12,13 +12,13 @@ const HeadingWrap = styled('div', {
 
   variants: {
     size: {
-      l0: { fontSize: '$s0' },
-      l1: { fontSize: '$s1' },
-      l2: { fontSize: '$s2' },
-      l3: { fontSize: '$s3', lineHeight: 1.3 },
-      l4: { fontSize: '$s4' },
-      l5: { fontSize: '$s5', lineHeight: 1.3 },
-      l6: { fontSize: '$s6' },
+      l0: { fontSize: '$s0', lineHeight: 1.2 },
+      l1: { fontSize: '$s1', lineHeight: 1.2 },
+      l2: { fontSize: '$s2', lineHeight: 1.2 },
+      l3: { fontSize: '$s3', lineHeight: 1.3, '@tablet': { fontSize: '$s1', lineHeight: 1.2 } },
+      l4: { fontSize: '$s4', lineHeight: 1.2, '@tablet': { fontSize: '$s2', lineHeight: 1.2 } },
+      l5: { fontSize: '$s5', lineHeight: 1.3, '@tablet': { fontSize: '$s3', lineHeight: 1.2 } },
+      l6: { fontSize: '$s6', lineHeight: 1.2, '@tablet': { fontSize: '$s4', lineHeight: 1.2 } },
       l7: { fontSize: '$s7', lineHeight: 1.2, '@tablet': { fontSize: '$s5', lineHeight: 1.2 }}
     },
 
@@ -29,19 +29,18 @@ const HeadingWrap = styled('div', {
       blue: { color: '$blue' }
     },
 
+    // To change the font family of the heading to be the code font
+
     font: {
-      code: { fontFamily: '$code' }
+      code: { span: { fontFamily: '$code' }}
     }
   }
 })
 
-const Bold = styled('strong', {
-  fontFamily: '$sansSerifBold'
-})
+// For the different weights that the heading can be - bold or heavy
 
-const Heavy = styled('strong', {
-  fontFamily: '$sansSerifBlack'
-})
+const Bold = styled('strong', { fontFamily: '$sansSerifBold' })
+const Heavy = styled('strong', { fontFamily: '$sansSerifBlack' })
 
 // -------------- Typescript declarations -------------- //
 
@@ -56,18 +55,18 @@ interface HeadingProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Heading = ({
-    size,
-    font,
-    color,
-    title,
-    bold
+    size, // Optional - for the font size of the heading
+    font, // Optional - for the option to make the font code from the default font
+    color, // Optional - To change the color of the text
+    title, // Required - For the title of the heading
+    bold // Opitonal - the heading is regular by default but can be changed to bold or heavy weights
   }:HeadingProps) => {
   
   return(
     
-    <HeadingWrap {...{ size, color }}>
-      <>
-        { font == 'code' ? ( <span style={{ fontFamily: 'Source Code Pro' }}>{ title }</span> ) 
+    <HeadingWrap {...{ size, color, font }}>
+      { 
+        font == 'code' ? ( <span>{ title }</span> ) 
         : (
           <>
             { bold == 'heavy' ? ( <Heavy>{ title }</Heavy> ) 
@@ -75,9 +74,8 @@ export const Heading = ({
             : ( <>{ title }</> )
             }
           </>
-          )
-        }
-      </>
+        )
+      }
     </HeadingWrap>
     
   )

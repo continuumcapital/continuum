@@ -9,6 +9,7 @@ interface InputProps {
   label: string
   width?: 'small'
   value: any
+  errorMessage?: any
   type?: 'email' | 'text' | 'number'
   initialValue: any
 }
@@ -43,7 +44,7 @@ export const Input = ( props: UseControllerProps&InputProps ) => {
       </InputBase>
       
       { fieldState.error
-        ? ( <InputStatus status="negative" title="This is invalid" /> ) 
+        ? ( <InputStatus status="negative" title={ props.errorMessage } /> ) 
         : null
       }
     </InputWrap>

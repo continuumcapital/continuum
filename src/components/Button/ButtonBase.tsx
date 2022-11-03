@@ -16,16 +16,15 @@ const ButtonWrap = styled('div', {
   fontFamily: '$sansSerifBold',
   whiteSpace: 'nowrap',
 
-  strong: {
-    fontFamily: '$sansSerifBlack',
-  },
+  // For the font weight of the text wihin the button
+  // By default, strong is bold font so we have to set it to heavy here
+
+  strong: { fontFamily: '$sansSerifBlack' },
 
   // For the interaction when a button is clicked - provides a scale down until released
   // This is universal for all buttons to give the user feedback that they clicked the button
 
-  '&:active': {
-    transform: 'scale( 0.9 )'
-  }
+  '&:active': { transform: 'scale( 0.9 )' }
 })
 
 // For the container of the button itself
@@ -163,19 +162,6 @@ const Button = styled('div', {
     // At the moment, the component only supports a small version of the button
 
     size: {
-      l0Icon: {
-        maxWidth: 20,
-        width: 20,
-        maxHeight: 20,
-        height: 20,
-        padding: 0,
-        background: '$pureBlack',
-
-        svg: {
-          width: '50%'
-        }
-      },
-
       l0: { 
         fontSize: '$s0', 
         height: '44px !important',
@@ -190,7 +176,7 @@ const Button = styled('div', {
 
 interface ButtonProps {
   variant?: 'disabled' | 'primary' | 'secondary' | 'white' | 'outline' | 'icon'
-  size?: 'l0Icon' | 'l0'
+  size?: 'l0'
   title?: any
   icon?: any
   iconPlacement?: 'left' | 'right'

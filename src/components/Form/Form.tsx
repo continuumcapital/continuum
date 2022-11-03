@@ -32,14 +32,14 @@ export const Form = ({
       email: "",
       message: ""
     },
-    mode: "onChange"
+    mode: "onChange",
   })
   
   const onSubmit = ( data:FormValues ) => {
     //@ts-ignore
     emailjs.sendForm('contact_form', 'template_continuum', form.current, 'JIo1rNfaUflvW0z-3')
     .then((result) => {
-        console.log(result.text);
+        console.log(result.text)
     }, (error) => {
         console.log(error.text);
     });
@@ -58,6 +58,7 @@ export const Form = ({
         control={ control } 
         name="name" 
         rules={{ required: true }} 
+        errorMessage="Please input your full name"
       />
       <Input 
         label="Email" 
@@ -66,12 +67,14 @@ export const Form = ({
         control={ control } 
         name="email" 
         rules={{ required: true }} 
+        errorMessage="Please input a valid email address"
       />
       <Textarea 
         name="message" 
         //@ts-ignore
         control={ control } 
         rules={{ required: true }} 
+        errorMessage="Please write a short message"
       />
     </FormWrap> 
 

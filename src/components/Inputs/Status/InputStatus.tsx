@@ -14,7 +14,7 @@ const StatusWrap = styled('div', {
   width: '100%',
   margin: '8px 0',
   padding: '0 16px',
-  fontSize: '$s1',
+  fontSize: '$s0',
   color: '$textSecondary',
 
   // Here we automate the spacing between the icon on the left and the text to the right
@@ -29,9 +29,9 @@ const StatusWrap = styled('div', {
 
   variants: {
     status: {
-      negative: { color: '$textNegative' },
+      negative: { color: '#ff7b7b' },
       positive: { color: '$textPositive' },
-      warning: { color: '$textWarning' }
+      warning: { '*': { color: 'red' }}
     }
   }
 })
@@ -54,9 +54,9 @@ export const InputStatus = ({
     
     <StatusWrap {...{ status }}>
       { 
-          status == "negative" ? ( <><Icon size="l1" icon="close" /><span>{ title }</span></> )
-        : status == 'positive' ? ( <><Icon size="l1" icon="check" /><span>{ title }</span></> )
-        : status == 'warning'  ? ( <><Icon size="l1" icon="info-circled" /><span>{ title }</span></> )
+          status == "negative" ? ( <><Icon size="l0" icon="cross-1" /><span>{ title }</span></> )
+        : status == 'positive' ? ( <><Icon size="l0" icon="check" /><span>{ title }</span></> )
+        : status == 'warning'  ? ( <><Icon size="l0" icon="info-circled" /><span>{ title }</span></> )
         : null
       }
     </StatusWrap>

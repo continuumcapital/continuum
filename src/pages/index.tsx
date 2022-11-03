@@ -6,7 +6,17 @@ const Home: NextPage = () => {
     
     <SiteContainer>
       <ReadingBar />
-      <Block><Hero /></Block>
+
+      <Block>
+        <Hero 
+          hairline="Continuum Capital"
+          title="Alternative Investment Solutions at the intersection of Real Estate and Digital Assets"
+          chips={[
+            { href: '#digital-assets', title: 'Digital Assets' },
+            { href: '#real-estate', title: 'Real Estate' }
+          ]}
+        />
+      </Block>
 
       <Block alignment="center" id="digital-assets">
         <Stage background="gray" title="Digital Assets">

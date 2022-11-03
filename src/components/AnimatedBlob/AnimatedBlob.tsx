@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react'
+import gsap from 'gsap'
 import { AdditiveBlending } from 'three'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { vertexShader, fragmentShader } from './shaders/shaders'
-import gsap from 'gsap'
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 
-// Default settings
+// -------------- Typescript declarations -------------- //
 
 interface BlobProps {
   frequency?: number
@@ -15,9 +15,14 @@ interface BlobProps {
   opacity?: number
 }
 
+// ---------- For the rendering of the sphere ---------- //
+
 const Sphere = () => {
   const ref = useRef()
   const sphereShaderRef = useRef()
+
+  // For the settings of the blob and how it animates as the user scrolls down the page
+  // The start value sets the blob as a circle and animates into a more abstract shape with the end attr
 
   const settings = {
     frequency: { start: 0, end: 4 },
@@ -28,8 +33,12 @@ const Sphere = () => {
     rotation: { start: 0.005, end: 0 }
   }
 
+  // Allows for the animation of the blob to rotate on the x axis depending where the user is on the scroll
   //@ts-ignore
   useFrame(() => ( ref.current.rotation.x += settings.rotation.start ))
+
+  // Sets the container of the blob animation
+  // This sets where it starts and ends on the page
 
   useEffect(() => {
     gsap.registerPlugin( ScrollTrigger );
@@ -42,6 +51,9 @@ const Sphere = () => {
         scrub: 1,
       },
     })
+
+    // This sets the opacity of the animation as it moves from the top to the bottom
+    // This starts the blob on a lower opacity in the beginning and becomes brighter as the user scrolls
 
     let op = gsap.timeline({
       scrollTrigger: {
@@ -58,6 +70,9 @@ const Sphere = () => {
     //@ts-ignore
     op.to( sphereShaderRef.current.uniforms.uOpacity, { value: settings.opacity.end })
   }, [])
+
+  // For the attributes of the sphere
+  // This creates the structure of the sphere and the material wrapped around it that is altered
     
   return(
     //@ts-ignore

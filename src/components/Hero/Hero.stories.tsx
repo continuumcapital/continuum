@@ -1,26 +1,11 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { SiteContainer, Block, Hero } from '@components'
 
 const story = {
   title: 'atoms/Hero',
   component: Hero,
-  parameters: {
-    layout: 'fullscreen',
-  },
-  argTypes: {
-    
-    // outline: { control: 'boolean' },
-    // disabled: { control: 'boolean' },
-    // level: {
-    //   options: [0, 1, 2],
-    //   control: { type: 'select' },
-    // },
-    // glyph: {
-    //   options: { '— none —': undefined, ...glyphKey },
-    //   control: { type: 'select' },
-    // },
-  }
+  parameters: { layout: 'fullscreen' },
+  argTypes: {}
 }
 export default story
 
@@ -28,7 +13,14 @@ export const Primary = () => (
 
   <SiteContainer>
     <Block width="small">
-      <Hero />
+      <Hero 
+        hairline="Continuum Capital"
+        title="Alternative Investment Solutions at the intersection of Real Estate and Digital Assets" 
+        chips={[
+          { href: '#digital-assets', title: 'Digital Assets' },
+          { href: '#real-estate', title: 'Real Estate' }
+        ]}
+      />
     </Block>
   </SiteContainer>
   

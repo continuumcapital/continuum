@@ -35,6 +35,7 @@ const TextArea = styled('textarea', {
 
 interface TextareaProps {
   name: string
+  errorMessage?: any
   placeholder?: string
 }
 
@@ -49,12 +50,12 @@ export const Textarea = ( props: UseControllerProps&TextareaProps ) => {
       <TextArea 
         { ...field } 
         name={ props.name } 
-        placeholder={ props.placeholder ? props.placeholder : 'Message' }
+        placeholder={ props.placeholder ? props.placeholder : 'Message...' }
       >
       </TextArea>
 
       { fieldState.error
-        ? ( <InputStatus status="negative" title="This is invalid" /> ) 
+        ? ( <InputStatus status="negative" title={ props.errorMessage } /> ) 
         : null
       }
     </TextContain>

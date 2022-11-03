@@ -32,7 +32,7 @@ import { ButtonBase } from './ButtonBase'
 
 interface ButtonProps {
   variant?: 'disabled' | 'primary' | 'secondary' | 'white' | 'outline' | 'icon'
-  size?: 'l0Icon' | 'l0'
+  size?: 'l0'
   linkUrl?: string
   title?: any
   icon?: any

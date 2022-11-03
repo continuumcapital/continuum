@@ -1,3 +1,6 @@
+
+// Vertex shader attributes
+
 export const vertexShader = /* glsl */ `  
   vec3 mod289(vec3 x){ return x - floor(x * (1.0 / 289.0)) * 289.0; }
   vec4 mod289(vec4 x){ return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -108,6 +111,8 @@ export const vertexShader = /* glsl */ `
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
   }
 `
+
+// Fragment Shader attributes
 
 export const fragmentShader = /* glsl */ `
   uniform float uOpacity;
