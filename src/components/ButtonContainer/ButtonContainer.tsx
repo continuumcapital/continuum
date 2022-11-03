@@ -99,20 +99,19 @@ export const ButtonContainer = ({
 
       { buttons ? (
         <>
-        { buttons.map(( button:any, i ) => (
+          { buttons.map(( button:any, i ) => (
 
-          <Button 
-            key={`button-${ i }`}
-            variant={ button.variant }
-            title={ button.title }
-            icon={ button.icon }
-            iconPlacement={ button.iconPlacement }
-            linkUrl={ button.href }
-            // pageLink={ button.pageLink }
-            onClick={ button.onClick }
-          />
+            <Button 
+              key={`button-${ i }`}
+              variant={ button.variant }
+              title={ button.title }
+              icon={ button.icon }
+              iconPlacement={ button.iconPlacement }
+              linkUrl={ button.href }
+              onClick={ button.onClick }
+            />
 
-        ))}
+          ))}
         </>
       ) : <>{ children }</> }
     </ButtonWrap>

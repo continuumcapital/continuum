@@ -23,12 +23,12 @@ export const Input = ( props: UseControllerProps&InputProps ) => {
 
   return(
 
-    // This is the content that does into the thing that we wwere talking about before
     <InputWrap
       inputSize={ props.width }
       state={ value ? 'active' : 'inactive' }
     >
       <InputBase>
+
         <input 
           { ...field } 
           id={ props.name } 
@@ -40,6 +40,7 @@ export const Input = ( props: UseControllerProps&InputProps ) => {
             setValue( event.target.value ) 
           }}
         />
+
         <label htmlFor={ props.name }>{ props.label }</label>
       </InputBase>
       

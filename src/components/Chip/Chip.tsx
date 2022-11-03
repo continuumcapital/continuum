@@ -17,9 +17,10 @@ const ChipWrap = styled('div', {
   marginTop: 24,
   letterSpacing: '1',
 
+  // For the changes to the spacing and the font sizes on mobile breakpoints
+
   '@mobile': {
     padding: '16px 20px',
-
     '*': { fontSize: '1rem' }
   }
 })
@@ -49,8 +50,8 @@ interface ChipProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Chip = ({
-    title,
-    chips
+    title, // Required - for the title of the chip
+    chips // Opitonal - allows for an array of chips
   }: ChipProps ) => {
   
   return(

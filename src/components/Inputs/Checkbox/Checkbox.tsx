@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { List, Icon } from '@components'
 import { styled } from '@theme'

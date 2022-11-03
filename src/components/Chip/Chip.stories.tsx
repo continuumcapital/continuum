@@ -1,26 +1,12 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Chip } from '@components';
+import React from 'react'
+import { Chip } from '@components'
 
 const story = {
   title: 'atoms/Chip',
   component: Chip,
-  argTypes: {
-    // outline: { control: 'boolean' },
-    // disabled: { control: 'boolean' },
-    // level: {
-    //   options: [0, 1, 2],
-    //   control: { type: 'select' },
-    // },
-    // glyph: {
-    //   options: { '— none —': undefined, ...glyphKey },
-    //   control: { type: 'select' },
-    // },
-  },
+  argTypes: {},
 }
 export default story
 
-export const Primary = () => (
-  <Chip></Chip>
-)
+export const Primary = () => ( <Chip title="ello" /> )
 

@@ -40,8 +40,13 @@ const InputContain = styled('div', {
     zIndex: 1
   },
 
+  // For the styling of the button on the right side og the input
+
   button: {
     height: '100%',
+
+    // Set the height and the border radius of the button
+    // This keeps the border radius styling off of the left side of the button
 
     '> div': {
       height: '100%',

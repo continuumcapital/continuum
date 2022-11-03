@@ -7,7 +7,8 @@ import { useController, UseControllerProps } from "react-hook-form"
 // This holds the long for messages that lives within the form component
 
 const TextContain = styled('div', {
-
+  position: 'relative',
+  width: '100%'
 })
 
 // For the styling of the html component of the textarea
@@ -25,10 +26,7 @@ const TextArea = styled('textarea', {
   background: 'none',
   transition: '$s1',
   outline: 'none',
-
-  '&:focus': {
-    borderColor: '$white'
-  }
+  '&:focus': { borderColor: '$white' }
 })
 
 // -------------- Typescript declarations -------------- //

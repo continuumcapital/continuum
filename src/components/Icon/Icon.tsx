@@ -27,29 +27,8 @@ const IconWrap = styled('span', {
   variants: {
     size: {
       l0: { width: 16, height: 16},
-      l1: {},
+      l1: { width: 32, height: 32 },
       l2: { width: 50, height: 50 }
-    },
-
-    // For the changes of the background of the icon
-    // Here the icon can sit in different types on containers, such as aa solid or outlined background
-
-    background: {
-      circle: {
-        background: '$black',
-        color: '$white',
-        borderRadius: '50%',
-        svg: { width: '50%' }
-      },
-
-      outline: {
-        minWidth: 50,
-        width: 50,
-        minHeight: 50,
-        height: 50,
-        borderRadius: '50%',
-        border: '2px solid $black'
-      }
     }
   }
 })
@@ -58,26 +37,20 @@ const IconWrap = styled('span', {
 
 interface IconProps {
   size?: 'l0' | 'l1' | 'l2'
-  background?: 'circle' | 'outline'
   icon?: string
-  iconAlt?: string
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const Icon = ({
-    size,
-    background,
-    icon,
-    iconAlt
+    size, // Optional - for the sifferent sizes of the icon
+    icon, // Required - for the icon being called
   }: IconProps ) => {
   
     return(
 
-     <IconWrap {...{ size, background }}>
-        { iconAlt ? ( <img src={`/icons/${ iconAlt }.svg`} alt="FreeRossIcon" /> ) 
-        : ( <svg><use xlinkHref={ `/global/icons/icons.svg#${ icon }` } xlinkTitle={ icon } /></svg> )
-        }
+      <IconWrap {...{ size }}>
+        <svg><use xlinkHref={ `/global/icons/icons.svg#${ icon }` } xlinkTitle={ icon } /></svg> 
       </IconWrap>
      
     )

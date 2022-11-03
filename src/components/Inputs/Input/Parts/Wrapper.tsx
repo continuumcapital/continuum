@@ -20,6 +20,8 @@ const InputContent = styled('div', {
       inactive: { /* we keep this unstyled, but use this for semantics in logic on the parent component */ }
     },
 
+    // For the changes of the input sizes for the inputs
+
     inputSize: {
       small: { width: '50%', '@tablet': { width: '100%' }}
     }

@@ -51,7 +51,7 @@ const ListWrap = styled('div', {
       l0: { li: { padding: '4px 0' }},
       l1: { li: { padding: '8px 0' }},
       l1r: { 'li:not(:last-child)': { marginRight: 12 }},
-      l2: {},
+      l2: { li: { padding: '12px 0' }},
       l2r: { 'li:not(:last-child)': { marginRight: 20 }},
       l3: { li: { padding: '20px 0' } }
     }
@@ -75,12 +75,12 @@ export interface ListProps {
 // ---------- This is the end of declarations ---------- //
 
 export const List = ({
-    alignment,
+    alignment, // Optional - for the content wihtin the list to be centered
     listItems, // Automated the list within a json format
     direction, // Supporting the horizontal layout of a list 
     listStyle, // Supporting bulleted, numbered, or alphabetical
     spacing, // For the spacing of the lis within the list
-    children // For the content within the list container
+    children // For the children content within the list container
   }: ListProps ) => {
   
   return(

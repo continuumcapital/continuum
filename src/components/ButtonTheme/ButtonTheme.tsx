@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Icon } from '@components'
+import { Button } from '@components'
 import { useTheme } from 'next-themes'
 
 export const ButtonTheme = () => {

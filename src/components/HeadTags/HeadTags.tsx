@@ -1,14 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 
-/* -------------- Read Me -------------- //
-
-	This 
-
-
-
-// ------------ End Read Me ------------ */
-
 // -------------- Typescript declarations -------------- //
 
 interface HeadProps {
