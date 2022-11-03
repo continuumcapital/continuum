@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading, Text } from '@components'
+import ScrollAnimationItem from 'react-scroll-fade-animation'
 
 // For the master container of the stage component
 // This component is meant for basic text, with the title on the left of the container and the text on the right
@@ -115,12 +116,16 @@ export const Stage = ({
 
   return(
     
-    <StageWrap {...{ background }}>
-      <StageContent width="medium">
-        <StageTitle><Heading bold="bold" size="l3" {...{ title }} /></StageTitle>
-        <StageText><Text fontSize="l1">{ children }</Text></StageText>
-      </StageContent>
-    </StageWrap>
+    <section style={{ width: '100%' }}>
+      <ScrollAnimationItem path={'top'}>
+        <StageWrap {...{ background }}>
+          <StageContent width="medium">
+            <StageTitle><Heading bold="bold" size="l3" {...{ title }} /></StageTitle>
+            <StageText><Text fontSize="l1">{ children }</Text></StageText>
+          </StageContent>
+        </StageWrap>
+      </ScrollAnimationItem>
+    </section>
 
   )
 }

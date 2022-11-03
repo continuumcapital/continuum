@@ -43,6 +43,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.35.0",
     "react-relay": "^14.1.0",
+    "react-scroll-fade-animation": "^0.5.3",
     "react-share": "^4.4.0",
     "react-three-fiber": "^6.0.13",
     "storybook-addon-css-user-preferences": "^0.0.3",

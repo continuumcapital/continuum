@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { styled } from '@theme'
 import { Form, Logo, Text, List } from '@components'
+import ScrollAnimate from 'react-scroll-fade-animation'
 
 // For the master container of the global footer
 // This holds all of the universal links that a user can click through to the page
@@ -16,7 +17,7 @@ const FooterWrap = styled('footer', {
 })
 
 // For the container of all of the content within the footer
-// THis holds the page links, social links, disclaimers, and newsletter
+// This holds the page links, social links, disclaimers, and newsletter
 
 const FooterContain = styled('div', {
   display: 'flex',
@@ -26,7 +27,7 @@ const FooterContain = styled('div', {
   maxWidth: 1300,
   width: '90%',
   margin: '0 auto 12px',
-  padding: '125px 0 50px',
+  padding: '75px 0 50px',
   background: '$siteBg',
   borderRadius: '$r2',
 
@@ -115,55 +116,60 @@ const Legal = styled('div', {
 // ---------- This is the end of declarations ---------- //
 
 export const Footer = () => {
-  
   return(
 
     <FooterWrap id="contact">
       <FooterContain>
-        <MainContent>
-          <Form 
-            title="Contact Us"
-          />
+        <section style={{ width: '100%' }}>
+          <ScrollAnimate path={'top'}>
 
-          <FooterContent>
-            <div>&copy; 2022 Continuum Capital</div>
+            <MainContent>
+              <Form 
+                title="Contact Us"
+              />
 
-            {/* <FooterLinkWrap>
-              <FooterLinks>
-                <List spacing="l1">
-                  <li><Link href="#digital-assets"><a><strong>Digital Assets</strong></a></Link></li>
-                  <li><Link href="#real-estate"><a><strong>Real Estate</strong></a></Link></li>
-                  <li><a href="https://www.medium.com" target="_blank" rel="noreferrer"><strong>Blog</strong></a></li>
-                  <li><a href="https://www.facebook.com" target="_blank" rel="noreferrer"><strong>Facebook</strong></a></li>
-                  <li><a href="https://twitter.com" target="_blank" rel="noreferrer"><strong>Twitter</strong></a></li>
-                  <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer"><strong>Instagram</strong></a></li>
+              <FooterContent>
+                <div>&copy; 2022 Continuum Capital</div>
+
+                {/* <FooterLinkWrap>
+                  <FooterLinks>
+                    <List spacing="l1">
+                      <li><Link href="#digital-assets"><a><strong>Digital Assets</strong></a></Link></li>
+                      <li><Link href="#real-estate"><a><strong>Real Estate</strong></a></Link></li>
+                      <li><a href="https://www.medium.com" target="_blank" rel="noreferrer"><strong>Blog</strong></a></li>
+                      <li><a href="https://www.facebook.com" target="_blank" rel="noreferrer"><strong>Facebook</strong></a></li>
+                      <li><a href="https://twitter.com" target="_blank" rel="noreferrer"><strong>Twitter</strong></a></li>
+                      <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer"><strong>Instagram</strong></a></li>
+                    </List>
+                  </FooterLinks>
+
+                  <Text width="small">
+                    <p>
+                      <strong>Disclaimer</strong>: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce gravida vel libero 
+                      eget tincidunt. Mauris et malesuada purus. Integer et orci nibh. Duis suscipit congue purus eu facilisis. Proin 
+                      eu placerat dolor.
+                    </p>
+
+                    <p>
+                      Nam hendrerit gravida pretium. Aliquam vehicula, risus at dignissim accumsan, lorem urna pretium dui, quis 
+                      lacinia est sapien a dolor. Fusce eget urna nec justo egestas tincidunt vitae et odio.
+                    </p>
+                  </Text>
+                </FooterLinkWrap> */}
+              </FooterContent>
+
+              {/* <Legal>
+                <List direction="horizontal" spacing="l1r">
+                  <li><a href="/" target="_blank" rel="noreferrer"><strong>Privacy policy</strong></a></li>
+                  <li><Link href="/legal/terms-and-conditions"><a><strong>Terms &amp; conditions</strong></a></Link></li>
                 </List>
-              </FooterLinks>
-
-              <Text width="small">
-                <p>
-                  <strong>Disclaimer</strong>: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce gravida vel libero 
-                  eget tincidunt. Mauris et malesuada purus. Integer et orci nibh. Duis suscipit congue purus eu facilisis. Proin 
-                  eu placerat dolor.
-                </p>
-
-                <p>
-                  Nam hendrerit gravida pretium. Aliquam vehicula, risus at dignissim accumsan, lorem urna pretium dui, quis 
-                  lacinia est sapien a dolor. Fusce eget urna nec justo egestas tincidunt vitae et odio.
-                </p>
-              </Text>
-            </FooterLinkWrap> */}
-          </FooterContent>
-
-          {/* <Legal>
-            <List direction="horizontal" spacing="l1r">
-              <li><a href="/" target="_blank" rel="noreferrer"><strong>Privacy policy</strong></a></li>
-              <li><Link href="/legal/terms-and-conditions"><a><strong>Terms &amp; conditions</strong></a></Link></li>
-            </List>
-          </Legal> */}
-        </MainContent>
+              </Legal> */}
+            </MainContent>
+          
+          </ScrollAnimate>
+        </section>
       </FooterContain>
     </FooterWrap>
-    
+
   )
 }
