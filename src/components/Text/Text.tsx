@@ -42,10 +42,7 @@ const TextWrap = styled('div', {
       l1: { 
         fontSize: '$s4', 
         lineHeight: 1.5,
-        
-        '@tablet': {
-          fontSize: '$s3'
-        }
+        '@tablet': { fontSize: '$s3' }
       }
     },
 

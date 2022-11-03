@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { styled } from '@theme'
 import { AnimatedBlob } from '@components'
 import { useTheme } from 'next-themes'
@@ -26,6 +26,9 @@ const StageContainer = styled('section', {
     userSelect: 'none !important',
   },
 
+  // For the blend mode of the blon depending on the backgrond of the site
+  // This will change to show the blob on light or dark backgrounds
+
   variants: {
     variant: {
       lightMode: { mixBlendMode: 'none' },
@@ -48,9 +51,9 @@ const StageContent = styled('div', {
   opacity: 1,
   transition: '1000ms',
 
-  '@tablet': {
-    opacity: 0.4
-  }
+  // Here we change the opacity of the blob on tablet and mobile breakpoints
+
+  '@tablet': { opacity: 0.4 }
 })
 
 // ---------- This is the end of declarations ---------- //

@@ -1,6 +1,5 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { SiteContainer, BlockItem } from '@components';
+import React from 'react'
+import { SiteContainer, BlockItem } from '@components'
 
 const story = {
   title: 'foundation/BlockItem',

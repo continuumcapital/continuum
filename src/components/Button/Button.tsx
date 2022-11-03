@@ -54,8 +54,8 @@ export const Button = ({
     iconPlacement, // Supporting the icon placement to be on the left or right side of the container
     size, // Supporting the small version of the button
     children, // For customization of a button as fallabck for compnents needed to be witin a button (ie a whole card is a button)
-    notBold,
-    type
+    notBold, // Optional - by default, the button is bolded and this will allow it to observe regular font
+    type // Optional - allows the button to be more specific for it's function, such as submit, emial, text, number, ect
   }: ButtonProps ) => {
   
   return(

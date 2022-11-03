@@ -56,7 +56,7 @@ interface LogoProps {
 export const Logo = ({
     size, // Supporting the size of the logo
     noWordMark, // Supporting if the logo mark is not needed and only the dove is present
-    linkToHome
+    linkToHome // Optional - allow the logo to hold a link path, but this is mostly the homepage
   }: LogoProps ) => {
   
   return(

@@ -6,6 +6,7 @@ import { styled } from '@theme'
 
 const ListWrap = styled('div', {
   position: 'relative',
+  lineHeight: 1.3,
 
   // For the container of the list itself, with the li being held within the container
   // Here automates a few things such as the horizontal direction, list style, and the spacing between the li
@@ -18,23 +19,10 @@ const ListWrap = styled('div', {
     listStyle: 'none'
   },
 
-  li: {
-    lineHeight: 1.3
-  },
-
   // The variants supported for the component
   // These contains support for direction, list style, and spacing
 
   variants: {
-
-    decoration: {
-      dividers: { 
-        '> ul > li': { 
-          borderBottom: '1px solid $gunMetal',
-          '&:first-child': { borderTop: '1px solid $gunMetal' }
-        }
-      }
-    },
 
     alignment: {
       center: { '> ul': { justifyContent: 'center' }}
@@ -78,7 +66,6 @@ export interface ListProps {
     title: string
   }[]
   alignment?: 'center'
-  decoration?: 'dividers'
   direction?: 'vertical' | 'horizontal'
   listStyle?: 'numbered' | 'bulleted' | 'alphabetical'
   spacing?: 'l0' | 'l1' | 'l1r' | 'l2' | 'l2r' | 'l3'
@@ -91,7 +78,6 @@ export const List = ({
     alignment,
     listItems, // Automated the list within a json format
     direction, // Supporting the horizontal layout of a list 
-    decoration,
     listStyle, // Supporting bulleted, numbered, or alphabetical
     spacing, // For the spacing of the lis within the list
     children // For the content within the list container
@@ -99,7 +85,7 @@ export const List = ({
   
   return(
 
-    <ListWrap {...{ direction, listStyle, spacing, decoration, alignment }}>
+    <ListWrap {...{ direction, listStyle, spacing, alignment }}>
       { listItems ? (
 
         <>

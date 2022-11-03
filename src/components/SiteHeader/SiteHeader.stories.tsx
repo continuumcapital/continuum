@@ -9,6 +9,4 @@ const story = {
 }
 export default story
 
-export const Primary = () => (
-  <SiteHeader />
-)
+export const Primary = () => ( <SiteHeader /> )

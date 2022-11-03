@@ -67,7 +67,7 @@ export const SiteContainer = ({
 
     <SiteWrap className="main-site">
       <HeadTags 
-        shareURL="http://www.tylerstober.com"
+        shareURL="https://www.continuumcapital.io"
         pageTitle="Continuum Digital"
         content="Alternative Investment Solutions at the intersection of Real Estate and Digital Assets"
       />

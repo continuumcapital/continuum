@@ -11,9 +11,7 @@ export default story
 export const Primary = () => ( 
 
   <SiteContainer>
-    <Block width="small" alignment="center">
-      <AnimatedBlob />
-    </Block>
+    <Block width="small" alignment="center"><AnimatedBlob /></Block>
   </SiteContainer>
 
 )

@@ -1,6 +1,5 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { SiteContainer } from './SiteContainer';
+import React from 'react'
+import { SiteContainer } from './SiteContainer'
 
 const story = {
   title: 'foundation/SiteContainer',

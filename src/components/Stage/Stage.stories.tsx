@@ -1,15 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Stage } from '@components'
 
 const story = {
   title: 'foundation/Stage',
   component: Stage,
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
   argTypes: {}
 }
+
 export default story
 
 export const Primary = () => (

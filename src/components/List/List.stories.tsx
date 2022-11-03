@@ -1,22 +1,10 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { List } from './List';
+import React from 'react'
+import { List } from './List'
 
 const story = {
   title: 'atoms/List',
   component: List,
-  argTypes: {
-    // outline: { control: 'boolean' },
-    // disabled: { control: 'boolean' },
-    // level: {
-    //   options: [0, 1, 2],
-    //   control: { type: 'select' },
-    // },
-    // glyph: {
-    //   options: { '— none —': undefined, ...glyphKey },
-    //   control: { type: 'select' },
-    // },
-  },
+  argTypes: {},
 }
 export default story
 
