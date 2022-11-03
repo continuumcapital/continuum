@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { styled } from '@theme'
+import { HeadTags } from '@components'
 
 // For the master container of the foundational SiteContainer component
 // This component is used to automate spacing, sizes, widths, ect for components wrapped within this components
@@ -34,6 +35,9 @@ const SiteContent = styled('div', {
       l2: { padding: '150px 0'}
     },
 
+    // For the spacing between each of the sibling Block elements within the page
+    // This will automate the spacing so that spacing is consistant throughout the site
+
     blockSpacing: {
       l0: { '> *': { marginBottom: 32 }},
       l1: { '> *': { marginBottom: 50 }},
@@ -47,9 +51,6 @@ const SiteContent = styled('div', {
 
 interface SiteContainerProps {
   spacing?: 'l0' | 'l1' | 'l2'
-  content?: string
-  shareURL?: string
-  pageTitle?: string
   blockSpacing?: 'l0' | 'l1' | 'l2' | 'l3'
   children: React.ReactNode
 }
@@ -58,9 +59,6 @@ interface SiteContainerProps {
 
 export const SiteContainer = ({
     spacing,
-    content, // For the page content to be used within SEO and social Sharing
-    shareURL, // For the page to be shared within social media links
-    pageTitle, // For the title of the page
     blockSpacing, // Optional - For the uniform spacing between each of the blocks that make up the page
     children // Required - For all of the content within a page
   }: SiteContainerProps ) => {
@@ -68,46 +66,11 @@ export const SiteContainer = ({
   return(
 
     <SiteWrap className="main-site">
-      <Head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta key="description" property="description" content={ content } />
-        <meta key="ogUrl" property="og:url" content={ shareURL } />
-        <meta key="ogType" property="og:type" content="website" />
-        <meta key="ogTitle" property="og:title" content={ pageTitle } />
-        <meta key="ogDescription" property="og:description" content={ content } />
-        <meta
-          key="ogImage"
-          property="og:image"
-          content="/ross/rossSocial.jpg"
-        />
-        <meta key="twitterUrl" property="twitter:url" content={ shareURL } />
-        <meta
-          key="twitterCard"
-          name="twitter:card"
-          content="/ross/rossSocial.jpg"
-        />
-        <meta key="twitterTitle" name="twitter:title" content={ pageTitle } />
-        <meta
-          key="twitterDescription"
-          name="twitter:description"
-          content={ content }
-        />
-        <meta
-          key="twitterImage"
-          name="twitter:image"
-          content="/ross/rossSocial.jpg"
-        />
-        <meta key="twitterSite" name="twitter:site" content="@FreeRossDAO" />
-        <meta
-          content="minimum-scale=1, maximum-scale=1, initial-scale=1, width=device-width"
-          name="viewport"
-        />
-        <title>{pageTitle}</title>
-      </Head>
+      <HeadTags 
+        shareURL="http://www.tylerstober.com"
+        pageTitle="Continuum Digital"
+        content="Alternative Investment Solutions at the intersection of Real Estate and Digital Assets"
+      />
 
       <SiteContent {...{ spacing, blockSpacing }}>
         { children }

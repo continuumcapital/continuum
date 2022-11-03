@@ -21,6 +21,7 @@ export const ReadingBar = () => {
   const [width, setWidth] = useState(0);
 
   // scroll function
+  // This will move the bar starting on the left and completing on the right of the container
 
   const scrollHeight = () => {
     const el = document.documentElement,
@@ -29,6 +30,8 @@ export const ReadingBar = () => {
     let percent = (ScrollTop / (ScrollHeight - el.clientHeight)) * 100;
     setWidth(percent);
   }
+
+  // For the listener of the scroll to animate the bar
 
   useEffect(() => {
     window.addEventListener("scroll", scrollHeight);
