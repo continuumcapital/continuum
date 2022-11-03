@@ -83,6 +83,8 @@ const Button = styled('div', {
         }
       },
 
+      // For the secondary button that is used after the primary for heirarchy purposes
+
       secondary: {
         height: 56,
         minWidth: 120,
@@ -91,19 +93,8 @@ const Button = styled('div', {
         color: '$black',
         borderRadius: '$pill',
 
-        '&:hover': {
-          background: '$secondaryButtonHover',
-          boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
-        }
-      },
-
-      white: {
-        height: 56,
-        minWidth: 120,
-        padding: '0 32px',
-        background: '$white',
-        color: '$majorelleBlue',
-        borderRadius: '$pill',
+        // For the hover effect of the secondary button
+        // This makes the button pure black and places a dropshadow
 
         '&:hover': {
           background: '$secondaryButtonHover',
@@ -141,6 +132,9 @@ const Button = styled('div', {
         borderRadius: '50%',
       },
 
+      // If the button is disabled
+      // This is not currently used but should be used in a flow where an action needs to be preformed before continuing
+
       disabled: {
         background: '$gray700',
         pointerEvents: 'none'
@@ -175,7 +169,7 @@ const Button = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface ButtonProps {
-  variant?: 'disabled' | 'primary' | 'secondary' | 'white' | 'outline' | 'icon'
+  variant?: 'disabled' | 'primary' | 'secondary' | 'outline' | 'icon'
   size?: 'l0'
   title?: any
   icon?: any

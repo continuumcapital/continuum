@@ -60,6 +60,7 @@ export const Form = ({
         rules={{ required: true }} 
         errorMessage="Please input your full name"
       />
+
       <Input 
         label="Email" 
         type="email" 
@@ -69,6 +70,7 @@ export const Form = ({
         rules={{ required: true }} 
         errorMessage="Please input a valid email address"
       />
+      
       <Textarea 
         name="message" 
         //@ts-ignore

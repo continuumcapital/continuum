@@ -10,6 +10,8 @@ const FormContain = styled('div', {
   maxWidth: 640,
   width: '100%',
 
+  // Remove the default browser styling of the input
+
   input: {
     appearance: 'none',
     border: 'none',
@@ -17,12 +19,16 @@ const FormContain = styled('div', {
     outline: 'none',
   },
 
+  // For the styling of the placeholder text by default
+
   '::placeholder': { color: '$white', opacity: 1 },
   ':-ms-input-placeholder': { color: '$white', opacity: 1 },
   '::-webkit-input-placeholder': { color: '$white', opacity: 1 }, 
 
+  // For the autocomplete after the user selects the auto complete
+
   'input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus': {
-    boxShadow: "0 0 0px 1000px #ffffff inset !important",
+    boxShadow: "0 0 0px 1000px $siteBg inset !important",
     borderRadius: 24
   }
 })
@@ -33,6 +39,8 @@ const FormContain = styled('div', {
 const FormHeader = styled('div', {
   position: 'relative',
   marginBottom: 32,
+
+  // Automte the spacing for the content within the container
 
   '> *:not(:last-child)': {
     marginBottom: 16
@@ -53,6 +61,8 @@ const FormContent = styled('form', {
     marginBottom: 12
   },
 
+  // For the spacing of the last input field and the submit button
+
   '> *:last-child': {
     marginTop: 20
   }
@@ -71,11 +81,11 @@ interface FormProps {
 // ---------- This is the end of declarations ---------- //
 
 export const FormWrap = ({
-    formRef,
-    title,
-    descp,
-    children,
-    onSubmit
+    formRef, // Optional - for the ref of the form
+    title, // Optional - for the title of the form
+    descp, // Optional - for the description of the form
+    children, // Required - this is where all of the inputs within the form are placed
+    onSubmit // Required - for the function of the form when the user clicks the submit button
   }: FormProps ) => {
   
   return(
