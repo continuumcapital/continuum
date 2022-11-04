@@ -6,30 +6,34 @@ import { Preloader, SiteHeader, Footer, StageBg } from '@components'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [ isLoading, setLoading ] = useState( true )
+  const [ isHidden, setHidden ] = useState( true )
 
   useEffect(() => { 
     globalStyles()
-    setTimeout(() => {
-      setLoading( false );
-    }, 2000);
+    setTimeout(() => { setHidden( false ) }, 1000);
+    setTimeout(() => { setLoading( false ) }, 2000);
   }, [])
 
   return (
-    <>
+      
+    <ThemeProvider
+      disableTransitionOnChange
+      attribute="class"
+      value={{ light: lightTheme, dark: darkTheme }}
+      enableSystem={ true }
+      defaultTheme="dark"
+    > 
       { isLoading ? <Preloader /> : null }
-      <ThemeProvider
-        disableTransitionOnChange
-        attribute="class"
-        value={{ light: lightTheme, dark: darkTheme }}
-        enableSystem={ true }
-        defaultTheme="dark"
-      > 
-        <SiteHeader />
-        <Component {...pageProps} />
-        <Footer />
-        <StageBg showBlob={ isLoading ? 'false' : 'true' } />
-      </ThemeProvider>
-    </>
+      { isHidden ? null : (
+        <>
+          <SiteHeader />
+          <Component {...pageProps} />
+          <Footer />
+          <StageBg showBlob={ isLoading ? 'false' : 'true' } />
+        </>
+      )}
+    </ThemeProvider>
+
   )
 }
 
