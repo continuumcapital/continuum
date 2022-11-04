@@ -11,6 +11,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@animxyz/react": "^0.6.7",
     "@babel/preset-typescript": "^7.18.6",
     "@choojs/findup": "^0.2.1",
     "@emailjs/browser": "^3.7.0",
@@ -45,6 +46,7 @@
     "react-relay": "^14.1.0",
     "react-scroll-fade-animation": "^0.5.3",
     "react-share": "^4.4.0",
+    "react-spinners": "^0.13.6",
     "react-three-fiber": "^6.0.13",
     "storybook-addon-css-user-preferences": "^0.0.3",
     "storybook-addon-swc": "^1.1.8",

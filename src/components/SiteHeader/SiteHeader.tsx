@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { styled } from '@theme'
 import { useScrollPosition, useScrollDirection } from '@lib'
 import { Logo, Button, ButtonTheme } from '@components'
+import "@animxyz/core"
+import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the header that sits in a fixed position on the top of the page
 // The action of the header hides as the user scrolls down and then shows when the user scrolls up on the page
@@ -106,24 +108,26 @@ export const SiteHeader = () => {
 
   return(
     
-    <Header style={{ transform: `translateY( ${ scrollDirection == 'down' ? '-100%' : '0' })` }}>
-      <Nav style={{ padding: scrollPos <= 100 ? '24px 0' : '12px 0' }}>
-        <Side><Logo linkToHome /></Side>
+    <XyzTransition xyz="fade" appearVisible>
+      <Header style={{ transform: `translateY( ${ scrollDirection == 'down' ? '-100%' : '0' })` }}>
+        <Nav style={{ padding: scrollPos <= 100 ? '24px 0' : '12px 0' }}>
+          <Side><Logo linkToHome /></Side>
 
-        {/* <Middle>
-          <List direction="horizontal">
-            <li><a href="https://medium.com/" target="_blank"><Button notBold size="l0" title="Research" /></a></li>
-            <li><Link href="#digital-assets"><Button notBold size="l0" title="Digital Assets" /></Link></li>
-            <li><Link href="#real-estate"><Button notBold size="l0" title="Real Estate" /></Link></li>
-          </List>
-        </Middle> */}
+          {/* <Middle>
+            <List direction="horizontal">
+              <li><a href="https://medium.com/" target="_blank"><Button notBold size="l0" title="Research" /></a></li>
+              <li><Link href="#digital-assets"><Button notBold size="l0" title="Digital Assets" /></Link></li>
+              <li><Link href="#real-estate"><Button notBold size="l0" title="Real Estate" /></Link></li>
+            </List>
+          </Middle> */}
 
-        <Side>
-          <Link href="#contact"><Button size="l0" variant="secondary" title="Contact Us" /></Link>
-          {/* <ButtonTheme /> */}
-        </Side>
-      </Nav>
-    </Header>
+          <Side>
+            <Link href="#contact"><Button size="l0" variant="secondary" title="Contact Us" /></Link>
+            {/* <ButtonTheme /> */}
+          </Side>
+        </Nav>
+      </Header>
+    </XyzTransition>
 
   )
 }

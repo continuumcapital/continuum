@@ -2,7 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { styled } from '@theme'
 import { Form, Logo, Text, List } from '@components'
-import ScrollAnimate from 'react-scroll-fade-animation'
+import "@animxyz/core"
+import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the global footer
 // This holds all of the universal links that a user can click through to the page
@@ -121,7 +122,7 @@ export const Footer = () => {
     <FooterWrap id="contact">
       <FooterContain>
         <section style={{ width: '100%' }}>
-          <ScrollAnimate path={'top'}>
+          <XyzTransition xyz="fade" appearVisible>
 
             <MainContent>
               <Form 
@@ -166,7 +167,7 @@ export const Footer = () => {
               </Legal> */}
             </MainContent>
           
-          </ScrollAnimate>
+          </XyzTransition>
         </section>
       </FooterContain>
     </FooterWrap>

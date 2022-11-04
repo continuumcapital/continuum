@@ -1,6 +1,8 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading, Chip } from '@components'
+import "@animxyz/core"
+import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the hero section
 // This the the section that appears on the top of the page with the site title text in the center and the Chips below
@@ -63,16 +65,18 @@ export const Hero = ({
   
   return(
 
-    <HeroContainer>
-      <HeroContent>
-        <HeroText>
-          { hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }
-          <Heading size="l7" bold="heavy" {...{ title }} />
-        </HeroText>
+    <XyzTransition xyz="fade" appearVisible>
+      <HeroContainer>
+        <HeroContent>
+          <HeroText>
+            { hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }
+            <Heading size="l7" bold="heavy" {...{ title }} />
+          </HeroText>
 
-        { chips ? ( <Chip {...{ chips }} /> ) : null }     
-      </HeroContent>
-    </HeroContainer>
+          { chips ? ( <Chip {...{ chips }} /> ) : null }     
+        </HeroContent>
+      </HeroContainer>
+    </XyzTransition>
     
   )
 }

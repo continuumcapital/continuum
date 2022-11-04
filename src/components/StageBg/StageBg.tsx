@@ -18,6 +18,12 @@ const StageContainer = styled('section', {
   paddingTop: 32,
   zIndex: 10,
 
+  canvas: {
+    transform: 'scale( 0.4 )',
+    opacity: 0,
+    transition: '$s3 cubic-bezier(.18,.79,.34,1)'
+  },
+
   // Here we remove all the interaction to the webGl background
   // This is so the user can not rotate or interact with the background
 
@@ -33,6 +39,13 @@ const StageContainer = styled('section', {
     variant: {
       lightMode: { mixBlendMode: 'none' },
       darkMode: { mixBlendMode: 'screen' }
+    },
+
+    showBlob: { 
+      true: {
+        canvas: { transform: 'scale( 1 )', opacity: 1 }
+      },
+      false: {}
     }
   }
 })
@@ -56,14 +69,18 @@ const StageContent = styled('div', {
   '@tablet': { opacity: 0.4 }
 })
 
+interface BlobProps {
+  showBlob?: 'true' | 'false'
+}
+
 // ---------- This is the end of declarations ---------- //
 
-export const StageBg = () => {
+export const StageBg = ({ showBlob }:BlobProps) => {
   const { theme, setTheme } = useTheme()
 
   return(
     
-    <StageContainer variant={ theme == 'dark' ? 'darkMode' : theme == 'light' ? 'lightMode' : undefined }>
+    <StageContainer {...{ showBlob }} variant={ theme == 'dark' ? 'darkMode' : theme == 'light' ? 'lightMode' : undefined }>
       <StageContent><AnimatedBlob /></StageContent>
     </StageContainer>
 
