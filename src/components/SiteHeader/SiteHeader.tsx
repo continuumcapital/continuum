@@ -108,7 +108,7 @@ export const SiteHeader = () => {
 
   return(
     
-    <XyzTransition xyz="fade" appearVisible>
+    <XyzTransition xyz="fade delay-10" appear>
       <Header style={{ transform: `translateY( ${ scrollDirection == 'down' ? '-100%' : '0' })` }}>
         <Nav style={{ padding: scrollPos <= 100 ? '24px 0' : '12px 0' }}>
           <Side><Logo linkToHome /></Side>
