@@ -69,8 +69,8 @@ export const Hero = ({
       <HeroContainer>
         <HeroContent>
           <HeroText>
-            { hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }
-            <Heading size="l7" bold="heavy" {...{ title }} />
+            <h1>{ hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }</h1>
+            <h2><Heading size="l7" bold="heavy" {...{ title }} /></h2>
           </HeroText>
 
           { chips ? ( <Chip {...{ chips }} /> ) : null }     

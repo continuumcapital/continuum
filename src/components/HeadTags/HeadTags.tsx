@@ -52,7 +52,7 @@ export const HeadTags = ({
           name="twitter:image"
           content="/global/social-hero.jpg"
         />
-        <meta key="twitterSite" name="twitter:site" content="@ContinuumDigital" />
+        <meta key="twitterSite" name="twitter:site" content="@ContinuumCapital" />
         <meta
           content="minimum-scale=1, maximum-scale=1, initial-scale=1, width=device-width"
           name="viewport"
