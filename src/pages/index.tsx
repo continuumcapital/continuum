@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { SiteContainer, Block, Hero, Stage, StageBg, ReadingBar } from '@components'
+import { SiteContainer, Block, Hero, Stage, Heading, ReadingBar } from '@components'
 
 const Home: NextPage = () => {
   return (
@@ -20,32 +20,48 @@ const Home: NextPage = () => {
 
       <Block alignment="center" id="digital-assets">
         <Stage background="gray" title="Digital Assets">
+          <Heading size="l4" bold="heavy" title="Delta Neutral Yield Strategies" />
           <p>
-            Since the inception of smart contracts, on-chain applications have never been more than a whitepaper. However, 
-            in recent years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing 
-            suite of working on chain applications setting the primitive foundation for a parallel financial system. 
+            At the inception of smart contracts, many on-chain applications weren't much more than a whitepaper. However, 
+            in recent years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing suite 
+            of working on-chain applications setting the primitive foundation for a parallel financial system.
           </p>
 
           <p>
-            Leveraging the security of blue chip base layer protocols, we believe the opportunity set exists to utilize this 
-            growing suite of applications to achieve delta neutral passive income solutions using both open and permissioned 
-            environments.
+            Leveraging the security of blue chip base layer protocols, Continuum utilizes this suite of DeFi applications 
+            to achieve highly liquid delta neutral passive yield solutions within both open and permissioned environments.
+          </p>
+
+          <Heading size="l4" bold="heavy" title="Managed Directional Strategies" />
+
+          <p>
+            Continuum&apos;s flagship digital asset strategy provides a highly liquid and actively managed investment 
+            solution with diversified exposure among base layer protocols, layer 2 scaling solutions, interoperability, 
+            decentralized finance, and gaming sectors of web 3. The firm&apos;s principals, who have a long track record in 
+            crypto-native investment management, aim to produce superior risk adjusted returns and outperform major indices 
+            like the CCI30 and DPI.
           </p>
         </Stage>
       </Block>
 
       <Block alignment="center" id="real-estate">
         <Stage title="Real Estate">
-          <p>
-            With vast experience in luxury multifamily development and a long track record in crypto native investment 
-            management, we believe there is a growing set of opportunities as real world assets (RWAs) begin to move 
-            on-chain.
-          </p>
+          <Heading size="l4" bold="heavy" title="Ground Up Development" />
 
           <p>
-            Whether it be traditional ground up development, proptech venture, or opportunities within virtual 
-            worlds (metaverse), Continuum has a variety of solutions that sit at the intersection between Real Estate 
-            and Digital Assets.
+            At the core of Continuum&apos;s real estate program sits luxury multifamily mid-rise development. With a new 
+            construction model that began in 2012, Continuum&apos;s luxury rental product has proven successful in both 
+            suburban and metropolitan settings as well as within established and emerging cities.
+          </p>
+
+          <Heading size="l4" bold="heavy" title="Venture & RWAs" />
+
+          <p>
+            As real world assets (RWAs) begin to move on chain, Continuum is well positioned at the intersection of the 
+            real estate and the digital asset ecosystems to capitalize on the growing set of venture and prop tech investment 
+            opportunities. Additionally, Continuum implements “proof of concepts” using their own real estate assets and 
+            project processes to incubate and refine proprietary ideas that integrate real estate with existing on-chain 
+            infrastructure.
           </p>
         </Stage>
       </Block>

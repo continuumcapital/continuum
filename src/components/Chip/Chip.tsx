@@ -16,6 +16,12 @@ const ChipWrap = styled('div', {
   fontFamily: '$sansSerif',
   marginTop: 24,
   letterSpacing: '1',
+  transition: '$s1',
+
+  '&:hover': {
+    background: '$electric',
+    color: '$black'
+  },
 
   // For the changes to the spacing and the font sizes on mobile breakpoints
 
@@ -34,7 +40,7 @@ const ChipContent = styled('div', {
   alignItems: 'center',
   justifyContent: 'space-between',
   position: 'relative',
-  width: '100%',
+  width: '100%'
 })
 
 // -------------- Typescript declarations -------------- //
