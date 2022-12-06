@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <Stage background="gray" title="Digital Assets">
           <Heading size="l4" bold="heavy" title="Delta Neutral Yield Strategies" />
           <p>
-            At the inception of smart contracts, many on-chain applications weren't much more than a whitepaper. However, 
+            At the inception of smart contracts, many on-chain applications weren&apos;t much more than a whitepaper. However, 
             in recent years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing suite 
             of working on-chain applications setting the primitive foundation for a parallel financial system.
           </p>
