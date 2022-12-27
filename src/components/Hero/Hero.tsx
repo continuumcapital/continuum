@@ -2,7 +2,8 @@ import React from 'react'
 import { styled } from '@theme'
 import { Heading, Chip } from '@components'
 import "@animxyz/core"
-import { XyzTransition } from '@animxyz/react'
+import { XyzTransitionGroup } from '@animxyz/react'
+import { CharacterReveal } from "react-text-reveal"
 
 // For the master container of the hero section
 // This the the section that appears on the top of the page with the site title text in the center and the Chips below
@@ -60,23 +61,40 @@ interface HeroProps {
 export const Hero = ({ 
     hairline, // Optional - For the hairline on top of the main text - currently the name of Continuum Capital
     title, // Required - For the main title of the hero section
-    chips // Optional - For the chips to callout key parts of the page below
+    chips, // Optional - For the chips to callout key parts of the page below
   }: HeroProps ) => {
   
   return(
 
-    <XyzTransition xyz="fade" appearVisible>
-      <HeroContainer>
-        <HeroContent>
-          <HeroText>
-            <h1>{ hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }</h1>
-            <h2><Heading size="l7" bold="heavy" {...{ title }} /></h2>
-          </HeroText>
 
-          { chips ? ( <Chip {...{ chips }} /> ) : null }     
-        </HeroContent>
-      </HeroContainer>
-    </XyzTransition>
+    <HeroContainer>
+      <HeroContent>
+        <HeroText>
+          <h1>{ hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }</h1>
+          <h2>
+          <XyzTransitionGroup
+            appear
+            delay={ 10000 }
+            xyz="fade small out-down out-rotate-right appear-stagger"
+          >
+            {/* {[...Array( numElements )].map((_, index) => (
+              <div key={index}></div>
+            ))} */}
+            <span>H</span>
+            <span>e</span>
+            <span>l</span>
+            <span>l</span>
+            <span>o</span>
+          </XyzTransitionGroup>
+
+            <Heading size="l7" bold="heavy" {...{ title }} />
+          </h2>
+        </HeroText>
+
+        { chips ? ( <Chip {...{ chips }} /> ) : null }     
+      </HeroContent>
+    </HeroContainer>
+
     
   )
 }

@@ -11209,6 +11209,14 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
+react-text-reveal@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-text-reveal/-/react-text-reveal-1.1.2.tgz#d8762ee4642690264f144aeb1b5194de0e87513e"
+  integrity sha512-yX06crsKsN83He1R6FkUbs01PkXJCf0Uocu2CmC4dzJuXHhFKw/j11jYox0iOnGYOPCdqRYROonfW/YetGmoqQ==
+  dependencies:
+    react "^16.9.0"
+    webpack "^4.39.1"
+
 react-three-fiber@^6.0.13:
   version "6.0.13"
   resolved "https://registry.npmjs.org/react-three-fiber/-/react-three-fiber-6.0.13.tgz"
@@ -11239,6 +11247,15 @@ react@18.2.0:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
+
+react@^16.9.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -12120,6 +12137,11 @@ stackframe@^1.3.4:
   version "1.3.4"
   resolved "https://registry.npmjs.org/stackframe/-/stackframe-1.3.4.tgz"
   integrity sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==
+
+stagger-text-reveal-animation@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/stagger-text-reveal-animation/-/stagger-text-reveal-animation-1.0.0.tgz#eba6a5a2e8195630077c7d1fe679b20392b26bc3"
+  integrity sha512-Fq996jDyIAdo+AuZM0nXg1irG1VNy7Jtyq5tfV7es0Zzf5SZwJLS9XJlyk+dWPC/wKsrb+dC5Xlb2o0cIsgHBw==
 
 state-toggle@^1.0.0:
   version "1.0.3"
@@ -13300,7 +13322,7 @@ webpack-virtual-modules@^0.4.1:
   resolved "https://registry.npmjs.org/webpack-virtual-modules/-/webpack-virtual-modules-0.4.4.tgz"
   integrity sha512-h9atBP/bsZohWpHnr+2sic8Iecb60GxftXsWNLLLSqewgIsGzByd2gcIID4nXcG+3tNe4GQG3dLcff3kXupdRA==
 
-webpack@4:
+webpack@4, webpack@^4.39.1:
   version "4.46.0"
   resolved "https://registry.npmjs.org/webpack/-/webpack-4.46.0.tgz"
   integrity sha512-6jJuJjg8znb/xRItk7bkT0+Q7AHCYjjFnvKIWQPkNIOyRqoCGvkOs0ipeQzrqz4l5FtN5ZI/ukEHroeX/o1/5Q==

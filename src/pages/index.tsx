@@ -29,7 +29,7 @@ const Home: NextPage = () => {
 
           <p>
             Leveraging the security of blue chip base layer protocols, Continuum utilizes this suite of DeFi applications 
-            to achieve highly liquid delta neutral passive yield solutions within both open and permissioned environments.
+            to achieve liquid delta neutral passive yield solutions within both open and permissioned environments.
           </p>
 
           <Heading size="l4" bold="heavy" title="Managed Directional Strategies" />
