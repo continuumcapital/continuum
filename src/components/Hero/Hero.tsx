@@ -3,7 +3,6 @@ import { styled } from '@theme'
 import { Heading, Chip } from '@components'
 import "@animxyz/core"
 import { XyzTransitionGroup } from '@animxyz/react'
-import { CharacterReveal } from "react-text-reveal"
 
 // For the master container of the hero section
 // This the the section that appears on the top of the page with the site title text in the center and the Chips below
