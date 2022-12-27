@@ -71,20 +71,19 @@ export const Hero = ({
         <HeroText>
           <h1>{ hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }</h1>
           <h2>
-          <XyzTransitionGroup
+          {/* <XyzTransitionGroup
             appear
             delay={ 10000 }
             xyz="fade small out-down out-rotate-right appear-stagger"
           >
-            {/* {[...Array( numElements )].map((_, index) => (
-              <div key={index}></div>
-            ))} */}
+
             <span>H</span>
             <span>e</span>
             <span>l</span>
             <span>l</span>
             <span>o</span>
-          </XyzTransitionGroup>
+          </XyzTransitionGroup> 
+          */}
 
             <Heading size="l7" bold="heavy" {...{ title }} />
           </h2>
