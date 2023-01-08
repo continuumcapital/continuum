@@ -89,7 +89,7 @@ export const Hero = ({
   return(
 
     <HeroContainer>
-      <XyzTransition xyz="fade down delay-15 duration-8" appear>
+      <XyzTransition xyz="fade down delay-15 duration-15" appear>
         <HeroContent>
           <HeroText>
             <h1>{ hairline ? ( <Heading font="code" size="l3" bold="heavy" color="blue" title={ hairline } /> ) : null }</h1>
