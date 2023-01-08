@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       value={{ light: lightTheme, dark: darkTheme }}
       enableSystem={ true }
       defaultTheme="dark"
-      // Testing
     > 
       { isLoading ? <Preloader /> : null }
       { isHidden ? null : (

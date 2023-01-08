@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
       <Block alignment="center" id="digital-assets">
         <Stage background="gray" title="Digital Assets">
-          <Heading size="l4" bold="heavy" title="Delta Neutral Yield Strategies" />
+          <Heading size="l6" bold="heavy" title="Delta Neutral Yield Strategies" />
           <p>
             At the inception of smart contracts, many on-chain applications weren&apos;t much more than a whitepaper. However, 
             in recent years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing suite 
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
             to achieve liquid delta neutral passive yield solutions within both open and permissioned environments.
           </p>
 
-          <Heading size="l4" bold="heavy" title="Managed Directional Strategies" />
+          <Heading size="l6" bold="heavy" title="Managed Directional Strategies" />
 
           <p>
             Continuum&apos;s flagship digital asset strategy provides a highly liquid and actively managed investment 
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
 
       <Block alignment="center" id="real-estate">
         <Stage title="Real Estate">
-          <Heading size="l4" bold="heavy" title="Ground Up Development" />
+          <Heading size="l6" bold="heavy" title="Ground Up Development" />
 
           <p>
             At the core of Continuum&apos;s real estate program sits luxury multifamily mid-rise development. With a new 
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
             suburban and metropolitan settings as well as within established and emerging cities.
           </p>
 
-          <Heading size="l4" bold="heavy" title="Venture & RWAs" />
+          <Heading size="l6" bold="heavy" title="Venture & RWAs" />
 
           <p>
             As real world assets (RWAs) begin to move on chain, Continuum is well positioned at the intersection of the 

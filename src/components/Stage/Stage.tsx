@@ -69,7 +69,7 @@ const StageTitle = styled('div', {
   alignItems: 'center',
   alignSelf: 'flex-start',
   position: 'relative',
-  margin: '4px 50px 0 0',
+  margin: '9px 50px 0 0',
   paddingRight: 70,
   whiteSpace: 'nowrap',
 

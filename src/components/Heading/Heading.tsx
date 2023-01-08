@@ -47,9 +47,10 @@ const Heavy = styled('strong', { fontFamily: '$sansSerifBlack' })
 interface HeadingProps {
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5' | 'l6' | 'l7'
   color?: 'white' | 'blue'
-  title: any
+  title?: string | number
   bold?: 'bold' | 'heavy'
   font?: 'code'
+  children?: React.ReactNode
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -59,7 +60,8 @@ export const Heading = ({
     font, // Optional - for the option to make the font code from the default font
     color, // Optional - To change the color of the text
     title, // Required - For the title of the heading
-    bold // Opitonal - the heading is regular by default but can be changed to bold or heavy weights
+    bold, // Opitonal - the heading is regular by default but can be changed to bold or heavy weights
+    children
   }:HeadingProps) => {
   
   return(
@@ -67,14 +69,15 @@ export const Heading = ({
     <HeadingWrap {...{ size, color, font }}>
       { 
         font == 'code' ? ( <span>{ title }</span> ) 
-        : (
+        : title ? (
           <>
             { bold == 'heavy' ? ( <Heavy>{ title }</Heavy> ) 
             : bold == 'bold' ? ( <Bold>{ title }</Bold> ) 
             : ( <>{ title }</> )
             }
           </>
-        )
+        ) 
+        : ( <Bold>{ children }</Bold> )
       }
     </HeadingWrap>
     

@@ -12,8 +12,12 @@ const TextWrap = styled('div', {
 
   // For the spacing automation of text that lives within the container
 
-  '> *:not(:last-child)': {
-    margin: '0 auto 32px !important'
+  '> p:not(:last-child)': {
+    margin: '0 auto 32px'
+  },
+
+  '> *:not( p )': {
+    marginBottom: 20
   },
 
   // For the automation of the links within the text component
