@@ -8,6 +8,7 @@ export const darkThemeColors = {
     // Button colors
 
     buttonDefault: '#000',
+    brandPrimary: '#B09A93',
     primaryButton: '$turquoise',
     secondaryButtonHover: '$electric',
 

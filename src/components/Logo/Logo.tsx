@@ -67,7 +67,7 @@ export const Logo = ({
         <Link href="/">
           <a>
             <LogoWrap {...{ size }}>
-              <LogoMark src="/global/cd-logo.svg" alt="Continuum Capital logo" />
+              <LogoMark src="/global/cd-logo.png" alt="Continuum Capital logo" />
               
               { noWordMark ? null : ( 
                 <LogoWordMark>
@@ -82,12 +82,12 @@ export const Logo = ({
       ) : (
 
         <LogoWrap {...{ size }}>
-          <LogoMark src="/global/cd-logo.svg" alt="Continuum Digital logo" />
+          <LogoMark src="/global/cd-logo.png" alt="Continuum Digital logo" />
 
           { noWordMark ? null : ( 
             <LogoWordMark>
-              <Heading title="Continuum" bold="bold" />
-              <Heading title="Capital" />
+              <Heading color="primary" title="Continuum" bold="bold" />
+              <Heading color="primary" title="Capital" />
             </LogoWordMark> 
           )}
         </LogoWrap>

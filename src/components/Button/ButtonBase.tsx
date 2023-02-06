@@ -70,7 +70,7 @@ const Button = styled('div', {
         height: 56,
         minWidth: 120,
         padding: '0 32px',
-        background: '$primaryButton',
+        background: '$brandPrimary',
         color: '$black',
         borderRadius: '$pill',
       
@@ -78,7 +78,7 @@ const Button = styled('div', {
         // This makes the button pure black and places a dropshadow
 
         '&:hover': {
-          background: '$primaryButtonHover',
+          background: '$black',
           boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
         }
       },
@@ -89,7 +89,7 @@ const Button = styled('div', {
         height: 56,
         minWidth: 120,
         padding: '0 32px',
-        background: '#a9f7f1',
+        background: '$brandPrimary',
         color: '$black',
         borderRadius: '$pill',
 
@@ -97,7 +97,8 @@ const Button = styled('div', {
         // This makes the button pure black and places a dropshadow
 
         '&:hover': {
-          background: '$secondaryButtonHover',
+          background: '#231F20',
+          color: '$white',
           boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
         }
       },
@@ -109,14 +110,16 @@ const Button = styled('div', {
         height: 56,
         minWidth: 120,
         padding: '0 32px',
-        border: '1px solid $iris',
+        border: '2px solid $brandPrimary',
         borderRadius: '$pill',
+        color: '$brandPrimary',
 
         // For the hover effect of the primary button
         // This makes the button contain a dropshadow
 
         '&:hover': {
-          background: '$white',
+          background: '$brandPrimary',
+          color: '$black',
           boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
         }
       },

@@ -122,7 +122,7 @@ export const SiteHeader = () => {
           </Middle> */}
 
           <Side>
-            <Link href="#contact"><Button size="l0" variant="secondary" title="Contact Us" /></Link>
+            <Link href="#contact"><Button size="l0" variant="outline" title="Contact Us" /></Link>
             {/* <ButtonTheme /> */}
           </Side>
         </Nav>

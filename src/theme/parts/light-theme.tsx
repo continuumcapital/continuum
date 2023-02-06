@@ -6,6 +6,7 @@ export const lightThemeColors = {
   primaryButton: '$turquiose',
   buttonDefault: '$gray200',
   border: '#5e5e5e',
+  brandPrimary: '#B09A93',
   
   // Border colors
 
