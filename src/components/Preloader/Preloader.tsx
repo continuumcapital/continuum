@@ -18,7 +18,7 @@ const LoadingWrap = styled('div', {
 export const Preloader = () => {
   return(
     
-    <LoadingWrap><PuffLoader color="#a9f7f1" /></LoadingWrap>
+    <LoadingWrap><PuffLoader color="#B09A93" /></LoadingWrap>
 
   )
 }

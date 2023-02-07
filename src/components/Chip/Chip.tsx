@@ -11,15 +11,16 @@ const ChipWrap = styled('div', {
   position: 'relative',
   width: '100%',
   padding: '20px 32px',
-  background: '#334858',
   borderRadius: '$pill',
+  border: '2px solid $brandPrimary',
+  color: '$brandPrimary',
   fontFamily: '$sansSerif',
   marginTop: 24,
   letterSpacing: '1',
   transition: '$s1',
 
   '&:hover': {
-    background: '$electric',
+    background: '$brandPrimary',
     color: '$black'
   },
 
