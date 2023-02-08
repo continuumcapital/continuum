@@ -56,7 +56,7 @@ const Nav = styled('nav', {
   justifyContent: 'space-between',
   alignItems: 'center',
   position: 'relative',
-  width: '92%',
+  width: '95%',
   margin: '0 auto',
   padding: '24px 0',
   transition: '$s1',

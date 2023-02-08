@@ -29,7 +29,7 @@ const LogoWrap = styled('figure', {
 
 const LogoMark = styled('img', {
   position: 'relative',
-  width: 50,
+  width: 80,
 })
 
 // For the container of the word mark - FreeRossDAO

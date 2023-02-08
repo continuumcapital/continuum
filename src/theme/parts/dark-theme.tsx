@@ -1,5 +1,5 @@
 export const darkThemeColors = {
-    siteBg: '$black',
+    siteBg: '#1b1b1b',
     contentColor: '$white',
     blue: '$pictonBlue',
     grayBg: '$moon',
