@@ -29,7 +29,7 @@ const Sphere = () => {
     amplitude: { start: 4, end: 4 },
     density: { start: 1, end: 1 },
     strength: { start: 0, end: 0.6 },
-    opacity: { start: .1, end: .20 },
+    opacity: { start: .1, end: .33 },
     rotation: { start: 0.005, end: 0 }
   }
 
