@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useForm, useController, UseControllerProps } from "react-hook-form"
-import { FormWrap } from './Parts'
+import { FormWrap, SubmitSuccess } from './Parts'
 import { Input, Textarea } from '@components'
 import emailjs from '@emailjs/browser'
 
@@ -25,6 +25,7 @@ export const Form = ({
   }: FormProps ) => {
 
   const form = useRef<HTMLFormElement>(null);
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
   const { handleSubmit, control } = useForm<FormValues>({
     defaultValues: {
@@ -36,12 +37,15 @@ export const Form = ({
   })
   
   const onSubmit = ( data:FormValues ) => {
+    setSubmitStatus("Submitting...")
     //@ts-ignore
     emailjs.sendForm('contact_form', 'template_continuum', form.current, 'JIo1rNfaUflvW0z-3')
     .then((result) => {
         console.log(result.text)
+        setSubmitStatus("Thanks for contacting us! We'll get back to you as soon as possible.")
     }, (error) => {
         console.log(error.text);
+        setSubmitStatus("Submission failed")
     });
   }
   
@@ -78,6 +82,9 @@ export const Form = ({
         rules={{ required: true }} 
         errorMessage="Please write a short message"
       />
+
+      { submitStatus && <SubmitSuccess status={ submitStatus } /> }
+
     </FormWrap> 
 
   )

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { SiteContainer, Block, Hero, Stage, Heading, ReadingBar } from '@components'
+import { SiteContainer, Block, Hero, Stage, Heading, ReadingBar, Drawer } from '@components'
 
 const Home: NextPage = () => {
   return (
@@ -65,6 +65,8 @@ const Home: NextPage = () => {
           </p>
         </Stage>
       </Block>
+
+      <Drawer />
     </SiteContainer>
 
   )

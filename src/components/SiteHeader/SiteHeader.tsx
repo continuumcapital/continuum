@@ -15,7 +15,7 @@ const Header = styled('header', {
   left: 0,
   width: '100vw',
   transition: '$s1',
-  zIndex: 9010,
+  zIndex: 9000,
 
   // For the frosted glass behind the header
   // By default no one will notice the effect, but will see whne the user starts to hover
