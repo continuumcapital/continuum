@@ -28,6 +28,10 @@ const ListWrap = styled('div', {
       center: { '> ul': { justifyContent: 'center' }}
     },
 
+    fontSize: {
+      l1: { fontSize: '$s1' }
+    },
+
     // Supporting the horizontal layout of lists
     // This lays out the li in a horizontal orientation, instead of vertical by default
 
@@ -62,7 +66,6 @@ const ListWrap = styled('div', {
 
 export interface ListProps {
   listItems?: {
-    id: number
     title: string
   }[]
   alignment?: 'center'
@@ -70,6 +73,7 @@ export interface ListProps {
   listStyle?: 'numbered' | 'bulleted' | 'alphabetical'
   spacing?: 'l0' | 'l1' | 'l1r' | 'l2' | 'l2r' | 'l3'
   children?: React.ReactNode
+  fontSize?: 'l1'
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -80,12 +84,13 @@ export const List = ({
     direction, // Supporting the horizontal layout of a list 
     listStyle, // Supporting bulleted, numbered, or alphabetical
     spacing, // For the spacing of the lis within the list
-    children // For the children content within the list container
+    children, // For the children content within the list container
+    fontSize
   }: ListProps ) => {
   
   return(
 
-    <ListWrap {...{ direction, listStyle, spacing, alignment }}>
+    <ListWrap {...{ direction, listStyle, spacing, alignment, fontSize }}>
       { listItems ? (
 
         <>

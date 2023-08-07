@@ -5,6 +5,11 @@ export const darkThemeColors = {
     grayBg: '$moon',
     secondaryBlue: '$majorelleBlue',
 
+    // Background colors
+
+    bgPrimary: '#1b1b1b',
+    bgSecondary: '#323232',
+
     // Button colors
 
     buttonDefault: '#000',

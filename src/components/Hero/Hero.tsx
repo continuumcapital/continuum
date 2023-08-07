@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading, Chip } from '@components'
+import { Heading, Chip, HeroOffer } from '@components'
 import "@animxyz/core"
 import { XyzTransition } from '@animxyz/react'
 
@@ -25,7 +25,9 @@ const HeroContent = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   position: 'relative',
-  width: '100%'
+  width: '100%',
+  paddingTop: 50,
+  '> *:not(:last-child)': { marginBottom: 32 }
 })
 
 // For the text that is in the center of the container
@@ -33,36 +35,16 @@ const HeroContent = styled('div', {
 
 const HeroText = styled('div', {
   position: 'relative',
-  maxWidth: 1200,
+  maxWidth: 900,
   width: '90%',
   margin: '0 auto',
   textAlign:'center',
-
-  // To automate the spacing of the text blocks within the container
-
-  '> *:not(:last-child)': {
-    marginBottom: 16
-  }
+  '> *:not(:last-child)': { marginBottom: 8 }
 })
 
-const StaggerWrap = styled('span', {
-
-  '.stagger-animation-text': {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 0,
-    padding: 0,
-    /* overflow: hidden; */
-  },
-
-  '.stagger-change-top, .stagger-change-bottom': {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: 0,
-      padding: 0
-  }
+const ShowOnTablet = styled('div', {
+  display: 'none',
+  '@desktop': { display: 'block' }
 })
 
 // -------------- Typescript declarations -------------- //
@@ -70,6 +52,11 @@ const StaggerWrap = styled('span', {
 interface HeroProps {
   hairline?: string
   title: string
+  offers: {
+    title: string
+    descp: string
+    href: string
+  }[]
   chips?: {
     title: string
     href?: string
@@ -81,6 +68,7 @@ interface HeroProps {
 export const Hero = ({ 
     hairline, // Optional - For the hairline on top of the main text - currently the name of Continuum Capital
     title, // Required - For the main title of the hero section
+    offers,
     chips // Optional - For the chips to callout key parts of the page below
   }: HeroProps ) => {
 
@@ -92,11 +80,12 @@ export const Hero = ({
       <XyzTransition xyz="fade down delay-15 duration-15" appear>
         <HeroContent>
           <HeroText>
-            <h1>{ hairline ? ( <Heading font="code" size="l3" bold="heavy" title={ hairline } /> ) : null }</h1>
-            <h2><Heading size="l7" bold="heavy" {...{ title }} /></h2>
+            <h1>{ hairline ? ( <Heading allCaps size="l1" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /> ) : null }</h1>
+            <h2><Heading size="l6" bold="heavy" {...{ title }} /></h2>
           </HeroText>
 
-          { chips ? ( <Chip {...{ chips }} /> ) : null }     
+          <HeroOffer {...{ offers }} />   
+          <ShowOnTablet>{ chips && ( <Chip {...{ chips }} /> ) }</ShowOnTablet>
         </HeroContent>
       </XyzTransition>
     </HeroContainer>

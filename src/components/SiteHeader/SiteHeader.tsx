@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { styled } from '@theme'
 import { useScrollPosition, useScrollDirection } from '@lib'
-import { Logo, Button, ButtonTheme } from '@components'
+import { Logo, Button, ButtonContainer } from '@components'
 import "@animxyz/core"
 import { XyzTransition } from '@animxyz/react'
 
@@ -84,22 +84,6 @@ const Side = styled('div', {
   '*:not(:last-child)': { marginRight: 12 }
 })
 
-// For the container of the links in the center of the container
-// This shows all of the links within the center of the screen and allows even distrubution from the sides
-
-const Middle = styled('div', {
-  display: 'flex',
-  justifyContent: 'center',
-  position: 'relative',
-  maxWidth: 930,
-  width: '100%',
-
-  // Remove the center on mobile breakpoints
-  // As more links are built out, these will be contained within a hamburger menu
-
-  '@tablet': { display: 'none' }
-})
-
 // ---------- This is the end of declarations ---------- //
 
 export const SiteHeader = () => {
@@ -110,20 +94,22 @@ export const SiteHeader = () => {
     
     <XyzTransition xyz="fade delay-10" appear>
       <Header style={{ transform: `translateY( ${ scrollDirection == 'down' ? '-100%' : '0' })` }}>
-        <Nav style={{ padding: scrollPos <= 100 ? '24px 0' : '12px 0' }}>
+        <Nav style={{ padding: typeof scrollPos === 'number' && scrollPos <= 100 ? '24px 0' : '12px 0' }}>
           <Side><Logo linkToHome /></Side>
 
-          {/* <Middle>
-            <List direction="horizontal">
-              <li><a href="https://medium.com/" target="_blank"><Button notBold size="l0" title="Research" /></a></li>
-              <li><Link href="#digital-assets"><Button notBold size="l0" title="Digital Assets" /></Link></li>
-              <li><Link href="#real-estate"><Button notBold size="l0" title="Real Estate" /></Link></li>
-            </List>
-          </Middle> */}
+          {/* <ButtonContainer 
+            spacing="l0"
+            buttons={[
+              { pageLink: '/', title: 'About' },
+              { pageLink: '/career-details',  title: 'Careers' },
+              { pageLink: '#contact', title: 'Contact Us' }
+            ]}
+          /> */}
 
           <Side>
-            <Link href="#contact"><Button size="l0" variant="outline" title="Contact Us" /></Link>
-            {/* <ButtonTheme /> */}
+            {/* <Link href="/career-details"><Button size="l0" title="About" /></Link>
+            <Link href="/career-details"><Button size="l0" title="About" /></Link> */}
+            <Link href="#contact"><Button variant="outline" size="l0" title="Contact Us" /></Link>
           </Side>
         </Nav>
       </Header>

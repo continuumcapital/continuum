@@ -3,6 +3,12 @@ import Link from 'next/link'
 import { styled } from '@theme'
 import { List, Heading } from '@components'
 
+const Chips = styled('div', {
+  position: 'relative',
+  width: '90%',
+  margin: '0 auto'
+})
+
 // For the master container of the leaderboard chip
 // This contains the rank of the person on the left, with their name and image to the right,
 // And the dontaion amount to the far right. This card is currently a static component
@@ -10,14 +16,15 @@ import { List, Heading } from '@components'
 const ChipWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  padding: '20px 32px',
-  borderRadius: '$pill',
-  border: '2px solid $brandPrimary',
-  color: '$brandPrimary',
+  padding: '16px 20px',
+  borderRadius: '$r2',
+  border: '1px solid $brandPrimary',
+  color: '$white',
+  background: 'rgba( 176, 154, 147, 0.2 )',
   fontFamily: '$sansSerif',
-  marginTop: 24,
   letterSpacing: '1',
   transition: '$s1',
+  textAlign: 'center',
 
   '&:hover': {
     background: '$brandPrimary',
@@ -27,7 +34,8 @@ const ChipWrap = styled('div', {
   // For the changes to the spacing and the font sizes on mobile breakpoints
 
   '@mobile': {
-    padding: '16px 20px',
+    padding: '12px 20px',
+    maxWidth: 180,
     '*': { fontSize: '1rem' }
   }
 })
@@ -63,7 +71,7 @@ export const Chip = ({
   
   return(
 
-    <>
+    <Chips>
       { chips ? (
 
         <List direction="horizontal" spacing="l1r" alignment="center">
@@ -74,13 +82,13 @@ export const Chip = ({
                 <Link href={ chip.href }>
                   <a>
                     <ChipWrap>
-                      <ChipContent><Heading bold="bold" title={ chip.title } /></ChipContent>
+                      <ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent>
                     </ChipWrap>
                   </a>
                 </Link>
 
               ) : (
-                <ChipWrap><ChipContent><Heading bold="bold" title={ chip.title } /></ChipContent></ChipWrap>
+                <ChipWrap><ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent></ChipWrap>
               )}
             </li>
           ))}
@@ -93,7 +101,7 @@ export const Chip = ({
         </ChipWrap>
 
       )}
-    </>
+    </Chips>
     
   )
 }

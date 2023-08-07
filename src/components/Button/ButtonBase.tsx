@@ -78,7 +78,7 @@ const Button = styled('div', {
         // This makes the button pure black and places a dropshadow
 
         '&:hover': {
-          background: '$black',
+          background: '$white',
           boxShadow: '0 2px 10px rgba( 0, 0, 0, 0.4 )'
         }
       },

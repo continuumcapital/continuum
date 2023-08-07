@@ -34,6 +34,19 @@ const HeadingWrap = styled('div', {
 
     font: {
       code: { span: { fontFamily: '$code' }}
+    },
+
+    align: {
+      center: { textAlign: 'center' },
+      right: { textAlign: 'right' }
+    },
+
+    allCaps: {
+      true: { textTransform: 'uppercase' }
+    },
+
+    letterSpacing: {
+      'l0': { letterSpacing: 5 }
     }
   }
 })
@@ -51,7 +64,10 @@ interface HeadingProps {
   title?: string | number
   bold?: 'bold' | 'heavy'
   font?: 'code'
-  children?: React.ReactNode
+  children?: React.ReactNode 
+  align?: 'center' | 'right'
+  allCaps?: boolean
+  letterSpacing?: 'l0'
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -62,12 +78,15 @@ export const Heading = ({
     color, // Optional - To change the color of the text
     title, // Required - For the title of the heading
     bold, // Opitonal - the heading is regular by default but can be changed to bold or heavy weights
-    children
+    children,
+    align,
+    allCaps,
+    letterSpacing
   }:HeadingProps) => {
   
   return(
     
-    <HeadingWrap {...{ size, color, font }}>
+    <HeadingWrap {...{ size, color, font, align, allCaps, letterSpacing }}>
       { 
         font == 'code' ? ( <span>{ title }</span> ) 
         : title ? (

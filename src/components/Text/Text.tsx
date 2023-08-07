@@ -42,7 +42,7 @@ const TextWrap = styled('div', {
     // By default the text is 16px and these change the text sizes to be larger
 
     fontSize: {
-      l0: {},
+      l0: { fontSize: '$s0' },
       l1: { 
         fontSize: '$s3', 
         lineHeight: 1.5,
@@ -62,6 +62,10 @@ const TextWrap = styled('div', {
 
     width: {
       small: { maxWidth: 600 }
+    },
+
+    textAlign: {
+      center: { textAlign: 'center' }
     }
   }
 })
@@ -73,6 +77,7 @@ interface TextProps {
   width?: 'small'
   alignment?: 'center'
   children: React.ReactNode
+  textAlign?: 'center'
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -81,12 +86,13 @@ export const Text = ({
     fontSize, // Supporting the changes in the default font size for the text
     children, // Supporting the text, quotes, bullets, ect within the text component
     width, // Supporting the width of the text within the container
-    alignment // Supporting the center alignment of the text within the container
+    alignment, // Supporting the center alignment of the text within the container
+    textAlign
   }: TextProps ) => {
   
   return(
 
-    <TextWrap {...{ fontSize, width, alignment }}>
+    <TextWrap {...{ fontSize, width, alignment, textAlign }}>
       { children }
     </TextWrap>
     
