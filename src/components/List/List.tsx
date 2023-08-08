@@ -6,6 +6,7 @@ import { styled } from '@theme'
 
 const ListWrap = styled('div', {
   position: 'relative',
+  width: '100%',
   lineHeight: 1.3,
 
   // For the container of the list itself, with the li being held within the container
@@ -57,7 +58,12 @@ const ListWrap = styled('div', {
       l1r: { 'li:not(:last-child)': { marginRight: 12 }},
       l2: { li: { padding: '12px 0' }},
       l2r: { 'li:not(:last-child)': { marginRight: 20 }},
-      l3: { li: { padding: '20px 0' } }
+      l3: { li: { padding: '20px 0' } },
+      l4: { li: { padding: '32px 0' } }
+    },
+
+    withDividers: {
+      true: { 'ul > li:not(:last-child)': { borderBottom: '1px solid $border' } }
     }
   }
 })
@@ -71,9 +77,10 @@ export interface ListProps {
   alignment?: 'center'
   direction?: 'vertical' | 'horizontal'
   listStyle?: 'numbered' | 'bulleted' | 'alphabetical'
-  spacing?: 'l0' | 'l1' | 'l1r' | 'l2' | 'l2r' | 'l3'
+  spacing?: 'l0' | 'l1' | 'l1r' | 'l2' | 'l2r' | 'l3' | 'l4'
   children?: React.ReactNode
   fontSize?: 'l1'
+  withDividers?: boolean
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -85,12 +92,13 @@ export const List = ({
     listStyle, // Supporting bulleted, numbered, or alphabetical
     spacing, // For the spacing of the lis within the list
     children, // For the children content within the list container
-    fontSize
+    fontSize,
+    withDividers
   }: ListProps ) => {
   
   return(
 
-    <ListWrap {...{ direction, listStyle, spacing, alignment, fontSize }}>
+    <ListWrap {...{ direction, listStyle, spacing, alignment, fontSize, withDividers }}>
       { listItems ? (
 
         <>

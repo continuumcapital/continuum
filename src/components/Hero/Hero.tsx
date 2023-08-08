@@ -52,7 +52,11 @@ const ShowOnTablet = styled('div', {
 interface HeroProps {
   hairline?: string
   title: string
-  offers: {
+  calloutTitle?: string
+  calloutButtonTitle?: string
+  calloutDescp?: string
+  calloutHref?: string
+  offers?: {
     title: string
     descp: string
     href: string
@@ -68,7 +72,11 @@ interface HeroProps {
 export const Hero = ({ 
     hairline, // Optional - For the hairline on top of the main text - currently the name of Continuum Capital
     title, // Required - For the main title of the hero section
+    calloutTitle,
+    calloutButtonTitle,
     offers,
+    calloutDescp,
+    calloutHref,
     chips // Optional - For the chips to callout key parts of the page below
   }: HeroProps ) => {
 
@@ -80,11 +88,12 @@ export const Hero = ({
       <XyzTransition xyz="fade down delay-15 duration-15" appear>
         <HeroContent>
           <HeroText>
-            <h1>{ hairline ? ( <Heading allCaps size="l1" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /> ) : null }</h1>
+            { hairline && ( <h1><Heading allCaps size="l1" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /></h1> )}
             <h2><Heading size="l6" bold="heavy" {...{ title }} /></h2>
           </HeroText>
 
-          <HeroOffer {...{ offers }} />   
+          { calloutTitle && <HeroOffer title={ calloutTitle } descp={ calloutDescp } href={ calloutHref } {...{ calloutButtonTitle }} /> } 
+          { offers && <HeroOffer hideOnTablet {...{ offers }} /> }   
           <ShowOnTablet>{ chips && ( <Chip {...{ chips }} /> ) }</ShowOnTablet>
         </HeroContent>
       </XyzTransition>
