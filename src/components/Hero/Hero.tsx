@@ -88,7 +88,7 @@ export const Hero = ({
       <XyzTransition xyz="fade down delay-15 duration-15" appear>
         <HeroContent>
           <HeroText>
-            { hairline && ( <h1><Heading allCaps size="l1" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /></h1> )}
+            { hairline && ( <h1><Heading allCaps size="l2" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /></h1> )}
             <h2><Heading size="l6" bold="heavy" {...{ title }} /></h2>
           </HeroText>
 

@@ -50,12 +50,13 @@ const Home: NextPage = () => {
 
           <Heading size="l6" bold="heavy" title="Non-Directional Strategies" />
           <p>
-            At the inception of smart contracts, many on-chain applications were never more than a whitepaper. However, 
-            in recent years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing suite 
-            of working on-chain applications setting the primitive foundation for a parallel financial system. Leveraging the 
-            security of blue chip base layer protocols, Continuum utilizes this suite of DeFi applications to achieve liquid 
-            passive yield within both open and permissioned environments. This strategy also implements a variety of delta
-            neutral volatility and premium generating. 
+            At the inception of smart contracts, many on-chain applications were never more than a whitepaper. However, in recent 
+            years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing suite of working on-chain 
+            applications setting the primitive foundation for a parallel financial system. Leveraging the security of blue chip base 
+            layer protocols, Continuum utilizes this suite of DeFi applications to achieve liquid passive yield within both open and 
+            permissioned environments. This strategy also implements a variety of delta neutral volatility and premium generating 
+            options strategies with the ultimate goal of providing diversified exposure to those looking for a solution without a 
+            directional bias. 
           </p>
         </Stage>
       </Block>
