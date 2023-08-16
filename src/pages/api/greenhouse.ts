@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const getJobs = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const response = await axios.get('https://YOUR_GREENHOUSE_API_ENDPOINT', {
+    const response = await axios.get('https://boards-api.greenhouse.io/v1/boards/continuumcapital/jobs?content=true', {
       headers: {
         'Authorization': `Bearer ${ process.env.NEXT_PUBLIC_GREENHOUSE }`
       }
