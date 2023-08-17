@@ -57,20 +57,17 @@ const DescpBlockHeading = styled('div', {
 
 
 interface DetailProps {
-
+  jobDescp?: string
 }
 
-export const JobDetails = ({}:DetailProps) => {
+export const JobDetails = ({ jobDescp }:DetailProps) => {
   return(
 
     <DetailsWrap>
       <DetailsContent>
         <Text fontSize="l1">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet nulla ac lorem lobortis bibendum faucibus aliquet urna. 
-            Aenean tincidunt congue purus, vel auctor orci placerat sit amet. Quisque dignissim posuere augue sit amet tincidunt. Nulla 
-            facilisi. Curabitur dictum tellus ac nunc consectetur viverra. Integer a condimentum nisl. Maecenas eu nulla ut velit mattis 
-            cursus. Mauris elementum, ex at congue malesuada.
+            { jobDescp }
           </p>
         </Text>
 

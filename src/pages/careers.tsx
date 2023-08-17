@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { styled } from '@theme'
 import type { NextPage } from 'next'
 import { SiteContainer, Hero, ReadingBar, Heading, List, Icon, JobList } from '@components'
@@ -33,17 +33,7 @@ const ListBlock = styled('div', {
   '@desktop': { flexDirection: 'column' }
 })
 
-type Job = {
-  id: number;
-  title: string;
-  departments: {
-    name: string
-  }[];
-  location: {
-    name: string;
-  };
-  absolute_url: string;
-};
+
 
 const ListBlockTitle = styled('div', {
   position: 'relative',
@@ -86,11 +76,27 @@ const JobItem = styled('div', {
   }
 })
 
+const JobTitle = styled('div', {
+  maxWidth: '80%'
+})
+
+type Job = {
+  id: number;
+  title: string;
+  departments: {
+    name: string
+  }[];
+  location: {
+    name: string;
+  };
+  absolute_url: string;
+};
+
 
 const Careers: NextPage = () => {
-  const [jobs, setJobs] = useState<Job[]>([])
-  const [groupedJobs, setGroupedJobs] = useState<{ [key: string]: Job[] }>({});
-  const [error, setError] = useState<string | null>(null);
+  const [ jobs, setJobs ] = useState<Job[]>([])
+  const [ groupedJobs, setGroupedJobs ] = useState<{ [key: string]: Job[] }>({});
+  const [ error, setError ] = useState<string | null>(null);
 
   const groupJobsByDepartment = (jobs: Job[]) => {
     const groupedJobs: { [key: string]: Job[] } = {};
@@ -115,14 +121,14 @@ const Careers: NextPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/greenhouse');
+        const res = await fetch('/api/jobBoard');
         const result = await res.json();
   
         if (res.ok) {
-          setJobs(result.jobs);
-          setGroupedJobs(groupJobsByDepartment(result.jobs));
+          setJobs( result.jobs );
+          setGroupedJobs(groupJobsByDepartment( result.jobs ));
         } else {
-          setError(result.message || 'An error occurred');
+          setError( result.message || 'An error occurred' );
         }
       } catch (error) {
         if (error instanceof Error) {
@@ -161,12 +167,12 @@ const Careers: NextPage = () => {
               <List withDividers spacing="l3">
                 {groupedJobs[ departmentName ].map(( job ) => (
                   <li key={ job.id }>
-                    <a href={ job.absolute_url } target="_blank" rel="noopener noreferrer">
+                    <a href={ `/career-details/${ job.id }` }>
                       <JobItem>
-                        <div>
+                        <JobTitle>
                           <Heading size="l5" bold="heavy" title={ job.title } />
                           <Heading title={ job.location.name } />
-                        </div>
+                        </JobTitle>
                         <Icon icon="arrow-right" />
                       </JobItem>
                     </a>

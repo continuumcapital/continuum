@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { styled } from '@theme'
 import { Heading, Button } from '@components'
 
@@ -39,22 +40,24 @@ const Buttons = styled('div', {
 })
 
 interface HeroProps {
-
+  title?: string
+  location?: string
+  backLink?: string
 }
 
-export const HeroTitle = ({}:HeroProps) => {
+export const HeroTitle = ({ title, location, backLink }:HeroProps) => {
   return(
 
     <TitleWrap>
       <TitleContent>
         <TitleMain>
-          <Heading align="center" bold="heavy" size="l6" title="Account Analyst - New Business" />
-          <Heading align="center" size="l3" title="Chicago, IL" />
+          <Heading align="center" bold="heavy" size="l6" {...{ title }} />
+          <Heading align="center" size="l3" title={ location } />
         </TitleMain>
 
         <Buttons>
           <Button variant="primary" title="Apply now" />
-          <Button icon="arrow-left" title="Back to all jobs" />
+          { backLink && ( <Link href={ backLink }><Button icon="arrow-left" title="Back to all jobs" /></Link> )}
         </Buttons>
       </TitleContent>
     </TitleWrap>

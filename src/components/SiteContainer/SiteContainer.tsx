@@ -1,7 +1,6 @@
-import React from 'react'
-import Head from 'next/head'
+import React, { useState, useEffect } from 'react'
 import { styled } from '@theme'
-import { HeadTags } from '@components'
+import { HeadTags, StageBg, Footer } from '@components'
 
 // For the master container of the foundational SiteContainer component
 // This component is used to automate spacing, sizes, widths, ect for components wrapped within this components
@@ -9,6 +8,7 @@ import { HeadTags } from '@components'
 const SiteWrap = styled('div', {
   display: 'flex',
   justifyContent: 'center',
+  flexDirection: 'column',
   alignItems: 'center',
   position: 'relative',
   width: '100vw',
@@ -53,6 +53,8 @@ interface SiteContainerProps {
   spacing?: 'l0' | 'l1' | 'l2'
   blockSpacing?: 'l0' | 'l1' | 'l2' | 'l3'
   children: React.ReactNode
+  removeBlob?: boolean
+  removeContact?: boolean
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -60,8 +62,16 @@ interface SiteContainerProps {
 export const SiteContainer = ({
     spacing,
     blockSpacing, // Optional - For the uniform spacing between each of the blocks that make up the page
-    children // Required - For all of the content within a page
+    children, // Required - For all of the content within a page
+    removeBlob,
+    removeContact
   }: SiteContainerProps ) => {
+  
+  const [ isLoading, setLoading ] = useState( true )
+
+  useEffect(() => { 
+    setTimeout(() => { setLoading( false ) }, 1000);
+  }, [])
   
   return(
 
@@ -75,6 +85,9 @@ export const SiteContainer = ({
       <SiteContent {...{ spacing, blockSpacing }}>
         { children }
       </SiteContent>
+      
+      <Footer {...{ removeContact }} />
+      { removeBlob ?? ( <StageBg showBlob={ isLoading ? 'false' : 'true' } /> )}
     </SiteWrap>
     
   )

@@ -32,6 +32,12 @@ const FooterContain = styled('div', {
   background: '$siteBg',
   borderRadius: '$r2',
 
+  variants: {
+    removeContact: {
+      true: { padding: '50px 0' }
+    }
+  },
+
   // Change the alignment for all of the items within the footer on the mobile breakpoint
   // Here we align all of the content on the left of the container
 
@@ -98,12 +104,17 @@ const FooterContent = styled('div', {
   padding: '50px 0 0',
   marginTop: 100,
   borderTop: '1px solid rgba( 79, 79, 79, 0.2 )',
-  // borderBottom: '1px solid rgba( 79, 79, 79, 0.2 )',
 
   // Change the default color of the paragraph to be a bit darker
 
   p: {
     color: '$gray200'
+  },
+
+  variants: {
+    removeContact: {
+      true: { paddingTop: 0, marginTop: 0 }
+    }
   }
 })
 
@@ -114,23 +125,26 @@ const Legal = styled('div', {
   fontSize: '$s0'
 })
 
+interface FooterProps {
+  removeContact?: boolean
+}
+
 // ---------- This is the end of declarations ---------- //
 
-export const Footer = () => {
+export const Footer = ({ removeContact }:FooterProps) => {
   return(
 
     <FooterWrap id="contact">
-      <FooterContain>
+      <FooterContain {...{ removeContact }}>
         <section style={{ width: '100%' }}>
           <XyzTransition xyz="fade" appearVisible>
 
             <MainContent>
-              <Form 
-                title="Contact Us"
-              />
+              { removeContact ?? ( <Form title="Contact Us" /> )}
 
-              <FooterContent>
-                <div>&copy; 2022 Continuum Capital</div>
+              <FooterContent {...{ removeContact }}>
+                <div>&copy; {new Date().getFullYear()} Continuum Capital</div>
+
 
                 {/* <FooterLinkWrap>
                   <FooterLinks>

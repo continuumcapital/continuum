@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { globalStyles, lightTheme, darkTheme } from '@theme'
-import { Preloader, SiteHeader, Footer, StageBg } from '@components'
+import { Preloader, SiteHeader } from '@components'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [ isLoading, setLoading ] = useState( true )
@@ -28,8 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <>
           <SiteHeader />
           <Component {...pageProps} />
-          <Footer />
-          <StageBg showBlob={ isLoading ? 'false' : 'true' } />
         </>
       )}
     </ThemeProvider>
