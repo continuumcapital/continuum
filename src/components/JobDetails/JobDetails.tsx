@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading, Text, List, Form } from '@components'
+import { Details } from './Parts/Details'
 import DOMPurify from 'dompurify'
 
 // For the master containers of the job details
@@ -25,35 +26,6 @@ const DetailsDescp = styled('div', {
   position: 'relative',
   width: '100%',
   '> *:not(:last-child)': { marginBottom: 50 }
-})
-
-const DescpBlock = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'flex-start',
-  position: 'relative',
-  width: '100%',
-  '> *:not(:last-child)': { marginRight: 50 }
-})
-
-const DescpBlockHeading = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-  position: 'relative',
-  minWidth: 200,
-  marginTop: 8,
-  paddingRight: 32,
-
-  '&:after': {
-    content: '',
-    position: 'absolute',
-    right: 0,
-    width: 20,
-    height: 2,
-    background: '$white'
-  }
 })
 
 const decodeHTML = (html: string) => {
@@ -89,31 +61,8 @@ export const JobDetails = ({ descp, responsibilities, requirements }:DetailProps
         <Text fontSize="l1" dangerouslySetInnerHTML={{ __html: cleanHTML }}></Text>
 
         <DetailsDescp>
-          <DescpBlock>
-            <DescpBlockHeading>
-              <Heading size="l1" bold="heavy" title="Responsibilities" />
-            </DescpBlockHeading>
-
-            <List 
-              spacing="l0"
-              fontSize="l1"
-              listStyle="bulleted"
-              listItems={ listItems }
-            />
-          </DescpBlock>
-
-          <DescpBlock>
-            <DescpBlockHeading>
-              <Heading size="l1" bold="heavy" title="Requirements" />
-            </DescpBlockHeading>
-
-            <List 
-              spacing="l0"
-              fontSize="l1"
-              listStyle="bulleted"
-              listItems={ reqListItems }
-            />
-          </DescpBlock>
+          <Details title="Responsibilities" listItems={ listItems } />
+          <Details title="Requirements" listItems={ reqListItems } />
         </DetailsDescp>
       </DetailsContent>
     </DetailsWrap>
