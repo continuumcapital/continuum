@@ -5,7 +5,7 @@ const getJobPost = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
 
   try {
-    const response = await axios.get(`https://boards-api.greenhouse.io/v1/boards/continuumcapital/jobs/${id}`, {
+    const response = await axios.get(`https://boards-api.greenhouse.io/v1/boards/${process.env.NEXT_PUBLIC_GREENHOUSE_BOARD}/jobs/${id}?questions=true`, {
       headers: {
         'Authorization': `Bearer ${ process.env.NEXT_PUBLIC_GREENHOUSE }`
       }

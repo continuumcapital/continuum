@@ -76,8 +76,9 @@ interface TextProps {
   fontSize?: 'l0' | 'l1'
   width?: 'small'
   alignment?: 'center'
-  children: React.ReactNode
+  children?: React.ReactNode
   textAlign?: 'center'
+  dangerouslySetInnerHTML?: any
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -87,12 +88,13 @@ export const Text = ({
     children, // Supporting the text, quotes, bullets, ect within the text component
     width, // Supporting the width of the text within the container
     alignment, // Supporting the center alignment of the text within the container
-    textAlign
+    textAlign,
+    dangerouslySetInnerHTML
   }: TextProps ) => {
   
   return(
 
-    <TextWrap {...{ fontSize, width, alignment, textAlign }}>
+    <TextWrap {...{ fontSize, width, alignment, textAlign, dangerouslySetInnerHTML }}>
       { children }
     </TextWrap>
     

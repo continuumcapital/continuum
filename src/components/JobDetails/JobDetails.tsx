@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading, Text, List, Form } from '@components'
+import DOMPurify from 'dompurify'
 
 // For the master containers of the job details
 // This holds all the information and the form to apply for the open position
@@ -55,21 +56,37 @@ const DescpBlockHeading = styled('div', {
   }
 })
 
+const decodeHTML = (html: string) => {
+  const txt = document.createElement('textarea');
+  txt.innerHTML = html;
+  return txt.value;
+};
 
 interface DetailProps {
-  jobDescp?: string
+  descp?: string
+  responsibilities?: string
+  requirements?: string
 }
 
-export const JobDetails = ({ jobDescp }:DetailProps) => {
+export const JobDetails = ({ descp, responsibilities, requirements }:DetailProps) => {
+  const decodedHTML = decodeHTML(descp || "");
+  const cleanHTML = DOMPurify.sanitize(decodedHTML);
+  const responsibilitiesText = responsibilities || "";
+  const requirementText = requirements || "";
+
+  const lines = responsibilitiesText.split('\n');
+  const linesTwo = requirementText.split('\n');
+  const nonEmptyLines = lines.filter(line => line.trim() !== '');
+  const nonEmptyLinesTwo = linesTwo.filter(line => line.trim() !== '');
+
+  const listItems = nonEmptyLines.map(line => ({ title: line.trim() }));
+  const reqListItems = nonEmptyLinesTwo.map(line => ({ title: line.trim() }));
+
   return(
 
     <DetailsWrap>
       <DetailsContent>
-        <Text fontSize="l1">
-          <p>
-            { jobDescp }
-          </p>
-        </Text>
+        <Text fontSize="l1" dangerouslySetInnerHTML={{ __html: cleanHTML }}></Text>
 
         <DetailsDescp>
           <DescpBlock>
@@ -81,16 +98,7 @@ export const JobDetails = ({ jobDescp }:DetailProps) => {
               spacing="l0"
               fontSize="l1"
               listStyle="bulleted"
-              listItems={[
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }
-              ]}
+              listItems={ listItems }
             />
           </DescpBlock>
 
@@ -103,16 +111,7 @@ export const JobDetails = ({ jobDescp }:DetailProps) => {
               spacing="l0"
               fontSize="l1"
               listStyle="bulleted"
-              listItems={[
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-                { title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }
-              ]}
+              listItems={ reqListItems }
             />
           </DescpBlock>
         </DetailsDescp>

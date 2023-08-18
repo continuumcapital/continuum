@@ -10,6 +10,10 @@ interface JobDetail {
   location: {
     name: string
   }
+  metadata: {
+    name?: string
+    value: string
+  }[]
 }
 
 const Home: NextPage = () => {
@@ -51,7 +55,11 @@ const Home: NextPage = () => {
         backLink="/careers"
       />
 
-      <JobDetails jobDescp={ jobDetail?.content } />
+      <JobDetails 
+        descp={ jobDetail?.content } 
+        responsibilities={ jobDetail?.metadata[1].value }
+        requirements={ jobDetail?.metadata[2].value }
+      />
     </SiteContainer>
   );
 }
