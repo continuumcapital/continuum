@@ -1,0 +1,5 @@
+export { SmoothScroll } from './smoothScroll'
+export { useScrollPosition } from './utils'
+export { useScrollDirection } from './utils'
+export { decodeHTML } from './formatHtml'
+export { processLines } from './formatHtml'
