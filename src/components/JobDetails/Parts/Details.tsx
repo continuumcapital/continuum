@@ -21,20 +21,19 @@ const DescpBlockHeading = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'flex-end',
   position: 'relative',
-  minWidth: 200,
+  minWidth: 170,
   marginTop: 8,
-  paddingRight: 32,
 
   // For the styling of the line to the right of the title
 
   '&:after': {
     content: '',
-    position: 'absolute',
-    right: 0,
+    position: 'relative',
+    minWidth: 20,
     width: 20,
     height: 2,
+    margin: '3px 0 0 12px',
     background: '$white'
   }
 })

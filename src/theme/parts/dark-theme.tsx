@@ -5,6 +5,10 @@ export const darkThemeColors = {
     grayBg: '$moon',
     secondaryBlue: '$majorelleBlue',
 
+    // Text colors
+
+    textSecondary: '#a1a1a1',
+
     // Background colors
 
     bgPrimary: '#1b1b1b',

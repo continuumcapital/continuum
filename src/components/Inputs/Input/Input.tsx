@@ -12,6 +12,7 @@ interface InputProps {
   errorMessage?: any
   type?: 'email' | 'text' | 'number'
   initialValue: any
+  required?: boolean
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -30,7 +31,8 @@ export const Input = ( props: UseControllerProps&InputProps ) => {
       <InputBase>
 
         <input 
-          { ...field } 
+          { ...field }
+          required={ props.required }
           id={ props.name } 
           type={ props.type ? props.type : 'text' }
           value={ field.value || props.initialValue }
