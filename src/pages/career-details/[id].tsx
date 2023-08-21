@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { styled } from '@theme'
 import { useRouter } from 'next/router';
 import type { NextPage } from 'next';
-import { SiteContainer, Heading, HeroTitle, ReadingBar, JobDetails, Button, Text } from '@components';
+import { SiteContainer, Heading, HeroTitle, ReadingBar, JobDetails, Button, Text, TextEm } from '@components';
 
 interface Field {
   name: string;
-  type: 'input_text' | 'input_file' | 'textarea';
+  type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select';  // Added the new type here
   values: any[];  // Update this if you know the exact values type
 }
 
@@ -41,9 +41,16 @@ const FormWrap = styled('div', {
 
 const FormContent = styled('div', {
   position: 'relative',
-  maxWidth: 700,
+  maxWidth: 800,
+  width: '90%',
   margin: '0 auto',
   padding: '150px 0',
+  '> *:not(:last-child)': { marginBottom: 50 }
+})
+
+const InputContainer = styled('div', {
+  position: 'relative',
+  width: '100%',
   '> *:not(:last-child)': { marginBottom: 12 }
 })
 
@@ -57,8 +64,11 @@ const Input = styled('div', {
   padding: '0 20px',
   border: '1px solid $border',
   borderRadius: '$r1',
+  transition: '$s1',
 
   label: {
+    display: 'flex',
+    flexDirection: 'row',
     position: 'relative',
     width: '100%',
     transformOrigin: 'top left',
@@ -81,8 +91,9 @@ const Input = styled('div', {
   },
 
   '&:focus-within': {
+    borderColor: '$contentColor',
     label: {
-      color: '$textSecondary',
+      '&, *': { color: '$textSecondary !important' },
       transform: 'translateY( -10px ) scale( 0.8 )'
     }
   },
@@ -91,7 +102,7 @@ const Input = styled('div', {
     active: {
       true: {
         label: {
-          color: '$textSecondary',
+          '&, *': { color: '$textSecondary !important' },
           transform: 'translateY( -10px ) scale( 0.8 )'
         }
       }
@@ -106,6 +117,38 @@ const FormHeader = styled('div', {
   justifyContent: 'space-between',
   position: 'relative',
   width: '100%'
+})
+
+const Required = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  '> *:not(:last-child)': { marginRight: 12 }
+})
+
+const Checkboxes = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  marginTop: 50,
+  '> *:not(:last-child)': { marginBottom: 12 },
+
+  input: {
+    position: 'relative',
+    width: 32,
+    height: 32,
+    borderRadius: '$r0',
+    border: '1px solid $border',
+    appearance: 'none'
+  }
+})
+
+const InputCheckbox = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  flexDirection: 'row-reverse',
+  position: 'relative',
+  '> *:not(:last-child)': { marginLeft: 8 }
 })
 
 
@@ -154,44 +197,112 @@ const Home: NextPage = () => {
         <FormContent>
           <FormHeader>
             <Heading bold="heavy" size="l3" title="Apply for this job" />
-            <Heading size="l0" title="Required" />
+            <Required>
+              <TextEm color="danger">*</TextEm>
+              <Heading size="l0" title="Required" />
+            </Required>
           </FormHeader>
 
-          { questions.map((question, i) => (
-            <Input key={i} active={ Boolean(values[`${i}-0`]) }>
-              <label><Heading title={question.label} /></label>
-  
-              { question.fields.map((field, fieldIndex) => {
-                const inputName = `${i}-${fieldIndex}`;
-                switch (field.type) {
-                  case "input_text":
-                    return (
-                      <input
-                        key={fieldIndex}
-                        type="text"
-                        name={field.name}
-                        required={question.required}
-                        value={values[inputName] || question.value}
-                        onChange={e => handleInputChange(i, fieldIndex, e.target.value)}
-                      />
-                    );
-                  case "input_file":
-                    return (
-                      <input key={fieldIndex} type="file" name={field.name} required={question.required} />
-                    );
-                  case "textarea":
-                    return (
-                      <textarea key={fieldIndex} name={field.name} required={question.required} value={values[inputName] || ''} onChange={e => handleInputChange(i, fieldIndex, e.target.value)}></textarea>
-                    );
-                  default:
+          <InputContainer>
+            { questions.map(( question, i ) => (
+              <div key={`question-${ i }`}>
+                {/* <label><Heading title={ question.label } /></label> */}
+
+                { question.fields.map((field, fieldIndex) => {
+                  const inputName = `${i}-${fieldIndex}`;
+                  switch (field.type) {
+                    case "input_text" :
+                      return (
+
+                        <Input active={ Boolean(values[`${ i }-0`]) }>
+                          <label>
+                            <Heading title={ question.label } />
+                            {question.required && <TextEm color="danger">*</TextEm>}
+                          </label>
+
+                          <input
+                            key={ fieldIndex }
+                            type="text"
+                            name={ field.name }
+                            required={ question.required }
+                            value={ values[ inputName ] || '' }
+                            onChange={ e => handleInputChange( i, fieldIndex, e.target.value ) }
+                          />
+                        </Input>
+
+                      )
+                  
+                    case "input_file":
+                      return (
+                        <>
+                          <label>
+                            <Heading title={ question.label } />
+                            {question.required && <TextEm color="danger">*</TextEm>}
+                          </label>
+
+                          <input key={fieldIndex} type="file" name={field.name} required={question.required} />
+                        </>
+                      )
+
+                    case "textarea":
+                      return (
+                        <textarea 
+                          key={fieldIndex} 
+                          name={field.name} 
+                          required={question.required} 
+                          value={values[inputName] || ''}
+                          onChange={e => handleInputChange(i, fieldIndex, e.target.value)}
+                        ></textarea>
+                      )
+                  
+                    case "multi_value_multi_select":
+                      return (
+                        <Checkboxes key={fieldIndex}>
+                          <fieldset>
+                            <Heading title={ question.label } />
+                            {question.required && <TextEm color="danger">*</TextEm>}
+                          </fieldset>
+
+                          <div>
+                            { field.values.map((option, optionIndex) => (
+                              <InputCheckbox key={optionIndex}>
+                                <label>{option.label}</label>
+                                <input 
+                                  type="checkbox"
+                                  name={field.name}
+                                  value={option.value}
+                                  onChange={e => {
+                                    // Handle multi-value selection
+                                    const updatedValues = (values[inputName] || []).slice();
+                                    if (e.target.checked) {
+                                      updatedValues.push(option.value);
+                                    } else {
+                                      const index = updatedValues.indexOf(option.value);
+                                      if (index > -1) {
+                                        updatedValues.splice(index, 1);
+                                      }
+                                    }
+                                    handleInputChange(i, fieldIndex, updatedValues);
+                                  }}
+                                  checked={(values[inputName] || []).includes(option.value)}
+                                />
+                              </InputCheckbox>
+                            ))}
+                          </div>
+                        </Checkboxes>
+                      )
+
+                    default:
                     return null;
-                }
-              })}
-            </Input>
-          ))}
+                  }
+                })}
+              </div>
+            ))}
+          </InputContainer>
 
           <Text>
             <Heading bold="heavy" size="l2" title="US Equal Opportunity Employer Statement" />
+
             <p>
               Continuum Capital is an equal opportunity employer that is commited to diversity and inclusion in the workplace. We 
               prohibit discrimination and harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, 

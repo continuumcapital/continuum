@@ -113,7 +113,7 @@ const FooterContent = styled('div', {
 
   variants: {
     removeContact: {
-      true: { paddingTop: 0, marginTop: 0 }
+      true: { marginTop: 0 }
     }
   }
 })
