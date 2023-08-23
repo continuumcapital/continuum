@@ -3,6 +3,13 @@ import { styled } from '@theme'
 import { InputBase } from './Parts/Input'
 import { List, Heading, Icon, Dropdown } from '@components'
 
+const SelectWrap = styled('div', {
+  position: 'relative',
+  width: '100%',
+  marginTop: 50,
+  '> *:not(:last-child)': { marginBottom: 20 }
+})
+
 // For the container of the Select Dropdown, that shows up once the user clicks the select button
 // This is hidden by default and holds all of the options within select
 
@@ -77,9 +84,8 @@ const SelectItem = styled('button', {
 interface SelectProps {
   size?: 'l0'
   name: any
+  label?: any
   defaultValue?: string | number
-  defaultIcon?: string
-  defaultImage?: string
   width?: 'half'
   onChange?: any
   options: {
@@ -92,13 +98,12 @@ interface SelectProps {
 
 export const SelectInput = ({ 
     name,
-    defaultIcon,
-    defaultImage,
     defaultValue,
     options,
     size,
     width,
-    onChange
+    onChange,
+    label
   }:SelectProps) => {
 
   // For all of the varibles needed to change the input value of the select component
@@ -117,36 +122,39 @@ export const SelectInput = ({
 
   return(
 
+    <SelectWrap>
+      <Heading size="l1" bold="bold" title={ label } />
 
-    <Dropdown 
-      removeArrow
-      contentFullWidth
-      triggerWidth="half"
-      trigger={
-        <InputBase 
-          {...{ name, size, width }}
-          title={ value || defaultValue }
-          value={ value || defaultValue }
-        />
-      }
-      content={
-        <SelectDropdown ref={ selectMenu }>
-          <List>
-            { options.map(( option, i ) => (
+      <Dropdown 
+        removeArrow
+        contentFullWidth
+        triggerWidth="half"
+        trigger={
+          <InputBase 
+            {...{ name, size, width, label }}
+            title={ value || defaultValue }
+            value={ value || defaultValue }
+          />
+        }
+        content={
+          <SelectDropdown ref={ selectMenu }>
+            <List>
+              { options.map(( option, i ) => (
 
-              <li key={`option-${ i }`}>
-                <SelectItem onClick={() => handleChange( option.title )}>
-                  <div>
-                    <Heading bold="bold" size="l1" title={ option.title } />
-                  </div>
-                </SelectItem>
-              </li>
+                <li key={`option-${ i }`}>
+                  <SelectItem onClick={() => handleChange( option.title )}>
+                    <div>
+                      <Heading bold="bold" size="l1" title={ option.title } />
+                    </div>
+                  </SelectItem>
+                </li>
 
-            ))}
-          </List>
-        </SelectDropdown>
-      }
-    />
+              ))}
+            </List>
+          </SelectDropdown>
+        }
+      />
+    </SelectWrap>
 
   )
 }

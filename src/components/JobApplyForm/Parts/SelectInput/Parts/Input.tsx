@@ -6,7 +6,7 @@ import { Heading, Icon } from '@components'
 // For the container of the Select Input
 // This is always visible, containing an option icon and text of the selection, and the arrow down icon on the right
 
-const SelectWrap = styled('div', {
+const SelectContent = styled('div', {
   display: 'flex',
   alignItems: 'center',
   position: 'relative',
@@ -100,6 +100,7 @@ interface InputProps {
   value: any
   width?: 'half'
   rules?: any
+  label?: string
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -110,14 +111,15 @@ export const InputBase = ({
     name, // Required - for the name of the input
     title, // Required - for the title of the input
     rules,
-    value
+    value,
+    label
   }:InputProps) => {
 
   // const { register, formState: { errors }, watch } = useFormContext();
   
   return(
 
-    <SelectWrap {...{ size, width }}>
+    <SelectContent {...{ size, width }}>
       <label htmlFor={ name }>
         <Selected><Heading size="l1" {...{ title }} /></Selected>
         <Icon size="l0" icon="chevron-down" />
@@ -130,7 +132,7 @@ export const InputBase = ({
         // {...register( name, { ...rules })}   
         value={ value }
       />
-    </SelectWrap>
+    </SelectContent>
 
   )
 }

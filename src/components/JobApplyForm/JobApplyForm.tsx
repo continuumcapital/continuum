@@ -127,6 +127,7 @@ export const JobApplyForm: React.FC<{ questions: Question[] }> = ({ questions })
                     
                     <SelectInput 
                       defaultValue="Select"
+                      label={ question.label }
                       name={ question.label }
                       options={[
                         { title: 'Yes' },
@@ -210,7 +211,7 @@ export const JobApplyForm: React.FC<{ questions: Question[] }> = ({ questions })
           </p>
         </Text>
 
-        <Button variant="primary" type="submit" title="Submit" />
+        <Button variant="primary" type="submit" title="Submit Application" />
       </FormContent>
     </FormWrap>
   ); 
