@@ -33,11 +33,16 @@ const ListBlock = styled('div', {
   '@desktop': { flexDirection: 'column' }
 })
 
-
-
 const ListBlockTitle = styled('div', {
   position: 'relative',
-  marginRight: 100,
+  width: 300
+})
+
+const ListBlockTitleContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'row-reverse',
+  position: 'relative',
+  width: '100%',
 
   '> *': { 
     display: 'flex',
@@ -47,10 +52,10 @@ const ListBlockTitle = styled('div', {
 
     '&:after': {
       content: '',
-      position: 'absolute',
-      right: 0,
+      position: 'relative',
       width: 32,
       height: 2,
+      marginLeft: 12,
       background: '$white'
     },
 
@@ -161,7 +166,9 @@ const Careers: NextPage = () => {
           { Object.keys( groupedJobs ).map(( departmentName ) => (
             <ListBlock key={ departmentName }>
               <ListBlockTitle>
-                <Heading bold="heavy" size="l1" title={ getFirstWord( departmentName ) } />
+                <ListBlockTitleContent>
+                  <Heading bold="heavy" size="l1" title={ getFirstWord( departmentName ) } />
+                </ListBlockTitleContent>
               </ListBlockTitle>
 
               <List withDividers spacing="l3">

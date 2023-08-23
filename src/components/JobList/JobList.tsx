@@ -33,7 +33,7 @@ const ListBlock = styled('div', {
 
 const ListBlockTitle = styled('div', {
   position: 'relative',
-  marginRight: 100,
+  width: 150,
 
   '> *': { 
     display: 'flex',

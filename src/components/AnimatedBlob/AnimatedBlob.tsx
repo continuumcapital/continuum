@@ -69,7 +69,7 @@ const Sphere = () => {
     tl.to( sphereShaderRef.current.uniforms.uStrength, { value: settings.strength.end })
     //@ts-ignore
     op.to( sphereShaderRef.current.uniforms.uOpacity, { value: settings.opacity.end })
-  }, [])
+  }, [settings.opacity.end, settings.strength.end])
 
   // For the attributes of the sphere
   // This creates the structure of the sphere and the material wrapped around it that is altered
