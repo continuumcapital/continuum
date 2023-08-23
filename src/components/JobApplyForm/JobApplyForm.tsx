@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Heading, Text, TextEm, Button } from '@components'
 import { styled } from '@theme'
-import { FormHeader, BasicInput, FileInput } from './Parts'
+import { FormHeader, BasicInput, FileInput, SelectInput } from './Parts'
 
 // For the master container of the form, within the Apply for Job section
 // This holds all of the questions needed to be supplied when applying for a position
@@ -125,10 +125,14 @@ export const JobApplyForm: React.FC<{ questions: Question[] }> = ({ questions })
                   case "multi_value_single_select" :
                   return (
                     
-                    <div>
-                      <label>{question.label}</label>
-                      <input type="select" />
-                    </div>
+                    <SelectInput 
+                      defaultValue="Select"
+                      name={ question.label }
+                      options={[
+                        { title: 'Yes' },
+                        { title: 'No' }
+                      ]}
+                    />
                    
                   )
 

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { styled } from '@theme'
-import { InputBase } from './Parts/input'
+import { InputBase } from './Parts/Input'
 import { List, Heading, Icon, Dropdown } from '@components'
 
 // For the container of the Select Dropdown, that shows up once the user clicks the select button
@@ -10,7 +10,7 @@ const SelectDropdown = styled('div', {
   position: 'relative',
   width: '100%',
   padding: '16px 0',
-  background: '$bgPrimary',
+  background: '$bgSecondary',
   borderRadius: '$r1',
   boxShadow: '0 2px 30px rgba( 0,0,0, 0.2 )',
   transition: '$s1'
@@ -90,7 +90,7 @@ interface SelectProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const InputSelect = ({ 
+export const SelectInput = ({ 
     name,
     defaultIcon,
     defaultImage,
@@ -105,20 +105,18 @@ export const InputSelect = ({
   // This also sets the default value, icon, or image and reflected in the input value
 
   const selectMenu = useRef<HTMLDivElement>( null )
-  const [ icon, setIcon ] = useState( undefined || defaultIcon )
-  const [ image, setImage ] = useState( undefined || defaultImage )
   const [ value, setValue ] = useState( undefined || defaultValue )
 
   // Here we use this function to change the value of the input filed to read the selection
   // As well, change the info ( icon & title ) in the input to reflect the chosen option
 
-  const handleChange = ( selectedValue:any, selectedIcon:any ) => {
+  const handleChange = ( selectedValue:any ) => {
     setValue( selectedValue )
-    setIcon( selectedIcon )
     onChange( selectedValue )
   }
 
   return(
+
 
     <Dropdown 
       removeArrow
@@ -129,8 +127,6 @@ export const InputSelect = ({
           {...{ name, size, width }}
           title={ value || defaultValue }
           value={ value || defaultValue }
-          icon={ icon || defaultIcon }
-          image={ image || defaultImage }
         />
       }
       content={
@@ -139,7 +135,7 @@ export const InputSelect = ({
             { options.map(( option, i ) => (
 
               <li key={`option-${ i }`}>
-                <SelectItem onClick={() => handleChange( option.title, option.icon )}>
+                <SelectItem onClick={() => handleChange( option.title )}>
                   <div>
                     <Heading bold="bold" size="l1" title={ option.title } />
                   </div>

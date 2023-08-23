@@ -11,7 +11,11 @@ const DescpBlock = styled('div', {
   alignItems: 'flex-start',
   position: 'relative',
   width: '100%',
-  '> *:not(:last-child)': { marginRight: 50 }
+  '> *:not(:last-child)': { marginRight: 50 },
+
+  '@tablet': {
+    flexDirection: 'column'
+  }
 })
 
 // For the Heading container on the left side of the container
@@ -35,6 +39,12 @@ const DescpBlockHeading = styled('div', {
     height: 2,
     margin: '3px 0 0 12px',
     background: '$white'
+  },
+
+  '@tablet': {
+    width: '100%',
+    marginBottom: 20,
+    '&:after': { display: 'none' }
   }
 })
 

@@ -10,10 +10,16 @@ const TextWrap = styled('div', {
   width: '100%',
   fontSize: '$s1',
 
+  '@tablet': {
+    '*': { textAlign: 'left !important' },
+    'span, p': { lineHeight: '1.3 !important' }
+  },
+
   // For the spacing automation of text that lives within the container
 
   '> p:not(:last-child)': {
-    margin: '0 auto 32px'
+    margin: '0 auto 32px',
+    '@tablet': { marginBottom: 16 }
   },
 
   '> *:not( p )': {
@@ -32,6 +38,8 @@ const TextWrap = styled('div', {
   // This is only specific to the text container and overrides the default line height needed for other components
 
   p: { lineHeight: 1.5 },
+
+  strong: { fontFamily: '$sansSerifBlack' },
 
   // For the varients used within the text component
   // Here we address the font size, columns, alignment, and width

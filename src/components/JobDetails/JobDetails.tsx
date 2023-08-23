@@ -23,7 +23,10 @@ const DetailsContent = styled('div', {
   width: '90%',
   margin: '0 auto',
   padding: '100px 0',
-  '> *:not(:last-child)': { marginBottom: 100 }
+  '> *:not(:last-child)': { 
+    marginBottom: 100,
+    '@tablet': { marginBottom: 50 }
+  }
 })
 
 // For the container of the different sections of bullet points
@@ -64,8 +67,6 @@ export const JobDetails = ({ descp, responsibilities, requirements }:DetailProps
           <Details title="Responsibilities" listItems={ listItems } />
           <Details title="Requirements" listItems={ reqListItems } />
         </DetailsDescp>
-
-    
       </DetailsContent>
     </DetailsWrap>
 
