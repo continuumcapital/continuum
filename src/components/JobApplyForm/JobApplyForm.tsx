@@ -22,7 +22,8 @@ const FormContent = styled('div', {
   width: '90%',
   margin: '0 auto',
   padding: '150px 0 50px',
-  '> *:not(:last-child)': { marginBottom: 50 }
+  '> *:not(:last-child)': { marginBottom: 50 },
+  '@mobile': { padding: '75px 0 20px' }
 })
 
 // For the container of all of the inputs within the form
