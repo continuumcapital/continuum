@@ -1,19 +1,27 @@
 export const Typeface = [
   {
-    fontFamily: 'Satoshi-Bold',
-    src: 'local("Satoshi-Bold"), url("/fonts/Satoshi-Bold.woff2")',
+    fontFamily: 'Satoshi-Black',
+    src: 'local("Satoshi-Black"), url("/fonts/Satoshi-Black.ttf")',
+    fontWeight: 'normal',
+    fontStyle: 'normal'
   },
   {
-    fontFamily: 'Satoshi-Regular',
-    src: 'local("Satoshi-Regular"), url("/fonts/Satoshi-Regular.woff2")',
+    fontFamily: 'Satoshi-Bold',
+    src: 'local("Satoshi-Bold"), url("/fonts/Satoshi-Bold.ttf")',
+    fontWeight: 'normal',
+    fontStyle: 'normal'
   },
   {
     fontFamily: 'Satoshi-Italic',
-    src: 'local("Satoshi-Italic"), url("/fonts/Satoshi-Italic.woff2")',
+    src: 'local("Satoshi-Italic"), url("/fonts/Satoshi-Italic.ttf")',
+    fontWeight: 'normal',
+    fontStyle: 'normal'
   },
   {
-    fontFamily: 'Satoshi-Black',
-    src: 'local("Satoshi-Black"), url("/fonts/Satoshi-Black.woff2")',
+    fontFamily: 'Satoshi-Regular',
+    src: 'local("Satoshi-Regular"), url("/fonts/Satoshi-Regular.ttf")',
+    fontWeight: 'normal',
+    fontStyle: 'normal'
   }
 ]
 
