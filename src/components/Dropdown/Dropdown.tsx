@@ -45,7 +45,7 @@ const DropdownTrigger = styled(DropdownMenu.Trigger, {
     // This will allow the width takes up the full width of the container
 
     triggerWidth: {
-      half: { width: '50%' },
+      half: { width: '50%', '@mobile': { width: '100%' }},
       full: { width: '100%' }
     }
   }

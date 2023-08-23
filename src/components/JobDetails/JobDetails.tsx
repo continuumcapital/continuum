@@ -4,6 +4,7 @@ import { Text } from '@components'
 import { Details } from './Parts/Details'
 import DOMPurify from 'dompurify'
 import { decodeHTML, processLines } from '@lib'
+import { XyzTransition } from '@animxyz/react'
 
 // For the master containers of the job details
 // This holds all the information and the form to apply for the open position
@@ -60,14 +61,17 @@ export const JobDetails = ({ descp, responsibilities, requirements }:DetailProps
   return(
 
     <DetailsWrap>
-      <DetailsContent>
-        <Text fontSize="l1" dangerouslySetInnerHTML={{ __html: cleanHTML }}></Text>
+      <XyzTransition xyz="fade down delay-15 duration-15" appear>
 
-        <DetailsDescp>
-          <Details title="Responsibilities" listItems={ listItems } />
-          <Details title="Requirements" listItems={ reqListItems } />
-        </DetailsDescp>
-      </DetailsContent>
+        <DetailsContent>
+          <Text fontSize="l1" dangerouslySetInnerHTML={{ __html: cleanHTML }}></Text>
+          <DetailsDescp>
+            <Details title="Responsibilities" listItems={ listItems } />
+            <Details title="Requirements" listItems={ reqListItems } />
+          </DetailsDescp>
+        </DetailsContent>
+        
+      </XyzTransition>
     </DetailsWrap>
 
   )

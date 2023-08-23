@@ -156,10 +156,10 @@ const Careers: NextPage = () => {
         calloutTitle="Understand a Career with Continuum"
         calloutDescp="What powers Continuum's mission to offer next generation investment solutions is passion and relentless dedication to results. The firm views it's roadmap of innovation and responsibility to investors as a lifestyle, not a job. If current openings are not applicable to your skillset, it's still encouraged that you reach out if you would like to connect with the Continuum team."
         calloutButtonTitle="Apply now"
-        calloutHref="#jobs"
+        calloutHref="#job-list"
       />
 
-      <ListWrap>
+      <ListWrap id="job-list">
         <ListContent>
           <Heading size="l5" bold="heavy" align="center" title="Current Openings" />
 

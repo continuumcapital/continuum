@@ -69,6 +69,8 @@ const Home: NextPage = () => {
       <HeroTitle 
         title={ jobDetail?.title }
         location={ jobDetail?.location.name }
+        buttonTitle="Apply now"
+        buttonLink="#apply-now"
         backLink="/careers"
       />
 

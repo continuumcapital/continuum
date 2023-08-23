@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { styled } from '@theme'
 import { Heading, Button } from '@components'
+import { XyzTransition } from '@animxyz/react'
 
 const TitleWrap = styled('div', {
   display: 'flex',
@@ -34,6 +35,7 @@ const TitleMain = styled('div', {
 const Buttons = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
   position: 'relative',
   width: '100%',
   '> *:not(:last-child)': { marginBottom: 12 }
@@ -42,24 +44,28 @@ const Buttons = styled('div', {
 interface HeroProps {
   title?: string
   location?: string
+  buttonTitle?: string
+  buttonLink?: string
   backLink?: string
 }
 
-export const HeroTitle = ({ title, location, backLink }:HeroProps) => {
+export const HeroTitle = ({ title, location, buttonTitle, buttonLink, backLink }:HeroProps) => {
   return(
 
     <TitleWrap>
-      <TitleContent>
-        <TitleMain>
-          <Heading align="center" bold="heavy" size="l6" {...{ title }} />
-          <Heading align="center" size="l3" title={ location } />
-        </TitleMain>
+      <XyzTransition xyz="fade down delay-15 duration-15" appear>
+        <TitleContent>
+          <TitleMain>
+            <Heading align="center" bold="heavy" size="l6" {...{ title }} />
+            <Heading align="center" size="l3" title={ location } />
+          </TitleMain>
 
-        <Buttons>
-          <Button variant="primary" title="Apply now" />
-          { backLink && ( <Link href={ backLink }><Button icon="arrow-left" title="Back to all jobs" /></Link> )}
-        </Buttons>
-      </TitleContent>
+          <Buttons>
+            { buttonTitle && ( <Button variant="primary" title={ buttonTitle } linkUrl={ buttonLink } /> )}
+            { backLink && ( <Link href={ backLink }><Button icon="arrow-left" title="Back to all jobs" /></Link> )}
+          </Buttons>
+        </TitleContent>
+      </XyzTransition>
     </TitleWrap>
 
   )

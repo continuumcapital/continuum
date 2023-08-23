@@ -15,10 +15,20 @@ const InputWrap = styled('div', {
     flexDirection: 'row',
     whiteSpace: 'nowrap',
     width: 120
+  },
+
+  '@mobile': {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    '> *:not(:last-child)': { marginBottom: 12 }
   }
 })
 
 const UploadOptions = styled('div', {
+  position: 'relative',
+  
+  '@mobile': { width: '100%' },
+
   '&:hover, &:active, &:focus': {
     '> *': {
       background: '$bgSecondary',
@@ -44,6 +54,11 @@ const DragAndDrop = styled('div', {
     background: '$bgSecondary',
     borderColor: '$white'
   },
+
+  '@mobile': {
+    width: '100%',
+    borderRadius: '$r1'
+  }
 })
 
 const FilePreview = styled('div', {
@@ -55,7 +70,8 @@ const FilePreview = styled('div', {
   padding: '0 12px 0 24px',
   background: '$bgSecondary',
   borderRadius: '$r2',
-  '> *:not(:last-child)': { marginRight: 4 }
+  '> *:not(:last-child)': { marginRight: 4 },
+  '@mobile': { width: '100%', borderRadius: '$r1' }
 })
 
 

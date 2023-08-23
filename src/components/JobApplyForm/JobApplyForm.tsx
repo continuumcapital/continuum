@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Heading, Text, TextEm, Button } from '@components'
 import { styled } from '@theme'
 import { FormHeader, BasicInput, FileInput, SelectInput } from './Parts'
+import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the form, within the Apply for Job section
 // This holds all of the questions needed to be supplied when applying for a position
@@ -20,7 +21,7 @@ const FormContent = styled('div', {
   maxWidth: 800,
   width: '90%',
   margin: '0 auto',
-  padding: '150px 0',
+  padding: '150px 0 50px',
   '> *:not(:last-child)': { marginBottom: 50 }
 })
 
@@ -84,136 +85,142 @@ export const JobApplyForm: React.FC<{ questions: Question[] }> = ({ questions })
   }
 
   return (
-    <FormWrap>
-      <FormContent>
-        <FormHeader title="Apply for this job" />
 
-        <InputContainer>
-          { questions.map(( question, i ) => (
-            <div key={`question-${ i }`}>
+    <FormWrap id="apply-now">
+      <XyzTransition xyz="fade down delay-15 duration-15" appear>
 
-              { question.fields.map(( field, fieldIndex ) => {
-                const inputName = `${ i }-${ fieldIndex }`
-                switch ( field.type ) {
-                  case "input_text" :
-                  return (
+        <FormContent>
+          <FormHeader title="Apply for this job" />
 
-                    <BasicInput 
-                      key={ fieldIndex }
-                      active={ Boolean( values[`${ i }-0`] )}
-                      label={ question.label }
-                      name={ field.name }
-                      required={ question.required }
-                      value={ values[ inputName ] || '' }
-                      onChange={ (e:any) => handleInputChange( i, fieldIndex, e.target.value ) }
-                    />
+          <InputContainer>
+            { questions.map(( question, i ) => (
+              <div key={`question-${ i }`}>
 
-                  )
-                
-                  case "input_file" :
-                  return (
-                    
-                    <FileInput 
-                      key={ fieldIndex }
-                      required={ question.required }
-                      label={ question.label }
-                      name={ field.name }
-                    />
-                   
-                  )
-
-                  case "multi_value_single_select" :
-                  return (
-                    
-                    <SelectInput 
-                      defaultValue="Select"
-                      label={ question.label }
-                      name={ question.label }
-                      options={[
-                        { title: 'Yes' },
-                        { title: 'No' }
-                      ]}
-                    />
-                   
-                  )
-
-                  // case "textarea":
-                  // return (
-                  //   <textarea 
-                  //     key={fieldIndex} 
-                  //     name={field.name} 
-                  //     required={ false } 
-                  //     value={values[inputName] || ''}
-                  //     onChange={e => handleInputChange(i, fieldIndex, e.target.value)}
-                  //   ></textarea>
-                  // )
-                
-                  case "multi_value_multi_select":
+                { question.fields.map(( field, fieldIndex ) => {
+                  const inputName = `${ i }-${ fieldIndex }`
+                  switch ( field.type ) {
+                    case "input_text" :
                     return (
 
-                      <Checkboxes key={ fieldIndex }>
-                        <fieldset>
-                          <Heading title={ question.label } />
-                          { question.required && <TextEm color="danger">*</TextEm> }
-                        </fieldset>
-
-                        <div>
-                          { field.values.map((option, optionIndex) => (
-                            <InputCheckbox key={optionIndex}>
-                              <label>{option.label}</label>
-                              <input 
-                                type="checkbox"
-                                name={field.name}
-                                value={option.value}
-                                onChange={e => {
-                                  // Handle multi-value selection
-                                  const updatedValues = (values[inputName] || []).slice();
-                                  if (e.target.checked) {
-                                    updatedValues.push(option.value);
-                                  } else {
-                                    const index = updatedValues.indexOf(option.value);
-                                    if (index > -1) {
-                                      updatedValues.splice(index, 1);
-                                    }
-                                  }
-                                  handleInputChange(i, fieldIndex, updatedValues);
-                                }}
-                                checked={(values[inputName] || []).includes(option.value)}
-                              />
-                            </InputCheckbox>
-                          ))}
-                        </div>
-                      </Checkboxes>
+                      <BasicInput 
+                        key={ fieldIndex }
+                        active={ Boolean( values[`${ i }-0`] )}
+                        label={ question.label }
+                        name={ field.name }
+                        required={ question.required }
+                        value={ values[ inputName ] || '' }
+                        onChange={ (e:any) => handleInputChange( i, fieldIndex, e.target.value ) }
+                      />
 
                     )
+                  
+                    case "input_file" :
+                    return (
+                      
+                      <FileInput 
+                        key={ fieldIndex }
+                        required={ question.required }
+                        label={ question.label }
+                        name={ field.name }
+                      />
+                    
+                    )
 
-                  default:
-                  return null;
-                }
-              })}
-            </div>
-          ))}
-        </InputContainer>
+                    case "multi_value_single_select" :
+                    return (
+                      
+                      <SelectInput 
+                        defaultValue="Select"
+                        label={ question.label }
+                        name={ question.label }
+                        options={[
+                          { title: 'Yes' },
+                          { title: 'No' }
+                        ]}
+                      />
+                    
+                    )
 
-        <Text>
-          <Heading bold="heavy" size="l2" title="US Equal Opportunity Employer Statement" />
+                    // case "textarea":
+                    // return (
+                    //   <textarea 
+                    //     key={fieldIndex} 
+                    //     name={field.name} 
+                    //     required={ false } 
+                    //     value={values[inputName] || ''}
+                    //     onChange={e => handleInputChange(i, fieldIndex, e.target.value)}
+                    //   ></textarea>
+                    // )
+                  
+                    case "multi_value_multi_select":
+                      return (
 
-          <p>
-            Continuum Capital is an equal opportunity employer that is commited to diversity and inclusion in the workplace. We 
-            prohibit discrimination and harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, 
-            disability, genetic information, pregnancy, or any other protected characteristic as outlined by federal, state, or local laws.
-          </p>
+                        <Checkboxes key={ fieldIndex }>
+                          <fieldset>
+                            <Heading title={ question.label } />
+                            { question.required && <TextEm color="danger">*</TextEm> }
+                          </fieldset>
 
-          <p>
-            This policy applies to all employment practices within our organization, including hiring, recruiting, promotion, termination,
-            layoff, recall, leave of absence, compensation, benefits, training, and apprenticeship. Continuum Capital makes hiring 
-            decisions based solely on qualifications, merit, and business needs at the time.
-          </p>
-        </Text>
+                          <div>
+                            { field.values.map((option, optionIndex) => (
+                              <InputCheckbox key={optionIndex}>
+                                <label>{option.label}</label>
+                                <input 
+                                  type="checkbox"
+                                  name={field.name}
+                                  value={option.value}
+                                  onChange={e => {
+                                    // Handle multi-value selection
+                                    const updatedValues = (values[inputName] || []).slice();
+                                    if (e.target.checked) {
+                                      updatedValues.push(option.value);
+                                    } else {
+                                      const index = updatedValues.indexOf(option.value);
+                                      if (index > -1) {
+                                        updatedValues.splice(index, 1);
+                                      }
+                                    }
+                                    handleInputChange(i, fieldIndex, updatedValues);
+                                  }}
+                                  checked={(values[inputName] || []).includes(option.value)}
+                                />
+                              </InputCheckbox>
+                            ))}
+                          </div>
+                        </Checkboxes>
 
-        <Button variant="primary" type="submit" title="Submit Application" />
-      </FormContent>
+                      )
+
+                    default:
+                    return null;
+                  }
+                })}
+              </div>
+            ))}
+          </InputContainer>
+
+          <Text>
+            <Heading bold="heavy" size="l2" title="US Equal Opportunity Employer Statement" />
+
+            <p>
+              Continuum Capital is an equal opportunity employer that is commited to diversity and inclusion in the workplace. We 
+              prohibit discrimination and harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, 
+              disability, genetic information, pregnancy, or any other protected characteristic as outlined by federal, state, or local laws.
+            </p>
+
+            <p>
+              This policy applies to all employment practices within our organization, including hiring, recruiting, promotion, termination,
+              layoff, recall, leave of absence, compensation, benefits, training, and apprenticeship. Continuum Capital makes hiring 
+              decisions based solely on qualifications, merit, and business needs at the time.
+            </p>
+          </Text>
+
+          <Button variant="primary" type="submit" title="Submit Application" />
+        </FormContent>
+      </XyzTransition>
+      
     </FormWrap>
+
   ); 
 };
 
