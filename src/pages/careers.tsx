@@ -43,6 +43,7 @@ const ListBlockTitleContent = styled('div', {
   flexDirection: 'row-reverse',
   position: 'relative',
   width: '100%',
+  '@mobile': { flexDirection: 'row' },
 
   '> *': { 
     display: 'flex',

@@ -37,6 +37,7 @@ const Home: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
   const [ jobDetail, setJobDetail ] = useState<JobDetail | null>(null)
+  const [ complianceData, setComplianceData ] = useState<any[]>([]);
   const [ error, setError ] = useState<string | null>(null)
 
   useEffect(() => {
@@ -47,7 +48,8 @@ const Home: NextPage = () => {
           const result = await res.json()
   
           if (res.ok) {
-            setJobDetail(result)
+            setJobDetail(result);
+            setComplianceData(result.compliance || []);
           } else {
             setError(result.message || 'An error occurred')
           }
@@ -80,7 +82,7 @@ const Home: NextPage = () => {
         requirements={ jobDetail?.metadata[2].value }
       />
 
-      { jobDetail?.questions && <JobApplyForm questions={ jobDetail.questions } /> }
+      {jobDetail?.questions && <JobApplyForm questions={ jobDetail.questions } compliance={ complianceData } />}
     </SiteContainer>
   );
 }

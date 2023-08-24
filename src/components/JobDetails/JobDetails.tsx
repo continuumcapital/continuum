@@ -1,10 +1,10 @@
 import React from 'react'
-import { styled } from '@theme'
-import { Text } from '@components'
-import { Details } from './Parts/Details'
-import DOMPurify from 'dompurify'
-import { decodeHTML, processLines } from '@lib'
 import { XyzTransition } from '@animxyz/react'
+import DOMPurify from 'dompurify'
+import { styled } from '@theme'
+import { Heading, Text } from '@components'
+import { Details } from './Parts/Details'
+import { decodeHTML, processLines } from '@lib'
 
 // For the master containers of the job details
 // This holds all the information and the form to apply for the open position
@@ -25,8 +25,27 @@ const DetailsContent = styled('div', {
   margin: '0 auto',
   padding: '100px 0',
   '> *:not(:last-child)': { 
-    marginBottom: 100,
+    marginBottom: 75,
     '@tablet': { marginBottom: 50 }
+  }
+})
+
+const DetailsIntro = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  position: 'relative',
+  width: '100%',
+  paddingBottom: 75,
+  '> *:not(:last-child)': { marginBottom: 20 },
+
+  '&:after': { 
+    content: '',
+    position: 'absolute',
+    bottom: 0,
+    width: 100,
+    height: 2,
+    background: 'rgba( 255, 255, 255, 0.2 )'
   }
 })
 
@@ -64,13 +83,17 @@ export const JobDetails = ({ descp, responsibilities, requirements }:DetailProps
       <XyzTransition xyz="fade down delay-15 duration-15" appear>
 
         <DetailsContent>
-          <Text fontSize="l1" dangerouslySetInnerHTML={{ __html: cleanHTML }}></Text>
+          <DetailsIntro>
+            <Heading size="l4" bold="heavy" title="Position Overview" />
+            <Text fontSize="l0" dangerouslySetInnerHTML={{ __html: cleanHTML }}></Text>
+          </DetailsIntro>
+
           <DetailsDescp>
             <Details title="Responsibilities" listItems={ listItems } />
             <Details title="Requirements" listItems={ reqListItems } />
           </DetailsDescp>
         </DetailsContent>
-        
+
       </XyzTransition>
     </DetailsWrap>
 

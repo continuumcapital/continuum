@@ -75,8 +75,8 @@ interface Question {
   value: string;
 }
 
-export const JobApplyForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
-  const [values, setValues] = useState<{ [key: string]: any }>({});
+export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }> = ({ questions, compliance }) => {
+  const [ values, setValues ] = useState<{[ key: string ]: any }>({});
 
   const handleInputChange = (questionIndex: number, fieldIndex: number, value: any) => {
     setValues(prevValues => ({
@@ -215,6 +215,20 @@ export const JobApplyForm: React.FC<{ questions: Question[] }> = ({ questions })
               decisions based solely on qualifications, merit, and business needs at the time.
             </p>
           </Text>
+
+          {compliance && compliance.map((complianceItem, index) => (
+            <div key={`compliance-${index}`}>
+              <h3>{complianceItem.type}</h3>
+              <p dangerouslySetInnerHTML={{ __html: complianceItem.description }}></p>
+              
+              {complianceItem.questions && complianceItem.questions.map((question:any, i:any) => (
+                <div key={`question-${i}`}>
+                  {question.label}
+                </div>
+              ))}
+            </div>
+          ))}
+
 
           <Button variant="primary" type="submit" title="Submit Application" />
         </FormContent>
