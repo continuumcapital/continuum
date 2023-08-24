@@ -82,7 +82,11 @@ const Home: NextPage = () => {
         requirements={ jobDetail?.metadata[2].value }
       />
 
-      {jobDetail?.questions && <JobApplyForm questions={ jobDetail.questions } compliance={ complianceData } />}
+      {jobDetail?.questions && 
+        <JobApplyForm 
+          questions={ jobDetail.questions } 
+          compliance={ complianceData } />
+        }
     </SiteContainer>
   );
 }

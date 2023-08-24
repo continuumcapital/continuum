@@ -78,11 +78,111 @@ interface Question {
 export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }> = ({ questions, compliance }) => {
   const [ values, setValues ] = useState<{[ key: string ]: any }>({});
 
+  const filteredCompliance = compliance.filter(complianceItem => {
+    return complianceItem.questions.some(question => 
+        question.label.includes('Race') || question.label.includes('Gender')
+    );
+});
+
   const handleInputChange = (questionIndex: number, fieldIndex: number, value: any) => {
     setValues(prevValues => ({
       ...prevValues,
       [`${questionIndex}-${fieldIndex}`]: value
     }));
+  }
+
+  const RenderQuestion = ({ question, questionIndex }: { question: Question, questionIndex: number }) => {
+    return (
+
+      <div key={`question-${ questionIndex }`}>
+        { question.fields.map(( field, fieldIndex ) => {
+          const inputName = `${ questionIndex }-${ fieldIndex }`;
+          switch ( field.type ) {
+            case "input_text" :
+            return (
+
+              <BasicInput 
+                key={ fieldIndex }
+                active={ Boolean( values[`${questionIndex}-0`] )}
+                label={ question.label }
+                name={ field.name }
+                required={ question.required }
+                value={ values[ inputName ] || ''}
+                onChange={(e: any) => handleInputChange( questionIndex, fieldIndex, e.target.value )}
+              />
+
+            )
+            
+            case "input_file" :
+            return (
+
+              <FileInput 
+                key={ fieldIndex }
+                required={ question.required }
+                label={ question.label }
+                name={ field.name }
+              />
+
+            )
+
+            case "multi_value_single_select":
+            return (
+
+              <SelectInput 
+                defaultValue="Select"
+                label={ question.label }
+                name={ question.label }
+                options={ field.values.map( option => ({
+                  title: option.label, 
+                  value: option.value 
+                }))}
+              />
+
+            )
+
+            case "multi_value_multi_select":
+            return (
+
+              <Checkboxes key={ fieldIndex }>
+                <fieldset>
+                  <Heading title={ question.label } />
+                  { question.required && <TextEm color="danger">*</TextEm> }
+                </fieldset>
+
+                <div>
+                  { field.values.map(( option, optionIndex ) => (
+                    <InputCheckbox key={ optionIndex }>
+                      <label>{ option.label }</label>
+                      <input 
+                        type="checkbox"
+                        name={field.name}
+                        value={option.value}
+                        onChange={e => {
+                          const updatedValues = (values[inputName] || []).slice();
+                          if (e.target.checked) {
+                            updatedValues.push(option.value);
+                          } else {
+                            const index = updatedValues.indexOf(option.value);
+                            if (index > -1) {
+                              updatedValues.splice(index, 1);
+                            }
+                          }
+                          handleInputChange(questionIndex, fieldIndex, updatedValues);
+                        }}
+                        checked={(values[inputName] || []).includes(option.value)}
+                      />
+                    </InputCheckbox>
+                  ))}
+                </div>
+              </Checkboxes>
+            )
+            
+            default:
+            return null;
+          }
+        })}
+      </div>
+    )
   }
 
   return (
@@ -94,10 +194,9 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
           <FormHeader title="Apply for this job" />
 
           <InputContainer>
-            { questions.map(( question, i ) => (
-              <div key={`question-${ i }`}>
-
-                { question.fields.map(( field, fieldIndex ) => {
+          {questions.map((question, i) => (
+              <div key={`question-${i}`}>
+                {question.fields.map((field, fieldIndex) => {
                   const inputName = `${ i }-${ fieldIndex }`
                   switch ( field.type ) {
                     case "input_text" :
@@ -134,10 +233,10 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
                         defaultValue="Select"
                         label={ question.label }
                         name={ question.label }
-                        options={[
-                          { title: 'Yes' },
-                          { title: 'No' }
-                        ]}
+                        options={field.values.map(option => ({
+                          title: option.label, // Transforming `label` to `title`
+                          value: option.value  // Optional if SelectInput also expects `value`, else you can omit this
+                        }))}
                       />
                     
                     )
@@ -215,20 +314,22 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
               decisions based solely on qualifications, merit, and business needs at the time.
             </p>
           </Text>
-
-          {compliance && compliance.map((complianceItem, index) => (
-            <div key={`compliance-${index}`}>
-              <h3>{complianceItem.type}</h3>
-              <p dangerouslySetInnerHTML={{ __html: complianceItem.description }}></p>
-              
-              {complianceItem.questions && complianceItem.questions.map((question:any, i:any) => (
-                <div key={`question-${i}`}>
-                  {question.label}
-                </div>
+          
+          
+          {filteredCompliance.map((complianceItem, index) => (
+          <div key={`compliance-${index}`}>
+            <InputContainer>
+              {complianceItem.questions && complianceItem.questions.map((nestedQuestion:any, nestedQuestionIndex:any) => (
+                <RenderQuestion 
+                  question={nestedQuestion} 
+                  questionIndex={nestedQuestionIndex} 
+                  key={nestedQuestionIndex} 
+                />
               ))}
-            </div>
-          ))}
-
+            </InputContainer>
+          </div>
+        ))}
+          
 
           <Button variant="primary" type="submit" title="Submit Application" />
         </FormContent>
@@ -236,7 +337,7 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
       
     </FormWrap>
 
-  ); 
-};
+  ) 
+}
 
-export default JobApplyForm;
+export default JobApplyForm
