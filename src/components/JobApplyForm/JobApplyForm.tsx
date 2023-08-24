@@ -107,7 +107,7 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
                 label={ question.label }
                 name={ field.name }
                 required={ question.required }
-                value={ values[ inputName ] || ''}
+                value={ values[ inputName ] || '' }
                 onChange={(e: any) => handleInputChange( questionIndex, fieldIndex, e.target.value )}
               />
 

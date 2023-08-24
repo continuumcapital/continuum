@@ -26,7 +26,7 @@ const DetailsContent = styled('div', {
   padding: '100px 0',
   '> *:not(:last-child)': { 
     marginBottom: 75,
-    '@tablet': { marginBottom: 50 }
+    '@tablet': { marginBottom: 40 }
   }
 })
 
@@ -46,7 +46,13 @@ const DetailsIntro = styled('div', {
     width: 100,
     height: 2,
     background: 'rgba( 255, 255, 255, 0.2 )'
-  }
+  },
+
+  '@tablet': { 
+    paddingBottom: 50,
+    alignItems: 'flex-start',
+    '&:after': { width: '100%' }
+  },
 })
 
 // For the container of the different sections of bullet points

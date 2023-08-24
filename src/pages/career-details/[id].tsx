@@ -60,9 +60,7 @@ const Home: NextPage = () => {
     }
   
     fetchData()
-  }, [ id ])  
-  
-  console.log( jobDetail )
+  }, [ id ]) 
   
   return (
 
@@ -82,11 +80,12 @@ const Home: NextPage = () => {
         requirements={ jobDetail?.metadata[2].value }
       />
 
-      {jobDetail?.questions && 
+      { jobDetail?.questions && 
         <JobApplyForm 
           questions={ jobDetail.questions } 
-          compliance={ complianceData } />
-        }
+          compliance={ complianceData } 
+        />
+      }
     </SiteContainer>
   );
 }
