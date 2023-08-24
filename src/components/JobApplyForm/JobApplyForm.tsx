@@ -78,11 +78,11 @@ interface Question {
 export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }> = ({ questions, compliance }) => {
   const [ values, setValues ] = useState<{[ key: string ]: any }>({});
 
-  const filteredCompliance = compliance.filter(complianceItem => {
-    return complianceItem.questions.some(question => 
+  const filteredCompliance = compliance.filter((complianceItem: { questions: Question[] }) => {
+    return complianceItem.questions.some((question: Question) => 
         question.label.includes('Race') || question.label.includes('Gender')
     );
-});
+  });
 
   const handleInputChange = (questionIndex: number, fieldIndex: number, value: any) => {
     setValues(prevValues => ({
@@ -316,21 +316,20 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
           </Text>
           
           
-          {filteredCompliance.map((complianceItem, index) => (
-          <div key={`compliance-${index}`}>
-            <InputContainer>
-              {complianceItem.questions && complianceItem.questions.map((nestedQuestion:any, nestedQuestionIndex:any) => (
-                <RenderQuestion 
-                  question={nestedQuestion} 
-                  questionIndex={nestedQuestionIndex} 
-                  key={nestedQuestionIndex} 
-                />
-              ))}
-            </InputContainer>
-          </div>
-        ))}
+          { filteredCompliance.map(( complianceItem, index ) => (
+            <div key={`compliance-${ index }`}>
+              <InputContainer>
+                { complianceItem.questions && complianceItem.questions.map(( nestedQuestion:any, nestedQuestionIndex:any ) => (
+                  <RenderQuestion 
+                    question={ nestedQuestion } 
+                    questionIndex={ nestedQuestionIndex } 
+                    key={ nestedQuestionIndex } 
+                  />
+                ))}
+              </InputContainer>
+            </div>
+          ))}
           
-
           <Button variant="primary" type="submit" title="Submit Application" />
         </FormContent>
       </XyzTransition>
