@@ -9,14 +9,17 @@ const submitApplication = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
+  // Base64 encode your API key
+  const base64EncodedApiKey = Buffer.from(process.env.NEXT_PUBLIC_GREENHOUSE || '').toString('base64');
+
   try {
     const response = await axios.post(
-      `https://boards-api.greenhouse.io/v1/boards/${process.env.NEXT_PUBLIC_GREENHOUSE_BOARD}/jobs/${id}/applications`, // Adjust based on API docs
-      req.body, // Forward the application data from the frontend
+      `https://boards-api.greenhouse.io/v1/boards/${process.env.NEXT_PUBLIC_GREENHOUSE_BOARD}/jobs/${id}`,
+      req.body,
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${ process.env.NEXT_PUBLIC_GREENHOUSE }`
+          'Authorization': `Basic ${base64EncodedApiKey}`  // Use the encoded API key here
         }
       }
     );

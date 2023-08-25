@@ -1,30 +1,7 @@
 import React, { useState } from 'react'
-import { Heading, Text, TextEm, Button, JobDetails } from '@components'
+import { Heading, Text, TextEm } from '@components'
 import { styled } from '@theme'
-import { FormHeader, BasicInput, FileInput, SelectInput } from './Parts'
-import { XyzTransition } from '@animxyz/react'
-
-// For the master container of the form, within the Apply for Job section
-// This holds all of the questions needed to be supplied when applying for a position
-
-const FormWrap = styled('div', {
-  position: 'relative',
-  width: '100%',
-  background: '$bgPrimary'
-})
-
-// For the container of all of the content within the master container
-// This holds all of the titles and the input forms
-
-const FormContent = styled('div', {
-  position: 'relative',
-  maxWidth: 800,
-  width: '90%',
-  margin: '0 auto',
-  padding: '150px 0 50px',
-  '> *:not(:last-child)': { marginBottom: 50 },
-  '@mobile': { padding: '75px 0 20px' }
-})
+import { BasicInput, FileInput, SelectInput, FormWrapper } from './Parts'
 
 // For the container of all of the inputs within the form
 // This is mainly used to automate the spacing between each of the inputs within the container
@@ -95,11 +72,6 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[], 
   const handleSubmit = async (event:any) => {
     event.preventDefault();
 
-    // 1. Log to see if the function is called
-    console.log('handleSubmit called');
-    
-    console.log( jobId )
-
     try {
       const response = await fetch(`/api/applicationSubmit?id=${jobID}`, {
         method: 'POST',
@@ -108,9 +80,6 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[], 
         },
         body: JSON.stringify(values)
       });
-
-      const res = await fetch('/api/jobBoard');
-      const result = await res.json();
 
       // 2. Log the raw response
       console.log('Raw Response:', response);
@@ -230,11 +199,8 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[], 
 
   return (
 
-    <FormWrap id="apply-now">
-      <XyzTransition xyz="fade down delay-15 duration-15" appear>
-        <form method="POST" onSubmit={ handleSubmit } encType='multipart/form-data'>
-          <FormContent>
-            <FormHeader title="Apply for this job" />
+    <FormWrapper>
+
 
             <InputContainer>
               {questions.map((question, i) => (
@@ -375,12 +341,8 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[], 
               </div>
             ))}
             
-            <Button variant="primary" type="submit" title="Submit Application" />
-          </FormContent>
-        </form>
-      </XyzTransition>
-      
-    </FormWrap>
+
+          </FormWrapper>
 
   ) 
 }

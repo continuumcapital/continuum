@@ -103,7 +103,10 @@ export const BasicInput = ({
         { required && <TextEm color="danger">*</TextEm> }
       </label>
 
-      <input type="text" {...{ name, required, value, onChange }} />
+      <input 
+        type="text" 
+        {...{ name, required, value, onChange }} 
+      />
     </Input>
 
   )

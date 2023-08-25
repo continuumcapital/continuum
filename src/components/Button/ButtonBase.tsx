@@ -15,6 +15,7 @@ const ButtonWrap = styled('div', {
   fontSize: '1rem',
   fontFamily: '$sansSerifBold',
   whiteSpace: 'nowrap',
+  overflow: 'hidden',
 
   // For the font weight of the text wihin the button
   // By default, strong is bold font so we have to set it to heavy here
