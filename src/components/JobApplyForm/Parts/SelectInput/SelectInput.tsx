@@ -43,9 +43,9 @@ const SelectItem = styled('button', {
   '&:after': {
     content: '',
     position: 'absolute',
-    width: '96%',
-    height: '100%',
-    background: '$bgSecondary',
+    width: '98%',
+    height: '130%',
+    background: '$bgPrimary',
     borderRadius: '$r1',
     opacity: 0,
     transition: '$s1',
@@ -117,7 +117,9 @@ export const SelectInput = ({
 
   const handleChange = ( selectedValue:any ) => {
     setValue( selectedValue )
-    onChange( selectedValue )
+    if (onChange) {   // Check if onChange is defined
+      onChange( selectedValue )
+    }
   }
 
   return(
@@ -138,14 +140,12 @@ export const SelectInput = ({
         }
         content={
           <SelectDropdown ref={ selectMenu }>
-            <List>
+            <List spacing="l0">
               { options.map(( option, i ) => (
 
                 <li key={`option-${ i }`}>
                   <SelectItem onClick={() => handleChange( option.title )}>
-                    <div>
-                      <Heading bold="bold" size="l1" title={ option.title } />
-                    </div>
+                    <Heading size="l1" title={ option.title } />
                   </SelectItem>
                 </li>
 

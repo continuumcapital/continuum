@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, Text, TextEm, Button } from '@components'
+import { Heading, Text, TextEm, Button, JobDetails } from '@components'
 import { styled } from '@theme'
 import { FormHeader, BasicInput, FileInput, SelectInput } from './Parts'
 import { XyzTransition } from '@animxyz/react'
@@ -75,8 +75,9 @@ interface Question {
   value: string;
 }
 
-export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }> = ({ questions, compliance }) => {
+export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[], jobId:any }> = ({ questions, compliance, jobId }) => {
   const [ values, setValues ] = useState<{[ key: string ]: any }>({});
+  const jobID = jobId;
 
   const filteredCompliance = compliance.filter((complianceItem: { questions: Question[] }) => {
     return complianceItem.questions.some((question: Question) => 
@@ -90,6 +91,47 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
       [`${questionIndex}-${fieldIndex}`]: value
     }));
   }
+
+  const handleSubmit = async (event:any) => {
+    event.preventDefault();
+
+    // 1. Log to see if the function is called
+    console.log('handleSubmit called');
+    
+    console.log( jobId )
+
+    try {
+      const response = await fetch(`/api/applicationSubmit?id=${jobID}`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+
+      const res = await fetch('/api/jobBoard');
+      const result = await res.json();
+
+      // 2. Log the raw response
+      console.log('Raw Response:', response);
+
+      const data = await response.json();
+
+      // 3. Log the JSON parsed data
+      console.log('Parsed JSON Response:', data);
+
+      if (response.ok) {
+          // Handle success, maybe navigate user to a thank-you page or show a success message.
+      } else {
+          // Handle errors returned from your server
+          console.log('Server responded with an error', data);
+      }
+    } catch (error) {
+        console.error('Network error:', error);
+        // Handle network errors or show an error message to the user.
+    }
+  };
+
 
   const RenderQuestion = ({ question, questionIndex }: { question: Question, questionIndex: number }) => {
     return (
@@ -129,6 +171,7 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
             return (
 
               <SelectInput 
+                key={ fieldIndex }
                 defaultValue="Select"
                 label={ question.label }
                 name={ question.label }
@@ -189,149 +232,152 @@ export const JobApplyForm: React.FC<{ questions: Question[], compliance: any[] }
 
     <FormWrap id="apply-now">
       <XyzTransition xyz="fade down delay-15 duration-15" appear>
+        <form method="POST" onSubmit={ handleSubmit } encType='multipart/form-data'>
+          <FormContent>
+            <FormHeader title="Apply for this job" />
 
-        <FormContent>
-          <FormHeader title="Apply for this job" />
+            <InputContainer>
+              {questions.map((question, i) => (
 
-          <InputContainer>
-          {questions.map((question, i) => (
-              <div key={`question-${i}`}>
-                {question.fields.map((field, fieldIndex) => {
-                  const inputName = `${ i }-${ fieldIndex }`
-                  switch ( field.type ) {
-                    case "input_text" :
-                    return (
-
-                      <BasicInput 
-                        key={ fieldIndex }
-                        active={ Boolean( values[`${ i }-0`] )}
-                        label={ question.label }
-                        name={ field.name }
-                        required={ question.required }
-                        value={ values[ inputName ] || '' }
-                        onChange={ (e:any) => handleInputChange( i, fieldIndex, e.target.value ) }
-                      />
-
-                    )
-                  
-                    case "input_file" :
-                    return (
-                      
-                      <FileInput 
-                        key={ fieldIndex }
-                        required={ question.required }
-                        label={ question.label }
-                        name={ field.name }
-                      />
-                    
-                    )
-
-                    case "multi_value_single_select" :
-                    return (
-                      
-                      <SelectInput 
-                        defaultValue="Select"
-                        label={ question.label }
-                        name={ question.label }
-                        options={field.values.map(option => ({
-                          title: option.label, // Transforming `label` to `title`
-                          value: option.value  // Optional if SelectInput also expects `value`, else you can omit this
-                        }))}
-                      />
-                    
-                    )
-
-                    // case "textarea":
-                    // return (
-                    //   <textarea 
-                    //     key={fieldIndex} 
-                    //     name={field.name} 
-                    //     required={ false } 
-                    //     value={values[inputName] || ''}
-                    //     onChange={e => handleInputChange(i, fieldIndex, e.target.value)}
-                    //   ></textarea>
-                    // )
-                  
-                    case "multi_value_multi_select":
+                <div key={`question-${i}`}>
+                  {question.fields.map((field, fieldIndex) => {
+                    const inputName = `${ i }-${ fieldIndex }`
+                    switch ( field.type ) {
+                      case "input_text" :
                       return (
 
-                        <Checkboxes key={ fieldIndex }>
-                          <fieldset>
-                            <Heading title={ question.label } />
-                            { question.required && <TextEm color="danger">*</TextEm> }
-                          </fieldset>
-
-                          <div>
-                            { field.values.map((option, optionIndex) => (
-                              <InputCheckbox key={optionIndex}>
-                                <label>{option.label}</label>
-                                <input 
-                                  type="checkbox"
-                                  name={field.name}
-                                  value={option.value}
-                                  onChange={e => {
-                                    // Handle multi-value selection
-                                    const updatedValues = (values[inputName] || []).slice();
-                                    if (e.target.checked) {
-                                      updatedValues.push(option.value);
-                                    } else {
-                                      const index = updatedValues.indexOf(option.value);
-                                      if (index > -1) {
-                                        updatedValues.splice(index, 1);
-                                      }
-                                    }
-                                    handleInputChange(i, fieldIndex, updatedValues);
-                                  }}
-                                  checked={(values[inputName] || []).includes(option.value)}
-                                />
-                              </InputCheckbox>
-                            ))}
-                          </div>
-                        </Checkboxes>
+                        <BasicInput 
+                          key={ fieldIndex }
+                          active={ Boolean( values[`${ i }-0`] )}
+                          label={ question.label }
+                          name={ field.name }
+                          required={ question.required }
+                          value={ values[ inputName ] || '' }
+                          onChange={ (e:any) => handleInputChange( i, fieldIndex, e.target.value ) }
+                        />
 
                       )
+                    
+                      case "input_file" :
+                      return (
+                        
+                        <FileInput 
+                          key={ fieldIndex }
+                          required={ question.required }
+                          label={ question.label }
+                          name={ field.name }
+                        />
+                      
+                      )
 
-                    default:
-                    return null;
-                  }
-                })}
+                      case "multi_value_single_select" :
+                      return (
+                        
+                        <SelectInput 
+                          defaultValue="Select"
+                          label={ question.label }
+                          name={ question.label }
+                          options={field.values.map(option => ({
+                            title: option.label, // Transforming `label` to `title`
+                            value: option.value  // Optional if SelectInput also expects `value`, else you can omit this
+                          }))}
+                        />
+                      
+                      )
+
+                      // case "textarea":
+                      // return (
+                      //   <textarea 
+                      //     key={fieldIndex} 
+                      //     name={field.name} 
+                      //     required={ false } 
+                      //     value={values[inputName] || ''}
+                      //     onChange={e => handleInputChange(i, fieldIndex, e.target.value)}
+                      //   ></textarea>
+                      // )
+                    
+                      case "multi_value_multi_select":
+                        return (
+
+                          <Checkboxes key={ fieldIndex }>
+                            <fieldset>
+                              <Heading title={ question.label } />
+                              { question.required && <TextEm color="danger">*</TextEm> }
+                            </fieldset>
+
+                            <div>
+                              { field.values.map((option, optionIndex) => (
+                                <InputCheckbox key={optionIndex}>
+                                  <label>{option.label}</label>
+                                  <input 
+                                    type="checkbox"
+                                    name={field.name}
+                                    value={option.value}
+                                    onChange={e => {
+                                      // Handle multi-value selection
+                                      const updatedValues = (values[inputName] || []).slice();
+                                      if (e.target.checked) {
+                                        updatedValues.push(option.value);
+                                      } else {
+                                        const index = updatedValues.indexOf(option.value);
+                                        if (index > -1) {
+                                          updatedValues.splice(index, 1);
+                                        }
+                                      }
+                                      handleInputChange(i, fieldIndex, updatedValues);
+                                    }}
+                                    checked={(values[inputName] || []).includes(option.value)}
+                                  />
+                                </InputCheckbox>
+                              ))}
+                            </div>
+                          </Checkboxes>
+
+                        )
+
+                      default:
+                      return null;
+                    }
+                  })}
+                </div>
+                
+              ))}
+            </InputContainer>
+
+            <Text>
+              <Heading bold="heavy" size="l2" title="US Equal Opportunity Employer Statement" />
+
+              <p>
+                Continuum Capital is an equal opportunity employer that is commited to diversity and inclusion in the workplace. We 
+                prohibit discrimination and harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, 
+                disability, genetic information, pregnancy, or any other protected characteristic as outlined by federal, state, or local laws.
+              </p>
+
+              <p>
+                This policy applies to all employment practices within our organization, including hiring, recruiting, promotion, termination,
+                layoff, recall, leave of absence, compensation, benefits, training, and apprenticeship. Continuum Capital makes hiring 
+                decisions based solely on qualifications, merit, and business needs at the time.
+              </p>
+            </Text>
+            
+            
+            { filteredCompliance.map(( complianceItem, index ) => (
+              <div key={`compliance-${ index }`}>
+                <InputContainer>
+                  { complianceItem.questions && complianceItem.questions.map(( nestedQuestion:any, nestedQuestionIndex:any ) => (
+                    <RenderQuestion 
+                      question={ nestedQuestion } 
+                      questionIndex={ nestedQuestionIndex } 
+                      key={ nestedQuestionIndex } 
+                    />
+                  ))}
+                </InputContainer>
               </div>
             ))}
-          </InputContainer>
-
-          <Text>
-            <Heading bold="heavy" size="l2" title="US Equal Opportunity Employer Statement" />
-
-            <p>
-              Continuum Capital is an equal opportunity employer that is commited to diversity and inclusion in the workplace. We 
-              prohibit discrimination and harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, 
-              disability, genetic information, pregnancy, or any other protected characteristic as outlined by federal, state, or local laws.
-            </p>
-
-            <p>
-              This policy applies to all employment practices within our organization, including hiring, recruiting, promotion, termination,
-              layoff, recall, leave of absence, compensation, benefits, training, and apprenticeship. Continuum Capital makes hiring 
-              decisions based solely on qualifications, merit, and business needs at the time.
-            </p>
-          </Text>
-          
-          
-          { filteredCompliance.map(( complianceItem, index ) => (
-            <div key={`compliance-${ index }`}>
-              <InputContainer>
-                { complianceItem.questions && complianceItem.questions.map(( nestedQuestion:any, nestedQuestionIndex:any ) => (
-                  <RenderQuestion 
-                    question={ nestedQuestion } 
-                    questionIndex={ nestedQuestionIndex } 
-                    key={ nestedQuestionIndex } 
-                  />
-                ))}
-              </InputContainer>
-            </div>
-          ))}
-          
-          <Button variant="primary" type="submit" title="Submit Application" />
-        </FormContent>
+            
+            <Button variant="primary" type="submit" title="Submit Application" />
+          </FormContent>
+        </form>
       </XyzTransition>
       
     </FormWrap>

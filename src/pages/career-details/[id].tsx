@@ -40,6 +40,8 @@ const Home: NextPage = () => {
   const [ complianceData, setComplianceData ] = useState<any[]>([]);
   const [ error, setError ] = useState<string | null>(null)
 
+  console.log( jobDetail )
+
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
@@ -84,6 +86,7 @@ const Home: NextPage = () => {
         <JobApplyForm 
           questions={ jobDetail.questions } 
           compliance={ complianceData } 
+          jobId={ jobDetail.id }
         />
       }
     </SiteContainer>
