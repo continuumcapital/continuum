@@ -21,6 +21,7 @@ export interface Field {
   name: string;
   type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select';
   values: any[];
+  required: boolean; // Add this
 }
 
 export interface Question {
