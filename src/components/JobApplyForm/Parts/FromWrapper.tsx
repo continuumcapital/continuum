@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useForm, FormProvider } from 'react-hook-form'
 import { styled } from '@theme'
 import { Button } from '@components'
 import { FormHeader } from './FormHeader'
@@ -32,19 +33,25 @@ interface FormProps {
 }
 
 export const FormWrapper = ({ children, onSubmit }:FormProps) => {
+  const methods = useForm()
+  const { watch } = methods
+  const [ error, setError ] = useState('')
+
   return(
 
     <FormWrap id="apply-now">
       <XyzTransition xyz="fade down delay-15 duration-15" appear>
-        <form method="POST" encType='multipart/form-data' {...{ onSubmit }}>
+        <FormProvider {...methods} watch={ watch }>
+          <form method="POST" encType='multipart/form-data' onSubmit={ methods.handleSubmit( onSubmit ) }>
 
-          <FormContent>
-            <FormHeader title="Apply for this job" />
-            { children }
-            <Button variant="primary" type="submit" title="Submit Application" />
-          </FormContent>
+            <FormContent>
+              <FormHeader title="Apply for this job" />
+              { children }
+              <Button variant="primary" type="submit" title="Submit Application" />
+            </FormContent>
 
-        </form>
+          </form>
+        </FormProvider>
       </XyzTransition>
     </FormWrap>
   )

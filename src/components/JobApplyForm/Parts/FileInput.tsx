@@ -117,6 +117,7 @@ export const FileInput = ({ key, name, label, required }:FileProps) => {
             <FilePreview key={file.name}>
               <Heading title={file.name} />
               <Button variant="icon" icon="cross-2" onClick={ removeFile } />
+              <input id={ name } hidden type="file" {...{ key, name, required }} />
             </FilePreview>
           ))
 

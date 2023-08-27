@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import type { NextPage } from 'next';
-import { SiteContainer, HeroTitle, ReadingBar, JobDetails, JobApplyForm } from '@components';
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import type { NextPage } from 'next'
+import { SiteContainer, HeroTitle, ReadingBar, JobDetails, JobApplyForm } from '@components'
 
 interface JobDetail {
   id: string;

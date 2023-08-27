@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { styled } from '@theme'
 import { Heading, Text } from '@components'
 import { BasicInput, FileInput, SelectInput, FormWrapper, CheckboxInput, Fields } from './Parts'
+import { submitApplication } from '@lib'
 
 // For the container of all of the inputs within the form
 // This is mainly used to automate the spacing between each of the inputs within the container
@@ -11,6 +12,8 @@ const InputContainer = styled('div', {
   width: '100%',
   '> *:not(:last-child)': { marginBottom: 12 }
 })
+
+// -------------- Typescript declarations -------------- //
 
 interface CustomField {
   name: string
@@ -33,55 +36,24 @@ interface FormProps {
   jobId: string | number
 }
 
+// ---------- This is the end of declarations ---------- //
+
 export const JobApplyForm = ({ questions, compliance, jobId }:FormProps) => {
   const [ values, setValues ] = useState<{[ key: string ]: any }>({});
-  const jobID = jobId;
+  const handleSubmit = async () => { await submitApplication({ endpoint: "/api/applicationSubmit", jobId, values })}
 
   const filteredCompliance = compliance.filter((complianceItem: { questions: Question[] }) => {
     return complianceItem.questions.some((question: Question) => 
         question.label.includes('Race') || question.label.includes('Gender')
-    );
-  });
+    )
+  })
 
   const handleInputChange = (questionIndex: number, fieldIndex: number, value: any) => {
     setValues(prevValues => ({
       ...prevValues,
       [`${questionIndex}-${fieldIndex}`]: value
-    }));
+    }))
   }
-
-  const handleSubmit = async (event:any) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch(`/api/applicationSubmit?id=${jobID}`, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });
-
-      // 2. Log the raw response
-      console.log('Raw Response:', response);
-
-      const data = await response.json();
-
-      // 3. Log the JSON parsed data
-      console.log('Parsed JSON Response:', data);
-
-      if (response.ok) {
-          // Handle success, maybe navigate user to a thank-you page or show a success message.
-      } else {
-          // Handle errors returned from your server
-          console.log('Server responded with an error', data);
-      }
-    } catch (error) {
-        console.error('Network error:', error);
-        // Handle network errors or show an error message to the user.
-    }
-  };
-
 
   const RenderQuestion = ({ question, questionIndex }: { question: Question, questionIndex: number }) => {
     return (

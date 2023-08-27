@@ -1,4 +1,5 @@
 import React from 'react'
+import { useFormContext } from 'react-hook-form'
 import { styled } from '@theme'
 import { Heading, TextEm } from '@components'
 
@@ -82,6 +83,7 @@ interface InputProps {
   name: any
   value: any
   onChange: any
+  rules?: any
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -92,8 +94,11 @@ export const BasicInput = ({
     required,
     name,
     value,
-    onChange
+    onChange,
+    rules
   }:InputProps) => {
+
+  const { register, formState: { errors }, watch } = useFormContext();
   
   return(
 
@@ -104,7 +109,9 @@ export const BasicInput = ({
       </label>
 
       <input 
+        id={ name }
         type="text" 
+        {...register( name , { ...rules })} 
         {...{ name, required, value, onChange }} 
       />
     </Input>
