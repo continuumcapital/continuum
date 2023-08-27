@@ -1,12 +1,14 @@
 import React from 'react'
 import { BasicInput, FileInput, SelectInput, CheckboxInput } from './index'
 
+// -------------- Typescript declarations -------------- //
+
 type Field = {
-  name: string;
-  type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select' | 'multi_value_single_select';
-  values: any[];
-  required?: boolean;
-};
+  name: string
+  type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select' | 'multi_value_single_select'
+  values: any[]
+  required?: boolean
+}
 
 interface FieldProps {
   field: Field, 
@@ -14,14 +16,18 @@ interface FieldProps {
   value: any, 
   questionLabel: string, 
   handleInputChange: ( fieldIndex: number, value: any ) => void 
+  required?: boolean
 }
+
+// ---------- This is the end of declarations ---------- //
 
 export const Fields = ({ 
     field, 
     fieldIndex, 
     value, 
     questionLabel, 
-    handleInputChange 
+    handleInputChange,
+    required
   }:FieldProps) => {
 
   switch ( field.type ) {
@@ -32,7 +38,7 @@ export const Fields = ({
         active={ Boolean( value )}
         label={ questionLabel }
         name={ field.name }
-        required={ field.required }
+        required={ required }
         value={ value || '' }
         onChange={( e: any ) => handleInputChange( fieldIndex, e.target.value )}
       />
@@ -43,7 +49,7 @@ export const Fields = ({
     return (
 
       <FileInput 
-        required={ field.required }
+        required={ required }
         label={ questionLabel }
         name={ field.name }
       />

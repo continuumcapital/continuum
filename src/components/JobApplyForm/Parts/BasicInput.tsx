@@ -27,7 +27,8 @@ const Input = styled('div', {
     position: 'relative',
     width: '100%',
     transformOrigin: 'top left',
-    transition: '$s1'
+    transition: '$s1',
+    zIndex: 10
   },
 
   // For the actual input, where the user types the value
@@ -45,7 +46,16 @@ const Input = styled('div', {
     background: 'none',
     appearance: 'none',
     fontFamily: '$sansSerifBold',
-    fontSize: '$s1'
+    fontSize: '$s1',
+    zIndex: 9
+  },
+
+  // Here we are removing the default styling that comes with autofill from browser defaults
+
+  'input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus': {
+    boxShadow: '0 0 0 1000px none inset',
+    color: '#fff !important',
+    borderRadius: '$r1',
   },
 
   // For the styling when the user clicks into the input and begins typing

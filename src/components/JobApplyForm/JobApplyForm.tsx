@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
 import { Heading, Text } from '@components'
-import { BasicInput, FileInput, SelectInput, FormWrapper, CheckboxInput, Fields } from './Parts'
+import { FormWrapper, Fields } from './Parts'
 import { submitApplication } from '@lib'
 
 // For the container of all of the inputs within the form
@@ -38,9 +38,27 @@ interface FormProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const JobApplyForm = ({ questions, compliance, jobId }:FormProps) => {
+export const JobApplyForm = ({ 
+    questions, // For the basic questions within the Greenhouse API
+    compliance, // For the compliance questions within the Greenhouse API
+    jobId // For the ID of the job posting that the applicant will send to
+  }:FormProps) => {
+
   const [ values, setValues ] = useState<{[ key: string ]: any }>({});
   const handleSubmit = async () => { await submitApplication({ endpoint: "/api/applicationSubmit", jobId, values })}
+
+  // Here we are accounting for value changes as the types within the input
+  // This catched the new values as they get sent to the Greenhouse applications
+
+  const handleInputChange = (questionIndex: number, fieldIndex: number, value: any) => {
+    setValues( prevValues => ({
+      ...prevValues,
+      [`${ questionIndex }-${ fieldIndex }`]: value
+    }))
+  }
+
+  // Here we are filtering through the compliance question to only extract the 'Race' and 'Gender' questions
+  // By default there are two additional questions - Veteran and Disability status - do not need those for this form
 
   const filteredCompliance = compliance.filter((complianceItem: { questions: Question[] }) => {
     return complianceItem.questions.some((question: Question) => 
@@ -48,80 +66,24 @@ export const JobApplyForm = ({ questions, compliance, jobId }:FormProps) => {
     )
   })
 
-  const handleInputChange = (questionIndex: number, fieldIndex: number, value: any) => {
-    setValues(prevValues => ({
-      ...prevValues,
-      [`${questionIndex}-${fieldIndex}`]: value
-    }))
-  }
-
   const RenderQuestion = ({ question, questionIndex }: { question: Question, questionIndex: number }) => {
     return (
 
       <div key={`question-${ questionIndex }`}>
         { question.fields.map(( field, fieldIndex ) => {
-          const inputName = `${ questionIndex }-${ fieldIndex }`;
-          switch ( field.type ) {
-            case "input_text" :
-            return (
+          return (
 
-              <BasicInput 
-                key={ fieldIndex }
-                active={ Boolean( values[`${ questionIndex }-0`] )}
-                label={ question.label }
-                name={ field.name }
-                required={ question.required }
-                value={ values[ inputName ] || '' }
-                onChange={(e: any) => handleInputChange( questionIndex, fieldIndex, e.target.value )}
-              />
+            <Fields 
+              key={ fieldIndex } 
+              field={ field } 
+              fieldIndex={ fieldIndex }
+              value={ values[`${ questionIndex }-${ fieldIndex }`] || ''} 
+              questionLabel={ question.label } 
+              handleInputChange={( index, val ) => handleInputChange( questionIndex, index, val )}
+              required={ question.required }
+            />
 
-            )
-            
-            case "input_file" :
-            return (
-
-              <FileInput 
-                key={ fieldIndex }
-                required={ question.required }
-                label={ question.label }
-                name={ field.name }
-              />
-
-            )
-
-            case "multi_value_single_select":
-            return (
-
-              <SelectInput 
-                key={ fieldIndex }
-                defaultValue="Select"
-                label={ question.label }
-                name={ question.label }
-                options={ field.values.map( option => ({
-                  title: option.label, 
-                  value: option.value 
-                }))}
-              />
-
-            )
-
-            case "multi_value_multi_select":
-            return (
-
-              <CheckboxInput
-                key={fieldIndex}
-                label={question.label}
-                name={field.name}
-                values={field.values}
-                selectedValues={values[inputName]}
-                onChange={(updatedValues) => handleInputChange(questionIndex, fieldIndex, updatedValues)}
-              />
-
-            )
-            
-            default:
-            return null;
-          }
+          )
         })}
       </div>
     )
@@ -131,9 +93,9 @@ export const JobApplyForm = ({ questions, compliance, jobId }:FormProps) => {
 
     <FormWrapper onSubmit={ handleSubmit }>
       <InputContainer>
-        {questions.map((question, i) => (
-          <div key={`question-${i}`}>
-            {question.fields.map((field, fieldIndex) => (
+        { questions.map(( question, i ) => (
+          <div key={`question-${ i }`}>
+            { question.fields.map(( field, fieldIndex ) => (
 
               <Fields 
                 key={ fieldIndex } 
@@ -142,6 +104,7 @@ export const JobApplyForm = ({ questions, compliance, jobId }:FormProps) => {
                 value={ values[`${ i }-${ fieldIndex }`] || '' } 
                 questionLabel={ question.label } 
                 handleInputChange={( index, val ) => handleInputChange( i, index, val )}
+                required={ question.required }
               />
           
             ))}
