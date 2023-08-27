@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
 import { Heading, Text } from '@components'
-import { FormWrapper, Fields } from './Parts'
+import { FormWrapper, Fields, ComplianceQuestions } from './Parts'
 import { submitApplication } from '@lib'
 
 // For the container of all of the inputs within the form
@@ -66,29 +66,6 @@ export const JobApplyForm = ({
     )
   })
 
-  const RenderQuestion = ({ question, questionIndex }: { question: Question, questionIndex: number }) => {
-    return (
-
-      <div key={`question-${ questionIndex }`}>
-        { question.fields.map(( field, fieldIndex ) => {
-          return (
-
-            <Fields 
-              key={ fieldIndex } 
-              field={ field } 
-              fieldIndex={ fieldIndex }
-              value={ values[`${ questionIndex }-${ fieldIndex }`] || ''} 
-              questionLabel={ question.label } 
-              handleInputChange={( index, val ) => handleInputChange( questionIndex, index, val )}
-              required={ question.required }
-            />
-
-          )
-        })}
-      </div>
-    )
-  }
-
   return (
 
     <FormWrapper onSubmit={ handleSubmit }>
@@ -130,22 +107,22 @@ export const JobApplyForm = ({
       
       { filteredCompliance.map(( complianceItem, index ) => (
         <div key={`compliance-${ index }`}>
-          <InputContainer>
-            { complianceItem.questions && complianceItem.questions.map(( nestedQuestion:any, nestedQuestionIndex:any ) => (
 
-              <RenderQuestion 
+          <InputContainer>
+            { complianceItem.questions && complianceItem.questions.map(( nestedQuestion: any, nestedQuestionIndex: any ) => (
+              <ComplianceQuestions 
                 key={ nestedQuestionIndex } 
                 question={ nestedQuestion } 
-                questionIndex={ nestedQuestionIndex } 
+                questionIndex={ nestedQuestionIndex }
+                values={ values }
+                handleInputChange={ handleInputChange }
               />
-
             ))}
           </InputContainer>
+
         </div>
       ))}
     </FormWrapper>
 
   ) 
 }
-
-export default JobApplyForm

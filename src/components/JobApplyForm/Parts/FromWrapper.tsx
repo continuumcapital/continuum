@@ -3,7 +3,6 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { styled } from '@theme'
 import { Button } from '@components'
 import { FormHeader } from './FormHeader'
-import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the form, within the Apply for Job section
 // This holds all of the questions needed to be supplied when applying for a position
@@ -40,19 +39,17 @@ export const FormWrapper = ({ children, onSubmit }:FormProps) => {
   return(
 
     <FormWrap id="apply-now">
-      <XyzTransition xyz="fade down delay-15 duration-15" appear>
-        <FormProvider {...methods} watch={ watch }>
-          <form method="POST" encType='multipart/form-data' onSubmit={ methods.handleSubmit( onSubmit ) }>
+      <FormProvider {...methods} watch={ watch }>
+        <form method="POST" encType='multipart/form-data' onSubmit={ methods.handleSubmit( onSubmit ) }>
 
-            <FormContent>
-              <FormHeader title="Apply for this job" />
-              { children }
-              <Button variant="primary" type="submit" title="Submit Application" />
-            </FormContent>
+          <FormContent>
+            <FormHeader title="Apply for this job" />
+            { children }
+            <Button variant="primary" type="submit" title="Submit Application" />
+          </FormContent>
 
-          </form>
-        </FormProvider>
-      </XyzTransition>
+        </form>
+      </FormProvider>
     </FormWrap>
   )
 }

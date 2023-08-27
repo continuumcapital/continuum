@@ -5,3 +5,5 @@ export { FileInput } from './FileInput'
 export { FormHeader } from './FormHeader'
 export { SelectInput } from './SelectInput/SelectInput'
 export { CheckboxInput } from './CheckboxInput'
+
+export { ComplianceQuestions } from './ComplianceQuestions'

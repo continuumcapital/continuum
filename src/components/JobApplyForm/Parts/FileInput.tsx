@@ -88,7 +88,7 @@ interface FileProps {
 
 export const FileInput = ({ key, name, label, required }:FileProps) => {
   const [ files, setFiles ] = useState<File[]>([]);
-  const onUpload = (acceptedFiles: File[]) => { setFiles(acceptedFiles) }
+  const onUpload = ( acceptedFiles: File[] ) => { setFiles( acceptedFiles ) }
   const removeFile = () => { setFiles([]) }
 
   return (
