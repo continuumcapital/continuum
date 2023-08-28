@@ -1,26 +1,9 @@
 import React from 'react'
-import Link from 'next/link'
 import { styled } from '@theme'
-import { Heading, List, Icon } from '@components'
+import { JobWrap, BlockTitle, Jobs } from './Parts'
 
-const ListWrap = styled('div', {
-  position: 'relative',
-  width: '100%',
-  background: '$bgSecondary'
-})
-
-const ListContent = styled('div', {
-  position: 'relative',
-  maxWidth: 1000,
-  width: '90%',
-  margin: '0 auto',
-  padding: '150px 0',
-  '> *:not(:last-child)': { marginBottom: 50 },
-  '@desktop': { 
-    width: '88%',
-    padding: '75px 0' 
-  }
-})
+// For the master container of the individual jobs within the jobList container
+// This accounts for the department category text on the left and all of the open jobs within the category on the right of the container
 
 const ListBlock = styled('div', {
   display: 'flex',
@@ -31,99 +14,37 @@ const ListBlock = styled('div', {
   '@desktop': { flexDirection: 'column' }
 })
 
-const ListBlockTitle = styled('div', {
-  position: 'relative',
-  width: 150,
+// -------------- Typescript declarations -------------- //
 
-  '> *': { 
-    display: 'flex',
-    alignItems: 'center',
-    marginTop: 28,
-    paddingRight: 50,
-
-    '&:after': {
-      content: '',
-      position: 'absolute',
-      right: 0,
-      width: 32,
-      height: 2,
-      background: '$white'
-    },
-
-    '@desktop': {
-      marginTop: 0,
-      paddingRight: 0,
-      '&:after': { display: 'none' }
-    }
-  }
-})
-
-const JobItem = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  position: 'relative',
-  width: '100%',
-  cursor: 'pointer',
-
-  '&:hover': {
-    '> *:last-child': { transform: 'translateX( 10px )'}
-  }
-})
-
-const JobTitle = styled('div', {
-
-})
-
-interface ListProps {
-  jobs: {
-    title: string;
-    job: {
-      href: string;
-      title: string;
-      location?: string;
-    }[];
-  }[];
+type Job = {
+  absolute_url: string
+  id: number
+  title: string
+  departments: { name: string }[]
+  location: { name: string }
 }
 
+type DepartmentJobListProps = {
+  title: string
+  groupedJobs: {[ key: string ]: Job[]}
+}
 
-export const JobList = ({ jobs }:ListProps) => {
-  return(
+// ---------- This is the end of declarations ---------- //
 
-    <ListWrap>
-      <ListContent id="jobs">
-        <Heading size="l5" bold="heavy" align="center" title="Current Openings" />
-        
-        { jobs.map(( jobList, i ) => (
 
-          <ListBlock key={`job-${ i }`}>
-            <ListBlockTitle>
-              <Heading bold="heavy" size="l1" title={ jobList.title } />
-            </ListBlockTitle>
-            
-            <List withDividers spacing="l3">
-              { jobList.job.map(( jobItem, j ) => (
+export const JobList = ({ title, groupedJobs }:DepartmentJobListProps) => {
+  return (
 
-                <li key={`job-${ j }`}>
-                  <Link href={ jobItem.href }>
-                    <JobItem>
-                      <JobTitle>
-                        <Heading size="l5" bold="heavy" title={ jobItem.title } />
-                        <Heading title={ jobItem.location } />
-                      </JobTitle>
-                      <Icon icon="arrow-right" />
-                    </JobItem>
-                  </Link>
-                </li>
+    <JobWrap {...{ title }}>
+      { Object.keys( groupedJobs ).map(( departmentName ) => (
 
-              ))}
-            </List>
-          </ListBlock>
+        <ListBlock key={ departmentName }>
+          <BlockTitle title={ departmentName } />
+          <Jobs jobs={ groupedJobs[ departmentName ] } />
+        </ListBlock>
 
-        ))}
-      </ListContent>
-    </ListWrap>
+      ))}
+    </JobWrap>
 
   )
 }

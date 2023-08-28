@@ -26,10 +26,14 @@ const FormContent = styled('div', {
   '@mobile': { padding: '75px 0 20px' }
 })
 
+// -------------- Typescript declarations -------------- //
+
 interface FormProps {
   children: React.ReactNode
   onSubmit?: any
 }
+
+// ---------- This is the end of declarations ---------- //
 
 export const FormWrapper = ({ children, onSubmit }:FormProps) => {
   const methods = useForm()
@@ -51,5 +55,6 @@ export const FormWrapper = ({ children, onSubmit }:FormProps) => {
         </form>
       </FormProvider>
     </FormWrap>
+
   )
 }

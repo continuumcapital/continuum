@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useFormContext } from 'react-hook-form'
 import Dropzone from 'react-dropzone'
 import { styled } from '@theme'
 import { Heading, Button, TextEm } from '@components'
@@ -14,7 +15,8 @@ const InputWrap = styled('div', {
     display: 'flex',
     flexDirection: 'row',
     whiteSpace: 'nowrap',
-    width: 120
+    width: 120,
+    pointerEvent: 'none'
   },
 
   '@mobile': {
@@ -82,14 +84,16 @@ interface FileProps {
   name: string
   label: string
   required?: boolean
+  rules?: any
 }
 
 // ---------- This is the end of declarations ---------- //
 
-export const FileInput = ({ key, name, label, required }:FileProps) => {
+export const FileInput = ({ key, name, label, required, rules }:FileProps) => {
   const [ files, setFiles ] = useState<File[]>([]);
   const onUpload = ( acceptedFiles: File[] ) => { setFiles( acceptedFiles ) }
   const removeFile = () => { setFiles([]) }
+  const { register, formState: { errors }, watch } = useFormContext()
 
   return (
 
@@ -100,28 +104,40 @@ export const FileInput = ({ key, name, label, required }:FileProps) => {
       </label>
 
       <UploadOptions>
-        { files.length === 0 ? (
+        
 
-          <Dropzone onDrop={ onUpload }>
+          {/* <Dropzone onDrop={ onUpload }>
             {({ getRootProps, getInputProps }) => (
               <DragAndDrop {...getRootProps()}>
                 <Heading title="Drag and drop file or click to select" />
-                <input hidden type="file" {...getInputProps()} {...{ key, name, required }} />
+                <input 
+                  type="file"
+                  id={ name } 
+                  {...register( name , { ...rules })} 
+                  {...getInputProps()} 
+                  {...{ key, name, required }} 
+                />
               </DragAndDrop>
             )}
-          </Dropzone>
+          </Dropzone> */}
 
-        ) : (
+          <input 
+            type="file"
+            id={ name } 
+            {...register( name , { ...rules })} 
+            {...{ key, name, required }} 
+          />
 
-          files.map(file => (
+         { files.map(file => (
+
             <FilePreview key={file.name}>
               <Heading title={file.name} />
               <Button variant="icon" icon="cross-2" onClick={ removeFile } />
-              <input id={ name } hidden type="file" {...{ key, name, required }} />
             </FilePreview>
-          ))
 
-        )}
+          ))
+         }
+
       </UploadOptions>
     </InputWrap>
 

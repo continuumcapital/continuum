@@ -28,6 +28,7 @@ const Input = styled('div', {
     width: '100%',
     transformOrigin: 'top left',
     transition: '$s1',
+    pointerEvents: 'none',
     zIndex: 10
   },
 
@@ -108,7 +109,7 @@ export const BasicInput = ({
     rules
   }:InputProps) => {
 
-  const { register, formState: { errors }, watch } = useFormContext();
+  const { register, formState: { errors }, watch } = useFormContext()
   
   return(
 

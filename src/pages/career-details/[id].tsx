@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
-import { SiteContainer, HeroTitle, ReadingBar, JobDetails, JobApplyForm } from '@components'
+import { SiteContainer, HeroTitle, JobDetails, JobApplyForm } from '@components'
 
 interface JobDetail {
   id: string;
@@ -41,8 +41,6 @@ const Home: NextPage = () => {
   const [ complianceData, setComplianceData ] = useState<any[]>([]);
   const [ error, setError ] = useState<string | null>(null)
 
-  console.log( jobDetail )
-
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
@@ -68,7 +66,6 @@ const Home: NextPage = () => {
   return (
 
     <SiteContainer removeBlob removeContact>
-      <ReadingBar />
       <HeroTitle 
         title={ jobDetail?.title }
         location={ jobDetail?.location.name }

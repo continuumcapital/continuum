@@ -44,27 +44,27 @@ export const JobApplyForm = ({
     jobId // For the ID of the job posting that the applicant will send to
   }:FormProps) => {
 
-  const [ values, setValues ] = useState<{[ key: string ]: any }>({});
+  const [ values, setValues ] = useState<{ [key: string]: any }>({});
   const handleSubmit = async () => { await submitApplication({ endpoint: "/api/applicationSubmit", jobId, values })}
 
   // Here we are accounting for value changes as the types within the input
   // This catched the new values as they get sent to the Greenhouse applications
 
   const handleInputChange = (questionIndex: number, fieldIndex: number, value: any) => {
-    setValues( prevValues => ({
+    setValues((prevValues) => ({
       ...prevValues,
-      [`${ questionIndex }-${ fieldIndex }`]: value
-    }))
-  }
+      [`${questionIndex}-${fieldIndex}`]: value,
+    }));
+  };
 
   // Here we are filtering through the compliance question to only extract the 'Race' and 'Gender' questions
   // By default there are two additional questions - Veteran and Disability status - do not need those for this form
 
   const filteredCompliance = compliance.filter((complianceItem: { questions: Question[] }) => {
-    return complianceItem.questions.some((question: Question) => 
-        question.label.includes('Race') || question.label.includes('Gender')
-    )
-  })
+    return complianceItem.questions.some((question: Question) =>
+      question.label.includes('Race') || question.label.includes('Gender')
+    );
+  });
 
   return (
 

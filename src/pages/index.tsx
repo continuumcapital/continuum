@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { styled } from '@theme'
-import { SiteContainer, Block, Hero, Stage, Heading, ReadingBar, Drawer, HeroOffer } from '@components'
+import { SiteContainer, Block, Hero, Stage, Heading } from '@components'
 
 const ShowOnMobile = styled('div', {
   display: 'none',
@@ -11,8 +11,6 @@ const Home: NextPage = () => {
   return (
     
     <SiteContainer>
-      <ReadingBar />
-
       <Block>
         <Hero 
           hairline="Continuum Capital"
@@ -89,8 +87,6 @@ const Home: NextPage = () => {
           </p>
         </Stage>
       </Block>
-
-      <Drawer />
     </SiteContainer>
 
   )

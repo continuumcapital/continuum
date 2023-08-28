@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { styled } from '@theme'
-import { HeadTags, StageBg, Footer } from '@components'
+import { HeadTags, StageBg, Footer, ReadingBar } from '@components'
 
 // For the master container of the foundational SiteContainer component
 // This component is used to automate spacing, sizes, widths, ect for components wrapped within this components
@@ -76,6 +76,7 @@ export const SiteContainer = ({
   return(
 
     <SiteWrap className="main-site">
+      <ReadingBar />
       <HeadTags 
         shareURL="https://www.continuumcapital.io"
         pageTitle="Continuum Capital"
