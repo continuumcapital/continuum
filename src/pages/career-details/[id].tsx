@@ -2,39 +2,36 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 import { SiteContainer, HeroTitle, JobDetails, JobApplyForm } from '@components'
+import { getJobDetails } from '@lib'
+
+// -------------- Typescript declarations -------------- //
 
 interface JobDetail {
-  id: string;
-  title: string;
-  content: string;
-  location: {
-    name: string;
-  };
-  metadata: {
-    name?: string;
-    value: string;
-  }[];
-  questions: Question[];
+  id: string
+  title: string
+  content: string
+  location: { name: string }
+  metadata: { 
+    name?: string 
+    value: string 
+  }[]
+  questions: {
+    description: string | null
+    label: string
+    required: boolean
+    fields: {
+      name: string
+      type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select'
+      values: any[]
+      required: boolean
+    }[]
+    value: string
+  }[]
 }
 
-export interface Field {
-  name: string;
-  type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select';
-  values: any[];
-  required: boolean; // Add this
-}
+// ---------- This is the end of declarations ---------- //
 
-export interface Question {
-  description: string | null;
-  label: string;
-  required: boolean;
-  fields: Field[];
-  value: string;
-}
-
-
-
-const Home: NextPage = () => {
+const CareerDetails: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
   const [ jobDetail, setJobDetail ] = useState<JobDetail | null>(null)
@@ -42,26 +39,8 @@ const Home: NextPage = () => {
   const [ error, setError ] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (id) {
-        try {
-          const res = await fetch(`/api/jobPost?id=${id}`)
-          const result = await res.json()
-  
-          if (res.ok) {
-            setJobDetail(result);
-            setComplianceData(result.compliance || []);
-          } else {
-            setError(result.message || 'An error occurred')
-          }
-        } catch (error) {
-          setError('An error occurred while fetching data')
-        }
-      }
-    }
-  
-    fetchData()
-  }, [ id ]) 
+    getJobDetails(id, { setJobDetail, setComplianceData, setError });
+  }, [id]);
   
   return (
 
@@ -88,7 +67,7 @@ const Home: NextPage = () => {
         />
       }
     </SiteContainer>
-  );
+  )
 }
 
-export default Home;
+export default CareerDetails
