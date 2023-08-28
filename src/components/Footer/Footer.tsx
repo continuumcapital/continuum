@@ -1,7 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
 import { styled } from '@theme'
-import { Form, Logo, Text, List } from '@components'
+import { Form } from '@components'
 import "@animxyz/core"
 import { XyzTransition } from '@animxyz/react'
 
@@ -32,6 +31,9 @@ const FooterContain = styled('div', {
   background: '$siteBg',
   borderRadius: '$r2',
 
+  // Here we add the support to remove the default contact from the footer
+  // This is needed for other pages such as the Job posting page, where there is the application form on the bottom
+
   variants: {
     removeContact: {
       true: { padding: '50px 0' }
@@ -49,19 +51,8 @@ const FooterContain = styled('div', {
   }
 })
 
-// For the container of the footer links
-// This holds the logo and all the other links, where they direct the user back to the FreeRossDAO.org site
-
-const FooterLinks = styled('div', {
-  position: 'relative',
-  marginRight: 100,
-
-  // Remove the default margin on mobile breakpoint
-
-  '@media(max-width: 767px)': {
-    marginRight: 0,
-  }
-})
+// For the container of all of the content within the footer component
+// This holds the contact form on the top and the copywrite text on the bottom
 
 const MainContent = styled('div', {
   display: 'flex',
@@ -70,26 +61,6 @@ const MainContent = styled('div', {
   position: 'relative',
   width: '90%',
   margin: '0 auto'
-})
-
-const FooterLinkWrap = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  position: 'relative',
-  width: '100%',
-  marginTop: 32,
-
-  // For the orientation changes on mobile
-
-  '@tablet': {
-    flexDirection: 'column',
-    padding: '25px 0',
-
-    '> *:not(:last-child)': {
-      marginBottom: 32
-    }
-  }
 })
 
 // For the container of all of the content within the footer
@@ -111,6 +82,9 @@ const FooterContent = styled('div', {
     color: '$gray200'
   },
 
+  // Here we adjust the soacing to account for the removal of the contact form
+  // This will move the copywrite information up
+
   variants: {
     removeContact: {
       true: { marginTop: 0 }
@@ -118,12 +92,7 @@ const FooterContent = styled('div', {
   }
 })
 
-// For the container of the legal section on the bottom of the container
-
-const Legal = styled('div', {
-  marginTop: 32,
-  fontSize: '$s0'
-})
+// -------------- Typescript declarations -------------- //
 
 interface FooterProps {
   removeContact?: boolean
@@ -136,53 +105,17 @@ export const Footer = ({ removeContact }:FooterProps) => {
 
     <FooterWrap id="contact">
       <FooterContain {...{ removeContact }}>
-        <section style={{ width: '100%' }}>
-          <XyzTransition xyz="fade" appearVisible>
+        <XyzTransition xyz="fade" appearVisible>
 
-            <MainContent>
-              { removeContact ?? ( <Form title="Contact Us" /> )}
+          <MainContent>
+            { removeContact ?? ( <Form title="Contact Us" /> )}
 
-              <FooterContent {...{ removeContact }}>
-                <div>&copy; {new Date().getFullYear()} Continuum Capital</div>
-
-
-                {/* <FooterLinkWrap>
-                  <FooterLinks>
-                    <List spacing="l1">
-                      <li><Link href="#digital-assets"><a><strong>Digital Assets</strong></a></Link></li>
-                      <li><Link href="#real-estate"><a><strong>Real Estate</strong></a></Link></li>
-                      <li><a href="https://www.medium.com" target="_blank" rel="noreferrer"><strong>Blog</strong></a></li>
-                      <li><a href="https://www.facebook.com" target="_blank" rel="noreferrer"><strong>Facebook</strong></a></li>
-                      <li><a href="https://twitter.com" target="_blank" rel="noreferrer"><strong>Twitter</strong></a></li>
-                      <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer"><strong>Instagram</strong></a></li>
-                    </List>
-                  </FooterLinks>
-
-                  <Text width="small">
-                    <p>
-                      <strong>Disclaimer</strong>: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce gravida vel libero 
-                      eget tincidunt. Mauris et malesuada purus. Integer et orci nibh. Duis suscipit congue purus eu facilisis. Proin 
-                      eu placerat dolor.
-                    </p>
-
-                    <p>
-                      Nam hendrerit gravida pretium. Aliquam vehicula, risus at dignissim accumsan, lorem urna pretium dui, quis 
-                      lacinia est sapien a dolor. Fusce eget urna nec justo egestas tincidunt vitae et odio.
-                    </p>
-                  </Text>
-                </FooterLinkWrap> */}
-              </FooterContent>
-
-              {/* <Legal>
-                <List direction="horizontal" spacing="l1r">
-                  <li><a href="/" target="_blank" rel="noreferrer"><strong>Privacy policy</strong></a></li>
-                  <li><Link href="/legal/terms-and-conditions"><a><strong>Terms &amp; conditions</strong></a></Link></li>
-                </List>
-              </Legal> */}
-            </MainContent>
-          
-          </XyzTransition>
-        </section>
+            <FooterContent {...{ removeContact }}>
+              <div>&copy; {new Date().getFullYear()} Continuum Capital</div>
+            </FooterContent>
+          </MainContent>
+        
+        </XyzTransition>
       </FooterContain>
     </FooterWrap>
 

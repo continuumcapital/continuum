@@ -201,15 +201,15 @@ export const ButtonBase = ({
     <ButtonWrap style={{ pointerEvents: variant == 'disabled' ? 'none' : 'auto' }}>
       { title || icon ? (
         <Button {...{ variant, iconPlacement, size, type }}>
-          { icon ? ( <Icon icon={ icon } size="l0" /> ) : null }
-          { title ? ( 
+          { icon && ( <Icon icon={ icon } size="l0" /> )}
+          { title && ( 
             <>
               { notBold 
                 ? ( <span>{ title }</span> ) 
                 : ( <span><strong>{ title }</strong></span> ) 
               } 
             </>
-          ) : null }
+          )}
         </Button>
       ) : ( <Button {...{ variant, size }}>{ children }</Button> )}
     </ButtonWrap>

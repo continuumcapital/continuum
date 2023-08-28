@@ -84,7 +84,6 @@ export const Form = ({
       />
 
       { submitStatus && <SubmitSuccess status={ submitStatus } /> }
-
     </FormWrap> 
 
   )

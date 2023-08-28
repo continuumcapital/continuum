@@ -88,12 +88,12 @@ interface DropdownProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Dropdown = ({ 
-    removeArrow,
-    trigger,
-    triggerWidth,
-    content,
-    contentFullWidth,
-    triggerSize
+    removeArrow, // Optional - This will remove the arrow on the right of the container
+    trigger, // Required - For the trigger that will open the dropdown when it is clicked
+    triggerWidth, // Optional - Supporting different widths of the dropdown trigger
+    content, // Required - For the content that shows when the trigger is clciked
+    contentFullWidth, // Optional - supporting the content to be the full width of it's parent container
+    triggerSize // Optional - Supporting different sizes of the Trigger button
   }:DropdownProps) => {
 
   return(

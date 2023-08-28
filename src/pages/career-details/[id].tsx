@@ -39,8 +39,8 @@ const CareerDetails: NextPage = () => {
   const [ error, setError ] = useState<string | null>(null)
 
   useEffect(() => {
-    getJobDetails(id, { setJobDetail, setComplianceData, setError });
-  }, [id]);
+    getJobDetails( id, { setJobDetail, setComplianceData, setError });
+  }, [ id ]);
   
   return (
 

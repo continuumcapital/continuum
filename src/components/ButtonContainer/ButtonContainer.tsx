@@ -54,6 +54,8 @@ const ButtonWrap = styled('div', {
       }
     },
 
+    // For the ability to adjust the default spacing between the buttons
+
     spacing: {
       l0: { '> div:not(:last-child)': { marginRight: 0 } }
     },
@@ -96,13 +98,12 @@ export const ButtonContainer = ({
     direction, // Optional - Supports the vertical layout of buttons
     width, // Optional - Make the horizontal buttons full-width if the design supports one
     children, // Optional - For custom implementation of buttons if the above doesn't fit the needs
-    spacing
+    spacing // Optional - Supporting spacing convention between buttons
   }: ButtonContainerProps ) => {
   
   return(
 
     <ButtonWrap {...{ direction, width, spacing }}>
-
       { buttons ? (
         <>
           { buttons.map(( button:any, i ) => (

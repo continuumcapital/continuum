@@ -3,15 +3,17 @@ import Link from 'next/link'
 import { styled } from '@theme'
 import { List, Heading } from '@components'
 
+// For the master container of the Chips container
+// This is a basic container that sets the width and centers the chips
+
 const Chips = styled('div', {
   position: 'relative',
   width: '90%',
   margin: '0 auto'
 })
 
-// For the master container of the leaderboard chip
-// This contains the rank of the person on the left, with their name and image to the right,
-// And the dontaion amount to the far right. This card is currently a static component
+// For the master container of Chip itself
+// This holds text in the center of the container
 
 const ChipWrap = styled('div', {
   position: 'relative',
@@ -82,13 +84,21 @@ export const Chip = ({
                 <Link href={ chip.href }>
                   <a>
                     <ChipWrap>
-                      <ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent>
+                      <ChipContent>
+                        <Heading bold="heavy" title={ chip.title } />
+                      </ChipContent>
                     </ChipWrap>
                   </a>
                 </Link>
 
               ) : (
-                <ChipWrap><ChipContent><Heading bold="heavy" title={ chip.title } /></ChipContent></ChipWrap>
+
+                <ChipWrap>
+                  <ChipContent>
+                    <Heading bold="heavy" title={ chip.title } />
+                  </ChipContent>
+                </ChipWrap>
+
               )}
             </li>
           ))}
