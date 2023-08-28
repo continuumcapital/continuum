@@ -2,8 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { styled } from '@theme'
 import { useScrollPosition, useScrollDirection } from '@lib'
-import { Logo, Button, ButtonContainer } from '@components'
-import "@animxyz/core"
+import { Logo, Button } from '@components'
 import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the header that sits in a fixed position on the top of the page
@@ -107,8 +106,6 @@ export const SiteHeader = () => {
           /> */}
 
           <Side>
-            {/* <Link href="/career-details"><Button size="l0" title="About" /></Link>
-            <Link href="/career-details"><Button size="l0" title="About" /></Link> */}
             <Link href="#contact"><Button variant="outline" size="l0" title="Contact Us" /></Link>
           </Side>
         </Nav>

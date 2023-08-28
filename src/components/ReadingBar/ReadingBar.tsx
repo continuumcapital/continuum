@@ -36,7 +36,7 @@ export const ReadingBar = () => {
   useEffect(() => {
     window.addEventListener("scroll", scrollHeight);
     return () => window.removeEventListener("scroll", scrollHeight);
-  });
+  })
 
   return(
 

@@ -2,6 +2,9 @@ import React from 'react'
 import { styled } from '@theme'
 import { Icon, Heading } from '@components'
 
+// For the master container of the submit status within the form
+// This is for when the user submits a form, such as the Contact Form, and it verifies to the user if it has been submitted
+
 const SuccessWrap = styled('div', {
   display: 'flex',
   justifyContent: 'center',
@@ -11,6 +14,9 @@ const SuccessWrap = styled('div', {
   background: '$grayBg',
   borderRadius: '$r1'
 })
+
+// For the container of all of the content within the master container
+// This is used to position the content within the center of the container
 
 const SuccessContent = styled('div', {
   display: 'flex',
@@ -26,11 +32,15 @@ const SuccessContent = styled('div', {
   '> *:not(:last-child)': { marginRight: 8 }
 })
 
+// -------------- Typescript declarations -------------- //
+
 interface SuccessProps {
   status?: any
 }
 
-export const SubmitSuccess = ({ status }:SuccessProps) => {
+// ---------- This is the end of declarations ---------- //
+
+export const SubmitStatus = ({ status }:SuccessProps) => {
   return(
 
     <SuccessWrap>

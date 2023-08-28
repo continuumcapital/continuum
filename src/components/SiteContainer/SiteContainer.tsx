@@ -60,11 +60,11 @@ interface SiteContainerProps {
 // ---------- This is the end of declarations ---------- //
 
 export const SiteContainer = ({
-    spacing,
+    spacing, // Optional - For the top and bottom spacing of the page content
     blockSpacing, // Optional - For the uniform spacing between each of the blocks that make up the page
     children, // Required - For all of the content within a page
-    removeBlob,
-    removeContact
+    removeBlob, // Optional - For the ability to remove the blob background
+    removeContact // Optional - For the ability to remove the contact form
   }: SiteContainerProps ) => {
   
   const [ isLoading, setLoading ] = useState( true )

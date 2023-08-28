@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useForm, useController, UseControllerProps } from "react-hook-form"
-import { FormWrap, SubmitSuccess } from './Parts'
+import { FormWrap, SubmitStatus } from './Parts'
 import { Input, Textarea } from '@components'
 import emailjs from '@emailjs/browser'
 
@@ -83,7 +83,7 @@ export const Form = ({
         errorMessage="Please write a short message"
       />
 
-      { submitStatus && <SubmitSuccess status={ submitStatus } /> }
+      { submitStatus && <SubmitStatus status={ submitStatus } /> }
     </FormWrap> 
 
   )

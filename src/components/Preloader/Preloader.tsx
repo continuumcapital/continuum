@@ -2,6 +2,9 @@ import React from 'react'
 import { styled } from '@theme'
 import PuffLoader from "react-spinners/PuffLoader"
 
+// For the master container of the loading screen
+// This takes up the full width and height of everypage, allowing for the animation to show before the content is loaded
+
 const LoadingWrap = styled('div', {
   display: 'flex',
   justifyContent: 'center',

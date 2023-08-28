@@ -10,11 +10,12 @@ const TextWrap = styled('div', {
   width: '100%',
   fontSize: '$s1',
 
+  // On tablet breakpoints we make sure all of the text in left aligned 
+  // And the line height remains conistant between all of the text - here we are battling third parties, such as Greenhouse WYSIWYG
+
   '@tablet': {
     '*': { textAlign: 'left !important' },
-    'span, p': { 
-      lineHeight: '1.2 !important',
-    }
+    'span, p': { lineHeight: '1.2 !important' }
   },
 
   // For the spacing automation of text that lives within the container
@@ -23,6 +24,9 @@ const TextWrap = styled('div', {
     margin: '0 auto 32px',
     '@tablet': { marginBottom: 16 }
   },
+
+  // Here we adjust for cases, such as if an h, ul, or ol element is within the text container
+  // This will make the spacing large between a p tag and the above mentioned
 
   '> *:not( p )': {
     marginBottom: 20
@@ -40,7 +44,6 @@ const TextWrap = styled('div', {
   // This is only specific to the text container and overrides the default line height needed for other components
 
   p: { lineHeight: 1.5 },
-
   strong: { fontFamily: '$sansSerifBlack' },
 
   // For the varients used within the text component
@@ -59,6 +62,10 @@ const TextWrap = styled('div', {
           '@tablet': { fontSize: '$s3' }
         }
       },
+
+      // Here is the larger font size within the container
+      // We address the default and the font size changes on tablet breakpoints and below
+
       l1: { 
         '*': {
           fontSize: '$s3 !important', 
@@ -81,6 +88,9 @@ const TextWrap = styled('div', {
     width: {
       small: { maxWidth: 600 }
     },
+
+    // Here we support the alignment of the text that varies from the left algin default
+    // This only allows for center of alignment, which can be found in the Job Details - under the 'Position overview'
 
     textAlign: {
       center: { textAlign: 'center' }
@@ -106,8 +116,8 @@ export const Text = ({
     children, // Supporting the text, quotes, bullets, ect within the text component
     width, // Supporting the width of the text within the container
     alignment, // Supporting the center alignment of the text within the container
-    textAlign,
-    dangerouslySetInnerHTML
+    textAlign, // Supporting center alignment of the text
+    dangerouslySetInnerHTML // Supporting API calls that come in from a third party WYSIWYG
   }: TextProps ) => {
   
   return(

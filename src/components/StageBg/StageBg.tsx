@@ -18,6 +18,9 @@ const StageContainer = styled('section', {
   paddingTop: 32,
   zIndex: 10,
 
+  // For the sizing of the canvas within the container
+  // The canvas is what contains the WebGl blob
+
   canvas: {
     transform: 'scale( 0.4 )',
     opacity: 0,
@@ -41,10 +44,10 @@ const StageContainer = styled('section', {
       darkMode: { mixBlendMode: 'screen' }
     },
 
+    // Here we add the animation of the blob to scale in and fade in
+
     showBlob: { 
-      true: {
-        canvas: { transform: 'scale( 1 )', opacity: 1 }
-      },
+      true: { canvas: { transform: 'scale( 1 )', opacity: 1 }},
       false: {}
     }
   }
@@ -63,11 +66,10 @@ const StageContent = styled('div', {
   maxHeight: 750,
   opacity: 1,
   transition: '1000ms',
-
-  // Here we change the opacity of the blob on tablet and mobile breakpoints
-
   '@tablet': { opacity: 0.4 }
 })
+
+// -------------- Typescript declarations -------------- //
 
 interface BlobProps {
   showBlob?: 'true' | 'false'

@@ -11,17 +11,7 @@ const LogoWrap = styled('figure', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  position: 'relative',
-
-  // Here we add support for the logo to be larger than the default size
-  // Such as if it is needed to be over images, or some other unforseen scenerio
-
-  variants: {
-    size: {
-      l1: {},
-      l2: {}
-    }
-  }
+  position: 'relative'
 })
 
 // For the logo mark of the dove on the left side of the container
@@ -54,7 +44,6 @@ interface LogoProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Logo = ({
-    size, // Supporting the size of the logo
     noWordMark, // Supporting if the logo mark is not needed and only the dove is present
     linkToHome // Optional - allow the logo to hold a link path, but this is mostly the homepage
   }: LogoProps ) => {
@@ -66,7 +55,7 @@ export const Logo = ({
         
         <Link href="/">
           <a>
-            <LogoWrap {...{ size }}>
+            <LogoWrap>
               <LogoMark src="/global/cd-logo.png" alt="Continuum Capital logo" />
               
               { noWordMark ? null : ( 
@@ -81,7 +70,7 @@ export const Logo = ({
 
       ) : (
 
-        <LogoWrap {...{ size }}>
+        <LogoWrap>
           <LogoMark src="/global/cd-logo.png" alt="Continuum Digital logo" />
 
           { noWordMark ? null : ( 

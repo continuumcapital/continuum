@@ -71,9 +71,7 @@ const ListWrap = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 export interface ListProps {
-  listItems?: {
-    title: string
-  }[]
+  listItems?: { title: string }[]
   alignment?: 'center'
   direction?: 'vertical' | 'horizontal'
   listStyle?: 'numbered' | 'bulleted' | 'alphabetical'
