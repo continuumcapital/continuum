@@ -39,7 +39,6 @@ export const Fields = ({
         label={ questionLabel }
         name={ field.name }
         required={ required }
-        value={ value || '' }
         onChange={( e: any ) => handleInputChange( fieldIndex, e.target.value )}
       />
 

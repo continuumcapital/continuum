@@ -38,12 +38,12 @@ const Home: NextPage = () => {
 
           <Heading size="l6" bold="heavy" title="Managed Directional Strategies" />
           <p>
-            Continuum Digital&apos;s flagship fund offers an actively managed and highly liquid investment solution. It provides
-            diversified exposure to various sectors of Web3, including base layer protocols, layer 2 scaling solutions, interoperability
-            protocols, infrastructure, decentralized finance, and gaming. While maintaining a fundamental long-term focus on core
-            investment holdings, the fund incorporates a strategic options overlay to capitalize on inherent volatility while 
-            effectively managing spot risk. Furthermore, the fund actively engages in premium generating options strategies and
-            passive yield strategies within permissioned on-chain environments.
+            Continuum Digital&apos;s flagship strategy offers an actively managed and highly liquid investment solution. It provides 
+            diversified exposure to various sectors of Web3, including base layer protocols, layer 2 scaling solutions, interoperability 
+            protocols, infrastructure, decentralized finance, and gaming. While maintaining a fundamental long-term focus on core 
+            investment holdings, the strategy incorporates an options overlay to capitalize on inherent volatility while effectively 
+            managing spot risk. Furthermore, a smaller portion of the portfolio actively engages in premium generating options 
+            strategies and passive yield strategies within permissioned on-chain environments.
           </p>
 
           <Heading size="l6" bold="heavy" title="Non-Directional Strategies" />

@@ -132,17 +132,17 @@ export const JobApplyForm = ({
   jobId
 }: FormProps) => {
 
-  const [ fieldValue, setFieldValue ] = useState('')
-  // State variables for the three fields
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
+  const [resume, setResume] = useState("")
 
   const handleSubmit = async (event: React.FormEvent) => {
     const applicationData = {
       first_name: firstName,
       last_name: lastName,
       email: email,
+      resume: resume
     };
 
     try {

@@ -85,15 +85,22 @@ interface FileProps {
   label: string
   required?: boolean
   rules?: any
+  onChange?: any
 }
 
 // ---------- This is the end of declarations ---------- //
 
-export const FileInput = ({ key, name, label, required, rules }:FileProps) => {
+export const FileInput = ({ key, name, label, required, rules, onChange }:FileProps) => {
   const [ files, setFiles ] = useState<File[]>([]);
   const onUpload = ( acceptedFiles: File[] ) => { setFiles( acceptedFiles ) }
   const removeFile = () => { setFiles([]) }
   const { register, formState: { errors }, watch } = useFormContext()
+
+  const [resume, setResume] = useState(null);
+
+  const handleFileChange = (event:any) => {
+    setResume( event.target.files[0] );
+  };
 
   return (
 
@@ -115,18 +122,12 @@ export const FileInput = ({ key, name, label, required, rules }:FileProps) => {
                   id={ name } 
                   {...register( name , { ...rules })} 
                   {...getInputProps()} 
-                  {...{ key, name, required }} 
+                  {...{ key, name, required }}
+                  onChange={ handleFileChange }
                 />
               </DragAndDrop>
             )}
           </Dropzone>
-
-          <input 
-            type="file"
-            id={ name } 
-            {...register( name , { ...rules })} 
-            {...{ key, name, required }} 
-          />
 
          { files.map(file => (
 
