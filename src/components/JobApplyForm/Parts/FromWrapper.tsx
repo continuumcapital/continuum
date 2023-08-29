@@ -44,7 +44,12 @@ export const FormWrapper = ({ children, onSubmit }:FormProps) => {
 
     <FormWrap id="apply-now">
       <FormProvider {...methods} watch={ watch }>
-        <form method="POST" encType='multipart/form-data' onSubmit={ methods.handleSubmit( onSubmit ) }>
+        <form 
+          noValidate
+          method="POST" 
+          encType='multipart/form-data' 
+          onSubmit={ methods.handleSubmit( onSubmit ) }
+        >
 
           <FormContent>
             <FormHeader title="Apply for this job" />

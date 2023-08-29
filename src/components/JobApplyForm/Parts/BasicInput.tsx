@@ -2,6 +2,13 @@ import React from 'react'
 import { useFormContext } from 'react-hook-form'
 import { styled } from '@theme'
 import { Heading, TextEm } from '@components'
+import { InputStatus } from './'
+
+const InputWrap = styled('div', {
+  position: 'relative',
+  width: '100%',
+  '> *:not(:last-child)': { marginBottom: 12 }
+})
 
 // For the styling of the basic input field within the form
 // This sets the position of the label, animation, and so the input itself takes up the full width and height of the container
@@ -91,41 +98,59 @@ interface InputProps {
   active?: boolean
   required?: boolean
   label: string
-  name: any
-  value: any
-  onChange: any
+  name: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
   rules?: any
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const BasicInput = ({
-    active,
     label,
     required,
     name,
-    value,
-    onChange,
-    rules
-  }:InputProps) => {
+    rules,
+    onChange
+  }: InputProps) => {
 
-  const { register, formState: { errors }, watch } = useFormContext()
-  
-  return(
+  const { register, formState: { errors }, watch, trigger } = useFormContext()
+  const { onChange: rOnChange } = register( name, { ...rules } )
+  const currentValue = watch( name )
+  const hasError = errors[ name ]
+  const errorMessage = errors[ name ]?.message as string | undefined
 
-    <Input {...{ active }}>
-      <label htmlFor={ name }>
-        <Heading title={ label } />
-        { required && <TextEm color="danger">*</TextEm> }
-      </label>
+  const fieldRules = {
+    ...rules,
+    required: required ? 'This field is required.' : false
+  }
 
-      <input 
-        id={ name }
-        type="text" 
-        {...register( name , { ...rules })} 
-        {...{ name, required, value, onChange }} 
-      />
-    </Input>
+  const combinedOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    rOnChange(e)
+    onChange && onChange(e)
+  }
+
+  return (
+
+    <InputWrap>
+      <Input active={ !!currentValue }>
+        <label htmlFor={ name }>
+          <Heading title={ label } />
+          {required && <TextEm color="danger">*</TextEm>}
+        </label>
+
+        <input 
+          id={ name }
+          type="text" 
+          {...register( name, fieldRules )}
+          onChange={ combinedOnChange }
+          onBlur={() => trigger(name)}
+          {...{ name, required }}
+        />
+      </Input>
+
+      { hasError && <InputStatus status={ errorMessage || 'Error' } /> }
+    </InputWrap>
 
   )
 }
+

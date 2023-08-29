@@ -7,6 +7,7 @@ import { styled } from '@theme'
 const Em = styled('em', {
   position: 'relative',
   display: 'inline-block',
+  font: 'inherit',
 
   // Here we account for the different colors that the em can have 
   // As of now, we only support danger text, such as for the Job Application form

@@ -106,7 +106,7 @@ export const FileInput = ({ key, name, label, required, rules }:FileProps) => {
       <UploadOptions>
         
 
-          {/* <Dropzone onDrop={ onUpload }>
+          <Dropzone onDrop={ onUpload }>
             {({ getRootProps, getInputProps }) => (
               <DragAndDrop {...getRootProps()}>
                 <Heading title="Drag and drop file or click to select" />
@@ -119,7 +119,7 @@ export const FileInput = ({ key, name, label, required, rules }:FileProps) => {
                 />
               </DragAndDrop>
             )}
-          </Dropzone> */}
+          </Dropzone>
 
           <input 
             type="file"
