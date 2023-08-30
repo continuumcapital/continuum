@@ -14,7 +14,7 @@ const StatusContent = styled('div', {
 })
 
 interface StatusProps {
-  status: string
+  status: string | any
 }
 
 export const InputStatus = ({ status }:StatusProps) => {

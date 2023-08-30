@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useFormContext } from 'react-hook-form'
 import Dropzone from 'react-dropzone'
 import { styled } from '@theme'
 import { Heading, Button, TextEm } from '@components'
+import { InputStatus } from './'
 
 const InputWrap = styled('div', {
   display: 'flex',
@@ -90,16 +91,23 @@ interface FileProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const FileInput = ({ key, name, label, required, rules, onChange }:FileProps) => {
-  const [ files, setFiles ] = useState<File[]>([]);
-  const onUpload = ( acceptedFiles: File[] ) => { setFiles( acceptedFiles ) }
-  const removeFile = () => { setFiles([]) }
-  const { register, formState: { errors }, watch } = useFormContext()
+export const FileInput = ({ label, name, required, rules, onChange }:FileProps) => {
+  const { register, setValue, formState: { errors }, watch, trigger } = useFormContext();
 
-  const [resume, setResume] = useState(null);
+  const hasError = errors[name];
+  const errorMessage = hasError?.message;
+  
 
-  const handleFileChange = (event:any) => {
-    setResume( event.target.files[0] );
+  const fieldRules = {
+    ...rules,
+    required: required ? 'This field is required.' : false
+  }
+
+  const onFileUpload = (acceptedFiles: any) => {
+    setValue(name, acceptedFiles[0]);
+    if (onChange) {
+      onChange(acceptedFiles);
+    }
   };
 
   return (
@@ -111,35 +119,27 @@ export const FileInput = ({ key, name, label, required, rules, onChange }:FilePr
       </label>
 
       <UploadOptions>
-        
 
-          <Dropzone onDrop={ onUpload }>
+        <InputWrap>
+          <Dropzone onDrop={ onFileUpload}>
             {({ getRootProps, getInputProps }) => (
               <DragAndDrop {...getRootProps()}>
                 <Heading title="Drag and drop file or click to select" />
-                <input 
+                <input
+                  id={name}
                   type="file"
-                  id={ name } 
-                  {...register( name , { ...rules })} 
-                  {...getInputProps()} 
-                  {...{ key, name, required }}
-                  onChange={ handleFileChange }
+                  {...register(name, fieldRules)}
+                  onBlur={() => trigger(name)}
+                  {...{ name, required }}
+                  {...getInputProps()}
                 />
               </DragAndDrop>
             )}
           </Dropzone>
-
-         { files.map(file => (
-
-            <FilePreview key={file.name}>
-              <Heading title={file.name} />
-              <Button variant="icon" icon="cross-2" onClick={ removeFile } />
-            </FilePreview>
-
-          ))
-         }
-
+        </InputWrap>
       </UploadOptions>
+
+      { hasError && <InputStatus status={ errorMessage || 'Error' } /> }
     </InputWrap>
 
   )

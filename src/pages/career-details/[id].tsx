@@ -41,6 +41,8 @@ const CareerDetails: NextPage = () => {
   useEffect(() => {
     getJobDetails( id, { setJobDetail, setComplianceData, setError });
   }, [ id ]);
+
+  console.log( jobDetail )
   
   return (
 

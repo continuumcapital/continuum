@@ -137,12 +137,13 @@ export const JobApplyForm = ({
   const [email, setEmail] = useState("")
   const [resume, setResume] = useState("")
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (formData: any) => {
     const applicationData = {
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      resume: resume
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      email: formData.email,
+      resume: formData.resume,
+      question_4387434007: formData.question_4387434007
     };
 
     try {
@@ -167,7 +168,6 @@ export const JobApplyForm = ({
         console.error("An error occurred:", error);
     }
   };
-
 
   return (
 
@@ -199,6 +199,14 @@ export const JobApplyForm = ({
         <FileInput 
           label="Resume"
           name="resume"
+          onChange={( acceptedFiles:any ) => setResume(acceptedFiles[0])}
+        />
+
+        <BasicInput 
+          label="LinkedIn"
+          name="question_4387434007"
+          required
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         />
       </InputContainer>
     </FormWrapper>
