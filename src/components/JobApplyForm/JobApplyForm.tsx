@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
-import { FormWrapper, Fields, ComplianceQuestions, BasicInput, FileInput } from './Parts'
+import { FormWrapper, Fields, ComplianceQuestions, BasicInput, FileInput, SelectInput } from './Parts'
 
 // For the container of all of the inputs within the form
 // This is mainly used to automate the spacing between each of the inputs within the container
@@ -21,6 +21,7 @@ interface CustomField {
 }
 
 interface Question {
+  name: string
   description: string | null
   label: string
   required: boolean
@@ -132,27 +133,23 @@ export const JobApplyForm = ({
   jobId
 }: FormProps) => {
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [resume, setResume] = useState("")
+
 
   const handleSubmit = async (formData: any) => {
-    const applicationData = {
-      first_name: formData.first_name,
-      last_name: formData.last_name,
-      email: formData.email,
-      resume: formData.resume,
-      question_4387434007: formData.question_4387434007
-    };
+    const data = new FormData();
+
+    data.append('first_name', formData.first_name);
+    data.append('last_name', formData.last_name);
+    data.append('email', formData.email);
+    data.append('resume', formData.resume);
+    data.append('cover_letter', formData.cover_letter);
+    data.append('question_4387434007', formData.question_4387434007);
+    data.append('question_4387435007', formData.question_4387435007);
 
     try {
         const response = await fetch(`/api/applicationSubmit?id=${jobId}`, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ applicationData })
+            body: data 
         });
 
         if (response.ok) {
@@ -173,40 +170,49 @@ export const JobApplyForm = ({
 
     <FormWrapper onSubmit={ handleSubmit }>
       <InputContainer>
-
-
         <BasicInput
           label="First Name"
           name="first_name"
           required
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)}
         />
 
         <BasicInput 
           label="Last Name"
           name="last_name"
           required
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)}
         />
 
         <BasicInput 
           label="Email"
           name="email"
           required
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         />
 
         <FileInput 
           label="Resume"
           name="resume"
-          onChange={( acceptedFiles:any ) => setResume(acceptedFiles[0])}
+          required
+        />
+
+        <FileInput 
+          label="Cover letter"
+          name="cover_letter"
+          required
         />
 
         <BasicInput 
           label="LinkedIn"
           name="question_4387434007"
-          required
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+        />
+
+        <SelectInput 
+          label="Are willing to travel to meet with the team in person?"
+          name="question_4387435007"
+          defaultValue="Select one"
+          options={[
+            { title: 'Yes' },
+            { title: 'No' }
+          ]}
         />
       </InputContainer>
     </FormWrapper>

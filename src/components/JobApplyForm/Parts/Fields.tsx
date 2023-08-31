@@ -11,17 +11,26 @@ type Field = {
 }
 
 interface FieldProps {
-  field: Field, 
-  fieldIndex: number,
-  value: any, 
-  questionLabel: string, 
-  handleInputChange: ( fieldIndex: number, value: any ) => void 
+  label: string
+  name: string
   required?: boolean
+
+
+  field: Field, 
+  fieldIndex?: number,
+  value?: any, 
+  questionLabel?: string, 
+  handleInputChange?: ( fieldIndex: number, value: any ) => void 
+  
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const Fields = ({ 
+    label,
+    name,
+
+
     field, 
     fieldIndex, 
     value, 
@@ -31,57 +40,42 @@ export const Fields = ({
   }:FieldProps) => {
 
   switch ( field.type ) {
-    case "input_text":
-    return (
+    case "input_text" : return ( <BasicInput {...{ label, name, required }} /> )
+    // case "input_file" : return ( <FileInput {...{ label, name, required }} /> )
 
-      <BasicInput 
-        active={ Boolean( value )}
-        label={ questionLabel }
-        name={ field.name }
-        required={ required }
-        onChange={( e: any ) => handleInputChange( fieldIndex, e.target.value )}
-      />
+    // case "multi_value_single_select" :
+    // return (
 
-    )
+    //   <SelectInput 
+    //     defaultValue="Select" 
+    //     options={ field.values.map( option => ({ title: option.label, value: option.value }))} 
+    //     {...{ label, name }}
+    //   />
 
-    case "input_file" :
-    return (
+    //   // <SelectInput 
+    //   //   defaultValue="Select"
+    //   //   label={ questionLabel }
+    //   //   name={ field.name }
+    //   //   options={ field.values.map( option => ({
+    //   //     title: option.label,
+    //   //     value: option.value 
+    //   //   }))} 
+    //   // />
 
-      <FileInput 
-        required={ required }
-        label={ questionLabel }
-        name={ field.name }
-      />
+    // )
 
-    )
+    // case "multi_value_multi_select" :
+    // return (
 
-    case "multi_value_single_select" :
-    return (
+    //   <CheckboxInput
+    //     label={ questionLabel }
+    //     name={ field.name }
+    //     values={ field.values }
+    //     selectedValues={ value }
+    //     onChange={( updatedValues ) => handleInputChange( fieldIndex, updatedValues )}
+    //   />
 
-      <SelectInput 
-        defaultValue="Select"
-        label={ questionLabel }
-        name={ field.name }
-        options={ field.values.map( option => ({
-          title: option.label,
-          value: option.value 
-        }))} 
-      />
-
-    )
-
-    case "multi_value_multi_select" :
-    return (
-
-      <CheckboxInput
-        label={ questionLabel }
-        name={ field.name }
-        values={ field.values }
-        selectedValues={ value }
-        onChange={( updatedValues ) => handleInputChange( fieldIndex, updatedValues )}
-      />
-
-    )
+    // )
 
     default:
     return null

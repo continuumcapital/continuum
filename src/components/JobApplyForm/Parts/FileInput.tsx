@@ -132,6 +132,7 @@ export const FileInput = ({ label, name, required, rules, onChange }:FileProps) 
                   onBlur={() => trigger(name)}
                   {...{ name, required }}
                   {...getInputProps()}
+                  accept=".pdf, .doc, .docx, .txt, .rtf"
                 />
               </DragAndDrop>
             )}
