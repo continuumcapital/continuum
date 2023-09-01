@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { FormWrapper, Fields } from './Parts'
+import { FormWrapper, Fields, StandardQuestions, ComplianceQuestions } from './Parts'
 import { Text, Heading } from '@components'
 import { submitApplication } from '@lib'
 
@@ -57,20 +57,7 @@ export const JobApplyForm = ({
 
     <FormWrapper onSubmit={ handleSubmit }>
       <InputContainer>
-        { questions.map(( question ) => {
-          return question.fields.map(( field, i ) => {
-            return (
-
-              <Fields 
-                key={`field-${ i }`}
-                field={ field }
-                label={ question.label }
-                required={ question.required }
-              />
-
-            )
-          })
-        })}
+        <StandardQuestions questions={questions} />
       </InputContainer>
 
       <Text>
@@ -90,32 +77,9 @@ export const JobApplyForm = ({
       </Text>
 
       <InputContainer>
-        { compliance.map(( complianceItem ) => {
-          return complianceItem.questions.map(( question ) => {
-
-            // Filter out questions that are neither "Race" nor "Gender"
-
-            if (question.label !== 'Race' && question.label !== 'Gender') {
-              return null;
-            }
-
-            return question.fields.map(( field, i ) => {
-              return (
-
-                <Fields 
-                  key={`field-${ i }`}
-                  field={ field}
-                  label={ question.label }
-                  required={ question.required }
-                />
-
-              )
-            })
-          })
-        })}
+        <ComplianceQuestions compliance={compliance} />
       </InputContainer>
     </FormWrapper>
 
   )
 }
-

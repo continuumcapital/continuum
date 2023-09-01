@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { styled } from '@theme'
 import { InputBase } from './Parts/Input'
-import { List, Heading, Icon, Dropdown } from '@components'
+import { List, Heading, Dropdown } from '@components'
+
+// For the master container of the select container within the Form component
 
 const SelectWrap = styled('div', {
   position: 'relative',

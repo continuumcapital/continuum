@@ -37,7 +37,7 @@ export const Input = ( props: UseControllerProps&InputProps ) => {
           type={ props.type ? props.type : 'text' }
           value={ field.value || props.initialValue }
           onBlur={( event ) => event.preventDefault()}
-          onChange={(event) => {
+          onChange={( event ) => {
             field.onChange( event.target.value ) 
             setValue( event.target.value ) 
           }}
