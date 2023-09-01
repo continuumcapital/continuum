@@ -57,7 +57,7 @@ export const JobApplyForm = ({
 
     <FormWrapper onSubmit={ handleSubmit }>
       <InputContainer>
-        <StandardQuestions questions={questions} />
+        <StandardQuestions questions={ questions } />
       </InputContainer>
 
       <Text>

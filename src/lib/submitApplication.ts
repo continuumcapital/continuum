@@ -62,46 +62,44 @@ export const submitApplication = async (
     jobId: string | number
   ) => {
     
-  const handleSubmit = async (formData: any) => {
-    const data = new FormData();
+  const data = new FormData();
 
-    // Append standard questions to the FormData
+  // Append standard questions to the FormData
 
-    questions.forEach((question: Question) => {
-      question.fields.forEach((field: Field) => {
-        data.append(field.name, formData[field.name])
-      })
+  questions.forEach((question: Question) => {
+    question.fields.forEach((field: Field) => {
+      data.append(field.name, formData[field.name])
     })
+  })
 
-    // Append compliance questions to the FormData
+  // Append compliance questions to the FormData
 
-    compliance.forEach((complianceItem: ComplianceItem) => {
-      complianceItem.questions.forEach((question: Question) => {
-        if (question.label === 'Race' || question.label === 'Gender') {
-          question.fields.forEach((field: Field) => {
-            data.append(field.name, formData[field.name])
-          })
-        }
-      })
-    })
-
-    try {
-      const response = await fetch(`/api/applicationSubmit?id=${jobId}`, {
-        method: 'POST',
-        body: data 
-      });
-
-      if (response.ok) {
-        const data = await response.json()
-        console.log("Response from API:", data)
-        // Handle successful response
-        // Maybe set some state, show a success message, navigate to a different page, etc.
-      } else {
-        console.error("API response error:", await response.json())
+  compliance.forEach((complianceItem: ComplianceItem) => {
+    complianceItem.questions.forEach((question: Question) => {
+      if (question.label === 'Race' || question.label === 'Gender') {
+        question.fields.forEach((field: Field) => {
+          data.append(field.name, formData[field.name])
+        })
       }
-    } catch (error) {
-      console.error("An error occurred:", error)
+    })
+  })
+
+  try {
+    const response = await fetch(`/api/applicationSubmit?id=${jobId}`, {
+      method: 'POST',
+      body: data 
+    });
+
+    if (response.ok) {
+      const data = await response.json()
+      console.log("Response from API:", data)
+      // Handle successful response
+      // Maybe set some state, show a success message, navigate to a different page, etc.
+    } else {
+      console.error("API response error:", await response.json())
     }
+  } catch (error) {
+    console.error("An error occurred:", error)
   }
 }
   
