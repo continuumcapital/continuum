@@ -11,7 +11,7 @@ import { InputStatus } from './'
 const InputWrap = styled('div', {
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center',
+  // alignItems: 'center',
   position: 'relative',
   width: '100%',
 
@@ -23,6 +23,7 @@ const InputWrap = styled('div', {
     flexDirection: 'row',
     whiteSpace: 'nowrap',
     width: 120,
+    marginTop: 20,
     pointerEvent: 'none'
   },
 
@@ -33,6 +34,13 @@ const InputWrap = styled('div', {
     alignItems: 'flex-start',
     '> *:not(:last-child)': { marginBottom: 12 }
   }
+})
+
+const InputContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative',
+  '> *:not(:last-child)': { marginBottom: 12 }
 })
 
 const UploadOptions = styled('div', {
@@ -131,45 +139,49 @@ export const FileInput = ({ label, name, required, rules, onChange }:FileProps) 
   return (
 
     <InputWrap>
-      <label htmlFor={name}>
-        <Heading title={label} />
-        {required && <TextEm color="danger">*</TextEm>}
+      <label htmlFor={ name }>
+        <Heading title={ label } />
+        { required && <TextEm color="danger">*</TextEm> }
       </label>
 
       <UploadOptions>
-        <InputWrap>
+        <InputContent>
           <Dropzone onDrop={onFileUpload}>
             {({ getRootProps, getInputProps }) => (
               <div {...getRootProps()}>
-                {/* Display Dropzone UI only if there is no uploaded file */}
-                {!uploadedFile && <DragAndDrop>
-                  <Heading title="Drag and drop file or click to select" />
-                </DragAndDrop>}
+
+                { !uploadedFile && ( 
+                  <DragAndDrop>
+                    <Heading title="Drag and drop file or click to select" />
+                  </DragAndDrop>
+                )}
+
                 <input
-                  id={name}
+                  id={ name }
                   type="file"
-                  {...register(name, fieldRules)}
-                  onBlur={() => trigger(name)}
+                  {...register( name, fieldRules )}
+                  onBlur={() => trigger( name )}
                   {...{ name, required }}
                   {...getInputProps()}
                   accept=".pdf, .doc, .docx, .txt, .rtf"
-                  style={{ display: 'none' }}  // This will hide the actual input but keep it in the DOM
+                  style={{ display: 'none' }}
                 />
               </div>
             )}
           </Dropzone>
-        </InputWrap>
+          
+          { hasError && <InputStatus status={ errorMessage || 'Error' } /> }
+        </InputContent>
 
-        {/* Display the file preview if there's an uploaded file */}
-        {uploadedFile && (
+        { uploadedFile && (
+
           <FilePreview>
-            <Heading title={uploadedFile.name} />
-            <Button variant="icon" icon="cross-2" onClick={removeUploadedFile} />
+            <Heading title={ uploadedFile.name } />
+            <Button variant="icon" icon="cross-2" onClick={ removeUploadedFile } />
           </FilePreview>
+
         )}
       </UploadOptions>
-
-      {hasError && <InputStatus status={errorMessage || 'Error'} />}
     </InputWrap>
 
   )

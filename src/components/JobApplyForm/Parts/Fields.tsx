@@ -17,25 +17,28 @@ interface FieldProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Fields = ({ field, label, required }:FieldProps) => {
+  switch ( field.type ) {
+    case 'input_text' :
+    return (
 
-  switch (field.type) {
-    case 'input_text':
-      return (
-        <BasicInput
-          label={label}
-          name={field.name}
-          required={required}
-        />
-      );
+      <BasicInput
+        label={ label }
+        name={ field.name }
+        required={ required }
+      />
 
-    case 'input_file':
-      return (
-        <FileInput
-          label={label}
-          name={field.name}
-          required={required}
-        />
-      );
+    )
+
+    case 'input_file' :
+    return (
+
+      <FileInput
+        label={ label }
+        name={ field.name }
+        required={ required }
+      />
+
+    )
 
     case 'multi_value_single_select' :
     return (
@@ -52,7 +55,7 @@ export const Fields = ({ field, label, required }:FieldProps) => {
 
     )
 
-    default:
+    default :
     return null
 
   }

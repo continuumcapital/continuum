@@ -1,11 +1,7 @@
 import React from 'react'
 import { Fields } from './Fields'
 
-interface ComplianceQuestion extends Question {}
-
-interface ComplianceItem {
-  questions: ComplianceQuestion[];
-}
+// -------------- Typescript declarations -------------- //
 
 interface Field {
   name: string
@@ -25,21 +21,27 @@ interface FormProps {
   questions: Question[]
 }
 
+// ---------- This is the end of declarations ---------- //
+
 export const StandardQuestions = ({ questions }:FormProps) => {
   return (
+
     <>
-      {questions.map((question) => {
+      { questions.map(( question ) => {
         return question.fields.map((field, i) => {
           return (
+
             <Fields 
               key={`field-${i}`}
-              field={field}
-              label={question.label}
-              required={question.required}
+              field={ field }
+              label={ question.label }
+              required={ question.required }
             />
-          );
+
+          )
         })
       })}
     </>
-  );
+    
+  )
 }
