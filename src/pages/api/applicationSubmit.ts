@@ -2,7 +2,6 @@ import axios from 'axios'
 import FormData from 'form-data'
 import multer from 'multer'
 
-
 type MulterFile = {
   fieldname: string;
   originalname: string;
@@ -60,7 +59,7 @@ const submitApplication = async (req:any, res:any) => {
     try {
       const response = await axios.post(greenhouseApiUrl, form, { headers });
       return res.status(200).json(response.data);
-    } catch (error) {
+    } catch ( error ) {
       if (axios.isAxiosError(error) && error.response) {
         res.status(error.response.status || 500).json(error.response.data || {});
       } else {

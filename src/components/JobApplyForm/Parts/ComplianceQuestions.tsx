@@ -1,54 +1,53 @@
 import React from 'react'
-import { Fields } from './'
+import { Fields } from './Fields'
 
-// -------------- Typescript declarations -------------- //
+interface ComplianceQuestion extends Question {}
 
-interface CustomField {
+interface ComplianceItem {
+  questions: ComplianceQuestion[];
+}
+
+interface Field {
   name: string
-  type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select' | 'multi_value_single_select'
+  type: 'input_text' | 'input_file' | 'multi_value_single_select'
   values: any[]
   required: boolean
 }
 
 interface Question {
-  description: string | null
+  name: string
   label: string
   required: boolean
-  fields: CustomField[]
-  value: string
+  fields: Field[]
 }
 
-interface RenderQuestionProps {
-  question: Question;
-  questionIndex: number;
-  values: { [key: string]: any };
-  handleInputChange: (questionIndex: number, fieldIndex: number, value: any) => void;
+interface FormProps {
+  compliance: ComplianceItem[]
 }
 
-// ---------- This is the end of declarations ---------- //
-
-export const ComplianceQuestions = ({ 
-    question, 
-    questionIndex, 
-    values, 
-    handleInputChange 
-  }:RenderQuestionProps) => {
-
+export const ComplianceQuestions = ({ compliance }:FormProps) => {
   return (
-    <div key={`question-${ questionIndex }`}>
-      { question.fields.map(( field, fieldIndex ) => (
+    <>
+      {compliance.map((complianceItem) => {
+        return complianceItem.questions.map((question) => {
+          // Filter out questions that are neither "Race" nor "Gender"
+          if (question.label !== 'Race' && question.label !== 'Gender') {
+            return null;
+          }
 
-        <Fields
-          key={ fieldIndex } 
-          field={ field }
-          fieldIndex={ fieldIndex }
-          value={values[`${ questionIndex }-${ fieldIndex }`] || ''}
-          questionLabel={ question.label }
-          handleInputChange={( index:any, val:any ) => handleInputChange( questionIndex, index, val )}
-          required={ question.required }
-        />
+          return question.fields.map((field, i) => {
+            return (
+              <Fields 
+                key={`field-${i}`}
+                field={field}
+                label={question.label}
+                required={question.required}
+              />
+            );
+          })
+        })
+      })}
+    </>
 
-      ))}
-    </div>
-  );
-};
+  )
+}
