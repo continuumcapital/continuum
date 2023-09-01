@@ -16,16 +16,15 @@ interface JobDetail {
     value: string 
   }[]
   questions: {
-    description: string | null
+    name: string
     label: string
     required: boolean
     fields: {
       name: string
-      type: 'input_text' | 'input_file' | 'textarea' | 'multi_value_multi_select'
+      type: 'input_text' | 'input_file' | 'multi_value_single_select'
       values: any[]
       required: boolean
     }[]
-    value: string
   }[]
 }
 
@@ -34,15 +33,13 @@ interface JobDetail {
 const CareerDetails: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
-  const [ jobDetail, setJobDetail ] = useState<JobDetail | null>(null)
-  const [ complianceData, setComplianceData ] = useState<any[]>([]);
-  const [ error, setError ] = useState<string | null>(null)
+  const [ jobDetail, setJobDetail ] = useState<JobDetail | null>( null )
+  const [ complianceData, setComplianceData ] = useState<any[]>([])
+  const [ error, setError ] = useState<string | null>( null )
 
   useEffect(() => {
     getJobDetails( id, { setJobDetail, setComplianceData, setError });
-  }, [ id ]);
-
-  console.log( jobDetail )
+  }, [ id ])
   
   return (
 
@@ -69,6 +66,7 @@ const CareerDetails: NextPage = () => {
         />
       }
     </SiteContainer>
+
   )
 }
 
