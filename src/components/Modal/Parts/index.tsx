@@ -1,5 +1,0 @@
-export { ModalActions } from './ModalActions'
-export { ModalContent } from './ModalContent'
-export { ModalHeader } from './ModalHeader'
-export { ModalTrigger } from './ModalTrigger'
-export { ModalWrap } from './ModalContainer'

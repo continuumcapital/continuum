@@ -25,7 +25,7 @@ export const Form = ({
   }: FormProps ) => {
 
   const form = useRef<HTMLFormElement>(null);
-  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
+  const [ submitStatus, setSubmitStatus ] = useState<string | null>(null);
 
   const { handleSubmit, control } = useForm<FormValues>({
     defaultValues: {

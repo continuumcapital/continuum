@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { SiteContainer, Hero, JobList } from '@components'
+import { SiteContainer, Hero } from '@components'
 import { getJobs } from '@lib'
 
 const Careers: NextPage = () => {

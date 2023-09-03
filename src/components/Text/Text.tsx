@@ -15,7 +15,7 @@ const TextWrap = styled('div', {
 
   '@tablet': {
     '*': { textAlign: 'left !important' },
-    'span, p': { lineHeight: '1.2 !important' }
+    'span, p': { lineHeight: '1.3 !important' }
   },
 
   // For the spacing automation of text that lives within the container

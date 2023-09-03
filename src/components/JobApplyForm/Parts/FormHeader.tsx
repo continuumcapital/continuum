@@ -12,10 +12,7 @@ const Header = styled('div', {
   justifyContent: 'center',
   position: 'relative',
   width: '100%',
-
-  '@mobile': {
-    justifyContent: 'space-between'
-  }
+  '@mobile': { justifyContent: 'space-between' }
 })
 
 // For the container of the required text on the right of the container
