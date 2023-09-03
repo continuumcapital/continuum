@@ -22,38 +22,61 @@ const FormContent = styled('div', {
   width: '90%',
   margin: '0 auto',
   padding: '150px 0 50px',
-  '> *:not(:last-child)': { marginBottom: 50 },
-  '@mobile': { padding: '75px 0 20px' }
+  '> *:not(:last-child)': { marginBottom: 12 },
+  '@mobile': { padding: '75px 0 20px' },
+
+  variants: {
+    width: {
+      l0: { maxWidth: 640 }
+    }
+  }
 })
 
 // -------------- Typescript declarations -------------- //
 
 interface FormProps {
+  id?: string
+  width?: 'l0'
   children: React.ReactNode
   onSubmit?: any
+  encType?: any
+  method?: any
+  title: string
+  titleSize?: 'l0'
+  alignTitle?: 'center'
+  removeRequired?: boolean
+  submitButtonTitle?: string
 }
 
 // ---------- This is the end of declarations ---------- //
 
-export const FormWrapper = ({ children, onSubmit }:FormProps) => {
+export const FormWrapper = ({ 
+    id,
+    width,
+    children, 
+    onSubmit,
+    encType,
+    method,
+    title,
+    titleSize, 
+    alignTitle,
+    removeRequired,
+    submitButtonTitle
+  }:FormProps) => {
+
   const methods = useForm()
   const { watch } = methods
 
   return(
 
-    <FormWrap id="apply-now">
-      <FormProvider {...methods} watch={ watch }>
-        <form 
-          noValidate
-          method="POST" 
-          encType='multipart/form-data' 
-          onSubmit={ methods.handleSubmit( onSubmit ) }
-        >
+    <FormWrap {...{ id }}>
+      <FormProvider { ...methods } watch={ watch }>
+        <form noValidate {...{ onSubmit, encType, method }}>
 
-          <FormContent>
-            <FormHeader title="Apply for this job" />
+          <FormContent {...{ width }}>
+            <FormHeader {...{ title, titleSize, alignTitle, removeRequired }} />
             { children }
-            <Button variant="primary" type="submit" title="Submit Application" />
+            <Button variant="primary" type="submit" title={ submitButtonTitle ? submitButtonTitle : 'Submit' } />
           </FormContent>
 
         </form>

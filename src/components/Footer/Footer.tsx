@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Form } from '@components'
+import { ContactForm } from '@components'
 import "@animxyz/core"
 import { XyzTransition } from '@animxyz/react'
 
@@ -108,7 +108,7 @@ export const Footer = ({ removeContact }:FooterProps) => {
         <XyzTransition xyz="fade" appearVisible>
 
           <MainContent>
-            { removeContact ?? ( <Form title="Contact Us" /> )}
+            { removeContact ?? ( <ContactForm /> )}
 
             <FooterContent {...{ removeContact }}>
               <div>&copy; {new Date().getFullYear()} Continuum Capital</div>
