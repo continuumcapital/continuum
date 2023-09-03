@@ -13,7 +13,7 @@ const FooterWrap = styled('footer', {
   width: '100vw',
   color: '$white',
   fontFamily: '$sansSerif',
-  zIndex: 9000
+  zIndex: 8000
 })
 
 // For the container of all of the content within the footer
