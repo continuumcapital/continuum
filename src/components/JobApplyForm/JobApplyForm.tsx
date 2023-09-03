@@ -1,6 +1,7 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import { styled } from '@theme'
-import { FormWrapper, Fields, StandardQuestions, ComplianceQuestions } from './Parts'
+import { FormWrapper, StandardQuestions, ComplianceQuestions } from './Parts'
 import { Text, Heading } from '@components'
 import { submitApplication } from '@lib'
 
@@ -49,8 +50,19 @@ export const JobApplyForm = ({
   jobId
 }: FormProps) => {
 
-  const handleSubmit = async (formData: any) => {
-    submitApplication(formData, questions, compliance, jobId);
+  // const handleSubmit = async (formData: any) => {
+  //   submitApplication(formData, questions, compliance, jobId);
+  // }
+
+  const router = useRouter()
+
+  const handleSubmit = async ( formData: any ) => {
+    try {
+      await submitApplication( formData, questions, compliance, jobId )
+      router.push( '/application-success' )
+    } catch ( error ) {
+      console.error( 'Error during form submission:', error )
+    }
   }
 
   return (

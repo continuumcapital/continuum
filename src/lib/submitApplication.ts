@@ -93,8 +93,6 @@ export const submitApplication = async (
     if (response.ok) {
       const data = await response.json()
       console.log("Response from API:", data)
-      // Handle successful response
-      // Maybe set some state, show a success message, navigate to a different page, etc.
     } else {
       console.error("API response error:", await response.json())
     }
