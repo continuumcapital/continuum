@@ -45,6 +45,13 @@ const HeroText = styled('div', {
   '> *:not(:last-child)': { marginBottom: 8 }
 })
 
+const HeroDescp = styled('div', {
+  position: 'relative',
+  maxWidth: 800,
+  width: '90%',
+  marginTop: 12
+})
+
 // Here we add support for breakpoints if needed ot be hidden 
 // This is used if there are callouts - where the text is too long and is replaced by chips
 
@@ -96,7 +103,7 @@ export const Hero = ({
           <HeroText>
             { hairline && ( <h1><Heading allCaps size="l2" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /></h1> )}
             <h2><Heading size="l6" bold="heavy" {...{ title }} /></h2>
-            { descp && ( <h3><Text><p>{ descp }</p></Text></h3> ) }
+            { descp && ( <HeroDescp><h3><Text color="textSecondary"><p>{ descp }</p></Text></h3></HeroDescp> ) }
           </HeroText>
 
           { calloutTitle && ( 

@@ -94,6 +94,10 @@ const TextWrap = styled('div', {
 
     textAlign: {
       center: { textAlign: 'center' }
+    },
+
+    color: {
+      textSecondary: { '*': { color: '$textSecondary' }}
     }
   }
 })
@@ -107,6 +111,7 @@ interface TextProps {
   children?: React.ReactNode
   textAlign?: 'center'
   dangerouslySetInnerHTML?: any
+  color?: 'textSecondary'
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -117,12 +122,13 @@ export const Text = ({
     width, // Supporting the width of the text within the container
     alignment, // Supporting the center alignment of the text within the container
     textAlign, // Supporting center alignment of the text
-    dangerouslySetInnerHTML // Supporting API calls that come in from a third party WYSIWYG
+    dangerouslySetInnerHTML, // Supporting API calls that come in from a third party WYSIWYG
+    color
   }: TextProps ) => {
   
   return(
 
-    <TextWrap {...{ fontSize, width, alignment, textAlign, dangerouslySetInnerHTML }}>
+    <TextWrap {...{ fontSize, width, alignment, textAlign, dangerouslySetInnerHTML, color }}>
       { children }
     </TextWrap>
     
