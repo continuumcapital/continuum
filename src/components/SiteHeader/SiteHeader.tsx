@@ -1,8 +1,7 @@
-import React from 'react'
-import Link from 'next/link'
+import React, { useState } from 'react'
 import { styled } from '@theme'
 import { useScrollPosition, useScrollDirection } from '@lib'
-import { Logo, Button } from '@components'
+import { Logo, ButtonContainer, MenuButton } from '@components'
 import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the header that sits in a fixed position on the top of the page
@@ -76,6 +75,7 @@ const Side = styled('div', {
   display: 'inline-flex',
   position: 'relative',
   width: '20%',
+  zIndex: 1,
 
   // This creates automated spacing between each of the div items within the container execpt for the last one
   // For example, this automates the spacing on right side of the header for the contact button and the theme button
@@ -83,11 +83,69 @@ const Side = styled('div', {
   '*:not(:last-child)': { marginRight: 12 }
 })
 
+const ShowOnTablet = styled('div', {
+  display: 'none',
+  zIndex: 1,
+  '@tablet': { display: 'flex' }
+})
+
+const Menu = styled('div', {
+  '@tablet': {
+    display: 'flex',
+    justifyContent: 'center !important',
+    alignItems: 'center',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    background: '$bgPrimary',
+    zIndex: 0,
+    transition: '$s1',
+    transform: 'scale( 0.8 )',
+    opacity: 0,
+    visibility: 'hidden',
+    pointerEvents: 'none',
+
+    '> div': {
+      display: 'flex',
+      justifyContent: 'center',
+      height: '100%',
+      flexDirection: 'column',
+      '*': { fontSize: '$s4' }
+    }
+  },
+
+  variants: {
+    active: {
+      true: {
+        '@tablet': {
+          visibility: 'visible',
+          transform: 'scale( 1 )',
+          pointerEvents: 'auto',
+          opacity: 1
+        }
+      }
+    }
+  }
+})
+
 // ---------- This is the end of declarations ---------- //
 
 export const SiteHeader = () => {
   const scrollPos = useScrollPosition()
   const scrollDirection = useScrollDirection()
+  const [ active, setActive ] = useState( false )
+  const menuClick = () => { 
+    setActive( !active )
+
+    if (!active) { 
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }
+
 
   return(
     
@@ -96,18 +154,20 @@ export const SiteHeader = () => {
         <Nav style={{ padding: typeof scrollPos === 'number' && scrollPos <= 100 ? '24px 0' : '12px 0' }}>
           <Side><Logo linkToHome /></Side>
 
-          {/* <ButtonContainer 
-            spacing="l0"
-            buttons={[
-              { pageLink: '/', title: 'About' },
-              { pageLink: '/career-details',  title: 'Careers' },
-              { pageLink: '#contact', title: 'Contact Us' }
-            ]}
-          /> */}
+          <ShowOnTablet>
+            <MenuButton active={ active } onClick={ menuClick } />
+          </ShowOnTablet>
 
-          <Side>
-            <Link href="#contact"><Button variant="outline" size="l0" title="Contact Us" /></Link>
-          </Side>
+          <Menu active={ active }>
+            <ButtonContainer 
+              spacing="l0"
+              buttons={[
+                { linkUrl: '/', title: 'About' },
+                { linkUrl: '/careers', title: 'Careers' },
+                { linkUrl: '#contact', title: 'Contact Us' }
+              ]}
+            />
+          </Menu>
         </Nav>
       </Header>
     </XyzTransition>

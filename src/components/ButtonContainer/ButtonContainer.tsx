@@ -69,6 +69,10 @@ const ButtonWrap = styled('div', {
       fullWidth: {
         '> div': { '&, > div': { width: '100%' } }
       }
+    },
+
+    align: {
+      right: { justifyContent: 'flex-end' }
     }
   }
 })
@@ -78,6 +82,7 @@ const ButtonWrap = styled('div', {
 interface ButtonContainerProps {
   direction?: 'vertical'
   width?: 'fullWidth'
+  align?: 'right'
   children?: React.ReactNode
   spacing?: 'l0'
   buttons?: {
@@ -98,12 +103,13 @@ export const ButtonContainer = ({
     direction, // Optional - Supports the vertical layout of buttons
     width, // Optional - Make the horizontal buttons full-width if the design supports one
     children, // Optional - For custom implementation of buttons if the above doesn't fit the needs
-    spacing // Optional - Supporting spacing convention between buttons
+    spacing, // Optional - Supporting spacing convention between buttons
+    align
   }: ButtonContainerProps ) => {
   
   return(
 
-    <ButtonWrap {...{ direction, width, spacing }}>
+    <ButtonWrap {...{ direction, width, spacing, align }}>
       { buttons ? (
         <>
           { buttons.map(( button:any, i ) => (

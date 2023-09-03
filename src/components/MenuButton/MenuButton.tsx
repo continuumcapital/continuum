@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled } from '@theme'
 
 /* 
@@ -22,7 +22,7 @@ const MenuWrap = styled('button', {
   position: 'relative',
   padding: '10px 16px',
   borderRadius: '$r1',
-  border: '1px solid $gray700',
+  border: '1px solid $bgSecondary',
   fontFamily: '$sansSerif'
 })
 
@@ -43,17 +43,21 @@ const Hamburger = styled('span', {
   '&:before, span:before, span:after': {
     content: '',
     position: 'absolute',
-    left: 0,
     width: '100%',
     height: 2,
-    borderRadius: 2,
-    background: '$gray700'
+    left: 0,
+    right: 0,
+    background: '$white',
+    transformOrigin: 'center',
+    transition: '$s1'
   },
 
   // For the positioning of the lines on the top and bottom of the container
   // The middle line autmoatically sits in the middle with no additional code - based on the flex alignment
 
   span: {
+    width: 16,
+    height: 12,
     '&:before': { top: 0 },
     '&:after': { bottom: 0 }
   },
@@ -63,16 +67,31 @@ const Hamburger = styled('span', {
 
   '+ span': {
     marginLeft: 8
+  },
+
+  variants: {
+    active: {
+      true: {
+        '&:before': { display: 'none' },
+        'span:before': { transform: 'rotate( 45deg ) translateY( 3px ) translateX( 4px )' },
+        'span:after': { transform: 'rotate( -45deg ) translateY( -3px ) translateX( 4px )' }
+      }
+    }
   }
 })
 
+interface MenuProps {
+  active: boolean
+  onClick: any
+}
+
 // ---------- This is the end of declarations ---------- //
 
-export const MenuButton = () => {
+export const MenuButton = ({ active, onClick }:MenuProps) => {
   return(
 
-    <MenuWrap>
-      <Hamburger><span></span></Hamburger>
+    <MenuWrap {...{ onClick }}>
+      <Hamburger active={ active }><span></span></Hamburger>
       <span>Menu</span>
     </MenuWrap>
     

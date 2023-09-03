@@ -11,7 +11,6 @@ import { InputStatus } from './'
 const InputWrap = styled('div', {
   display: 'flex',
   flexDirection: 'row',
-  // alignItems: 'center',
   position: 'relative',
   width: '100%',
 
@@ -46,8 +45,10 @@ const InputContent = styled('div', {
 const UploadOptions = styled('div', {
   position: 'relative',
   
-  '@mobile': { width: '100%' }
+  '@tablet': { width: '100%' }
 })
+
+// For the container of 
 
 const DragAndDrop = styled('div', {
   display: 'flex',
@@ -68,7 +69,7 @@ const DragAndDrop = styled('div', {
     borderColor: '$white',
   },
 
-  '@mobile': {
+  '@tablet': {
     width: '100%',
     borderRadius: '$r1'
   }
@@ -84,7 +85,16 @@ const FilePreview = styled('div', {
   background: '$bgSecondary',
   borderRadius: '$r2',
   '> *:not(:last-child)': { marginRight: 4 },
-  '@mobile': { width: '100%', borderRadius: '$r1' }
+  '@tablet': { width: '100%', borderRadius: '$r1' }
+})
+
+const RemoveOnTablet = styled('div', {
+  '@tablet': { display: 'none' }
+})
+
+const ShowOnTablet = styled('div', {
+  display: 'none',
+  '@tablet': { display: 'flex' }
 })
 
 
@@ -102,7 +112,8 @@ interface FileProps {
 // ---------- This is the end of declarations ---------- //
 
 export const FileInput = ({ label, name, required, rules, onChange }:FileProps) => {
-  const { register, setValue, formState: { errors }, watch, trigger } = useFormContext();
+  const { register, setValue, formState: { errors }, watch, trigger } = useFormContext()
+  const [ uploadedFile, setUploadedFile ] = useState<File | null>(null)
 
   const hasError = errors[name];
   const errorMessage = hasError?.message;
@@ -112,15 +123,7 @@ export const FileInput = ({ label, name, required, rules, onChange }:FileProps) 
     ...rules,
     required: required ? 'This field is required.' : false
   }
-
-  // const onFileUpload = (acceptedFiles: any) => {
-  //   setValue(name, acceptedFiles[0]);
-  //   if (onChange) {
-  //     onChange(acceptedFiles);
-  //   }
-  // };
-
-  const [ uploadedFile, setUploadedFile ] = useState<File | null>(null);
+  
 
   const onFileUpload = ( acceptedFiles: any ) => {
     setValue( name, acceptedFiles[ 0 ] )
@@ -152,7 +155,8 @@ export const FileInput = ({ label, name, required, rules, onChange }:FileProps) 
 
                 { !uploadedFile && ( 
                   <DragAndDrop>
-                    <Heading title="Drag and drop file or click to select" />
+                    <RemoveOnTablet><Heading title="Drag and drop file or click to select" /></RemoveOnTablet>
+                    <ShowOnTablet><Heading title="Upload file" /></ShowOnTablet>
                   </DragAndDrop>
                 )}
 

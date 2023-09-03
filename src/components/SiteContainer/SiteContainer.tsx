@@ -55,6 +55,7 @@ interface SiteContainerProps {
   children: React.ReactNode
   removeBlob?: boolean
   removeContact?: boolean
+  removeFooter?: boolean
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -64,7 +65,8 @@ export const SiteContainer = ({
     blockSpacing, // Optional - For the uniform spacing between each of the blocks that make up the page
     children, // Required - For all of the content within a page
     removeBlob, // Optional - For the ability to remove the blob background
-    removeContact // Optional - For the ability to remove the contact form
+    removeContact, // Optional - For the ability to remove the contact form
+    removeFooter // Optional - For the ability to remove the footer, such as the Application success page
   }: SiteContainerProps ) => {
   
   const [ isLoading, setLoading ] = useState( true )
@@ -87,7 +89,7 @@ export const SiteContainer = ({
         { children }
       </SiteContent>
       
-      <Footer {...{ removeContact }} />
+      { removeFooter ?? ( <Footer {...{ removeContact }} /> )}
       { removeBlob ?? ( <StageBg showBlob={ isLoading ? 'false' : 'true' } /> )}
     </SiteWrap>
     
