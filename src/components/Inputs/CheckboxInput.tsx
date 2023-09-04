@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { styled } from '@theme'
 import { Heading, TextEm } from '@components'
 

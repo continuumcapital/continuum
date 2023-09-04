@@ -28,7 +28,7 @@ export const StandardQuestions = ({ questions }:FormProps) => {
 
     <>
       { questions.map(( question ) => {
-        return question.fields.map((field, i) => {
+        return question.fields.map(( field, i ) => {
           return (
 
             <Fields 
@@ -42,6 +42,6 @@ export const StandardQuestions = ({ questions }:FormProps) => {
         })
       })}
     </>
-    
+
   )
 }

@@ -2,7 +2,10 @@ import React from 'react'
 import { useFormContext } from 'react-hook-form'
 import { styled } from '@theme'
 import { Heading, TextEm } from '@components'
-import { InputStatus } from './'
+import { InputStatus } from './InputStatus'
+
+// For the master container of the Basic Input
+// This contains all of the shared stying 
 
 const InputWrap = styled('div', {
   position: 'relative',
@@ -153,4 +156,3 @@ export const BasicInput = ({
 
   )
 }
-

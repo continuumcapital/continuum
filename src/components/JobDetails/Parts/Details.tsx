@@ -41,6 +41,9 @@ const DescpBlockHeading = styled('div', {
     background: '$white'
   },
 
+  // Changes on tablet breakpoints - here we remove the line to the right 
+  // As well as make the title full width and adjust the spacing on the bottom between the title and the text
+
   '@tablet': {
     width: '100%',
     marginBottom: 20,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BasicInput, FileInput, SelectInput, CheckboxInput } from './index'
+import { BasicInput, FileInput, SelectInput } from '@components'
 
 // -------------- Typescript declarations -------------- //
 

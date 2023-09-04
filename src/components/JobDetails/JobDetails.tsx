@@ -1,10 +1,10 @@
 import React from 'react'
-import { XyzTransition } from '@animxyz/react'
 import DOMPurify from 'dompurify'
 import { styled } from '@theme'
 import { Heading, Text } from '@components'
 import { Details } from './Parts/Details'
 import { decodeHTML, processLines } from '@lib'
+import { XyzTransition } from '@animxyz/react'
 
 // For the master containers of the job details
 // This holds all the information and the form to apply for the open position
@@ -30,6 +30,9 @@ const DetailsContent = styled('div', {
   }
 })
 
+// For the master container of the text coming in from the API
+// This holds the 'Position overview' on the top and the text coming from Greenhouse below
+
 const DetailsIntro = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -39,6 +42,8 @@ const DetailsIntro = styled('div', {
   paddingBottom: 75,
   '> *:not(:last-child)': { marginBottom: 20 },
 
+  // For the divider line on the bottom of the container
+
   '&:after': { 
     content: '',
     position: 'absolute',
@@ -47,6 +52,9 @@ const DetailsIntro = styled('div', {
     height: 2,
     background: 'rgba( 255, 255, 255, 0.2 )'
   },
+
+  // Changes on Tablet breakpoints - here adjust spacing and alignment
+  // As well as make the line full width, below the text
 
   '@tablet': { 
     paddingBottom: 50,

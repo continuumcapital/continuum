@@ -59,7 +59,7 @@ export const FormHeader = ({
         {...{ title }} 
       />
       
-      { removeRequired && (
+      { removeRequired ?? (
         <Required>
           <TextEm color="danger">*</TextEm>
           <Heading size="l0" title="Required" />

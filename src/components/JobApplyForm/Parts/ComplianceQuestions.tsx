@@ -1,6 +1,8 @@
 import React from 'react'
 import { Fields } from './Fields'
 
+// -------------- Typescript declarations -------------- //
+
 interface ComplianceQuestion extends Question {}
 
 interface ComplianceItem {
@@ -25,23 +27,28 @@ interface FormProps {
   compliance: ComplianceItem[]
 }
 
+// ---------- This is the end of declarations ---------- //
+
 export const ComplianceQuestions = ({ compliance }:FormProps) => {
   return (
+    
     <>
       {compliance.map((complianceItem) => {
         return complianceItem.questions.map((question) => {
+
           // Filter out questions that are neither "Race" nor "Gender"
+
           if (question.label !== 'Race' && question.label !== 'Gender') {
-            return null;
+            return null
           }
 
-          return question.fields.map((field, i) => {
+          return question.fields.map(( field, i ) => {
             return (
               <Fields 
-                key={`field-${i}`}
-                field={field}
-                label={question.label}
-                required={question.required}
+                key={ `field-${i}` }
+                field={ field }
+                label={ question.label }
+                required={ question.required }
               />
             );
           })
