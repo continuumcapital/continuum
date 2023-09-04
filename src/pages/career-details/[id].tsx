@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
-import { SiteContainer, HeroTitle, JobDetails, JobApplyForm } from '@components'
+import { Preloader, SiteContainer, HeroTitle, JobDetails, JobApplyForm } from '@components'
 import { getJobDetails } from '@lib'
 
 // -------------- Typescript declarations -------------- //
@@ -36,26 +36,34 @@ const CareerDetails: NextPage = () => {
   const [ jobDetail, setJobDetail ] = useState<JobDetail | null>( null )
   const [ complianceData, setComplianceData ] = useState<any[]>([])
   const [ error, setError ] = useState<string | null>( null )
+  const [ isLoading, setIsLoading ] = useState( true )
 
   useEffect(() => {
-    getJobDetails( id, { setJobDetail, setComplianceData, setError });
+    if ( id ) {
+      getJobDetails( id, { setJobDetail, setComplianceData, setError } )
+        .then(() => { setIsLoading( false ) })
+        .catch(() => { setIsLoading( false ) })
+    }
   }, [ id ])
-  
-  return (
 
+  if ( isLoading ) return <Preloader />
+  if ( error ) return <div>Error: { error }</div>
+  if ( !jobDetail ) return null
+
+  return (
     <SiteContainer removeBlob removeContact>
       <HeroTitle 
-        title={ jobDetail?.title }
-        location={ jobDetail?.location.name }
+        title={ jobDetail.title }
+        location={ jobDetail.location.name }
         buttonTitle="Apply now"
         buttonLink="#apply-now"
         backLink="/careers"
       />
 
       <JobDetails 
-        descp={ jobDetail?.content } 
-        responsibilities={ jobDetail?.metadata[1].value }
-        requirements={ jobDetail?.metadata[2].value }
+        descp={ jobDetail.content } 
+        responsibilities={ jobDetail.metadata[1].value }
+        requirements={ jobDetail.metadata[2].value }
       />
 
       { jobDetail?.questions && 
@@ -66,8 +74,9 @@ const CareerDetails: NextPage = () => {
         />
       }
     </SiteContainer>
-
   )
 }
 
 export default CareerDetails
+
+

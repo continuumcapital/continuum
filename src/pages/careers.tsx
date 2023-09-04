@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
-import { SiteContainer, Hero, JobList } from '@components'
+import { Preloader, SiteContainer, Hero, JobList } from '@components'
 import { getJobs } from '@lib'
 
 const Careers: NextPage = () => {
-  const { groupedJobs } = getJobs()
+  const { groupedJobs, isLoading } = getJobs()
+  if ( isLoading ) return <Preloader />
 
   return (
     

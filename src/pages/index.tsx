@@ -1,6 +1,7 @@
+import React, { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
 import { styled } from '@theme'
-import { SiteContainer, Block, Hero, Stage, Heading } from '@components'
+import { Preloader, SiteContainer, Block, Hero, Stage, Heading } from '@components'
 
 const ShowOnMobile = styled('div', {
   display: 'none',
@@ -8,6 +9,20 @@ const ShowOnMobile = styled('div', {
 })
 
 const Home: NextPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // This ensures that the preloader will show for at least 2 seconds
+
+    return () => {
+      clearTimeout(timer); // Cleanup timer to prevent memory leaks
+    };
+  }, []);
+
+  if (isLoading) return <Preloader />
+
   return (
     
     <SiteContainer hasContactForm>
