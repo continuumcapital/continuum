@@ -9,8 +9,7 @@ import { Button } from '@components'
 
 const FormWrap = styled('div', {
   position: 'relative',
-  width: '100%',
-  background: '$bgPrimary'
+  width: '100%'
 })
 
 // For the container of all of the content within the master container
@@ -21,7 +20,7 @@ const FormContent = styled('div', {
   maxWidth: 800,
   width: '90%',
   margin: '0 auto',
-  padding: '150px 0 50px',
+  padding: '50px 0',
   '> *:not(:last-child)': { marginBottom: 32 },
   '@mobile': { padding: '75px 0 20px' },
 

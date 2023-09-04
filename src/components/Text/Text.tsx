@@ -96,6 +96,8 @@ const TextWrap = styled('div', {
       center: { textAlign: 'center' }
     },
 
+    // Adding support for the different colors of the text 
+
     color: {
       textSecondary: { '*': { color: '$textSecondary' }}
     }
