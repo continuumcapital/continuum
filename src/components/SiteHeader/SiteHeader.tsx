@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { styled } from '@theme'
 import { useScrollPosition, useScrollDirection } from '@lib'
 import { Logo, ButtonContainer, MenuButton } from '@components'
+import { MobileMenu } from './Parts/MobileMenu'
 import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the header that sits in a fixed position on the top of the page
@@ -89,63 +90,18 @@ const ShowOnTablet = styled('div', {
   '@tablet': { display: 'flex' }
 })
 
-const Menu = styled('div', {
-  '@tablet': {
-    display: 'flex',
-    justifyContent: 'center !important',
-    alignItems: 'center',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    background: '$bgPrimary',
-    zIndex: 0,
-    transition: '$s1',
-    transform: 'scale( 0.8 )',
-    opacity: 0,
-    visibility: 'hidden',
-    pointerEvents: 'none',
-
-    '> div': {
-      display: 'flex',
-      justifyContent: 'center',
-      height: '100%',
-      flexDirection: 'column',
-      '*': { fontSize: '$s4' }
-    }
-  },
-
-  variants: {
-    active: {
-      true: {
-        '@tablet': {
-          visibility: 'visible',
-          transform: 'scale( 1 )',
-          pointerEvents: 'auto',
-          opacity: 1
-        }
-      }
-    }
-  }
-})
-
 // ---------- This is the end of declarations ---------- //
 
 export const SiteHeader = () => {
   const scrollPos = useScrollPosition()
   const scrollDirection = useScrollDirection()
   const [ active, setActive ] = useState( false )
+
   const menuClick = () => { 
     setActive( !active )
-
-    if (!active) { 
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    if (!active) { document.body.style.overflow = 'hidden' } 
+    else { document.body.style.overflow = '' }
   }
-
 
   return(
     
@@ -158,7 +114,7 @@ export const SiteHeader = () => {
             <MenuButton active={ active } onClick={ menuClick } />
           </ShowOnTablet>
 
-          <Menu active={ active }>
+          <MobileMenu active={ active }>
             <ButtonContainer 
               spacing="l0"
               buttons={[
@@ -167,7 +123,7 @@ export const SiteHeader = () => {
                 { linkUrl: '#contact', title: 'Contact Us' }
               ]}
             />
-          </Menu>
+          </MobileMenu>
         </Nav>
       </Header>
     </XyzTransition>

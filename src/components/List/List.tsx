@@ -29,6 +29,9 @@ const ListWrap = styled('div', {
       center: { '> ul': { justifyContent: 'center' }}
     },
 
+    // Here we are adding support for fonct sizes of the list 
+    // As of now, this allows for a large font size than what is declard by default
+
     fontSize: {
       l1: { fontSize: '$s1' }
     },
@@ -62,6 +65,9 @@ const ListWrap = styled('div', {
       l4: { li: { padding: '32px 0' } }
     },
 
+    // Here we are adding support for the divider decoration within the list component
+    // This will add a border to the bottom of each of the li elements
+
     withDividers: {
       true: { 'ul > li:not(:last-child)': { borderBottom: '1px solid $border' } }
     }
@@ -90,8 +96,8 @@ export const List = ({
     listStyle, // Supporting bulleted, numbered, or alphabetical
     spacing, // For the spacing of the lis within the list
     children, // For the children content within the list container
-    fontSize,
-    withDividers
+    fontSize, // Optional - Support for various font sizes
+    withDividers // Optional - Adding borders to the bottom of lis within the list
   }: ListProps ) => {
   
   return(

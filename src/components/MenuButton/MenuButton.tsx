@@ -1,17 +1,5 @@
-import React, { useState } from 'react'
-import { styled } from '@theme'
-
-/* 
-  *** ReadMe ***
-
-  The menu button is a global, always visible component that sits on the right of the header. The menu
-  button is used to open the global menu, where is shows the core features of the product. When the menu button
-  is hovered, the hamburger icon forms into an X to indicate that clicking the icon again, will close the menu.
-  The menu also contains the "Menu" text to the left of the hamburger icon to futher indicate the affordance 
-  of the menu.
-
-  *** End ReadMe ***
-*/
+import React from 'react'
+import { styled } from '@theme' 
 
 // For the master container of the menu button
 // This holds the hamburger icon on the left and the Menu text on the right

@@ -18,7 +18,7 @@ const Bar = styled('div', {
 // ---------- This is the end of declarations ---------- //
 
 export const ReadingBar = () => {
-  const [width, setWidth] = useState(0);
+  const [ width, setWidth ] = useState(0);
 
   // scroll function
   // This will move the bar starting on the left and completing on the right of the container
