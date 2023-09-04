@@ -26,7 +26,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       { isLoading ? <Preloader /> : null }
       { isHidden ? null : (
         <>
-          <SiteHeader />
           <Component {...pageProps} />
         </>
       )}

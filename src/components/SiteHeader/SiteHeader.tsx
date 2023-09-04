@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
 import { useScrollPosition, useScrollDirection } from '@lib'
-import { Logo, ButtonContainer, MenuButton } from '@components'
+import { Logo, Button, ButtonContainer, MenuButton, Modal, ContactForm } from '@components'
 import { MobileMenu } from './Parts/MobileMenu'
 import { XyzTransition } from '@animxyz/react'
 
@@ -90,9 +90,15 @@ const ShowOnTablet = styled('div', {
   '@tablet': { display: 'flex' }
 })
 
+// -------------- Typescript declarations -------------- //
+
+interface HeaderProps {
+  hasContactForm?: boolean
+}
+
 // ---------- This is the end of declarations ---------- //
 
-export const SiteHeader = () => {
+export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
   const scrollPos = useScrollPosition()
   const scrollDirection = useScrollDirection()
   const [ active, setActive ] = useState( false )
@@ -119,10 +125,18 @@ export const SiteHeader = () => {
               spacing="l0"
               buttons={[
                 { linkUrl: '/', title: 'About' },
-                { linkUrl: '/careers', title: 'Careers' },
-                { linkUrl: '#contact', title: 'Contact Us' }
+                { linkUrl: '/careers', title: 'Careers' }
               ]}
             />
+
+            { hasContactForm ? (
+              <Button linkUrl="#contact" title="Contact" />
+            ) : (
+              <Modal 
+                trigger={ <Button title="Contact" /> }
+                content={ <ContactForm /> }
+              />
+            )}
           </MobileMenu>
         </Nav>
       </Header>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { styled } from '@theme'
-import { HeadTags, StageBg, Footer, ReadingBar } from '@components'
+import { HeadTags, StageBg, SiteHeader, Footer, ReadingBar } from '@components'
 
 // For the master container of the foundational SiteContainer component
 // This component is used to automate spacing, sizes, widths, ect for components wrapped within this components
@@ -50,6 +50,7 @@ const SiteContent = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface SiteContainerProps {
+  hasContactForm?: boolean
   spacing?: 'l0' | 'l1' | 'l2'
   blockSpacing?: 'l0' | 'l1' | 'l2' | 'l3'
   children: React.ReactNode
@@ -61,6 +62,7 @@ interface SiteContainerProps {
 // ---------- This is the end of declarations ---------- //
 
 export const SiteContainer = ({
+    hasContactForm, // Optional - For the site header contact form, if a page has it at the bottom, then it isn't needed
     spacing, // Optional - For the top and bottom spacing of the page content
     blockSpacing, // Optional - For the uniform spacing between each of the blocks that make up the page
     children, // Required - For all of the content within a page
@@ -85,6 +87,7 @@ export const SiteContainer = ({
         content="Alternative Investment Solutions at the intersection of Real Estate and Digital Assets"
       />
 
+      <SiteHeader {...{ hasContactForm }} />
       <SiteContent {...{ spacing, blockSpacing }}>
         { children }
       </SiteContent>

@@ -28,9 +28,8 @@ const FormContent = styled('div', {
   // This is to support a larger or smaller width than the default that the component comes with
 
   variants: {
-    width: {
-      l0: { maxWidth: 640 }
-    }
+    width: { l0: { maxWidth: 640 }},
+    spacing: { l1: { padding: '150px 0 50px' }}
   }
 })
 
@@ -48,6 +47,7 @@ const InputContainer = styled('div', {
 interface FormProps {
   id?: string
   width?: 'l0'
+  spacing?: 'l1'
   title?: any
   titleSize?: 'l0'
   alignTitle?: 'center',
@@ -64,6 +64,7 @@ interface FormProps {
 export const Form = ({
     id, // Optional - For the ID of the form, such as if it needs an anchor link for a button click
     width, // Optional - Supporting various widths other than the default width
+    spacing, // Optional - Supporting top and bottom spacing for the form container
     title, // Required - For the title of the form
     titleSize, // Optional - Supporting various sizes for the title of the form
     alignTitle, // Optional - Supporting various alignments of the title within the container
@@ -84,7 +85,7 @@ export const Form = ({
       <FormProvider { ...methods } watch={ watch }>
         <form noValidate {...{ encType, method }} onSubmit={ methods.handleSubmit( onSubmit ) }>
 
-          <FormContent {...{ width }}>
+          <FormContent {...{ width, spacing }}>
             <FormHeader {...{ title, titleSize, alignTitle, removeRequired }} />
             <InputContainer>{ children }</InputContainer>
             <Button variant="primary" type="submit" title={ submitButtonTitle || 'Submit' } />

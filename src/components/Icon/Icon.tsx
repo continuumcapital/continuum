@@ -12,6 +12,7 @@ const IconWrap = styled('span', {
   width: 30,
   height: 30,
   transition: '$s1',
+  overflow: 'hidden',
 
   // For the size of the svg to sit in the center of the container
   // This also changes the color to inheit the parent color 

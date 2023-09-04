@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { SiteContainer, Hero, Modal, ContactForm } from '@components'
+import { SiteContainer, Hero } from '@components'
 
 const Careers: NextPage = () => {
   return (
@@ -9,8 +9,6 @@ const Careers: NextPage = () => {
         title="Thank you for applying to Continuum Capital"
         descp="Thank you for applying to Continuum Capital. Our team will follow up soon."
       />
-
-      <Modal trigger={ <div>Click me</div> }><ContactForm /></Modal>
     </SiteContainer>
 
   )

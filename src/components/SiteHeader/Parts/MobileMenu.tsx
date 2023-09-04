@@ -5,8 +5,13 @@ import { styled } from '@theme'
 // This will hide the global menu and show up on tablet breakpoints, once the hamburger menu is clicked
 
 const Menu = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  position: 'relative',
+
   '@tablet': {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center !important',
     alignItems: 'center',
     position: 'fixed',
@@ -51,6 +56,13 @@ const Menu = styled('div', {
   }
 })
 
+const MenuContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  '@tablet': { flexDirection: 'column' }
+})
+
 // -------------- Typescript declarations -------------- //
 
 interface MenuProps {
@@ -63,7 +75,9 @@ interface MenuProps {
 export const MobileMenu = ({ active, children }:MenuProps) => {
   return(
 
-    <Menu {...{ active }}>{ children }</Menu>
+    <Menu {...{ active }}>
+      <MenuContent>{ children }</MenuContent>
+    </Menu>
 
   )
 }

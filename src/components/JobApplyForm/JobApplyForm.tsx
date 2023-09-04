@@ -74,6 +74,8 @@ export const JobApplyForm = ({
   return (
 
     <Form 
+      id="apply-now"
+      spacing="l1"
       title="Apply now"
       alignTitle="center"
       method="POST" 

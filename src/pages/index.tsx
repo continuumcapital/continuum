@@ -10,7 +10,7 @@ const ShowOnMobile = styled('div', {
 const Home: NextPage = () => {
   return (
     
-    <SiteContainer>
+    <SiteContainer hasContactForm>
       <Block>
         <Hero 
           hairline="Continuum Capital"

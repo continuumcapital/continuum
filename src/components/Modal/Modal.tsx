@@ -60,21 +60,21 @@ const ModalOverlay = styled('div', {
   left: 0,
   width: '100%',
   height: '100%',
-  background: 'rgba( 0,0,0, 0.5 )',
+  background: 'rgba( 0,0,0, 0.9 )',
   zIndex: 0
 })
 
 // -------------- Typescript declarations -------------- //
 
 interface ModalProps {
-  children: ReactNode
+  content: ReactNode
   trigger: ReactElement
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const Modal = ({ 
-    children, // Required - For the content within the modal
+    content, // Required - For the content within the modal
     trigger // Required - For the trigger to open the modal
   }:ModalProps) => {
 
@@ -95,7 +95,7 @@ export const Modal = ({
       { isOpen && (
         <ModalWrap onClick={ hideModal }>
           <ModalContent onClick={ e => e.stopPropagation() }>  
-            { children }
+            { content }
             <ModalClose><Button variant="icon" icon="cross-1" onClick={ hideModal } /></ModalClose>
           </ModalContent>
           <ModalOverlay />
