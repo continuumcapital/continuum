@@ -13,6 +13,8 @@ const DescpBlock = styled('div', {
   width: '100%',
   '> *:not(:last-child)': { marginRight: 50 },
 
+  // Here we change the alignment from horizontal to vertical on tablet breakpoints
+
   '@tablet': {
     flexDirection: 'column'
   }

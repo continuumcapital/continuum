@@ -73,7 +73,7 @@ export const BlockTitle = ({ title }:TitleProps) => {
 
   const getFirstWord = (string: string): string => {
     const words = string.split(' ')
-    return words[0]
+    return words[ 0 ]
   }
 
   return(

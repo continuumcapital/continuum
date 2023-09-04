@@ -33,7 +33,11 @@ interface JobProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const JobWrap = ({ title, children }:JobProps) => {
+export const JobWrap = ({ 
+    title, // Required - For the title of the Job list
+    children // Required - For the jobs offered
+  }:JobProps) => {
+
   return(
 
     <ListWrap id="job-list">

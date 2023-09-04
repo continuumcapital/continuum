@@ -32,7 +32,11 @@ type DepartmentJobListProps = {
 // ---------- This is the end of declarations ---------- //
 
 
-export const JobList = ({ title, groupedJobs }:DepartmentJobListProps) => {
+export const JobList = ({ 
+    title, // Required - For the title of the Job list
+    groupedJobs // Required - For the jobs coming in from the API
+  }:DepartmentJobListProps) => {
+
   return (
 
     <JobWrap {...{ title }}>

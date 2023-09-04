@@ -83,7 +83,12 @@ interface DetailProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const JobDetails = ({ descp, responsibilities, requirements }:DetailProps) => {
+export const JobDetails = ({ 
+    descp, // Required - For the description of the job
+    responsibilities, // Required - For the responsibilities of the position
+    requirements  // Required - For the requirements of the position
+  }:DetailProps) => {
+
   const decodedHTML = decodeHTML( descp || "" )
   const cleanHTML = DOMPurify.sanitize( decodedHTML )
   const responsibilitiesText = responsibilities || ""

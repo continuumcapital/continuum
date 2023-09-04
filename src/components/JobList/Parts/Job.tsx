@@ -39,7 +39,12 @@ interface JobProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const Job = ({ id, title, location }:JobProps) => {
+export const Job = ({ 
+    id, // Required - For the ID of the job, coming in from the Greenhouse API
+    title, // Required - For the title of the job, coming in from the Greeenhouse API
+    location // Required - For the location of the job, coming in from the Greenhouse API
+  }:JobProps) => {
+
   return(
 
     <li>
