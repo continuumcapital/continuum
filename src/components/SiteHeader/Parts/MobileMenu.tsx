@@ -1,6 +1,9 @@
 import React from 'react'
 import { styled } from '@theme'
 
+// For the master container of the component set up for the mobile menu
+// This will hide the global menu and show up on tablet breakpoints, once the hamburger menu is clicked
+
 const Menu = styled('div', {
   '@tablet': {
     display: 'flex',
@@ -19,6 +22,9 @@ const Menu = styled('div', {
     visibility: 'hidden',
     pointerEvents: 'none',
 
+    // For changing the defaults of the ButtonContainer component to handle the one-off changes for the mobile menu
+    // This isn't needed as a variant on the ButtonContainer itself because it only happens here
+
     '> div': {
       display: 'flex',
       justifyContent: 'center',
@@ -27,6 +33,9 @@ const Menu = styled('div', {
       '*': { fontSize: '$s4' }
     }
   },
+
+  // Here we add support for the click events on mobile
+  // By default, the menu is closed and this event is triggered once the menu button is clicked on tablet and under breakpoints
 
   variants: {
     active: {
