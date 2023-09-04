@@ -19,7 +19,7 @@ export const ContactForm = () => {
   // The onSubmit for the general contact form - uses Email JS
   // This will give a response of success once the email is sent
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = ( data: FormValues ) => {
     setSubmitStatus("Submitting...")
   
     emailjs.send('contact_form', 'template_continuum', data, `${process.env.NEXT_PUBLIC_EMAILJS_API}`)

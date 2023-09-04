@@ -28,6 +28,8 @@ const ChipWrap = styled('div', {
   transition: '$s1',
   textAlign: 'center',
 
+  // Here we change the color and background of the chip to give it afforance as a button
+
   '&:hover': {
     background: '$brandPrimary',
     color: '$black'

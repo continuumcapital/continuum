@@ -2,23 +2,6 @@ import React from 'react'
 import { styled } from '@theme'
 import { Button } from '@components'
 
-/* 
-  *** ReadMe ***
-
-  The button container component is used if more that one button is present within a givien comp. This usually includes and primary
-  and secondary action. These are used when a CTA has more than one point of interactions. 
-  
-  This has two different types or orientation:
-  • Horizontal by default
-  • Verical
-
-  The component is made to scale with having as many buttons as needed, but typically only holds two buttons. With the default
-  horizontal layout, the buttons respect there auto width. With the vertical layout, the buttons are the same with, with the
-  width respecting the container and/or the largest button
-
-  *** End ReadMe ***
-*/
-
 // For the master container of the button container
 // This holds all the buttons needed so that the buttons are automated to format in a horizontal or vertical layout
 
@@ -71,6 +54,9 @@ const ButtonWrap = styled('div', {
       }
     },
 
+    // Here we support the alignment of the button container 
+    // As of now, this only supports the right alignments of the buttons
+
     align: {
       right: { justifyContent: 'flex-end' }
     }
@@ -104,7 +90,7 @@ export const ButtonContainer = ({
     width, // Optional - Make the horizontal buttons full-width if the design supports one
     children, // Optional - For custom implementation of buttons if the above doesn't fit the needs
     spacing, // Optional - Supporting spacing convention between buttons
-    align
+    align // Optional - Supporting the alignment of the buttons within the container
   }: ButtonContainerProps ) => {
   
   return(

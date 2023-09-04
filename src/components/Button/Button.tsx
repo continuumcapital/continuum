@@ -1,33 +1,6 @@
 import React from 'react'
 import { ButtonBase } from './ButtonBase'
 
-/* 
-  *** ReadMe ***
-
-  The button component is amied to solve all instances of a button, not only in the traditional sense.
-  Meaning that it supports external links, internal page links, onclick events, or a static button that has no click event attached.
-  When meaning static, an example could be a fully clickable card - this could include a visual button meant for afforance,
-  while the whole button is clickable, wether that takes the user to a blog post, or opens a dialog window, or an external link.
-
-  This button component is also meant to be scalable (customizable), where various components might be needed to be combined,
-  that are unknown or not addressed within here. This is the fallback method. Take for exmaple an avatar accompanied by a user name.
-  This situation wouldn't be addressed here but the button component will solve for it, wether that avatar button takes the user to
-  an external website, internal page, or an onclick event. All is needed is to import this component into said compnent and use it within there.
-  Why this is important is because it automates a few features, such as a background color, and support on click events, without having 
-  to write code again.
-
-  The button by default comes bare-bones, meaning there is no visual rendering of a traditional button. This is added once a variant
-  is attached to a button. You can view the current varients within the proptypes below.
-
-  Click events supported: 
-  • External links - <a href="" target="_blank"></a>
-  • Internal links - <Link href=""></Link> ( Following NextJS convention )
-  • onClick events - <button onClick={ () => fuunction() }></button>
-  • Fallback is a static button, visually representing one, with no click event
-
-  *** End ReadMe ***
-*/
-
 // -------------- Typescript declarations -------------- //
 
 interface ButtonProps {

@@ -13,6 +13,9 @@ const Header = styled('div', {
   width: '100%',
   '@mobile': { justifyContent: 'space-between' },
 
+  // Here we add support if the title of the form needs to be centered aligned
+  // By default, the title of the form is always aligned to the left
+
   variants: {
     alignTitle: {
       center: { justifyContent: 'center' }

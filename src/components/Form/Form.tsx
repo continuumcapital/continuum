@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { styled } from '@theme'
-import { FormHeader } from './NewParts/FormHeader'
+import { FormHeader } from './Parts/FormHeader'
 import { Button } from '@components'
 
 // For the master container of the form, within the Apply for Job section
@@ -62,17 +62,17 @@ interface FormProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Form = ({
-    id,
-    width,
-    title,
-    titleSize,
-    alignTitle,
-    encType,
-    method,
-    removeRequired,
-    children,
-    onSubmit,
-    submitButtonTitle
+    id, // Optional - For the ID of the form, such as if it needs an anchor link for a button click
+    width, // Optional - Supporting various widths other than the default width
+    title, // Required - For the title of the form
+    titleSize, // Optional - Supporting various sizes for the title of the form
+    alignTitle, // Optional - Supporting various alignments of the title within the container
+    encType, // Optional - Supporting form requirements for forms coming from API calls like Greenhouse
+    method, // Required - For the method type of the form (i.e. POST )
+    removeRequired, // Optional - Removes the default 'required' text on the right of the container
+    children, // Required - For the input content within the form
+    onSubmit, // Required - THe action that happens once the form is submitted
+    submitButtonTitle // Optional - If the button of a form needs a different title
   }: FormProps ) => {
 
   const methods = useForm()

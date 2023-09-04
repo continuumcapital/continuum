@@ -79,6 +79,7 @@ export const JobApplyForm = ({
       method="POST" 
       encType="multipart/form-data"
       onSubmit={ handleSubmit }
+      submitButtonTitle="Submit application"
     >
 
       <FormContent>
