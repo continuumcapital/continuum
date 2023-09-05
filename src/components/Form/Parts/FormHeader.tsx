@@ -18,7 +18,10 @@ const Header = styled('div', {
 
   variants: {
     alignTitle: {
-      center: { justifyContent: 'center' }
+      center: { 
+        justifyContent: 'center',
+        '@tablet': { justifyContent: 'space-between' }
+      }
     }
   }
 })
