@@ -6,8 +6,10 @@ export const globalStyle = {
 
   '*': {
     boxSizing: 'border-box',
-    fontFamily: 'inherit',
+    fontFamily: '$sansSerif',
     color: 'inherit',
+    fontWeight: 'normal',
+    fontStyle: 'normal',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale'
   },
