@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading, Icon } from '@components'
-// import { useFormContext } from 'react-hook-form'
+import { Heading, Icon, InputStatus } from '@components'
+import { useFormContext } from 'react-hook-form'
 
 // For the container of the Select Input
 // This is always visible, containing an option icon and text of the selection, and the arrow down icon on the right
@@ -24,6 +24,8 @@ const SelectContent = styled('div', {
     size: {
       l0: { label: { height: 40 }}
     },
+
+    // Here we allow for the select dropdown to be half the size of the default input
 
     width: {
       half: { 
@@ -101,21 +103,30 @@ interface InputProps {
   width?: 'half'
   rules?: any
   label?: string
+  required?: boolean
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const InputBase = ({ 
-    size, // Optional - for the size of the input fields
-    width, // Opitional - for the width of the input button
-    name, // Required - for the name of the input
-    title, // Required - for the title of the input
-    rules,
-    value,
-    label
+    size, // Optional - For the size of the input fields
+    width, // Opitional - For the width of the input button
+    name, // Required - For the name of the input
+    title, // Required - For the title of the input
+    rules, // Required - For the rules of the input if it is required
+    required, // Optional - Support if the input is required
+    value // Required - For the value of the input
   }:InputProps) => {
 
-  // const { register, formState: { errors }, watch } = useFormContext();
+  const { register, formState: { errors }, watch, trigger } = useFormContext()
+  const currentValue = watch( name )
+  const hasError = errors[ name ]
+  const errorMessage = errors[ name ]?.message as string | undefined
+
+  const fieldRules = {
+    ...rules,
+    required: required ? 'This field is required.' : false
+  }
   
   return(
 
@@ -126,12 +137,14 @@ export const InputBase = ({
       </label>
 
       <input 
-        readOnly
-        type="text" 
         id={ name }
-        // {...register( name, { ...rules })}   
-        value={ value }
+        type="text" 
+        {...register( name, fieldRules )}
+        onBlur={() => trigger( name )}
+        {...{ name, required, value }}
       />
+      
+      { hasError && <InputStatus status={ errorMessage || 'Error' } /> }
     </SelectContent>
 
   )
