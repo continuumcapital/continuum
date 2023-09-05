@@ -100,7 +100,7 @@ export const Hero = ({
     calloutHref, // Optional - for the href where the interaction goes after the user clicks the callout Button
     offers, // Optional - This will show the cards with the background side-by-side, if more than one callout is needed
     chips, // Optional - For the chips to callout key parts of the page below
-    leftAlignOnMobile
+    leftAlignOnMobile // Optional - For the support to align the text to the left on mobile
   }: HeroProps ) => {
   
   return(
