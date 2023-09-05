@@ -42,13 +42,19 @@ const HeroText = styled('div', {
   width: '90%',
   margin: '0 auto',
   textAlign:'center',
-  '> *:not(:last-child)': { marginBottom: 8 }
+  '> *:not(:last-child)': { marginBottom: 8 },
+
+  variants: {
+    leftAlignOnMobile: {
+      true: { textAlign: 'left' }
+    }
+  }
 })
 
 const HeroDescp = styled('div', {
   position: 'relative',
   maxWidth: 800,
-  width: '90%',
+  width: '100%',
   marginTop: 12
 })
 
@@ -66,6 +72,7 @@ interface HeroProps {
   hairline?: string
   title: string
   descp?: string | React.ReactNode
+  leftAlignOnMobile?: boolean
   calloutTitle?: string
   calloutButtonTitle?: string
   calloutDescp?: string
@@ -93,6 +100,7 @@ export const Hero = ({
     calloutHref, // Optional - for the href where the interaction goes after the user clicks the callout Button
     offers, // Optional - This will show the cards with the background side-by-side, if more than one callout is needed
     chips, // Optional - For the chips to callout key parts of the page below
+    leftAlignOnMobile
   }: HeroProps ) => {
   
   return(
@@ -100,7 +108,7 @@ export const Hero = ({
     <HeroContainer>
       <XyzTransition xyz="fade down delay-15 duration-15" appear>
         <HeroContent>
-          <HeroText>
+          <HeroText {...{ leftAlignOnMobile }}>
             { hairline && ( <h1><Heading allCaps size="l2" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /></h1> )}
             <h2><Heading size="l6" bold="heavy" {...{ title }} /></h2>
             { descp && ( <HeroDescp><h3><Text color="textSecondary"><p>{ descp }</p></Text></h3></HeroDescp> ) }

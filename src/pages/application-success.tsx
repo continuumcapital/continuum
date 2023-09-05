@@ -6,6 +6,7 @@ const Careers: NextPage = () => {
     
     <SiteContainer removeContact removeFooter>
       <Hero 
+        leftAlignOnMobile
         title="Thank you for applying to Continuum Capital"
         descp="Thank you for applying to Continuum Capital. Our team will follow up soon."
       />
