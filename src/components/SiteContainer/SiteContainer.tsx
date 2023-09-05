@@ -94,6 +94,7 @@ export const SiteContainer = ({
       
       { removeFooter ?? ( <Footer {...{ removeContact }} /> )}
       { removeBlob ?? ( <StageBg showBlob={ isLoading ? 'false' : 'true' } /> )}
+      <div id="modal-root"></div>
     </SiteWrap>
     
   )

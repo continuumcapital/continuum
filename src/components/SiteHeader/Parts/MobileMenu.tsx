@@ -30,13 +30,16 @@ const Menu = styled('div', {
     // For changing the defaults of the ButtonContainer component to handle the one-off changes for the mobile menu
     // This isn't needed as a variant on the ButtonContainer itself because it only happens here
 
-    '> div': {
+    '> div > div': {
       display: 'flex',
       justifyContent: 'center',
       height: '100%',
-      flexDirection: 'column',
-      '*': { fontSize: '$s4' }
-    }
+      flexDirection: 'column'
+    },
+
+    // Here we change the sizing of the default buttons to be bigger on mobile breakpoints
+
+    'button, a': { '*': { fontSize: '$s4' }}
   },
 
   // Here we add support for the click events on mobile

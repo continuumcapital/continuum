@@ -1,4 +1,5 @@
 import React, { useState, ReactNode, ReactElement, cloneElement } from 'react'
+import ReactDOM from 'react-dom'
 import { styled } from '@theme'
 import { Button } from '@components'
 
@@ -73,10 +74,43 @@ interface ModalProps {
 
 // ---------- This is the end of declarations ---------- //
 
+// export const Modal = ({ 
+//     content, // Required - For the content within the modal
+//     trigger // Required - For the trigger to open the modal
+//   }:ModalProps) => {
+
+//   const [ isOpen, setIsOpen ] = useState( false )
+//   const showModal = () => setIsOpen( !isOpen )
+//   const hideModal = () => setIsOpen( !isOpen )
+
+//   const triggerElement = cloneElement( trigger, {
+//     onClick: showModal,
+//     ...trigger.props
+//   })
+
+//   return (
+
+//     <>
+//       { triggerElement }
+
+//       { isOpen && (
+//         <ModalWrap onClick={ hideModal }>
+//           <ModalContent onClick={ e => e.stopPropagation() }>  
+//             { content }
+//             <ModalClose><Button variant="icon" icon="cross-1" onClick={ hideModal } /></ModalClose>
+//           </ModalContent>
+//           <ModalOverlay />
+//         </ModalWrap>
+//       )}
+//     </>
+
+//   )
+// }
+
 export const Modal = ({ 
-    content, // Required - For the content within the modal
-    trigger // Required - For the trigger to open the modal
-  }:ModalProps) => {
+  content, // Required - For the content within the modal
+  trigger // Required - For the trigger to open the modal
+}:ModalProps) => {
 
   const [ isOpen, setIsOpen ] = useState( false )
   const showModal = () => setIsOpen( !isOpen )
@@ -87,21 +121,26 @@ export const Modal = ({
     ...trigger.props
   })
 
-  return (
+  // This modal will be rendered outside of its parent DOM hierarchy
+  const modal = isOpen && (
+    <ModalWrap onClick={ hideModal }>
+      <ModalContent onClick={ e => e.stopPropagation() }>  
+        { content }
+        <ModalClose><Button variant="icon" icon="cross-1" onClick={ hideModal } /></ModalClose>
+      </ModalContent>
+      <ModalOverlay />
+    </ModalWrap>
+  );
 
+  return (
     <>
       { triggerElement }
-
-      { isOpen && (
-        <ModalWrap onClick={ hideModal }>
-          <ModalContent onClick={ e => e.stopPropagation() }>  
-            { content }
-            <ModalClose><Button variant="icon" icon="cross-1" onClick={ hideModal } /></ModalClose>
-          </ModalContent>
-          <ModalOverlay />
-        </ModalWrap>
-      )}
+      { ReactDOM.createPortal(
+          modal,
+          document.getElementById('modal-root')!
+        )
+      }
     </>
-
   )
 }
+

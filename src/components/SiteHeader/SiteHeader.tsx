@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
-import { useScrollPosition, useScrollDirection } from '@lib'
+import { useScrollPosition, useScrollDirection, useMediaQuery } from '@lib'
 import { Logo, Button, ButtonContainer, MenuButton, Modal, ContactForm } from '@components'
 import { MobileMenu } from './Parts/MobileMenu'
 import { XyzTransition } from '@animxyz/react'
@@ -14,7 +14,7 @@ const Header = styled('header', {
   left: 0,
   width: '100vw',
   transition: '$s1',
-  zIndex: 9000,
+  zIndex: 8000,
 
   // For the frosted glass behind the header
   // By default no one will notice the effect, but will see whne the user starts to hover
@@ -102,9 +102,10 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
   const scrollPos = useScrollPosition()
   const scrollDirection = useScrollDirection()
   const [ active, setActive ] = useState( false )
-
+  const isTablet = useMediaQuery('(max-width: 767px)');
+  
   const menuClick = () => { 
-    setActive( !active )
+    setActive(!active);
     if (!active) { document.body.style.overflow = 'hidden' } 
     else { document.body.style.overflow = '' }
   }
@@ -129,7 +130,7 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
               ]}
             />
 
-            { hasContactForm ? (
+            { ( hasContactForm && !isTablet ) ? (
               <Button linkUrl="#contact" title="Contact" />
             ) : (
               <Modal 
