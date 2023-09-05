@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
-import { useScrollPosition, useScrollDirection, useMediaQuery } from '@lib'
+import { useScrollPosition, useScrollDirection, useMediaQuery, smoothScrollTo } from '@lib'
 import { Logo, Button, ButtonContainer, MenuButton, Modal, ContactForm } from '@components'
 import { MobileMenu } from './Parts/MobileMenu'
 import { XyzTransition } from '@animxyz/react'
@@ -131,7 +131,7 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
             />
 
             { ( hasContactForm && !isTablet ) ? (
-              <Button linkUrl="#contact" title="Contact" />
+              <Button onClick={() => smoothScrollTo( '#contact' )} title="Contact" />
             ) : (
               <Modal 
                 trigger={ <Button title="Contact" /> }

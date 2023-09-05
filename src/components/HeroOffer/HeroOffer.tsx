@@ -63,7 +63,15 @@ export const HeroOffer = ({
 
           <>
             { offers.map(( offer, i ) => (
-              <OfferBase width="l0" key={`offer-${ i }`} title={ offer.title } descp={ offer.descp } linkUrl={ offer.href } />
+
+              <OfferBase 
+                width="l0" 
+                key={`offer-${ i }`} 
+                title={ offer.title } 
+                descp={ offer.descp } 
+                linkUrl={ offer.href } 
+              />
+
             ))}
           </>
 

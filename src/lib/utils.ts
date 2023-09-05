@@ -44,3 +44,20 @@ export const useScrollDirection = () => {
 
   return scrollDirection;
 };
+
+
+
+
+
+export const smoothScrollTo = (selector:any) => {
+  const element = document.querySelector(selector);
+  if (element) {
+    window.scrollTo({
+      top: element.offsetTop,
+      behavior: 'smooth'
+    });
+  }
+}
+
+
+

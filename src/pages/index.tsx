@@ -14,10 +14,10 @@ const Home: NextPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // This ensures that the preloader will show for at least 2 seconds
+    }, 2000)
 
     return () => {
-      clearTimeout(timer); // Cleanup timer to prevent memory leaks
+      clearTimeout(timer)
     };
   }, []);
 

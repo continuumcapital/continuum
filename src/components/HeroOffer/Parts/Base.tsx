@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading, Text, Button } from '@components'
+import { smoothScrollTo } from '@lib'
 
 const Offer = styled('div', {
   position: 'relative',
@@ -76,7 +77,12 @@ export const OfferBase = ({
           <Text textAlign="center"><p>{ descp }</p></Text>
         </OfferText>
 
-        <Button {...{ linkUrl }} size="l0" variant="primary" title={ calloutButtonTitle ? calloutButtonTitle : "Learn more" } />
+        <Button 
+          onClick={() => smoothScrollTo( linkUrl )}
+          size="l0" 
+          variant="primary" 
+          title={ calloutButtonTitle ? calloutButtonTitle : "Learn more" } 
+        />
       </OfferContent>
     </Offer>
 

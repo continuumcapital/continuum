@@ -51,6 +51,7 @@ const CareerDetails: NextPage = () => {
   if ( !jobDetail ) return null
 
   return (
+
     <SiteContainer removeBlob removeContact>
       <HeroTitle 
         title={ jobDetail.title }
@@ -74,6 +75,7 @@ const CareerDetails: NextPage = () => {
         />
       }
     </SiteContainer>
+    
   )
 }
 
