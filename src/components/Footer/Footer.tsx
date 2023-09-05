@@ -73,8 +73,9 @@ const FooterContent = styled('div', {
   position: 'relative',
   width: '100%',
   padding: '50px 0 0',
-  marginTop: 100,
+  marginTop: 50,
   borderTop: '1px solid rgba( 79, 79, 79, 0.2 )',
+  '@tablet': { marginTop: 20 },
 
   // Change the default color of the paragraph to be a bit darker
 

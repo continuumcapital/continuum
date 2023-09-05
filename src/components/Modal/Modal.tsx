@@ -1,15 +1,23 @@
 import React, { useState, useEffect, ReactNode, ReactElement, cloneElement } from 'react'
 import ReactDOM from 'react-dom'
-import { styled } from '@theme'
+import { styled, keyframes } from '@theme'
 import { Button } from '@components'
+
+const contentShow = keyframes({
+  '0%': { opacity: 0, transform: 'scale( .96 )' },
+  '100%': { opacity: 1, transform: 'scale( 1 )' },
+})
+
+const modalShow = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+})
 
 // For the master container of the modal container
 // This is used when an appropriate trigger has been clicked that needs modal support
 
 const ModalWrap = styled('div', {
   display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
   position: 'fixed',
   top: 0,
   left: 0,
@@ -24,13 +32,16 @@ const ModalWrap = styled('div', {
 const ModalContent = styled('div', {
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
   position: 'relative',
   maxWidth: 900,
   width: '90%',
-  margin: '0 auto',
+  margin: '50px auto',
+  padding: '50px 0 32px',
   background: '$bgPrimary',
   borderRadius: '$r2',
+  transition: '$s1',
+  overflow: 'scroll',
+  animation: `${ contentShow } 300ms cubic-bezier(0.16, 1, 0.3, 1)`,
   zIndex: 1,
 
   // For changes on mobile for the contact 
@@ -62,7 +73,9 @@ const ModalOverlay = styled('div', {
   width: '100%',
   height: '100%',
   background: 'rgba( 0,0,0, 0.9 )',
-  zIndex: 0
+  zIndex: 0,
+  transition: '$s1',
+  animation: `${ modalShow } 300ms`
 })
 
 // -------------- Typescript declarations -------------- //
@@ -97,13 +110,14 @@ export const Modal = ({
   return (
     <>
       {triggerElement}
+
       {isOpen && modalRoot && (
         ReactDOM.createPortal(
           <>
-            <ModalWrap onClick={hideModal}>
+            <ModalWrap onClick={ hideModal }>
               <ModalContent onClick={e => e.stopPropagation()}>  
-                {content}
-                <ModalClose><Button variant="icon" icon="cross-1" onClick={hideModal} /></ModalClose>
+                { content }
+                <ModalClose><Button variant="icon" icon="cross-1" onClick={ hideModal } /></ModalClose>
               </ModalContent>
               <ModalOverlay />
             </ModalWrap>
