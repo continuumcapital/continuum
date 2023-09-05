@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { styled, keyframes } from '@theme'
 import { Icon } from '@components'
@@ -83,6 +83,8 @@ interface DropdownProps {
   content: React.ReactNode
   contentFullWidth?: boolean
   triggerSize?: 'l0'
+  isOpen?: any
+  onOpenChange?: any
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -93,12 +95,14 @@ export const Dropdown = ({
     triggerWidth, // Optional - Supporting different widths of the dropdown trigger
     content, // Required - For the content that shows when the trigger is clciked
     contentFullWidth, // Optional - supporting the content to be the full width of it's parent container
-    triggerSize // Optional - Supporting different sizes of the Trigger button
+    triggerSize, // Optional - Supporting different sizes of the Trigger button
+    isOpen,
+    onOpenChange
   }:DropdownProps) => {
 
   return(
 
-    <DropdownMenu.Root>
+    <DropdownMenu.Root open={ isOpen } onOpenChange={ onOpenChange }>
       <DropdownTrigger {...{ triggerSize, triggerWidth }}>
         <>{ trigger }</>
         { removeArrow ? null : ( <Icon size="l0" icon="chevron-down" /> )}

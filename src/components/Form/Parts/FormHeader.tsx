@@ -50,10 +50,10 @@ interface HeaderProps {
 // ---------- This is the end of declarations ---------- //
 
 export const FormHeader = ({ 
-    title,
-    titleSize, 
-    alignTitle,
-    removeRequired 
+    title, // Required - For the title of the form
+    titleSize, // Optional - Supporting different font sizes for the title
+    alignTitle, // Optional - Allowing the title to be centered aligned
+    removeRequired // Optional - Removes the required text on the right, in the header
   }:HeaderProps) => {
 
   return(

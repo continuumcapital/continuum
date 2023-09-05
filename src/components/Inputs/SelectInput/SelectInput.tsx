@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { styled } from '@theme'
 import { InputBase } from './Parts/Input'
 import { List, Heading, Dropdown } from '@components'
@@ -99,33 +99,33 @@ interface SelectProps {
 // ---------- This is the end of declarations ---------- //
 
 export const SelectInput = ({ 
-    name,
-    defaultValue,
-    options,
-    size,
-    width,
-    onChange,
-    label
-  }:SelectProps) => {
+    name, // Required - For the name of the input
+    defaultValue, // Optional - If the input has a default value
+    options, // Required - For the selection list of the input
+    size, // Optional - For the size of the input
+    width, // Optional - Supporting the select dropdown to be full width
+    onChange, // Required - Changes the value of the input once an option is clicked
+    label // Required - For the label of the input
+  }: SelectProps) => {
 
   // For all of the varibles needed to change the input value of the select component
   // This also sets the default value, icon, or image and reflected in the input value
 
-  const selectMenu = useRef<HTMLDivElement>( null )
-  const [ value, setValue ] = useState( undefined || defaultValue )
+  const [ value, setValue ] = useState<string | number | undefined>( defaultValue )
+  const [ dropdownOpen, setDropdownOpen ] = useState( false )
 
   // Here we use this function to change the value of the input filed to read the selection
   // As well, change the info ( icon & title ) in the input to reflect the chosen option
 
-  const handleChange = ( selectedValue:any ) => {
+  const handleChange = ( selectedValue: any ) => {
     setValue( selectedValue )
-    if (onChange) {   // Check if onChange is defined
+    if ( onChange ) {
       onChange( selectedValue )
     }
+    setDropdownOpen( false )
   }
 
   return(
-
     <SelectWrap>
       <Heading size="l1" bold="bold" title={ label } />
 
@@ -133,6 +133,8 @@ export const SelectInput = ({
         removeArrow
         contentFullWidth
         triggerWidth="half"
+        isOpen={ dropdownOpen }
+        onOpenChange={ setDropdownOpen }    
         trigger={
           <InputBase 
             {...{ name, size, width, label }}
@@ -141,7 +143,7 @@ export const SelectInput = ({
           />
         }
         content={
-          <SelectDropdown ref={ selectMenu }>
+          <SelectDropdown>
             <List spacing="l0">
               { options.map(( option, i ) => (
 
@@ -157,6 +159,6 @@ export const SelectInput = ({
         }
       />
     </SelectWrap>
-
   )
 }
+
