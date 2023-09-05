@@ -26,6 +26,7 @@ const HeroContent = styled('div', {
   position: 'relative',
   width: '100%',
   paddingTop: 50,
+  zIndex: 1,
   '> *:not(:last-child)': { marginBottom: 32 }
 })
 
