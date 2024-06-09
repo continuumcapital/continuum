@@ -22,9 +22,9 @@ const HeroContainer = styled('div', {
 const HeroContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
   position: 'relative',
-  width: '100%',
+  maxWidth: 1250,
+  width: '90%',
   paddingTop: 50,
   zIndex: 1,
   '> *:not(:last-child)': { marginBottom: 32 }
@@ -36,13 +36,9 @@ const HeroContent = styled('div', {
 const HeroText = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
   position: 'relative',
-  maxWidth: 900,
+  maxWidth: 800,
   width: '90%',
-  margin: '0 auto',
-  textAlign:'center',
   '> *:not(:last-child)': { marginBottom: 8 },
 
   variants: {
@@ -111,11 +107,11 @@ export const Hero = ({
         <HeroContent>
           <HeroText {...{ leftAlignOnMobile }}>
             { hairline && ( <h1><Heading allCaps size="l2" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /></h1> )}
-            <h2><Heading size="l6" bold="heavy" {...{ title }} /></h2>
-            { descp && ( <HeroDescp><h3><Text color="textSecondary"><p>{ descp }</p></Text></h3></HeroDescp> ) }
+            <h2><Heading size="l8" bold="bold" {...{ title }} /></h2>
+            { descp && ( <HeroDescp><h3><Text fontSize="l1"><p>{ descp }</p></Text></h3></HeroDescp> ) }
           </HeroText>
 
-          { calloutTitle && ( 
+          {/* { calloutTitle && ( 
             <HeroOffer 
               title={ calloutTitle } 
               descp={ calloutDescp } 
@@ -124,7 +120,7 @@ export const Hero = ({
             /> 
           )} 
 
-          { offers && <HeroOffer hideOnTablet {...{ offers }} /> }   
+          { offers && <HeroOffer hideOnTablet {...{ offers }} /> }    */}
           <ShowOnTablet>{ chips && ( <Chip {...{ chips }} /> ) }</ShowOnTablet>
         </HeroContent>
       </XyzTransition>

@@ -19,7 +19,8 @@ const HeadingWrap = styled('div', {
       l4: { fontSize: '$s4', lineHeight: 1.2, '@tablet': { fontSize: '$s2', lineHeight: 1.2 } },
       l5: { fontSize: '$s5', lineHeight: 1.3, '@tablet': { fontSize: '$s3', lineHeight: 1.2 } },
       l6: { fontSize: '$s6', lineHeight: 1.2, '@tablet': { fontSize: '$s4', lineHeight: 1.2 } },
-      l7: { fontSize: '$s7', lineHeight: 1.2, '@tablet': { fontSize: '$s5', lineHeight: 1.2 }}
+      l7: { fontSize: '$s7', lineHeight: 1.2, '@tablet': { fontSize: '$s5', lineHeight: 1.2 }},
+      l8: { fontSize: '$s8', lineHeight: 1.1, '@tablet': { fontSize: '$s6', lineHeight: 1.2 }}
     },
 
     // For the support of different colors that the heading can be
@@ -59,7 +60,7 @@ const Heavy = styled('strong', { fontFamily: '$sansSerifBlack' })
 // -------------- Typescript declarations -------------- //
 
 interface HeadingProps {
-  size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5' | 'l6' | 'l7'
+  size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5' | 'l6' | 'l7' | 'l8'
   color?: 'primary' | 'white' | 'blue'
   title?: string | number
   bold?: 'bold' | 'heavy'

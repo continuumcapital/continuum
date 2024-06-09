@@ -125,7 +125,7 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
             <ButtonContainer 
               spacing="l0"
               buttons={[
-                { linkUrl: '/', title: 'About' },
+                { onClick: () => smoothScrollTo( '#digital-assets' ), title: 'Digital Assets' },
                 { linkUrl: '/careers', title: 'Careers' }
               ]}
             />

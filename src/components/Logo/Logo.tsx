@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { styled } from '@theme'
 import { Heading } from '@components'
+import { LogoMark, WordMark } from './Parts'
 
 // For the global treatment of the logo
 // This component contains the dove icon and the FreeRossDAO text to the right of the dove
@@ -17,10 +18,10 @@ const LogoWrap = styled('figure', {
 // For the logo mark of the dove on the left side of the container
 // This dictates it's default size, as used within the header and footer
 
-const LogoMark = styled('img', {
-  position: 'relative',
-  width: 80,
-})
+// const LogoMark = styled('img', {
+//   position: 'relative',
+//   width: 80,
+// })
 
 // For the container of the word mark - FreeRossDAO
 // This is optional, as the dov can stand alone, such as within the footer, but comes with the logo by default
@@ -56,14 +57,15 @@ export const Logo = ({
         <Link href="/">
           <a>
             <LogoWrap>
-              <LogoMark src="/global/cd-logo.png" alt="Continuum Capital logo" />
+              <LogoMark />
+              <WordMark size="l0" />
               
-              { noWordMark ? null : ( 
+              {/* { noWordMark ? null : ( 
                 <LogoWordMark>
                   <Heading title="Continuum" bold="bold" />
                   <Heading title="Capital" />
                 </LogoWordMark> 
-              )}
+              )} */}
             </LogoWrap>
           </a>
         </Link>
@@ -71,14 +73,15 @@ export const Logo = ({
       ) : (
 
         <LogoWrap>
-          <LogoMark src="/global/cd-logo.png" alt="Continuum Digital logo" />
+          <LogoMark />
+          <WordMark size="l0" />
 
-          { noWordMark ? null : ( 
+          {/* { noWordMark ? null : ( 
             <LogoWordMark>
               <Heading color="primary" title="Continuum" bold="bold" />
               <Heading color="primary" title="Capital" />
             </LogoWordMark> 
-          )}
+          )} */}
         </LogoWrap>
 
       )}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading, Text } from '@components'
+import { Heading } from '@components'
 import ScrollAnimationItem from 'react-scroll-fade-animation'
 
 // For the master container of the stage component
@@ -38,8 +38,11 @@ const StageWrap = styled('section', {
 
 const StageContent = styled('div', {
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: 'column',
   position: 'relative',
+  maxWidth: 1250,
+  width: '90%',
+  '> *:not(:last-child)': { marginBottom: 32 },
 
   // For the options of the width of the content within the container
   // This sets the content to sit in the center of the parent container
@@ -69,33 +72,26 @@ const StageTitle = styled('div', {
   alignItems: 'center',
   alignSelf: 'flex-start',
   position: 'relative',
+  width: '100%',
   margin: '9px 50px 0 0',
   paddingRight: 70,
   whiteSpace: 'nowrap',
-
-  // For the line after the text
-  // This is on the right side of the container seperating the title and the text
-
-  '&:after': {
-    content: '',
-    position: 'absolute',
-    top: 16,
-    right: 0,
-    width: 50,
-    height: 3,
-    background: '$white',
-
-    // Remove the border line on mobile and tablet breakpoints
-
-    '@tablet': { display: 'none' }
-  }
+  paddingBottom: 20,
+  borderBottom: '2px solid $white'
 })
 
 // For the width of the text within the container
 // The child component will hold the width at 100% and this containers sets it
 
 const StageText = styled('div', {
-  maxWidth: 767
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gridTemplateRows: '1fr',
+  gridColumnGap: '100px',
+  gridRowGap: '50px',
+  position: 'relative',
+  width: '100%',
+  '@tablet': { gridTemplateColumns: 'repeat(1, 1fr)' }
 })
 
 // ---------- Typescript declarations ---------- //
@@ -119,9 +115,9 @@ export const Stage = ({
     <section style={{ width: '100%' }}>
       <ScrollAnimationItem path={'top'}>
         <StageWrap {...{ background }}>
-          <StageContent width="medium">
-            <StageTitle><Heading bold="bold" size="l3" {...{ title }} /></StageTitle>
-            <StageText><Text fontSize="l1">{ children }</Text></StageText>
+          <StageContent>
+            <StageTitle><Heading bold="bold" size="l7" {...{ title }} /></StageTitle>
+            <StageText>{ children }</StageText>
           </StageContent>
         </StageWrap>
       </ScrollAnimationItem>
