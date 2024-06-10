@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       <Block>
         <Hero 
           // hairline="Continuum Capital"
-          title="Digital asset investment management"
+          title="Digital Asset Investment Management"
           descp="Continuum Digital is a US-based investment manager specializing in digital assets, offering institutional-grade investment solutions. Our focus lies in providing investors with enhanced liquidity, robust risk management, and access to diversified strategies of high conviction opportunities within this asset class."
           // offers={[
           //   { href: '#digital-assets', title: 'Continuum Digital', descp: 'Continuum Digital is a US-based investment manager specializing in digital assets, offering institutional-grade investment solutions. Our focus lies in providing investors with enhanced liquidity, robust risk management, and access to diversified strategies of high conviction opportunities within this asset class.' },

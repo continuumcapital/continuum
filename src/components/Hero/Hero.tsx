@@ -37,7 +37,7 @@ const HeroText = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
-  maxWidth: 800,
+  maxWidth: 890,
   width: '90%',
   '> *:not(:last-child)': { marginBottom: 8 },
 
@@ -50,7 +50,7 @@ const HeroText = styled('div', {
 
 const HeroDescp = styled('div', {
   position: 'relative',
-  maxWidth: 800,
+  maxWidth: 700,
   width: '100%',
   marginTop: 12
 })
