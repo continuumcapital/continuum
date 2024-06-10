@@ -82,9 +82,9 @@ export const SiteContainer = ({
     <SiteWrap className="main-site">
       <ReadingBar />
       <HeadTags 
-        shareURL="https://www.continuumcapital.io"
-        pageTitle="Continuum Capital"
-        content="Alternative Investment Solutions at the intersection of Real Estate and Digital Assets"
+        shareURL="https://www.continuumdigital.io.io"
+        pageTitle="Continuum Digital"
+        content="Continuum Digital is a US-based investment manager specializing in digital assets, offering institutional-grade investment solutions. Our focus lies in providing investors with enhanced liquidity, robust risk management, and access to diversified strategies of high conviction opportunities within this asset class."
       />
 
       <SiteHeader {...{ hasContactForm }} />

@@ -30,7 +30,7 @@ const Home: NextPage = () => {
         <Hero 
           // hairline="Continuum Capital"
           title="Managed directional digital strategies"
-          descp="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          descp="Continuum Digital is a US-based investment manager specializing in digital assets, offering institutional-grade investment solutions. Our focus lies in providing investors with enhanced liquidity, robust risk management, and access to diversified strategies of high conviction opportunities within this asset class."
           // offers={[
           //   { href: '#digital-assets', title: 'Continuum Digital', descp: 'Continuum Digital is a US-based investment manager specializing in digital assets, offering institutional-grade investment solutions. Our focus lies in providing investors with enhanced liquidity, robust risk management, and access to diversified strategies of high conviction opportunities within this asset class.' },
           //   { href: '#real-estate', title: 'Continuum Real Estate', descp: 'Continuum Real Estate offers investment opportunities in mid-rise luxury multifamily developments. Our focus on high-quality developments and conviction in the growing demand for rental properties drives the thesis of being a long-term holder and asset manager.' }
