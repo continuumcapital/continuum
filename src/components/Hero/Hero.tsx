@@ -37,7 +37,7 @@ const HeroText = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
-  maxWidth: 890,
+  maxWidth: 1480,
   width: '90%',
   '> *:not(:last-child)': { marginBottom: 8 },
 
@@ -50,7 +50,7 @@ const HeroText = styled('div', {
 
 const HeroDescp = styled('div', {
   position: 'relative',
-  maxWidth: 700,
+  maxWidth: '100%',
   width: '100%',
   marginTop: 12
 })
@@ -107,8 +107,8 @@ export const Hero = ({
         <HeroContent>
           <HeroText {...{ leftAlignOnMobile }}>
             { hairline && ( <h1><Heading allCaps size="l2" bold="bold" color="primary" letterSpacing="l0" title={ hairline } /></h1> )}
-            <h2><Heading size="l8" bold="bold" {...{ title }} /></h2>
-            { descp && ( <HeroDescp><h3><Text fontSize="l1"><p>{ descp }</p></Text></h3></HeroDescp> ) }
+            <h2><Heading size="l8" {...{ title }} /></h2>
+            { descp && ( <HeroDescp><h3><Text width="full" fontSize="l1"><p>{ descp }</p></Text></h3></HeroDescp> ) }
           </HeroText>
 
           {/* { calloutTitle && ( 

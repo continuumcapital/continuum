@@ -4,7 +4,7 @@ import { ButtonBase } from './ButtonBase'
 // -------------- Typescript declarations -------------- //
 
 interface ButtonProps {
-  variant?: 'disabled' | 'primary' | 'secondary' | 'outline' | 'icon'
+  variant?: 'disabled' | 'primary' | 'skeleton' | 'icon'
   size?: 'l0'
   linkUrl?: string
   title?: any
@@ -40,7 +40,7 @@ export const Button = ({
         // This is because below, we follow Next JS page links that will take users to an internal link
         // An example of using the href tag is to take the user to a twitter profile that was called out in a blog post
         
-        <a href={ linkUrl }>
+        <a href={ linkUrl } target="_blank" rel="noreferrer">
           <ButtonBase {...{ variant, size, title, icon, iconPlacement, children, notBold }} />
         </a>
 

@@ -19,7 +19,7 @@ const Menu = styled('div', {
     left: 0,
     width: '100vw',
     height: '100vh',
-    background: '$bgPrimary',
+    background: '$black',
     zIndex: 0,
     transition: '$s1',
     transform: 'scale( 0.8 )',

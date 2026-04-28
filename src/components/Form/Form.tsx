@@ -9,7 +9,7 @@ import { Button } from '@components'
 
 const FormWrap = styled('div', {
   position: 'relative',
-  width: '100%'
+  width: '100%',
 })
 
 // For the container of all of the content within the master container
@@ -17,12 +17,18 @@ const FormWrap = styled('div', {
 
 const FormContent = styled('div', {
   position: 'relative',
-  maxWidth: 800,
-  width: '90%',
+  maxWidth: 1400,
+  width: '100%',
   margin: '0 auto',
-  padding: '50px 0',
-  '> *:not(:last-child)': { marginBottom: 32 },
-  '@mobile': { padding: '75px 0 20px' },
+  padding: '68px',
+  background: '#000',
+  borderRadius: '$r2',
+  '> *:not(:last-child)': { marginBottom: 50 },
+
+  '@tablet': { 
+    padding: '50px 40px',
+    '> *:not(:first-child, :last-child)': { marginBottom: 12 },
+  },
 
   // Here we are suporting various widths of the form
   // This is to support a larger or smaller width than the default that the component comes with
@@ -37,9 +43,23 @@ const FormContent = styled('div', {
 // This is inbetween the header on the top and the submit button on the bottom of the container
 
 const InputContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
   position: 'relative',
   width: '100%',
   '> *:not(:last-child)': { marginBottom: 12 }
+})
+
+// For the container of the submit button - this is just a wrapper container
+// We need this to be able to place the button on the right of the container
+
+const SubmitButton = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  position: 'relative',
+  width: '100%',
+  '@mobile': { '*': { width: '100%' }}
 })
 
 // -------------- Typescript declarations -------------- //
@@ -53,7 +73,7 @@ interface FormProps {
   alignTitle?: 'center',
   encType?: any
   method?: any
-  removeRequired?: boolean
+  hasCustomSubmit?: boolean
   children?: React.ReactNode
   onSubmit: any
   submitButtonTitle?: string
@@ -70,7 +90,7 @@ export const Form = ({
     alignTitle, // Optional - Supporting various alignments of the title within the container
     encType, // Optional - Supporting form requirements for forms coming from API calls like Greenhouse
     method, // Required - For the method type of the form (i.e. POST )
-    removeRequired, // Optional - Removes the default 'required' text on the right of the container
+    hasCustomSubmit, // Optional - Removes the default submit button on the bottom of the container
     children, // Required - For the input content within the form
     onSubmit, // Required - THe action that happens once the form is submitted
     submitButtonTitle // Optional - If the button of a form needs a different title
@@ -86,9 +106,14 @@ export const Form = ({
         <form noValidate {...{ encType, method }} onSubmit={ methods.handleSubmit( onSubmit ) }>
 
           <FormContent {...{ width, spacing }}>
-            <FormHeader {...{ title, titleSize, alignTitle, removeRequired }} />
+            <FormHeader {...{ title, titleSize }} />
             <InputContainer>{ children }</InputContainer>
-            <Button variant="primary" type="submit" title={ submitButtonTitle || 'Submit' } />
+
+            { hasCustomSubmit ?? (
+              <SubmitButton>
+                <Button variant="primary" type="submit" title={ submitButtonTitle || 'Submit' } />
+              </SubmitButton>
+            )}
           </FormContent>
 
         </form>

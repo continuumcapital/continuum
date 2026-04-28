@@ -112,10 +112,10 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
 
   return(
     
-    <XyzTransition xyz="fade delay-10" appear>
+    <XyzTransition xyz="fade" appear>
       <Header style={{ transform: `translateY( ${ scrollDirection == 'down' ? '-100%' : '0' })` }}>
         <Nav style={{ padding: typeof scrollPos === 'number' && scrollPos <= 100 ? '24px 0' : '12px 0' }}>
-          <Side><Logo linkToHome /></Side>
+          <Side><Logo noWordmark /></Side>
 
           <ShowOnTablet>
             <MenuButton active={ active } onClick={ menuClick } />
@@ -125,19 +125,12 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
             <ButtonContainer 
               spacing="l0"
               buttons={[
-                { onClick: () => smoothScrollTo( '#digital-assets' ), title: 'Digital Assets' },
-                { linkUrl: '/careers', title: 'Careers' }
+                { linkUrl: 'https://continuumcapital.io/', title: 'Capital' },
+                { linkUrl: '/', title: 'Development', variant: 'primary'  },
+                { linkUrl: 'https://www.continuumdigital.io', title: 'Digital' },
+                { onClick: () => smoothScrollTo( '#contact' ), title: 'Contact' }
               ]}
             />
-
-            { ( hasContactForm && !isTablet ) ? (
-              <Button onClick={() => smoothScrollTo( '#contact' )} title="Contact" />
-            ) : (
-              <Modal 
-                trigger={ <Button title="Contact" /> }
-                content={ <ContactForm /> }
-              />
-            )}
           </MobileMenu>
         </Nav>
       </Header>

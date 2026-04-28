@@ -13,6 +13,7 @@ export const darkThemeColors = {
 
     bgPrimary: '#1b1b1b',
     bgSecondary: '#323232',
+    bgLight: '#303030',
 
     // Button colors
 

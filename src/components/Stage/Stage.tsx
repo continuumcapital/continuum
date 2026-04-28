@@ -38,11 +38,11 @@ const StageWrap = styled('section', {
 
 const StageContent = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'row',
+  gap: 20,
   position: 'relative',
-  maxWidth: 1250,
+  maxWidth: 1420,
   width: '90%',
-  '> *:not(:last-child)': { marginBottom: 32 },
 
   // For the options of the width of the content within the container
   // This sets the content to sit in the center of the parent container
@@ -69,15 +69,19 @@ const StageContent = styled('div', {
 
 const StageTitle = styled('div', {
   display: 'flex',
-  alignItems: 'center',
-  alignSelf: 'flex-start',
+  flexDirection: 'column',
   position: 'relative',
-  width: '100%',
-  margin: '9px 50px 0 0',
-  paddingRight: 70,
-  whiteSpace: 'nowrap',
-  paddingBottom: 20,
-  borderBottom: '2px solid $white'
+  width: 72,
+  height: '100%'
+})
+
+const StageTitleContent = styled('div', {
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  transform: 'rotate( -90deg ) translateY( 72px )',
+  transformOrigin: 'bottom left',
+  '*': { whiteSpace: 'nowrap' }
 })
 
 // For the width of the text within the container
@@ -87,8 +91,9 @@ const StageText = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
   gridTemplateRows: '1fr',
-  gridColumnGap: '100px',
+  gridColumnGap: '12px',
   gridRowGap: '50px',
+  alignItems: 'stretch',
   position: 'relative',
   width: '100%',
   '@tablet': { gridTemplateColumns: 'repeat(1, 1fr)' }
@@ -116,7 +121,9 @@ export const Stage = ({
       <ScrollAnimationItem path={'top'}>
         <StageWrap {...{ background }}>
           <StageContent>
-            <StageTitle><Heading bold="bold" size="l7" {...{ title }} /></StageTitle>
+            <StageTitle>
+              <StageTitleContent><Heading size="l7" {...{ title }} /></StageTitleContent>
+            </StageTitle>
             <StageText>{ children }</StageText>
           </StageContent>
         </StageWrap>

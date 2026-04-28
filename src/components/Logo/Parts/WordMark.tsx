@@ -18,8 +18,8 @@ export const WordMark = ({ size }:WordmarkProps) => {
   return(
 
     <WordMarkWrap>
-      <Heading bold="bold" size={ size == 'l0' ? "l1" : "l8"} title="Continuum" />
-      <Heading size={ size == 'l0' ? "l1" : "l8"} title="Digital" />
+      <Heading bold size={ size == 'l0' ? "l1" : "l8"} title="Continuum" />
+      <Heading size={ size == 'l0' ? "l1" : "l8"} title="Development" />
     </WordMarkWrap>
 
   )

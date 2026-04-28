@@ -10,7 +10,7 @@ const MenuWrap = styled('button', {
   position: 'relative',
   padding: '10px 16px',
   borderRadius: '$r1',
-  border: '1px solid $bgSecondary',
+  border: '1px solid $border',
   fontFamily: '$sansSerif'
 })
 

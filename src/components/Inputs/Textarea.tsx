@@ -18,19 +18,21 @@ const TextContain = styled('div', {
 const TextArea = styled('textarea', {
   position: 'relative',
   width: '100%',
-  padding: '22px 24px',
-  border: '1px solid $border',
-  borderRadius: '$r2',
+  padding: '22px 16px',
+  background: '$bgLight',
+  borderRadius: '$r0',
   resize: 'none',
   fontFamily: '$sansSerif',
   fontSize: '1rem',
-  minHeight: 215,
-  background: 'none',
+  minHeight: 274,
   transition: '$s1',
   outline: 'none',
-  '&:focus': { borderColor: '$white' }
+  border: 'none',
+  '&:focus': { borderColor: '$white' },
+  '&::placeholder': { color: '$placeholder' }
 })
 
+// -------------- Typescript declarations -------------- //
 
 interface TextareaProps {
   required?: boolean
@@ -39,6 +41,8 @@ interface TextareaProps {
   rules?: any
   placeholder?: string
 }
+
+// ---------- This is the end of declarations ---------- //
 
 export const Textarea = ({
   label,
@@ -69,8 +73,7 @@ export const Textarea = ({
         id={ name }
         {...register( name, fieldRules )}
         onBlur={() => trigger( name )}
-        placeholder={ placeholder }
-        {...{ name, required }}
+        {...{ name, required, placeholder }}
       />
 
       { hasError && <InputStatus status={ errorMessage || 'Error' } /> }

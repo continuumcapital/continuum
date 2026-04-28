@@ -8,6 +8,50 @@ const ShowOnMobile = styled('div', {
   '@desktop': { display: 'block' }
 })
 
+const TextCard = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative',
+  height: '100%',
+  borderRadius: '$r2',
+  overflow: 'hidden',
+
+  '&:before': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backdropFilter: 'blur( 10px )',
+    zIndex: 1
+  },
+
+  '&:after': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'rgba(149, 130, 125, 0.8)',
+    zIndex: 2
+  },
+
+  p: {
+    lineHeight: 1.3
+  }
+})
+
+const TextCardContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 32,
+  position: 'relative',
+  padding: 32,
+  zIndex: 3,
+})
+
 const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,7 +87,7 @@ const Home: NextPage = () => {
       </Block>
 
       <Block alignment="center" id="digital-assets">
-        <Stage title="Digital Assets">
+        <Stage title="Digital assets">
           {/* <ShowOnMobile>
             <p>
               Continuum Digital is a US-based investment manager specializing in digital assets, offering institutional-grade 
@@ -53,28 +97,36 @@ const Home: NextPage = () => {
           </ShowOnMobile> */}
 
           <Text>
-            <Heading size="l4" bold="bold" title="Managed Directional Strategies" />
-            <p>
-              Continuum Digital&apos;s flagship strategy offers an actively managed and highly liquid investment solution. It provides 
-              diversified exposure to various sectors of Web3, including base layer protocols, layer 2 scaling solutions, interoperability 
-              protocols, infrastructure, decentralized finance, and gaming. While maintaining a fundamental long-term focus on core 
-              investment holdings, the strategy incorporates an options overlay to capitalize on inherent volatility while effectively 
-              managing spot risk. Furthermore, a smaller portion of the portfolio actively engages in premium generating options 
-              strategies and passive yield strategies within permissioned on-chain environments.
-            </p>
+            <TextCard>
+              <TextCardContent>
+                <Heading size="l4" bold="bold" title="Managed Directional Strategies" />
+                <p>
+                  Continuum Digital&apos;s flagship strategy offers an actively managed and highly liquid investment solution. It provides 
+                  diversified exposure to various sectors of Web3, including base layer protocols, layer 2 scaling solutions, interoperability 
+                  protocols, infrastructure, decentralized finance, and gaming. While maintaining a fundamental long-term focus on core 
+                  investment holdings, the strategy incorporates an options overlay to capitalize on inherent volatility while effectively 
+                  managing spot risk. Furthermore, a smaller portion of the portfolio actively engages in premium generating options 
+                  strategies and passive yield strategies within permissioned on-chain environments.
+                </p>
+              </TextCardContent>
+            </TextCard>
           </Text>
 
           <Text>
-            <Heading size="l4" bold="bold" title="Non-Directional Strategies" />
-            <p>
-              At the inception of smart contracts, many on-chain applications were never more than a whitepaper. However, in recent 
-              years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing suite of working on-chain 
-              applications setting the primitive foundation for a parallel financial system. Leveraging the security of blue chip base 
-              layer protocols, Continuum utilizes this suite of DeFi applications to achieve liquid passive yield within both open and 
-              permissioned environments. This strategy also implements a variety of delta neutral volatility and premium generating 
-              options strategies with the ultimate goal of providing diversified exposure to those looking for a solution without a 
-              directional bias. 
-            </p>
+            <TextCard>
+              <TextCardContent>
+                <Heading size="l4" bold="bold" title="Non-Directional Strategies" />
+                <p>
+                  At the inception of smart contracts, many on-chain applications were never more than a whitepaper. However, in recent 
+                  years, with the emergence of decentralized finance (DeFi), there now exists a diverse and growing suite of working on-chain 
+                  applications setting the primitive foundation for a parallel financial system. Leveraging the security of blue chip base 
+                  layer protocols, Continuum utilizes this suite of DeFi applications to achieve liquid passive yield within both open and 
+                  permissioned environments. This strategy also implements a variety of delta neutral volatility and premium generating 
+                  options strategies with the ultimate goal of providing diversified exposure to those looking for a solution without a 
+                  directional bias. 
+                </p>
+              </TextCardContent>
+            </TextCard>
           </Text>
         </Stage>
       </Block>

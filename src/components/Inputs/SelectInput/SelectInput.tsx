@@ -127,7 +127,7 @@ export const SelectInput = ({
 
   return(
     <SelectWrap>
-      <Heading size="l1" bold="bold" title={ label } />
+      <Heading size="l1" bold title={ label } />
 
       <Dropdown 
         removeArrow

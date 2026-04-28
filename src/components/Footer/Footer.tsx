@@ -13,7 +13,8 @@ const FooterWrap = styled('footer', {
   width: '100vw',
   color: '$white',
   fontFamily: '$sansSerif',
-  zIndex: 8000
+  zIndex: 8000,
+  '@tablet': { background: 'none' }
 })
 
 // For the container of all of the content within the footer
@@ -24,12 +25,12 @@ const FooterContain = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   position: 'relative',
-  maxWidth: 1300,
-  width: '90%',
+  width: '100%',
   margin: '0 auto 12px',
   padding: '75px 0 50px',
   background: '$siteBg',
   borderRadius: '$r2',
+  '@mobile': { paddingTop: '0px !important' },
 
   // Here we add the support to remove the default contact from the footer
   // This is needed for other pages such as the Job posting page, where there is the application form on the bottom
@@ -59,7 +60,7 @@ const MainContent = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   position: 'relative',
-  width: '90%',
+  width: '100%',
   margin: '0 auto'
 })
 
@@ -72,9 +73,8 @@ const FooterContent = styled('div', {
   alignItems: 'center',
   position: 'relative',
   width: '100%',
-  padding: '50px 0 0',
   marginTop: 50,
-  borderTop: '1px solid rgba( 79, 79, 79, 0.2 )',
+  '> *:not(:last-child)': { marginBottom: 8 },
   '@tablet': { marginTop: 20 },
 
   // Change the default color of the paragraph to be a bit darker
@@ -91,6 +91,15 @@ const FooterContent = styled('div', {
       true: { marginTop: 0 }
     }
   }
+})
+
+const FooterSocial = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alginItmes: 'center',
+  position: 'relative',
+  width: '100%'
 })
 
 // -------------- Typescript declarations -------------- //
@@ -112,7 +121,19 @@ export const Footer = ({ removeContact }:FooterProps) => {
             { removeContact ?? ( <ContactForm /> )}
 
             <FooterContent {...{ removeContact }}>
-              <div>&copy; {new Date().getFullYear()} Continuum Capital</div>
+              {/* <FooterSocial>
+                <ButtonContainer
+                  align="center" 
+                  variant="icon"
+                  spacing="l0"
+                  buttons={[
+                    { linkUrl: 'https://instagram.com/mxmlcreative', icon: 'instagram' },
+                    { linkUrl: 'https://www.linkedin.com/company/mxml-creative', icon: 'linkedin' }
+                  ]}
+                />
+              </FooterSocial> */}
+              
+              <div>&copy; {new Date().getFullYear()} CONTINUUM CAPITAL</div>
             </FooterContent>
           </MainContent>
         

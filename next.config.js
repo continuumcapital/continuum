@@ -2,9 +2,9 @@
 
 module.exports = {
   reactStrictMode: true,
-  swcMinify: true,
+  turbopack: {},
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
     return config;
-  } 
+  }
 }

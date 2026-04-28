@@ -25,13 +25,6 @@ const TextWrap = styled('div', {
     '@tablet': { marginBottom: 16 }
   },
 
-  // Here we adjust for cases, such as if an h, ul, or ol element is within the text container
-  // This will make the spacing large between a p tag and the above mentioned
-
-  '> *:not( p )': {
-    marginBottom: 20
-  },
-
   // For the automation of the links within the text component
   // This is A11y compliant by adding the underline decoration along with a color to indicate afforance
 
@@ -68,9 +61,9 @@ const TextWrap = styled('div', {
 
       l1: { 
         '*': {
-          fontSize: '$s3 !important', 
+          fontSize: '$s3', 
           lineHeight: '1.5 !important',
-          '@tablet': { fontSize: '$s3' }
+          '@tablet': { fontSize: '$s2' }
         }
       }
     },
@@ -86,7 +79,8 @@ const TextWrap = styled('div', {
     // By default, the text is 100% widt hand this allows for changes for the readability of the text
 
     width: {
-      small: { maxWidth: 600 }
+      small: { maxWidth: 600 },
+      full: { maxWidth: '100%' }
     },
 
     // Here we support the alignment of the text that varies from the left algin default
@@ -108,7 +102,7 @@ const TextWrap = styled('div', {
 
 interface TextProps {
   fontSize?: 'l0' | 'l1'
-  width?: 'small'
+  width?: 'small' | 'full'
   alignment?: 'center'
   children?: React.ReactNode
   textAlign?: 'center'

@@ -32,7 +32,7 @@ export const FilePreview = ({ title, onClick }:PreviewProps) => {
     
     <FilePreviewWrap>
       <Heading {...{ title }} />
-      <Button variant="icon" icon="cross-2" {...{ onClick }} />
+      <Button icon="cross-2" {...{ onClick }} />
     </FilePreviewWrap>
 
   )

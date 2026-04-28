@@ -23,9 +23,9 @@ const Input = styled('div', {
   position: 'relative',
   width: '100%',
   height: 60,
-  padding: '0 20px',
-  border: '1px solid $border',
-  borderRadius: '$r1',
+  padding: '0 16px',
+  background: '$bgLight',
+  borderRadius: '$r0',
   transition: '$s1',
 
   // For the sryling of the label within the input
@@ -39,6 +39,7 @@ const Input = styled('div', {
     transformOrigin: 'top left',
     transition: '$s1',
     pointerEvents: 'none',
+    color: '$placeholder',
     zIndex: 10
   },
 
@@ -51,7 +52,7 @@ const Input = styled('div', {
     left: 0,
     width: '100%',
     height: '100%',
-    padding: '14px 20px 0',
+    padding: '14px 16px 0',
     outline: 'none',
     border: 'none',
     background: 'none',
@@ -75,7 +76,7 @@ const Input = styled('div', {
   '&:focus-within': {
     borderColor: '$contentColor',
     label: {
-      '&, *': { color: '$textSecondary !important' },
+      '&, *': { color: '$placeholder !important' },
       transform: 'translateY( -10px ) scale( 0.8 )'
     }
   },
@@ -138,7 +139,6 @@ export const BasicInput = ({
       <Input active={ !!currentValue }>
         <label htmlFor={ name }>
           <Heading title={ label } />
-          {required && <TextEm color="danger">*</TextEm>}
         </label>
 
         <input 

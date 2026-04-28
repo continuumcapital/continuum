@@ -84,13 +84,11 @@ export const Chip = ({
               { chip.href ? (
 
                 <Link href={ chip.href }>
-                  <a>
-                    <ChipWrap>
-                      <ChipContent>
-                        <Heading bold="heavy" title={ chip.title } />
-                      </ChipContent>
-                    </ChipWrap>
-                  </a>
+                  <ChipWrap>
+                    <ChipContent>
+                      <Heading bold="heavy" title={ chip.title } />
+                    </ChipContent>
+                  </ChipWrap>
                 </Link>
 
               ) : (

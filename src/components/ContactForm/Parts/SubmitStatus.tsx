@@ -25,7 +25,7 @@ const SuccessContent = styled('div', {
   justifyContent: 'center',
   position: 'relative',
   maxWidth: 1100,
-  width: '95%',
+  width: '100%',
   margin: '0 auto',
   padding: '16px 0',
   textAlign: 'center',
@@ -46,7 +46,7 @@ export const SubmitStatus = ({ status }:SuccessProps) => {
     <SuccessWrap>
       <SuccessContent>
         <Icon size="l0" icon="check" />
-        <Heading bold="bold" size="l0" title={ status } />
+        <Heading bold size="l0" title={ status } />
       </SuccessContent>
     </SuccessWrap>
 
