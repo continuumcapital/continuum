@@ -46,7 +46,7 @@ export const SubmitStatus = ({ status }:SuccessProps) => {
     <SuccessWrap>
       <SuccessContent>
         <Icon size="l0" icon="check" />
-        <Heading bold size="l0" title={ status } />
+        <Heading size="l0" title={ status } />
       </SuccessContent>
     </SuccessWrap>
 
