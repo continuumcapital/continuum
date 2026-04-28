@@ -67,7 +67,7 @@ const Button = styled('div', {
 
       primary: {
         height: 40,
-        background: '$black',
+        background: '#000',
         color: '$white',
       
         // // For the hover effect of the primary button
