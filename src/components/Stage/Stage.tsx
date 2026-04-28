@@ -57,7 +57,7 @@ const StageContent = styled('div', {
   // Here we change the orientation of the content on tablet and mobile breakpoints
   // We change this from row to column and automate the spacing between the title and text
 
-  '@tablet': {
+  '@desktop': {
     flexDirection: 'column',
     '> *:not(:last-child)': { marginBottom: 20 }
   }
@@ -71,7 +71,8 @@ const StageTitle = styled('div', {
   flexDirection: 'column',
   position: 'relative',
   width: 72,
-  height: '100%'
+  height: '100%',
+  '@desktop': { width: '100%' }
 })
 
 const StageTitleContent = styled('div', {
@@ -80,7 +81,12 @@ const StageTitleContent = styled('div', {
   left: 0,
   transform: 'rotate( -90deg ) translateY( 72px )',
   transformOrigin: 'bottom left',
-  '*': { whiteSpace: 'nowrap' }
+  '*': { whiteSpace: 'nowrap' },
+
+  '@desktop': {
+    position: 'relative',
+    transform: 'rotate( 0deg ) translateY( 0px )',
+  }
 })
 
 // For the width of the text within the container
@@ -95,7 +101,7 @@ const StageText = styled('div', {
   alignItems: 'stretch',
   position: 'relative',
   width: '100%',
-  '@tablet': { gridTemplateColumns: 'repeat(1, 1fr)' }
+  '@desktop': { gridTemplateColumns: 'repeat(1, 1fr)', gridRowGap: '12px', }
 })
 
 // ---------- Typescript declarations ---------- //
