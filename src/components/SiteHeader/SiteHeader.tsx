@@ -127,7 +127,7 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
               buttons={[
                 { linkUrl: 'https://continuumcapital.io/', title: 'Capital' },
                 { linkUrl: 'https://continuumdevelopment.io/', title: 'Real Estate'  },
-                { linkUrl: '/', title: 'Digital', variant: 'primary' },
+                { linkUrl: '/', title: 'Digital Assets', variant: 'primary' },
                 { onClick: () => smoothScrollTo( '#contact' ), title: 'Contact' }
               ]}
             />
