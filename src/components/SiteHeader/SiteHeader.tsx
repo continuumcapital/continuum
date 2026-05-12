@@ -57,7 +57,7 @@ const Nav = styled('nav', {
   position: 'relative',
   width: '95%',
   margin: '0 auto',
-  padding: '24px 0',
+  padding: '16px 0',
   transition: '$s1',
   zIndex: 10,
 
@@ -114,7 +114,7 @@ export const SiteHeader = ({ hasContactForm }:HeaderProps) => {
     
     <XyzTransition xyz="fade" appear>
       <Header style={{ transform: `translateY( ${ scrollDirection == 'down' ? '-100%' : '0' })` }}>
-        <Nav style={{ padding: typeof scrollPos === 'number' && scrollPos <= 100 ? '24px 0' : '12px 0' }}>
+        <Nav style={{ padding: typeof scrollPos === 'number' && scrollPos <= 100 ? '16px 0' : '12px 0' }}>
           <Side><Logo noWordmark /></Side>
 
           <ShowOnTablet>

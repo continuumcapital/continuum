@@ -30,6 +30,8 @@ export const globalStyle = {
     color: '$contentColor'
   },
 
+  strong: { fontFamily: '$sansSerifBold' },
+
   a: { textDecoration: 'none' },
 
   button: { cursor: 'pointer' },
